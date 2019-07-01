@@ -1,7 +1,6 @@
 <template>
     <el-container>
         <el-header>
-
             <el-menu
                     :default-active="activeIndex2"
                     class="el-menu-demo"
@@ -28,6 +27,13 @@
             </el-menu>
         </el-header>
 
+        <el-main>
+
+        </el-main>
+
+        <el-footer>
+
+        </el-footer>
     </el-container>
 </template>
 
@@ -37,7 +43,20 @@
         name: 'app',
         components: {
             // HelloWorld
+        },
+        data() {
+            return {
+                activeIndex: '1',
+                activeIndex2: '1'
+            };
+        },
+        methods: {
+            handleSelect(key, keyPath) {
+                // eslint-disable-next-line no-console
+                console.log(key, keyPath);
+            }
         }
+
     }
 </script>
 
