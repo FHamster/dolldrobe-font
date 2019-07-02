@@ -1,5 +1,6 @@
 <template>
     <el-container>
+        <LoginDialog :is-vis="dialogVis"></LoginDialog>
         <el-header>
             <el-menu
                     :default-active="activeIndex2"
@@ -28,7 +29,8 @@
         </el-header>
 
         <el-main>
-
+            <el-button @click="changeVuex">按钮测试</el-button>
+            <el-button @click="changeDialogVis">显示登陆对话框</el-button>
         </el-main>
 
         <el-footer>
@@ -38,26 +40,38 @@
 </template>
 
 <script>
+    import LoginDialog from "./views/LoginDialog";
 
     export default {
         name: 'app',
         components: {
+            LoginDialog
             // HelloWorld
         },
         data() {
             return {
                 activeIndex: '1',
-                activeIndex2: '1'
+                activeIndex2: '1',
+                dialogVis: false
             };
         },
         methods: {
             handleSelect(key, keyPath) {
                 // eslint-disable-next-line no-console
                 console.log(key, keyPath);
+            },
+            changeVuex() {
+                // eslint-disable-next-line no-console
+                // console.log(this.$store.state.changableNum++);
+                // eslint-disable-next-line no-console
+                console.log(this.$store.getters.getNum);
+            },
+            changeDialogVis() {
+                this.dialogVis = !this.dialogVis;
             }
         }
 
-    }
+    };
 </script>
 
 <style>
