@@ -1,18 +1,19 @@
 <template>
-
     <el-container>
         <LoginDialog :is-vis="dialogVis"></LoginDialog>
-        <el-header>
+        <el-header style="max-height: 40px">
             <el-menu
                     :default-active="activeIndex2"
-                    class="el-menu-demo"
                     mode="horizontal"
                     @select="handleSelect"
                     background-color="#545c64"
                     text-color="#fff"
                     active-text-color="#ffd04b"
                     router>
-                <el-menu-item index="UserCenter">用户中心</el-menu-item>
+                <el-menu-item
+                        class="menu-heigh"
+                        index="UserCenter">用户中心
+                </el-menu-item>
                 <el-submenu index="2">
                     <template slot="title">我的工作台</template>
                     <el-menu-item index="2-1">选项1</el-menu-item>
@@ -25,19 +26,19 @@
                         <el-menu-item index="2-4-3">选项3</el-menu-item>
                     </el-submenu>
                 </el-submenu>
-                <el-menu-item index="3" disabled>消息中心</el-menu-item>
-                <el-menu-item index="4"><a href="https://www.ele.me" target="_blank">订单管理</a></el-menu-item>
+                <el-menu-item  index="3" disabled>消息中心</el-menu-item>
+                <el-menu-item style="height: 30px" index="4"><a href="https://www.ele.me" target="_blank">订单管理</a></el-menu-item>
+                <el-menu-item index="5"><a href="views/UserCenter.vue" target="_blank">用户中心</a></el-menu-item>
             </el-menu>
         </el-header>
 
         <el-main>
             <router-view></router-view>
-            <el-button @click="changeVuex">按钮测试</el-button>
-            <el-button @click="changeDialogVis">显示登陆对话框</el-button>
-        </el-main>
+            </el-main>
 
         <el-footer>
-
+            <el-button @click="changeVuex">按钮测试</el-button>
+            <el-button @click="changeDialogVis">显示登陆对话框</el-button>
         </el-footer>
     </el-container>
 </template>
@@ -78,6 +79,11 @@
 </script>
 
 <style>
+
+    .menu-heigh {
+        max-height: 40px;
+    }
+
     #app {
         font-family: 'Avenir', Helvetica, Arial, sans-serif;
         -webkit-font-smoothing: antialiased;

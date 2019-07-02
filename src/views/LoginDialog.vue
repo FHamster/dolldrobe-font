@@ -1,6 +1,6 @@
 <template>
 
-    <el-dialog title="登陆" :visible.sync="dialogFormVisible" width="30%" >
+    <el-dialog title="登陆" :visible.sync="dialogFormVisible" width="30%">
         <div class="login_border">
             <el-form :model="form">
                 <el-form-item label="帐号" :label-width="formLabelWidth">
@@ -30,12 +30,13 @@
             <div slot="footer" class="dialog-footer" align="center">
                 <!--<el-button @click="dialogFormVisible=false" round="true">取 消</el-button>-->
                 <!--            <el-button @click="changeRegshow">显示</el-button>-->
-                <el-button type="primary" @click="login" round="true" class="login_btn"  v-on:click.native="login">登录</el-button>
+                <el-button type="primary" @click="login" round="true" class="login_btn" v-on:click.native="login">登录
+                </el-button>
             </div>
         </div>
         <div class=" login_foot">
-            <el-link icon="el-icon-key">忘记密码</el-link>
-            <el-link icon="el-icon-s-custom">免费注册</el-link>
+            <el-link icon="el-icon-key" style="margin-right: 5px">忘记密码</el-link>
+            <el-link icon="el-icon-s-custom" style="margin-left: 5px">免费注册</el-link>
         </div>
     </el-dialog>
 
@@ -61,9 +62,7 @@
                 formLabelWidth: '80px'
             }
         },
-        computed:{
-
-        },
+        computed: {},
         methods: {
             changeRegshow: function () {
                 this.regshow = !this.regshow;
