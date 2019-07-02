@@ -14,7 +14,17 @@ const state = {
 };
 
 //同步方法
-const mutations = {};
+const mutations = {
+    setToken(state, token) {
+        state.userToken = token;
+    },
+    setName(state, Name) {
+        state.userName = Name;
+    },
+    setAccount(state, Acc) {
+        state.userAccount = Acc;
+    },
+};
 
 //异步方法
 //ajax/axios调用只允许出现在这里
@@ -22,7 +32,7 @@ const actions = {};
 
 //getter
 const getters = {
-    getNum: state => state.changableNum
+    getToken: state => state.userToken
 };
 
 //store实例

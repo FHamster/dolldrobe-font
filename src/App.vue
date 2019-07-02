@@ -26,25 +26,28 @@
                         <el-menu-item index="2-4-3">选项3</el-menu-item>
                     </el-submenu>
                 </el-submenu>
-                <el-menu-item  index="3" disabled>消息中心</el-menu-item>
-                <el-menu-item style="height: 30px" index="4"><a href="https://www.ele.me" target="_blank">订单管理</a></el-menu-item>
+                <el-menu-item index="3" disabled>消息中心</el-menu-item>
+                <el-menu-item style="height: 30px" index="4"><a href="https://www.ele.me" target="_blank">订单管理</a>
+                </el-menu-item>
                 <el-menu-item index="5"><a href="views/UserCenter.vue" target="_blank">用户中心</a></el-menu-item>
             </el-menu>
         </el-header>
 
         <el-main>
             <router-view></router-view>
-            </el-main>
+        </el-main>
 
         <el-footer>
             <el-button @click="changeVuex">按钮测试</el-button>
             <el-button @click="changeDialogVis">显示登陆对话框</el-button>
+            <el-button @click="checkToken">检查token有效</el-button>
         </el-footer>
     </el-container>
 </template>
 
 <script>
     import LoginDialog from "./views/LoginDialog";
+    import axios from 'axios';
 
     export default {
         name: 'app',
@@ -72,7 +75,22 @@
             },
             changeDialogVis() {
                 this.dialogVis = !this.dialogVis;
+            },
+            checkToken() {
+
+                let obj = {k1: 'k', k2: 't'}
+                axios.post('/api/token/checktoken', obj, {
+
+                        headers: {
+                            'token': this.$store.getters.getToken
+                        }}
+                ).then(res => {
+                    // eslint-disable-next-line no-console
+                    console.log(res.data);
+                })
             }
+
+
         }
 
     };

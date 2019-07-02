@@ -11,7 +11,7 @@
                     @close="handleClose"
                     background-color="#545c64"
                     text-color="#fff"
-                    collapse="false"
+                    collapse=false
 
                     active-text-color="#ffd04b">
                 <el-submenu index="1">
