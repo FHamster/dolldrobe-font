@@ -1,4 +1,5 @@
 <template>
+
     <el-container>
         <LoginDialog :is-vis="dialogVis"></LoginDialog>
         <el-header>
@@ -9,8 +10,9 @@
                     @select="handleSelect"
                     background-color="#545c64"
                     text-color="#fff"
-                    active-text-color="#ffd04b">
-                <el-menu-item index="1">处理中心</el-menu-item>
+                    active-text-color="#ffd04b"
+                    router>
+                <el-menu-item index="UserCenter">用户中心</el-menu-item>
                 <el-submenu index="2">
                     <template slot="title">我的工作台</template>
                     <el-menu-item index="2-1">选项1</el-menu-item>
@@ -29,6 +31,7 @@
         </el-header>
 
         <el-main>
+            <router-view></router-view>
             <el-button @click="changeVuex">按钮测试</el-button>
             <el-button @click="changeDialogVis">显示登陆对话框</el-button>
         </el-main>
