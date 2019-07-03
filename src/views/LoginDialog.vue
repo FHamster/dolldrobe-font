@@ -1,6 +1,6 @@
 <template>
-    <el-dialog title="登陆" :visible.sync="dialogFormVisible"  >
-        <div class="login_border" >
+    <el-dialog title="登陆" :visible.sync="dialogFormVisible" width="500px">
+        <div class="login_border">
             <el-form :model="form">
                 <el-form-item label="帐号" :label-width="formLabelWidth">
                     <el-input v-model="form.uAccountnumber" autocomplete="off" type="text" prefix-icon="el-icon-user"
@@ -24,21 +24,18 @@
                 <!--</div>-->
                 <!--</el-collapse-transition>-->
             </el-form>
+            <el-button type="primary" @click="login" :round="true" class="login_btn">登录</el-button>
 
 
-            <div slot="footer" class="dialog-footer" >
-                <!--<el-button @click="dialogFormVisible=false" round="true">取 消</el-button>-->
-                <!--            <el-button @click="changeRegshow">显示</el-button>-->
-                <el-button type="primary" @click="login" :round="true" class="login_btn">登录
-                </el-button>
-            </div>
         </div>
-        <div class=" login_foot">
-            <el-link icon="el-icon-key" class="mymagin">忘记密码</el-link>
-            <el-link icon="el-icon-s-custom" class="mymagin">免费注册</el-link>
-        </div>
+        <!--<div class=" login_foot">
+
+        </div>-->
+        <span slot="footer" class="dialog-footer">
+                <el-link icon="el-icon-key" class="mymagin">忘记密码</el-link>
+                <el-link icon="el-icon-s-custom" class="mymagin">免费注册</el-link>
+        </span>
     </el-dialog>
-
 </template>
 
 <script>
@@ -119,34 +116,39 @@
 
 <style scoped>
     .login_border {
-        width: 400px;
-        height: 200px;
+        /*width: 400px;*/
+        /*height: 200px;*/
 
+align-self: center;
+        display: flex;
+        flex-direction: column;
 
         /*background-color: rgba(230,232,234,0.8)*/
     }
 
     .login_btn {
-        /*width: 50%;*/
+        width: 50%;
         font-size: 20px;
+        align-self: center;
     }
 
     .login_input_broder {
-        /*width: 80%;*/
+        width: 80%;
     }
 
     .login_foot {
-        /*float: right;*/
+        float: right;
         font-size: 12px;
 
     }
 
-
-    .el-dialog.mydialog {
+    .mydialog {
         display: flex;
         flex-direction: column;
-        align-items: center;
+        align-self: center;
     }
-    .mymagin {margin-right: 5px
+
+    .mymagin {
+        margin-right: 5px
     }
 </style>
