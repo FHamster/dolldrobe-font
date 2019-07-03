@@ -1,6 +1,6 @@
 <template>
-    <el-dialog title="登陆" :visible.sync="dialogFormVisible" width="20%">
-        <div class="login_border">
+    <el-dialog title="登陆" :visible.sync="dialogFormVisible"  >
+        <div class="login_border" >
             <el-form :model="form">
                 <el-form-item label="帐号" :label-width="formLabelWidth">
                     <el-input v-model="form.uAccountnumber" autocomplete="off" type="text" prefix-icon="el-icon-user"
@@ -26,16 +26,16 @@
             </el-form>
 
 
-            <div slot="footer" class="dialog-footer" align="center">
+            <div slot="footer" class="dialog-footer" >
                 <!--<el-button @click="dialogFormVisible=false" round="true">取 消</el-button>-->
                 <!--            <el-button @click="changeRegshow">显示</el-button>-->
-                <el-button type="primary" @click="login" :round=true class="login_btn">登录
+                <el-button type="primary" @click="login" :round="true" class="login_btn">登录
                 </el-button>
             </div>
         </div>
         <div class=" login_foot">
-            <el-link icon="el-icon-key" style="margin-right: 5px">忘记密码</el-link>
-            <el-link icon="el-icon-s-custom" style="margin-left: 5px">免费注册</el-link>
+            <el-link icon="el-icon-key" class="mymagin">忘记密码</el-link>
+            <el-link icon="el-icon-s-custom" class="mymagin">免费注册</el-link>
         </div>
     </el-dialog>
 
@@ -43,7 +43,7 @@
 
 <script>
     import axios from 'axios'
-    import jwt from "jsonwebtoken";
+    // import jwt from "jsonwebtoken";
 
     export default {
         name: "LoginDialog",
@@ -70,25 +70,28 @@
                 this.regshow = !this.regshow;
             },
             login: function () {
-                //使用jwt进行加密
-                // 要生成token的载荷
-                // let payload = this.form;
-                // 这是加密的key（密钥）
-                let secret = "123";
-                // 1小时过期
-                this.form.uPsw = jwt.sign(
-                    {psw: this.form.uPsw},
-                    secret,
-                    {expiresIn: 60 * 60 * 1}
-                );
+                //TODO 没实现
+                /* //使用jwt进行加密
+                 // 要生成token的载荷
+                 // let payload = this.form;
+                 // 这是加密的key（密钥）
+                 let secret = "123";
+                 // 1小时过期
+                 this.form.uPsw = jwt.sign(
+                     {
+                         psw: this.form.uPsw,
+                         iat: Math.floor(Date.now() / 1000) - 30
+                     },
+                     secret,
+                     {algorithm: 'HS512'}
+                 );*/
 
 
+                // console.log(123);
                 axios.post('/api/token/token', this.form)
                 //then成功时候的回传
                 //err出现异常的回传
                     .then((res) => {
-
-
                         let token = res.data.tokenid;
                         this.$store.commit("setToken", token);
                         let acc = res.data.uAccountnumber;
@@ -118,20 +121,32 @@
     .login_border {
         width: 400px;
         height: 200px;
+
+
         /*background-color: rgba(230,232,234,0.8)*/
     }
 
     .login_btn {
-        width: 50%;
+        /*width: 50%;*/
         font-size: 20px;
     }
 
     .login_input_broder {
-        width: 80%;
+        /*width: 80%;*/
     }
 
     .login_foot {
-        float: right;
+        /*float: right;*/
         font-size: 12px;
+
+    }
+
+
+    .el-dialog.mydialog {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    .mymagin {margin-right: 5px
     }
 </style>

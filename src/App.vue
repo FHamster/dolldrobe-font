@@ -1,7 +1,8 @@
 <template>
     <el-container>
         <LoginDialog :is-vis="dialogVis"></LoginDialog>
-        <el-header style="max-height: 40px">
+        <!--        <el-header style="max-height: 40px">-->
+        <el-header style="padding: 0">
             <el-menu
                     :default-active="activeIndex2"
                     mode="horizontal"
@@ -27,13 +28,16 @@
                     </el-submenu>
                 </el-submenu>
                 <el-menu-item index="3" disabled>消息中心</el-menu-item>
-                <el-menu-item style="height: 30px" index="4"><a href="https://www.ele.me" target="_blank">订单管理</a>
+                <el-menu-item  index="4"><a href="https://www.ele.me" target="_blank">订单管理</a>
                 </el-menu-item>
                 <el-menu-item index="5"><a href="views/UserCenter.vue" target="_blank">用户中心</a></el-menu-item>
             </el-menu>
+            <!--        </el-header>-->
+
         </el-header>
 
-        <el-main>
+
+        <el-main style="padding: 0">
             <router-view></router-view>
         </el-main>
 
@@ -83,7 +87,8 @@
 
                         headers: {
                             'token': this.$store.getters.getToken
-                        }}
+                        }
+                    }
                 ).then(res => {
                     // eslint-disable-next-line no-console
                     console.log(res.data);
@@ -98,9 +103,6 @@
 
 <style>
 
-    .menu-heigh {
-        max-height: 40px;
-    }
 
     #app {
         font-family: 'Avenir', Helvetica, Arial, sans-serif;

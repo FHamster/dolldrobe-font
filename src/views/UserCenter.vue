@@ -1,18 +1,21 @@
 <template>
-
     <el-container>
 
+        <!--                    @open="handleOpen"-->
+        <!--                    @close="handleClose"-->
 
-        <el-side style="width: 44px">
+
+        <!--                :default-active="activeIndex2"-->
+
+        <el-aside style="width: 60px">
+
+
             <el-menu
                     default-active="2"
-                    class="el-menu-demo"
-                    @open="handleOpen"
-                    @close="handleClose"
                     background-color="#545c64"
                     text-color="#fff"
                     collapse=false
-
+                    style="width: 60px"
                     active-text-color="#ffd04b">
                 <el-submenu index="1">
                     <template slot="title">
@@ -45,12 +48,11 @@
                     <span slot="title">导航四</span>
                 </el-menu-item>
             </el-menu>
-        </el-side>
-        <el-container>
-            <el-header>
+        </el-aside>
+        <el-main style="padding: 0">
+            <el-header style="padding: 0">
                 <el-menu
-                        :default-active="activeIndex2"
-                        class="el-menu-demo"
+
                         mode="horizontal"
                         @select="handleSelect"
                         background-color="#698B69"
@@ -64,7 +66,7 @@
                     <el-menu-item index="UserCenter" class="userCenter_title">首页</el-menu-item>
                     <el-menu-item index="1">
                         <el-submenu index="2">
-                            <template slot="title" class="userCenter_titleMenu" >账户设置</template>
+                            <template slot="title" class="userCenter_titleMenu">账户设置</template>
                             <el-submenu index="2-1">
                                 <template slot="title" class="userCenter_titleMenu ">安全设置</template>
                                 <el-menu-item index="2-1-1">修改登录密码</el-menu-item>
@@ -83,32 +85,32 @@
                     <el-menu-item index="3" class="userCenter_title">消息中心</el-menu-item>
                     <div style="width: 300px;float:right;height: 29.6px">
                         <!--<div class="userCenter_search">-->
-                        <el-input  class="userCenter_search" prefix-icon="el-icon-search" type="text" v-model="from.search"
-                        clearable="true" size="small" > </el-input>
+                        <el-input class="userCenter_search" prefix-icon="el-icon-search" type="text"
+                                  v-model="from.search"
+                                  clearable="true" size="small"></el-input>
                         <!--</div>-->
-                        <el-button class="userCenter_btnSearch"  size="small" plain @click="user_search">搜索</el-button>
+                        <el-button class="userCenter_btnSearch" size="small" plain @click="user_search">搜索</el-button>
                     </div>
                 </el-menu>
             </el-header>
-        </el-container>
+        </el-main>
 
 
     </el-container>
-
 </template>
 
 <script>
     export default {
         name: "UserCenter",
-        data:function () {
-            return{
-                from:{
-                    search:'',
+        data: function () {
+            return {
+                from: {
+                    search: '',
                 },
             }
         },
-        methods:{
-            user_search(){
+        methods: {
+            user_search() {
 
             },
         }
@@ -142,14 +144,16 @@
     .userCenter_titleMenu_font {
         font-size: 13px;
     }
-    .userCenter_search{
+
+    .userCenter_search {
         width: 200px;
         height: 25px;
         margin-top: 15px;
         border-radius: 0px;
         border-right: 0px;
     }
-    .userCenter_btnSearch{
+
+    .userCenter_btnSearch {
         width: 72px;
         height: 29.6px;
         padding: 7px;
