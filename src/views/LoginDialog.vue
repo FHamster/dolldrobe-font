@@ -1,6 +1,5 @@
 <template>
-
-    <el-dialog title="登陆" :visible.sync="dialogFormVisible" width="30%">
+    <el-dialog title="登陆" :visible.sync="dialogFormVisible" width="20%">
         <div class="login_border">
             <el-form :model="form">
                 <el-form-item label="帐号" :label-width="formLabelWidth">
@@ -44,6 +43,7 @@
 
 <script>
     import axios from 'axios'
+    import jwt from "jsonwebtoken";
 
     export default {
         name: "LoginDialog",
@@ -70,15 +70,33 @@
                 this.regshow = !this.regshow;
             },
             login: function () {
+                //使用jwt进行加密
+                // 要生成token的载荷
+                // let payload = this.form;
+                // 这是加密的key（密钥）
+                let secret = "123";
+                // 1小时过期
+                this.form.uPsw = jwt.sign(
+                    {psw: this.form.uPsw},
+                    secret,
+                    {expiresIn: 60 * 60 * 1}
+                );
+
+
                 axios.post('/api/token/token', this.form)
                 //then成功时候的回传
                 //err出现异常的回传
                     .then((res) => {
+
+
                         let token = res.data.tokenid;
                         this.$store.commit("setToken", token);
                         let acc = res.data.uAccountnumber;
                         this.$store.commit("setAccount", acc);
                         alert('success')
+                        //清空输入框
+                        this.uAccountnumber = '';
+                        this.uPsw = '';
 
                     })
                     .catch((err) => {

@@ -10,6 +10,9 @@
   "dependencies": {
     "core-js": "^2.6.5",
     "element-ui": "^2.10.0",
+    "hash": "^0.2.1",
+    "hash.js": "^1.1.7",
+    "jsonwebtoken": "^8.5.1",
     "vue": "^2.6.10",
     "vue-router": "^3.0.3",
     "vuex": "^3.0.1"
