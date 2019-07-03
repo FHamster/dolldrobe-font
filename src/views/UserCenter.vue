@@ -12,41 +12,66 @@
 
             <el-menu
                     default-active="2"
-                    background-color="#545c64"
-                    text-color="#fff"
+                    background-color="#fff"
+                    text-color="#545c64"
                     collapse=false
-                    style="width: 60px"
+                    style="width: 59px"
                     active-text-color="#ffd04b">
-                <el-submenu index="1">
+
+                <el-menu-item index="1">
+                    <i class="el-icon-location"></i>
+                </el-menu-item>
+
+                <el-menu-item index="2">
+                    <i class="el-icon-shopping-cart-full"></i>
+                    <span slot="title">我的购物车</span>
+                </el-menu-item>
+                <el-menu-item index="3">
+                    <i class="el-icon-goods"></i>
+                    <span slot="title">已购买的宝贝</span>
+                </el-menu-item>
+                <el-submenu index="4">
                     <template slot="title">
-                        <i class="el-icon-location"></i>
-                        <span>导航一</span>
+                        <i class="el-icon-tickets"></i>
                     </template>
                     <el-menu-item-group>
-                        <template slot="title">分组一</template>
-                        <el-menu-item index="1-1">选项1</el-menu-item>
-                        <el-menu-item index="1-2">选项2</el-menu-item>
+                        <template slot="title">我的发票</template>
+                        <el-menu-item index="4-1" style="font-size: 10px">开票信息</el-menu-item>
+                        <el-menu-item index="4-2" style="font-size: 10px">发票管理</el-menu-item>
                     </el-menu-item-group>
-                    <el-menu-item-group title="分组2">
-                        <el-menu-item index="1-3">选项3</el-menu-item>
-                    </el-menu-item-group>
-                    <el-submenu index="1-4">
-                        <template slot="title">选项4</template>
-                        <el-menu-item index="1-4-1">选项1</el-menu-item>
-                    </el-submenu>
                 </el-submenu>
-                <el-menu-item index="2">
-                    <i class="el-icon-menu"></i>
-                    <span slot="title">导航二</span>
+                <el-menu-item index="5">
+                    <i class="el-icon-star-off"></i>
+                    <span slot="title">我的收藏</span>
                 </el-menu-item>
-                <el-menu-item index="3" disabled>
-                    <i class="el-icon-document"></i>
-                    <span slot="title">导航三</span>
+                <el-menu-item index="6">
+                    <i class="el-icon-trophy-1"></i>
+                    <span slot="title">我的积分</span>
                 </el-menu-item>
-                <el-menu-item index="4">
-                    <i class="el-icon-setting"></i>
-                    <span slot="title">导航四</span>
+                <el-menu-item index="7">
+                    <i class="el-icon-money"></i>
+                    <span slot="title">我的优惠信息</span>
                 </el-menu-item>
+                <el-menu-item index="8">
+                    <i class="el-icon-document-checked"></i>
+                    <span slot="title">评价管理</span>
+                </el-menu-item>
+                <el-menu-item index="9">
+                    <i class="el-icon-view"></i>
+                    <span slot="title">我的足迹</span>
+                </el-menu-item>
+                <el-submenu index="10">
+                    <template slot="title">
+                        <i class="el-icon-warning-outline"></i>
+                    </template>
+                    <el-menu-item-group>
+                        <template slot="title">退款维权</template>
+                        <el-menu-item index="10-1" style="font-size: 10px">退款管理</el-menu-item>
+                        <el-menu-item index="10-2" style="font-size: 10px">投诉管理</el-menu-item>
+                        <el-menu-item index="10-3" style="font-size: 10px">举报管理</el-menu-item>
+                    </el-menu-item-group>
+                </el-submenu>
+
             </el-menu>
         </el-aside>
         <el-main style="padding: 0">
@@ -55,7 +80,7 @@
 
                         mode="horizontal"
                         @select="handleSelect"
-                        background-color="#698B69"
+                        background-color="#545c64"
                         text-color="#fff"
                         active-text-color="black"
                         router
@@ -84,12 +109,12 @@
                     </el-menu-item>
                     <el-menu-item index="3" class="userCenter_title">消息中心</el-menu-item>
                     <div style="width: 300px;float:right;height: 29.6px">
-                        <!--<div class="userCenter_search">-->
-                        <el-input class="userCenter_search" prefix-icon="el-icon-search" type="text"
+                        <div style="float: left; ">
+                        <el-input class="userCenter_search  " prefix-icon="el-icon-search" type="text"
                                   v-model="from.search"
-                                  clearable="true" size="small"></el-input>
-                        <!--</div>-->
-                        <el-button class="userCenter_btnSearch" size="small" plain @click="user_search">搜索</el-button>
+                                  clearable="true" size=mini></el-input>
+                            <el-button class="userCenter_btnSearch" size="small" plain @click="user_search">搜索</el-button>
+                        </div>
                     </div>
                 </el-menu>
             </el-header>
@@ -155,7 +180,7 @@
 
     .userCenter_btnSearch {
         width: 72px;
-        height: 29.6px;
+        height: 28px;
         padding: 7px;
         margin-top: 15px;
         margin-right: 25px;

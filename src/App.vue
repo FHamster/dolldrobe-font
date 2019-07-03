@@ -2,13 +2,13 @@
     <el-container>
         <LoginDialog :is-vis="dialogVis"></LoginDialog>
         <!--        <el-header style="max-height: 40px">-->
-        <el-header style="padding: 0">
+        <el-header style="padding: 0px">
             <el-menu
                     :default-active="activeIndex2"
                     mode="horizontal"
                     @select="handleSelect"
-                    background-color="#545c64"
-                    text-color="#fff"
+                    background-color="#efff"
+                    text-color="#545c64"
                     active-text-color="#ffd04b"
                     router>
                 <el-menu-item
@@ -16,7 +16,7 @@
                         index="UserCenter">用户中心
                 </el-menu-item>
                 <el-submenu index="2">
-                    <template slot="title">我的工作台</template>
+                    <template slot="title" >我的工作台</template>
                     <el-menu-item index="2-1">选项1</el-menu-item>
                     <el-menu-item index="2-2">选项2</el-menu-item>
                     <el-menu-item index="2-3">选项3</el-menu-item>
