@@ -28,7 +28,7 @@
                     </el-submenu>
                 </el-submenu>
                 <el-menu-item index="3" disabled>消息中心</el-menu-item>
-                <el-menu-item  index="4"><a href="https://www.ele.me" target="_blank">订单管理</a>
+                <el-menu-item index="4"><a href="https://www.ele.me" target="_blank">订单管理</a>
                 </el-menu-item>
                 <el-menu-item index="5"><a href="views/UserCenter.vue" target="_blank">用户中心</a></el-menu-item>
             </el-menu>
@@ -45,6 +45,7 @@
             <el-button @click="changeVuex">按钮测试</el-button>
             <el-button @click="changeDialogVis">显示登陆对话框</el-button>
             <el-button @click="checkToken">检查token有效</el-button>
+            <el-button @click="getPage">商品页面</el-button>
         </el-footer>
     </el-container>
 </template>
@@ -93,6 +94,18 @@
                     // eslint-disable-next-line no-console
                     console.log(res.data);
                 })
+            },
+            getPage() {
+
+                axios.get("/api/GoodPage/GoodPage", {
+                    params: {
+                        keyWord: 123,
+                        startPage: 123,
+                        pageSize: 123
+                    }
+                }).then((res) => {
+                    console.log(res.data);
+                });
             }
 
 
@@ -112,4 +125,5 @@
         color: #2c3e50;
         margin-top: 60px;
     }
+
 </style>
