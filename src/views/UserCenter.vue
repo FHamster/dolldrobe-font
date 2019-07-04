@@ -122,6 +122,7 @@
                     </el-menu>
                 </el-header>
                 <el-main>
+                    main
                     <router-view></router-view>
                 </el-main>
             </el-container>

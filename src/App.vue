@@ -27,12 +27,14 @@
                         <el-menu-item index="2-4-3">选项3</el-menu-item>
                     </el-submenu>
                 </el-submenu>
-                <el-menu-item index="3" disabled>消息中心</el-menu-item>
+                <el-menu-item index="3" class="el-icon-chat-line-round">消息</el-menu-item>
                 <el-menu-item  index="4"><a href="https://www.ele.me" target="_blank">订单管理</a>
                 </el-menu-item>
-                <el-menu-item index="5">用户中心</el-menu-item>
                 <el-menu-item
                         index="GoodsPage">商品浏览
+                </el-menu-item>
+                <el-menu-item
+                        index="ShoppingBag">测试购物车
                 </el-menu-item>
             </el-menu>
             <!--        </el-header>-->
