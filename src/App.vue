@@ -98,10 +98,13 @@
             getPage() {
 
                 axios.get("/api/GoodPage/GoodPage", {
+                    headers: {
+                        'token': this.$store.getters.getToken
+                    },
                     params: {
-                        keyWord: 123,
-                        startPage: 123,
-                        pageSize: 123
+                        keyWord: "",
+                        startPage: 5,
+                        pageSize: 5
                     }
                 }).then((res) => {
                     console.log(res.data);

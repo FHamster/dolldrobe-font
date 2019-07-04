@@ -93,7 +93,7 @@
                         this.$store.commit("setToken", token);
                         let acc = res.data.uAccountnumber;
                         this.$store.commit("setAccount", acc);
-                        alert('success')
+                        alert('success');
                         //清空输入框
                         this.uAccountnumber = '';
                         this.uPsw = '';
