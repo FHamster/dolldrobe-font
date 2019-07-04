@@ -110,10 +110,11 @@
                     <el-menu-item index="3" class="userCenter_title">消息中心</el-menu-item>
                     <div style="width: 300px;float:right;height: 29.6px">
                         <div style="float: left; ">
-                        <el-input class="userCenter_search  " prefix-icon="el-icon-search" type="text"
-                                  v-model="from.search"
-                                  clearable="true" size=mini></el-input>
-                            <el-button class="userCenter_btnSearch" size="small" plain @click="user_search">搜索</el-button>
+                            <el-input class="userCenter_search  " prefix-icon="el-icon-search" type="text"
+                                      v-model="from.search"
+                                      clearable="true" size=mini></el-input>
+                            <el-button class="userCenter_btnSearch" size="small" plain @click="user_search">搜索
+                            </el-button>
                         </div>
                     </div>
                 </el-menu>

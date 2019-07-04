@@ -119,7 +119,7 @@
         /*width: 400px;*/
         /*height: 200px;*/
 
-align-self: center;
+        align-self: center;
         display: flex;
         flex-direction: column;
 

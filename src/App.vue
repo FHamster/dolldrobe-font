@@ -1,8 +1,8 @@
 <template>
-    <el-container>
+    <el-container >
         <LoginDialog :is-vis="dialogVis"></LoginDialog>
         <!--        <el-header style="max-height: 40px">-->
-        <el-header style="padding: 0px">
+        <el-header style="padding: 0px" >
             <el-menu
                     :default-active="activeIndex2"
                     mode="horizontal"
@@ -30,7 +30,10 @@
                 <el-menu-item index="3" disabled>消息中心</el-menu-item>
                 <el-menu-item  index="4"><a href="https://www.ele.me" target="_blank">订单管理</a>
                 </el-menu-item>
-                <el-menu-item index="5"><a href="views/UserCenter.vue" target="_blank">用户中心</a></el-menu-item>
+                <el-menu-item index="5">用户中心</el-menu-item>
+                <el-menu-item
+                        index="GoodsPage">商品浏览
+                </el-menu-item>
             </el-menu>
             <!--        </el-header>-->
 
@@ -101,7 +104,7 @@
     };
 </script>
 
-<style>
+<style scoped>
 
 
     #app {
@@ -111,5 +114,11 @@
         text-align: center;
         color: #2c3e50;
         margin-top: 60px;
+    }
+
+    .con {
+        min-width: 700px;
+        width: 50%;
+
     }
 </style>
