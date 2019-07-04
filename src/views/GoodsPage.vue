@@ -10,7 +10,7 @@
             </div>
         </el-header>
         <el-container>
-            <el-aside width="250px">
+            <el-aside class="goodaside">
                 <el-col v-for="index of 5" :key="index">
                     <el-card :body-style="{ padding: '10px' }" shadow="hover" style="width: 250px;margin-left: 15px ;">
                         <img src="https://shadow.elemecdn.com/app/element/hamburger.9cf7b091-55e9-11e9-a976-7f4d0b07eef6.png"
@@ -216,5 +216,11 @@
 
     .price {
         color: dodgerblue;
+    }
+
+    .goodaside {
+        width: 250px;
+        border-style: solid;
+        border-color: dodgerblue;
     }
 </style>

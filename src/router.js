@@ -22,10 +22,20 @@ export default new Router({
         {
             path: '/UserCenter',
             name: 'UserCenter',
+            children: [
+                //购物车界面写在这里面才会嵌套在用户中心里
+                //否则购物车界面会替换掉用户中心界面
+                {
+                    path: '/cart',
+                    name: 'cart',
+                    component: () => import( './views/About.vue')
+                }
+            ],
             // route level code-splitting
             // this generates a separate chunk (about.[hash].js) for this route
             // which is lazy-loaded when the route is visited.
             component: () => import( './views/UserCenter')
+
         },
         {
             path: '/GoodsPage',
