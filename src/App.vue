@@ -1,14 +1,14 @@
 <template>
-    <el-container>
+    <el-container >
         <LoginDialog :is-vis="dialogVis"></LoginDialog>
         <!--        <el-header style="max-height: 40px">-->
-        <el-header style="padding: 0">
+        <el-header style="padding: 0px" >
             <el-menu
                     :default-active="activeIndex2"
                     mode="horizontal"
                     @select="handleSelect"
-                    background-color="#545c64"
-                    text-color="#fff"
+                    background-color="#efff"
+                    text-color="#545c64"
                     active-text-color="#ffd04b"
                     router>
                 <el-menu-item
@@ -16,7 +16,7 @@
                         index="UserCenter">用户中心
                 </el-menu-item>
                 <el-submenu index="2">
-                    <template slot="title">我的工作台</template>
+                    <template slot="title" >我的工作台</template>
                     <el-menu-item index="2-1">选项1</el-menu-item>
                     <el-menu-item index="2-2">选项2</el-menu-item>
                     <el-menu-item index="2-3">选项3</el-menu-item>
@@ -28,9 +28,12 @@
                     </el-submenu>
                 </el-submenu>
                 <el-menu-item index="3" disabled>消息中心</el-menu-item>
-                <el-menu-item index="4"><a href="https://www.ele.me" target="_blank">订单管理</a>
+                <el-menu-item  index="4"><a href="https://www.ele.me" target="_blank">订单管理</a>
                 </el-menu-item>
-                <el-menu-item index="5"><a href="views/UserCenter.vue" target="_blank">用户中心</a></el-menu-item>
+                <el-menu-item index="5">用户中心</el-menu-item>
+                <el-menu-item
+                        index="GoodsPage">商品浏览
+                </el-menu-item>
             </el-menu>
             <!--        </el-header>-->
 
@@ -45,7 +48,6 @@
             <el-button @click="changeVuex">按钮测试</el-button>
             <el-button @click="changeDialogVis">显示登陆对话框</el-button>
             <el-button @click="checkToken">检查token有效</el-button>
-            <el-button @click="getPage">商品页面</el-button>
         </el-footer>
     </el-container>
 </template>
@@ -94,21 +96,6 @@
                     // eslint-disable-next-line no-console
                     console.log(res.data);
                 })
-            },
-            getPage() {
-
-                axios.get("/api/GoodPage/GoodPage", {
-                    headers: {
-                        'token': this.$store.getters.getToken
-                    },
-                    params: {
-                        keyWord: "",
-                        startPage: 5,
-                        pageSize: 5
-                    }
-                }).then((res) => {
-                    console.log(res.data);
-                });
             }
 
 
@@ -117,7 +104,7 @@
     };
 </script>
 
-<style>
+<style scoped>
 
 
     #app {
@@ -129,4 +116,9 @@
         margin-top: 60px;
     }
 
+    .con {
+        min-width: 700px;
+        width: 50%;
+
+    }
 </style>
