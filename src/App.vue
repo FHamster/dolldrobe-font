@@ -36,6 +36,9 @@
                 <el-menu-item
                         index="ShoppingBag">测试购物车
                 </el-menu-item>
+                <el-menu-item
+                        index="BookMark">测试收藏夹
+                </el-menu-item>
             </el-menu>
             <!--        </el-header>-->
 
