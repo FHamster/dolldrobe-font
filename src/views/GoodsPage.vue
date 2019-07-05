@@ -5,8 +5,16 @@
             <div class="my_logo">玩偶衣橱</div>
             <div class="rowdir">
                 <el-input prefix-icon="el-icon-search" type="text"
-                          clearable="true" size=large class="mysearch"></el-input>
-                <el-button class="Good_btnSerachborder" size="media" plain>搜索</el-button>
+                          size=large class="mysearch"
+                          v-model="keyWord"
+                ></el-input>
+                <el-button
+                        class="Good_btnSerachborder"
+                        size="media"
+                        plain
+                        @click="getPage"
+                >搜索
+                </el-button>
             </div>
         </el-header>
         <el-container>
@@ -18,7 +26,6 @@
                         <div style="padding: 14px;width: 180px">
                             <span>好吃的汉堡</span>
                             <div class="bottom clearfix">
-                                <time class="time">{{ currentDate }}</time>
                                 <el-button type="text" class="button">操作按钮</el-button>
                             </div>
                         </div>
@@ -28,32 +35,35 @@
             <el-container>
                 <el-header height="20px" style="align-text: center">
                     <el-row>
-                        <el-button plain autofocus="true" class="head_btn">综合排序</el-button>
+                        <el-button :autofocus="true" class="head_btn" plain @click=getPageByC_Num>综合排序
+                        </el-button>
                         <el-button plain class="head_btn">销量</el-button>
-                        <el-button plain class="head_btn">价格</el-button>
+                        <el-button plain class="head_btn" @click="getPageByC_MaxMoney">价格</el-button>
                         <el-button plain class="head_btn">评论数</el-button>
-                        <el-button plain class="head_btn">上架时间</el-button>
+                        <el-button plain class="head_btn" @click="getPageByC_EndTime">上架时间</el-button>
                     </el-row>
                 </el-header>
                 <el-main>
+
+                    <!--商品展示面板-->
                     <div class="goodPanel">
-                        <el-card
-                                v-for="(o) in 20" :key="o"
-                                :body-style="{ padding: '0px' }" style="width: 230px;margin-right: 20px;">
+                        <el-card v-for="o in goodList" :key="o.cNum"
+                                 :body-style="{ padding: '0px' }"
+                                 style="width: 230px;margin-right: 20px;"
+                        >
                             <img src="https://shadow.elemecdn.com/app/element/hamburger.9cf7b091-55e9-11e9-a976-7f4d0b07eef6.png"
                                  class="image">
                             <div style="padding: 14px;">
-                                <span>好吃的汉堡</span>
+                                <span class="GoodName">{{o.cName}}</span>
                                 <div class="bottom clearfix">
                                     <div class="price_cart">
-                                        <div class="price">￥123</div>
+                                        <div class="price">￥{{o.cMaxmoney}}</div>
                                         <el-button type="text" class="button">加入购物车</el-button>
                                     </div>
 
                                 </div>
                             </div>
                         </el-card>
-
                     </div>
 
 
@@ -61,10 +71,10 @@
                             background
                             @size-change="handleSizeChange"
                             @current-change="handleCurrentChange"
-                            :current-page.sync="currentPage3"
-                            :page-size="30"
+                            :current-page.sync="curPage"
+                            :page-size="5"
                             layout="prev, pager, next, jumper"
-                            :total="1000"
+                            :total="100"
                             style="float: right"
                     >
                     </el-pagination>
@@ -76,25 +86,67 @@
 </template>
 
 <script>
+    import axios from 'axios';
+
+
     export default {
+
         name: "GoodsPage",
+        data() {
+            return {
+                C_Num: "C_Num",
+                C_MaxMoney: "C_MaxMoney",
+                C_EndTime: "C_EndTime",
+                keyWord: '',
+                goodList: [],
+                curPage: 1,
+                pageSize: 5,
+                order: '',
+                isAsc: true
+            };
+        },
         methods: {
             handleSizeChange(val) {
                 return (`每页 ${val} 条`);
             },
             handleCurrentChange(val) {
-                return (`当前页: ${val}`);
+                this.curPage = val;
+                this.getPage();
+            },
+            getPageByC_Num() {
+                this.order = "C_Num";
+                this.getPage();
+            },
+            getPageByC_MaxMoney() {
+
+                this.order = "C_MaxMoney";
+                this.getPage();
+            },
+
+            getPageByC_EndTime () {
+
+                this.order = "C_EndTime";
+                this.getPage();
+            },
+
+            getPage() {
+                axios.get('/api/GoodPage/GoodPageByOrder', {
+                        params: {
+                            keyWord: this.keyWord,
+                            startPage: this.curPage,
+                            pageSize: this.pageSize,
+                            order: this.order,
+                            isAsc: this.isAsc
+                        }
+                    }
+                ).then(res => {
+                    console.log(res.data);
+                    this.goodList = res.data;
+                })
             }
-        },
-        data() {
-            return {
-                currentPage1: 5,
-                currentPage2: 5,
-                currentPage3: 5,
-                currentPage4: 4
-            };
-        },
-    }
+        }
+
+    };
 </script>
 
 <style scoped>
@@ -222,5 +274,9 @@
         width: 250px;
         border-style: solid;
         border-color: dodgerblue;
+    }
+
+    .GoodName {
+        white-space: nowrap;
     }
 </style>
