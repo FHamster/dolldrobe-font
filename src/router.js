@@ -26,9 +26,9 @@ export default new Router({
                 //购物车界面写在这里面才会嵌套在用户中心里
                 //否则购物车界面会替换掉用户中心界面
                 {
-                    path: '/cart',
-                    name: 'cart',
-                    component: () => import( './views/About.vue')
+                    path: '/ShoppingBag',
+                    name: 'ShoppingBag',
+                    component: () => import( './views/ShoppingBag.vue')
                 }
             ],
             // route level code-splitting
@@ -45,13 +45,13 @@ export default new Router({
             // which is lazy-loaded when the route is visited.
             component: () => import( './views/GoodsPage')
         },
-        {
+        /*{
             path: '/ShoppingBag',
             name: 'ShoppingBag',
             // route level code-splitting
             // this generates a separate chunk (about.[hash].js) for this route
             // which is lazy-loaded when the route is visited.
             component: () => import( './views/ShoppingBag')
-        },
+        },*/
     ]
 })

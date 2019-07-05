@@ -26,7 +26,7 @@
                         <div style="padding: 14px;width: 180px">
                             <span>好吃的汉堡</span>
                             <div class="bottom clearfix">
-                                <el-button type="text" class="button">操作按钮</el-button>
+                                <el-button type="text" class="button">加入购物车</el-button>
                             </div>
                         </div>
                     </el-card>
@@ -74,7 +74,7 @@
                             :current-page.sync="curPage"
                             :page-size="5"
                             layout="prev, pager, next, jumper"
-                            :total="100"
+                            :total="total"
                             style="float: right"
                     >
                     </el-pagination>
@@ -94,13 +94,14 @@
         name: "GoodsPage",
         data() {
             return {
+                total: 200,
                 C_Num: "C_Num",
                 C_MaxMoney: "C_MaxMoney",
                 C_EndTime: "C_EndTime",
                 keyWord: '',
                 goodList: [],
                 curPage: 1,
-                pageSize: 5,
+                pageSize: 18,
                 order: '',
                 isAsc: true
             };
@@ -111,25 +112,24 @@
             },
             handleCurrentChange(val) {
                 this.curPage = val;
-                this.getPage();
+                this.getCart();
             },
             getPageByC_Num() {
                 this.order = "C_Num";
-                this.getPage();
+                this.getCart();
             },
             getPageByC_MaxMoney() {
 
                 this.order = "C_MaxMoney";
-                this.getPage();
+                this.getCart();
             },
 
-            getPageByC_EndTime () {
-
+            getPageByC_EndTime() {
                 this.order = "C_EndTime";
-                this.getPage();
+                this.getCart();
             },
 
-            getPage() {
+            getCart() {
                 axios.get('/api/GoodPage/GoodPageByOrder', {
                         params: {
                             keyWord: this.keyWord,
@@ -140,7 +140,6 @@
                         }
                     }
                 ).then(res => {
-                    console.log(res.data);
                     this.goodList = res.data;
                 })
             }
