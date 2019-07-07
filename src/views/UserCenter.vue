@@ -41,7 +41,7 @@
                         <el-menu-item index="4-2" style="font-size: 10px">发票管理</el-menu-item>
                     </el-menu-item-group>
                 </el-submenu>
-                <el-menu-item index="5">
+                <el-menu-item index="BookMark">
                     <i class="el-icon-star-off"></i>
                     <span slot="title">我的收藏</span>
                 </el-menu-item>
@@ -87,7 +87,8 @@
                             router
                     >
                         <div class="my_logo">
-                            我的衣橱
+<!--                            我的衣橱-->
+                            汉堡王（滑稽）
                         </div>
                         <el-menu-item index="UserCenter" class="userCenter_title">首页</el-menu-item>
                         <el-menu-item index="1">

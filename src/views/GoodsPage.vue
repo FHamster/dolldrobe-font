@@ -12,7 +12,7 @@
                         class="Good_btnSerachborder"
                         size="media"
                         plain
-                        @click="getPage"
+                        @click="getCart"
                 >搜索
                 </el-button>
             </div>
@@ -50,6 +50,7 @@
                         <el-card v-for="o in goodList" :key="o.cNum"
                                  :body-style="{ padding: '0px' }"
                                  style="width: 230px;margin-right: 20px;"
+                                 shadow="hover"
                         >
                             <img src="https://shadow.elemecdn.com/app/element/hamburger.9cf7b091-55e9-11e9-a976-7f4d0b07eef6.png"
                                  class="image">
@@ -58,9 +59,10 @@
                                 <div class="bottom clearfix">
                                     <div class="price_cart">
                                         <div class="price">￥{{o.cMaxmoney}}</div>
-                                        <el-button type="text" class="button">加入购物车</el-button>
+                                        <el-button type="warning" icon="el-icon-star-off" circle
+                                                   @click="addFavo(o)"></el-button>
+                                        <el-button type="primary" icon="el-icon-shopping-cart-2" circle></el-button>
                                     </div>
-
                                 </div>
                             </div>
                         </el-card>
@@ -129,6 +131,34 @@
                 this.getCart();
             },
 
+            addFavores() {
+                this.$message({
+                    message: '成功加入收藏夹啦',
+                    type: 'success'
+                });
+            },
+            addFavoerr() {
+                this.$message({
+                    showClose: true,
+                    message: '不知道为什么，反正是没加入收藏夹',
+                    type: 'error'
+                });
+            },
+
+            addFavo: function (Com) {
+                console.log(Com);
+                axios.post('/api/Favorities/addFavorities', Com, {
+                        headers: {
+                            'token': this.$store.getters.getToken
+                        }
+                    }
+                ).then(res => {
+                    this.addFavores();
+                }).catch(err => {
+                    this.addFavoerr();
+                });
+
+            },
             getCart() {
                 axios.get('/api/GoodPage/GoodPageByOrder', {
                         params: {
@@ -278,4 +308,5 @@
     .GoodName {
         white-space: nowrap;
     }
+
 </style>
