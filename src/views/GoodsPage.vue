@@ -1,7 +1,7 @@
 <template>
     <el-container>
 
-        <el-dialog title="收货地址" :visible.sync="isGoodDialogVis">
+        <el-dialog title="商品详情" :visible.sync="isGoodDialogVis" class="goodDia" width="75%" center="ture">
             <GoodDialog></GoodDialog>
         </el-dialog>
 
@@ -318,5 +318,7 @@
     .GoodName {
         white-space: nowrap;
     }
+.goodDia{
 
+}
 </style>
