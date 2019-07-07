@@ -1,49 +1,95 @@
 <template>
     <el-dialog title="登陆" :visible.sync="dialogFormVisible" width="500px">
-        <div class="login_border">
-            <el-form :model="form">
+
+        <!--登陆border-->
+        <el-collapse-transition>
+            <div class="border" v-show="!isRegisterShow">
+
+
+                <el-form :model="form">
+                <span>
                 <el-form-item label="帐号" :label-width="formLabelWidth">
-                    <el-input v-model="form.uAccountnumber" autocomplete="off" type="text" prefix-icon="el-icon-user"
+                    <el-input v-model="form.uAccountnumber" autocomplete="off" type="text"
+                              prefix-icon="el-icon-user"
                               class="login_input_broder"
                               placeholder="会员名/手机号"></el-input>
+
                 </el-form-item>
+                </span>
+
+                    <span>
                 <el-form-item label="密码" :label-width="formLabelWidth">
                     <el-input v-model="form.uPsw" autocomplete="off" type="text" prefix-icon="el-icon-unlock"
                               class="login_input_broder"
-                              placeholder="请输入密码" show-password></el-input>
+                              placeholder="请输入密码" show-password>
+
+                    </el-input>
                 </el-form-item>
-
-                <!--<el-collapse-transition>-->
-                <!--<div :v-show="regshow">-->
-                <!--<el-form-item label="密码" :label-width="formLabelWidth">-->
-                <!--<el-select v-model="form.uPsw" placeholder="请选择活动区域">-->
-                <!--<el-option label="区域一" value="shanghai"></el-option>-->
-                <!--<el-option label="区域二" value="beijing"></el-option>-->
-                <!--</el-select>-->
-                <!--</el-form-item>-->
-                <!--</div>-->
-                <!--</el-collapse-transition>-->
-            </el-form>
-            <el-button type="primary" @click="login" :round="true" class="login_btn">登录</el-button>
+            </span>
+                </el-form>
 
 
-        </div>
-        <!--<div class=" login_foot">
+                <el-button type="primary" @click="login" :round="true" class="login_btn">登录</el-button>
 
-        </div>-->
-        <span slot="footer" class="dialog-footer" v-show="islink">
-                <el-link icon="el-icon-key" class="mymagin">忘记密码</el-link>
-                <el-link icon="el-icon-s-custom" class="mymagin" aria-label="">免费注册</el-link>
+
+            </div>
+        </el-collapse-transition>
+        <el-collapse-transition>
+            <!--注册border-->
+            <div class="border" v-show="isRegisterShow">
+                <el-form :model="reg" :rules="rules">
+                    <el-form-item label="帐号" :label-width="formLabelWidth">
+                        <el-input v-model="reg.uAccountnumber" autocomplete="off" type="text"
+                                  prefix-icon="el-icon-user"
+                                  class="login_input_broder"
+                                  placeholder="会员名/手机号">
+
+                        </el-input>
+                    </el-form-item>
+                    <el-form-item label="密码" :label-width="formLabelWidth" prop="pass">
+                        <el-input v-model="reg.uPsw" autocomplete="off" type="text"
+                                  prefix-icon="el-icon-unlock"
+                                  class="login_input_broder"
+                                  placeholder="请输入密码" show-password></el-input>
+                    </el-form-item>
+                    <el-form-item label="重复密码" :label-width="formLabelWidth" prop="checkPass">
+                        <el-input v-model="reg.uRePsw" autocomplete="off" type="text"
+                                  prefix-icon="el-icon-unlock"
+                                  class="login_input_broder"
+                                  placeholder="请输入密码" show-password></el-input>
+                    </el-form-item>
+                    <el-form-item label="手机号" :label-width="formLabelWidth">
+                        <el-input v-model="reg.phone" autocomplete="off" type="text"
+                                  prefix-icon="el-icon-mobile-phone"
+                                  class="login_input_broder"
+                                  placeholder="请输入手机号"></el-input>
+                    </el-form-item>
+                    <el-form-item label="邮箱" :label-width="formLabelWidth">
+                        <el-input v-model="reg.mail" autocomplete="off" type="text"
+                                  prefix-icon="el-icon-message"
+                                  class="login_input_broder"
+                                  placeholder="请输入邮箱"></el-input>
+                    </el-form-item>
+                </el-form>
+                <el-button type="warning" @click="changeRegisterShow" :round="true" class="login_btn">注册</el-button>
+            </div>
+        </el-collapse-transition>
+
+        <span slot="footer" class="dialog-footer">
+            <el-link icon="el-icon-key" class="mymagin">忘记密码</el-link>
+            <el-link icon="el-icon-s-custom" class="mymagin" @click="changeRegisterShow">切换注册/登陆</el-link>
         </span>
     </el-dialog>
 </template>
 
 <script>
     import axios from 'axios'
+    import ElCollapseTransition from "element-ui/lib/transitions/collapse-transition";
     // import jwt from "jsonwebtoken";
 
     export default {
         name: "LoginDialog",
+        components: {ElCollapseTransition},
         props: {
             IsVis: {
                 type: Boolean,
@@ -51,22 +97,60 @@
             }
         },
         data: function () {
+            var validatePass = (rule, value, callback) => {
+                if (value === '') {
+                    callback(new Error('请输入密码'));
+                } else {
+                    if (this.reg.checkPass !== '') {
+                        this.$refs.reg.validateField('checkPass');
+                    }
+                    callback();
+                }
+            };
+            var validatePass2 = (rule, value, callback) => {
+                if (value === '') {
+                    callback(new Error('请再次输入密码'));
+                } else if (value !== this.ruleForm.pass) {
+                    callback(new Error('两次输入密码不一致!'));
+                } else {
+                    callback();
+                }
+            };
             return {
-                islink:false,
                 dialogFormVisible: false,
+
+                isRegisterShow: false,
+                //登陆表单
                 form: {
                     uAccountnumber: '',
                     uPsw: '',
-
                 },
-                formLabelWidth: '80px'
-            }
+                //注册表单
+                reg: {
+                    uAccountnumber: '',
+                    uPsw: '',
+                    phone: '',
+                    mail: ''
+                },
+                formLabelWidth: '80px',
+                rules: {
+                    pass: [
+                        {validator: validatePass, trigger: 'blur'}
+                    ],
+                    checkPass: [
+                        {validator: validatePass2, trigger: 'blur'}
+                    ]
+                }
+            };
         },
         computed: {},
         methods: {
-            changeRegshow: function () {
-                this.regshow = !this.regshow;
+
+            changeRegisterShow() {
+                this.isRegisterShow = !this.isRegisterShow;
             },
+
+
             login: function () {
                 //TODO 没实现
                 /* //使用jwt进行加密
@@ -116,11 +200,11 @@
 </script>
 
 <style scoped>
-    .login_border {
+    .border {
         /*width: 400px;*/
         /*height: 200px;*/
 
-        align-self: center;
+        /*align-self: center;*/
         display: flex;
         flex-direction: column;
 

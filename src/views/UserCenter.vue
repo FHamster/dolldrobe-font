@@ -86,10 +86,9 @@
                             active-text-color="black"
                             router
                     >
-                        <!--<div class="my_logo">-->
-<!--&lt;!&ndash;                            我的衣橱&ndash;&gt;-->
-                            <!--汉堡王（滑稽）-->
-                        <!--</div>-->
+                        <div class="my_logo">
+                            我的衣橱
+                        </div>
                         <el-menu-item index="UserCenter" class="userCenter_title">首页</el-menu-item>
                         <el-menu-item index="1">
                             <el-submenu index="2">
@@ -171,6 +170,7 @@
         margin-left: 10px;
         overflow: hidden;
         font-family: 华文琥珀;
+        white-space: nowrap;
     }
 
     .userCenter_titleMenu_font {

@@ -1,5 +1,6 @@
 <template>
     <el-container>
+
         <el-header class="myhead">
             <img src=".././assets/icon.png" class="myimg">
             <div class="my_logo">玩偶衣橱</div>
@@ -196,6 +197,7 @@
         font-size: 40px;
         margin-top: 20px;
         margin-bottom: 7px;
+        white-space: nowrap;
     }
 
     .el-input__inner5 {
