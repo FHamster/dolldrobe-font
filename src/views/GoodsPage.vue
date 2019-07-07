@@ -20,7 +20,7 @@
         <el-container>
             <el-aside class="goodaside">
                 <el-col v-for="index of 5" :key="index">
-                    <el-card :body-style="{ padding: '10px' }" shadow="hover" style="width: 250px;margin-left: 15px ;">
+                    <el-card :body-style="{ padding: '10px' }" shadow="hover" style="width: 250px;margin-left: 15px ;" @click="changeDialog">
                         <img src="https://shadow.elemecdn.com/app/element/hamburger.9cf7b091-55e9-11e9-a976-7f4d0b07eef6.png"
                              class="image">
                         <div style="padding: 14px;width: 180px">
@@ -89,11 +89,13 @@
 
 <script>
     import axios from 'axios';
+    import GoodDialog from "./GoodDialog";
 
 
     export default {
 
         name: "GoodsPage",
+        components: {GoodDialog},
         data() {
             return {
                 total: 200,
@@ -105,7 +107,9 @@
                 curPage: 1,
                 pageSize: 18,
                 order: '',
-                isAsc: true
+                isAsc: true,
+
+                GoodDialog:false,
             };
         },
         methods: {
@@ -172,6 +176,9 @@
                 ).then(res => {
                     this.goodList = res.data;
                 })
+            },
+            changeDialog(){
+                this.GoodDialog = !this.GoodDialog;
             }
         }
 

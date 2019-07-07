@@ -31,9 +31,9 @@
         <!--<div class=" login_foot">
 
         </div>-->
-        <span slot="footer" class="dialog-footer">
+        <span slot="footer" class="dialog-footer" v-show="islink">
                 <el-link icon="el-icon-key" class="mymagin">忘记密码</el-link>
-                <el-link icon="el-icon-s-custom" class="mymagin">免费注册</el-link>
+                <el-link icon="el-icon-s-custom" class="mymagin" aria-label="">免费注册</el-link>
         </span>
     </el-dialog>
 </template>
@@ -52,6 +52,7 @@
         },
         data: function () {
             return {
+                islink:false,
                 dialogFormVisible: false,
                 form: {
                     uAccountnumber: '',
