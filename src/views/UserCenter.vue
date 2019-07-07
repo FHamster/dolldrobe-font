@@ -14,7 +14,7 @@
                     default-active="2"
                     background-color="#fff"
                     text-color="#545c64"
-                    collapse=false
+                    :collapse="true"
                     style="width: 59px"
                     active-text-color="#ffd04b"
                     router>
@@ -23,7 +23,7 @@
                     <i class="el-icon-location"></i>
                 </el-menu-item>
 
-                <el-menu-item index="cart">
+                <el-menu-item index="ShoppingBag">
                     <i class="el-icon-shopping-cart-full"></i>
                     <span slot="title">我的购物车</span>
                 </el-menu-item>
@@ -41,7 +41,7 @@
                         <el-menu-item index="4-2" style="font-size: 10px">发票管理</el-menu-item>
                     </el-menu-item-group>
                 </el-submenu>
-                <el-menu-item index="5">
+                <el-menu-item index="BookMark">
                     <i class="el-icon-star-off"></i>
                     <span slot="title">我的收藏</span>
                 </el-menu-item>
@@ -81,14 +81,14 @@
                     <el-menu
 
                             mode="horizontal"
-                            @select="handleSelect"
                             background-color="#545c64"
                             text-color="#fff"
                             active-text-color="black"
                             router
                     >
                         <div class="my_logo">
-                            我的衣橱
+<!--                            我的衣橱-->
+                            汉堡王（滑稽）
                         </div>
                         <el-menu-item index="UserCenter" class="userCenter_title">首页</el-menu-item>
                         <el-menu-item index="1">
@@ -114,7 +114,7 @@
                             <div style="float: left; ">
                                 <el-input class="userCenter_search  " prefix-icon="el-icon-search" type="text"
                                           v-model="from.search"
-                                          clearable="true" size=mini></el-input>
+                                          :clearable="true" size=mini></el-input>
                                 <el-button class="userCenter_btnSearch" size="small" plain @click="user_search">搜索
                                 </el-button>
                             </div>
@@ -122,7 +122,6 @@
                     </el-menu>
                 </el-header>
                 <el-main>
-                    main
                     <router-view></router-view>
                 </el-main>
             </el-container>

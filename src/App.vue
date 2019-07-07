@@ -15,7 +15,7 @@
                         class="menu-heigh"
                         index="UserCenter">用户中心
                 </el-menu-item>
-                <el-submenu index="2">
+                <el-submenu index="2" disabled>
                     <template slot="title" >我的工作台</template>
                     <el-menu-item index="2-1">选项1</el-menu-item>
                     <el-menu-item index="2-2">选项2</el-menu-item>
@@ -32,12 +32,6 @@
                 </el-menu-item>
                 <el-menu-item
                         index="GoodsPage">商品浏览
-                </el-menu-item>
-                <el-menu-item
-                        index="ShoppingBag">测试购物车
-                </el-menu-item>
-                <el-menu-item
-                        index="BookMark">测试收藏夹
                 </el-menu-item>
             </el-menu>
             <!--        </el-header>-->
