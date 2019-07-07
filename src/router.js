@@ -57,5 +57,13 @@ export default new Router({
             // which is lazy-loaded when the route is visited.
             component: () => import( './views/ShoppingBag')
         },
+        {
+            path: '/GoodDialog',
+            name: 'GoodDialog',
+            // route level code-splitting
+            // this generates a separate chunk (about.[hash].js) for this route
+            // which is lazy-loaded when the route is visited.
+            component: () => import( './views/GoodDialog')
+        },
     ]
 })
