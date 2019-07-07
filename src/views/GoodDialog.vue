@@ -1,4 +1,6 @@
 <template>
+
+
     <el-container>
         <el-aside>
             <el-carousel :interval="5000" arrow="always" height="300px">
@@ -64,15 +66,23 @@
             </el-footer>
         </el-main>
     </el-container>
+
 </template>
 
 <script>
 
-
     export default {
         name: "GoodDialog",
+        props: {
+            IsVis: {
+                type: Boolean,
+                default: false
+            }
+        },
         data: function () {
             return {
+                isDialogVis: false,
+
                 goodLabel: '这只是个测试',
                 price: '3.1415',
                 sku: 0,
@@ -99,8 +109,14 @@
                 return s;
             }
 
-        }
+        },
+        watch: {
+            IsVis: function (newValue) {
+                this.dialogFormVisible = newValue;
+            }
+        },
     }
+
 </script>
 
 <style scoped>

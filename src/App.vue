@@ -1,5 +1,8 @@
 <template>
     <el-container >
+        <el-dialog>
+
+        </el-dialog>
         <LoginDialog :is-vis="dialogVis"></LoginDialog>
         <!--        <el-header style="max-height: 40px">-->
         <el-header style="padding: 0px" >
@@ -48,7 +51,7 @@
 
         <el-footer>
             <el-button @click="changeVuex">按钮测试</el-button>
-            <el-button @click="changeDialogVis">显示登陆对话框</el-button>
+            <el-button @click="dialogVis=!dialogVis">显示登陆对话框</el-button>
             <el-button @click="checkToken">检查token有效</el-button>
         </el-footer>
     </el-container>
@@ -82,9 +85,9 @@
                 // eslint-disable-next-line no-console
                 console.log(this.$store.getters.getNum);
             },
-            changeDialogVis() {
+       /*     changeDialogVis() {
                 this.dialogVis = !this.dialogVis;
-            },
+            },*/
             checkToken() {
 
                 let obj = {k1: 'k', k2: 't'}

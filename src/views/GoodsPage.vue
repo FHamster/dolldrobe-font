@@ -1,6 +1,10 @@
 <template>
     <el-container>
 
+        <el-dialog title="收货地址" :visible.sync="isGoodDialogVis">
+            <GoodDialog></GoodDialog>
+        </el-dialog>
+
         <el-header class="myhead">
             <img src=".././assets/icon.png" class="myimg">
             <div class="my_logo">玩偶衣橱</div>
@@ -21,7 +25,7 @@
         <el-container>
             <el-aside class="goodaside">
                 <el-col v-for="index of 5" :key="index">
-                    <el-card :body-style="{ padding: '10px' }" shadow="hover" style="width: 250px;margin-left: 15px ;" @click="changeDialog">
+                    <el-card :body-style="{ padding: '10px' }" shadow="hover" style="width: 250px;margin-left: 15px ;" @click="isGoodDialogVis = !isGoodDialogVis">
                         <img src="https://shadow.elemecdn.com/app/element/hamburger.9cf7b091-55e9-11e9-a976-7f4d0b07eef6.png"
                              class="image">
                         <div style="padding: 14px;width: 180px">
@@ -46,6 +50,7 @@
                 </el-header>
                 <el-main>
 
+                    <el-button @click="isGoodDialogVis = !isGoodDialogVis">dig</el-button>
                     <!--商品展示面板-->
                     <div class="goodPanel">
                         <el-card v-for="o in goodList" :key="o.cNum"
@@ -110,7 +115,7 @@
                 order: '',
                 isAsc: true,
 
-                GoodDialog:false,
+                isGoodDialogVis: false
             };
         },
         methods: {
@@ -151,7 +156,6 @@
             },
 
             addFavo: function (Com) {
-                console.log(Com);
                 axios.post('/api/Favorities/addFavorities', Com, {
                         headers: {
                             'token': this.$store.getters.getToken
@@ -177,9 +181,6 @@
                 ).then(res => {
                     this.goodList = res.data;
                 })
-            },
-            changeDialog(){
-                this.GoodDialog = !this.GoodDialog;
             }
         }
 
