@@ -87,8 +87,7 @@
                             router
                     >
                         <div class="my_logo">
-<!--                            我的衣橱-->
-                            汉堡王（滑稽）
+                            我的衣橱
                         </div>
                         <el-menu-item index="UserCenter" class="userCenter_title">首页</el-menu-item>
                         <el-menu-item index="1">
@@ -171,6 +170,7 @@
         margin-left: 10px;
         overflow: hidden;
         font-family: 华文琥珀;
+        white-space: nowrap;
     }
 
     .userCenter_titleMenu_font {

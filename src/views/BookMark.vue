@@ -22,7 +22,6 @@
                 <el-button plain size="small" @click="getFavorities">全部商品</el-button>
 
 
-
                 <!--            ======================================================-->
 
 
@@ -53,7 +52,7 @@
             </el-container>
             <el-footer>
                 <div style="display: inline">
-                    <el-row style="margin: 0px">
+                    <el-row style="margin: 0">
                         <div style="display: inline; font-size: 13px">筛选条件&nbsp;:</div>
                         <el-button plain :autofocus="true" size="mini" class="head_btn">不限</el-button>
                         <el-button plain class="head_btn" size="mini">降价({{jiangjia}})</el-button>
