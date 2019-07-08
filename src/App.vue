@@ -1,11 +1,11 @@
 <template>
-    <el-container >
-        <el-dialog>
-
+    <el-container>
+        <el-dialog :visible.sync="dialogVis" width="500px">
+            <LoginDialog></LoginDialog>
         </el-dialog>
-        <LoginDialog :is-vis="dialogVis"></LoginDialog>
+        <!--        <LoginDialog :is-vis="dialogVis"></LoginDialog>-->
         <!--        <el-header style="max-height: 40px">-->
-        <el-header style="padding: 0px" >
+        <el-header style="padding: 0">
             <el-menu
                     :default-active="activeIndex2"
                     mode="horizontal"
@@ -19,7 +19,7 @@
                         index="UserCenter">用户中心
                 </el-menu-item>
                 <el-submenu index="2" disabled>
-                    <template slot="title" >我的工作台</template>
+                    <template slot="title">我的工作台</template>
                     <el-menu-item index="2-1">选项1</el-menu-item>
                     <el-menu-item index="2-2">选项2</el-menu-item>
                     <el-menu-item index="2-3">选项3</el-menu-item>
@@ -31,7 +31,7 @@
                     </el-submenu>
                 </el-submenu>
                 <el-menu-item index="3" class="el-icon-chat-line-round">消息</el-menu-item>
-                <el-menu-item  index="4"><a href="https://www.ele.me" target="_blank">订单管理</a>
+                <el-menu-item index="4"><a href="https://www.ele.me" target="_blank">订单管理</a>
                 </el-menu-item>
                 <el-menu-item
                         index="GoodsPage">商品浏览
@@ -51,14 +51,14 @@
 
         <el-footer>
             <el-button @click="changeVuex">按钮测试</el-button>
-            <el-button @click="dialogVis=!dialogVis">显示登陆对话框</el-button>
+            <el-button @click="dialogVis = !dialogVis">显示登陆对话框</el-button>
             <el-button @click="checkToken">检查token有效</el-button>
         </el-footer>
     </el-container>
 </template>
 
 <script>
-    import LoginDialog from "./views/LoginDialog";
+    import LoginDialog from "./views/LoginDialog/LoginDialog";
     import axios from 'axios';
 
     export default {
@@ -85,9 +85,9 @@
                 // eslint-disable-next-line no-console
                 console.log(this.$store.getters.getNum);
             },
-       /*     changeDialogVis() {
-                this.dialogVis = !this.dialogVis;
-            },*/
+            /*     changeDialogVis() {
+                     this.dialogVis = !this.dialogVis;
+                 },*/
             checkToken() {
 
                 let obj = {k1: 'k', k2: 't'}
