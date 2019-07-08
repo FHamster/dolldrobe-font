@@ -1,8 +1,8 @@
 <template>
     <el-container>
 
-        <el-dialog title="商品详情" :visible.sync="isGoodDialogVis" class="goodDia" width="1000px" center="ture">
-            <GoodDialog></GoodDialog>
+        <el-dialog title="商品详情" :visible.sync="isGoodDialogVis"  width="1000px">
+            <GoodDialog :c-num="curGood" :c-name="curGoodName"></GoodDialog>
         </el-dialog>
 
         <el-header class="myhead">
@@ -50,16 +50,18 @@
                 </el-header>
                 <el-main>
 
-                    <el-button @click="isGoodDialogVis = !isGoodDialogVis">dig</el-button>
                     <!--商品展示面板-->
                     <div class="goodPanel">
                         <el-card v-for="o in goodList" :key="o.cNum"
                                  :body-style="{ padding: '0px' }"
                                  style="width: 230px;margin-right: 20px;"
                                  shadow="hover"
+
                         >
                             <img src="https://shadow.elemecdn.com/app/element/hamburger.9cf7b091-55e9-11e9-a976-7f4d0b07eef6.png"
-                                 class="image">
+                                 class="image"
+                                 @click="visGoodDialog(o.cNum,o.cName)"
+                            >
                             <div style="padding: 14px;">
                                 <span class="GoodName">{{o.cName}}</span>
                                 <div class="bottom clearfix">
@@ -104,6 +106,10 @@
         components: {GoodDialog},
         data() {
             return {
+                // 商品对话框当前选中商品cNum
+                curGood: '',
+                curGoodName: '',
+
                 total: 200,
                 C_Num: "C_Num",
                 C_MaxMoney: "C_MaxMoney",
@@ -167,6 +173,12 @@
                     this.addFavoerr();
                 });
 
+            },
+            visGoodDialog(viscNum,visName) {
+                this.curGood = viscNum;
+                this.curGoodName = visName;
+                // console.log(viscNum);
+                this.isGoodDialogVis = true;
             },
             getCart() {
                 axios.get('/api/GoodPage/GoodPageByOrder', {
@@ -318,7 +330,5 @@
     .GoodName {
         white-space: nowrap;
     }
-.goodDia{
 
-}
 </style>

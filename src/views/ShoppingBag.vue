@@ -195,7 +195,7 @@
                         }
                     }
                 ).then(res => {
-                    // console.log(res.data)
+                    console.log(res.data)
                     let Alist = res.data;
                     // console.log(Alist);
 
