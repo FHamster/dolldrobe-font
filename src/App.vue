@@ -5,7 +5,7 @@
         </el-dialog>
         <!--        <LoginDialog :is-vis="dialogVis"></LoginDialog>-->
         <!--        <el-header style="max-height: 40px">-->
-        <el-header style="padding: 0px">
+        <el-header style="padding: 0">
             <el-menu
                     :default-active="activeIndex2"
                     mode="horizontal"

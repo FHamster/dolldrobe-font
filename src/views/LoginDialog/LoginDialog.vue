@@ -1,6 +1,5 @@
 <template>
     <div class="logindia">
-
         <el-collapse-transition>
             <!--登陆border-->
             <LoginBorder v-show="!isRegisterShow"></LoginBorder>

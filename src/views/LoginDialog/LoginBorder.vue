@@ -1,11 +1,12 @@
 <template>
     <el-container class="login-border">
-        <el-form :model="form" label-width="50px">
+        <el-form :model="form" label-width="80px">
             <el-form-item label="帐号">
                 <el-input v-model="form.uAccountnumber"
                           autocomplete="off"
                           type="text"
                           prefix-icon="el-icon-user"
+                          class="login_input_broder"
                           placeholder="会员名/手机号">
 
                 </el-input>
@@ -13,6 +14,7 @@
             <el-form-item label="密码">
                 <el-input v-model="form.uPsw"
                           autocomplete="off"
+                          class="login_input_broder"
                           type="text"
                           prefix-icon="el-icon-unlock"
                           placeholder="请输入密码" show-password>
@@ -59,21 +61,23 @@
 
                 // console.log(123);
                 axios.post('/api/token/token', this.form)
-                //then成功时候的回传
-                //err出现异常的回传
                     .then((res) => {
+                        //存储token
                         let token = res.data.tokenid;
                         this.$store.commit("setToken", token);
                         let acc = res.data.uAccountnumber;
                         this.$store.commit("setAccount", acc);
-                        alert('success');
+
                         //清空输入框
                         this.uAccountnumber = '';
                         this.uPsw = '';
 
+                        this.$message.success('登录成功了啦');
                     })
                     .catch((err) => {
-                        alert(err.message);
+                        // eslint-disable-next-line no-console
+                        console.log(err);
+                        this.$message.error('登录失败了嘤嘤嘤');
                     });
             }
         },
@@ -84,15 +88,18 @@
     .login_btn {
         width: 50%;
         font-size: 20px;
-        /*align-self: center;*/
+        align-self: center;
     }
 
+
     .login_input_broder {
-        width: 80%;
+        width: 90%;
     }
 
     .login-border {
         display: flex;
         flex-direction: column;
+        align-items: center;
+
     }
 </style>
