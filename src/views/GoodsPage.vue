@@ -1,7 +1,7 @@
 <template>
     <el-container>
 
-        <el-dialog title="商品详情" :visible.sync="isGoodDialogVis" class="goodDia" width="75%" center="ture">
+        <el-dialog title="商品详情" :visible.sync="isGoodDialogVis" class="goodDia" width="1000px" center="ture">
             <GoodDialog></GoodDialog>
         </el-dialog>
 
