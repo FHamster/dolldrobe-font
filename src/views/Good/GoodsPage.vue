@@ -11,14 +11,11 @@
             <div class="rowdir">
                 <el-input prefix-icon="el-icon-search" type="text"
                           size=large class="mysearch"
-                          v-model="keyWord"
-                ></el-input>
-                <el-button
-                        class="Good_btnSerachborder"
-                        size="media"
-                        plain
-                        @click="getCart"
-                >搜索
+                          v-model="keyWord">
+
+                </el-input>
+                <el-button @click="getCart">
+                    搜索
                 </el-button>
             </div>
         </el-header>
@@ -212,10 +209,10 @@
     .my_logo {
         /*position: relative;*/
         /*float: left;*/
-        width: 200px;
-        height: 65px;
+        /*width: 200px;*/
+        /*height: 65px;*/
         font-family: 华文琥珀;
-        color: rgba(193, 135, 207, 0.7);
+        color: #9DBC7A;
         font-size: 40px;
         margin-top: 20px;
         margin-bottom: 7px;
@@ -232,14 +229,6 @@
         /*background-color: rgba(192,192,192,0.5);*/
     }
 
-    .Good_btnSerachborder {
-        background-color: orangered;
-        font-family: 宋体;
-        font-weight: bold;
-        color: aliceblue;
-        border-radius: 0px;
-        align-items: center;
-    }
 
     .rowdir {
         display: flex;
@@ -277,12 +266,6 @@
         font-size: 13px;
         border-radius: 0px;
         margin: 0px;
-    }
-
-    /*test*/
-    .time {
-        font-size: 13px;
-        color: #999;
     }
 
     .bottom {
@@ -327,13 +310,13 @@
     }
 
     .price {
-        color: dodgerblue;
+        color: #9DBC7A;
     }
 
     .goodaside {
         width: 250px;
         border-style: solid;
-        border-color: dodgerblue;
+        border-color: #9DBC7A;
     }
 
     .GoodName {
