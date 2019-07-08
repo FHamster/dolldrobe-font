@@ -1,10 +1,15 @@
 <template>
+    <el-container style="width: 82%;margin-left: 8%">
     <el-container>
         <el-header height="35px">
             <el-row style="display: inline">
                 <div>
-                    <!--                    <div style="width: 70px;margin: 0px;display: inline;margin-top: 3px">全部商品</div>-->
-                    <!--                    <div style="display: inline">{{sumCount}}</div>-->
+                    <el-button type="text" @click="getCart"
+                               style="width: 70px;margin: 0px;
+                               display: inline;
+                               font-size: 15px;
+                               margin-top: 3px">全部商品&nbsp;</el-button>
+                    <div style="display: inline">{{sumCountset()}}</div>
                     <div style="float: right;">
                         <div style="display: inline">配送至：</div>
                         <el-select v-model="select" slot="prepend" placeholder="请选择" size="small">
@@ -17,100 +22,88 @@
 
 
         <el-container>
-            <!-- <el-table
-                     :data="cart"
-                     style="width: 100% ;padding: auto"
-
-             >
-                 <el-table-column
-                         type="selection"
-                         width="55">
-                 </el-table-column>
-                 <el-table-column
-                         prop="skuId"
-                         label="商品"
-                 >
-                 </el-table-column>
-                 <el-table-column
-                         prop="cPrice"
-                         label="单价"
-                         width="200">
-                 </el-table-column>
-                 <el-table-column
-                         prop="scNum"
-                         label="数量"
-                         width="200">
-                 </el-table-column>
-                 &lt;!&ndash;  <el-table-column
-                           prop="address"
-                           label="小计"
-                           width="200">
-                   </el-table-column>&ndash;&gt;
-
-             </el-table>-->
             <el-table
                     :data="tableData"
                     style="width: 100%"
-                    show-summary
-                    :show-overflow-tooltip="true"
+                    @select="changeOpt"
             >
                 <el-table-column
                         type="selection"
-                        width="100" label="全选">
+                        width="45" label="全选"
+                >
                 </el-table-column>
                 <el-table-column
                         prop="skuId"
                         label="商品"
-                        width="180">
+                        width="300"
+                >
+                    <template slot-scope="scope">
+                        <span style="display: flex; flex-direction: row;justify-content: left ">
+                            <el-image :src ="scope.row.src" style="width: 80px;height: 80px " ></el-image>
+                            <div style="display: inline">{{scope.row.label}}</div>
+                        </span>
+                    </template>
+                </el-table-column>
+                <el-table-column
+                width="170px"
+                >
                     <template slot-scope="scope">
                         <span>
-
-                            <!--<el-image ：src={{scope.row.src}}></el-image>-->
-                            <div>{{scope.row.label}}</div>
+                            {{scope.row.kind}}
                         </span>
                     </template>
                 </el-table-column>
                 <el-table-column
                         prop="cPrice"
                         label="单价"
-                        width="180">
+                        width="160"
+                        style="float: right"
+                >
                     <template slot-scope="scope">
                         <span>
-                            {{scope.row.price}}
+                            ￥{{scope.row.price}}
                         </span>
                     </template>
                 </el-table-column>
                 <el-table-column
                         prop="scNum"
-                        label="数量">
+                        label="数量"
+                        style="text-align: center"
+                width="130px">
                     <template slot-scope="scope">
                         <span>
-                            <el-input-number v-model="scope.row.num" min="1"></el-input-number>
+                            <el-input-number v-model="scope.row.num" :min="1"
+                                             style="width: 110px"
+                                             size="mini"></el-input-number>
                         </span>
                     </template>
                 </el-table-column>
                 <el-table-column
                         prop="sum"
                         label="小计"
-                        width="200">
+                        style="float: right"
+                        width="140">
                     <template slot-scope="scope">
                         <span>
-                            {{scope.row.price * scope.row.num}}
+                            ￥{{scope.row.price * scope.row.num}}
                         </span>
                     </template>
                 </el-table-column>
                 <el-table-column
-                        width="100"
+                        width="75"
                         label="操作"
                 >
-                    <template slot-scope="scope">
+                    <template slot-scope = "scope">
                         <span>
                             <el-button
                                     type="text"
+                                    style="padding: 0px"
+                                    @click.native.prevent="deleteRow(scope.$index, tableData)"
                             >删除
                             </el-button>
                             <el-button
                                     type="text"
+                                    style="margin-left: 0px;padding: 0px "
                             >添加关注
                             </el-button>
                         </span>
@@ -118,24 +111,30 @@
                 </el-table-column>
             </el-table>
         </el-container>
-        <el-footer height="50px">
+        <el-footer height="50px" style="padding-left: 15px">
             <div style="width: 50px;text-align: center;display: inline;margin-right: 2px">
-                <el-checkbox v-model="checked" label="全选"></el-checkbox>
+                <!--@click="setCont"-->
+                <!--<el-checkbox v-model="checked"-->
+
+                             <!--label="全选"></el-checkbox>-->
             </div>
-            <el-button type="text">移到关注</el-button>
+            <el-button type="text">&nbsp;移到关注</el-button>
             <el-button type="text">清理购物车</el-button>
 
 
             <div style="float: right">
                 <div style="width: 270px">
-                    <div style="display: inline;width: 110px;float: left;font-size: 12px">已选择
-                        <div style="display: inline">{{sumNum}}</div>
+                    <div style="display: inline;
+                    width: 100px;
+                    margin-top: 2px;
+                    float: left;font-size: 12px">已选择
+                        <div style="display: inline">{{setSunNum()}}</div>
                         件商品
                     </div>
                     <div style="display: inline;width: 50px">
                         <el-col style="display: inline;width: 70px">
                             <div style="display: inline;font-size: 12px">总价：
-                                <div style="display: inline">{{sumPrice}}</div>
+                                <div style="display: inline">{{setSumPrice()}}</div>
                             </div>
                             <div style="font-size: 12px">促销：-￥{{ducePrice}}</div>
                         </el-col>
@@ -143,9 +142,10 @@
                 </div>
 
                 <el-button size="media" plain style="float: right">去结算</el-button>
+                <!--<el-button @click="out">out</el-button>-->
             </div>
-            <el-button size="media" plain style="float: right" @click="getCart">查看</el-button>
         </el-footer>
+    </el-container>
     </el-container>
 </template>
 
@@ -163,9 +163,10 @@
                 cartList: [],
                 sumCount: 0,
                 sumNum: 0,
-                sumPrice: 0.00,
                 ducePrice: 0.00,
+                sumPrice:0.00,
                 checked: true,
+                checkBox:[],
                 // tabledata: [{
                 //     quanxuan: false,
                 //     good: 'test',
@@ -180,18 +181,21 @@
                     price: 180,
                     label: '汉堡王',
                     num: 10,
+                    kind:'black '
                 },
                     {
                         src: 'https://shadow.elemecdn.com/app/element/hamburger.9cf7b091-55e9-11e9-a976-7f4d0b07eef6.png',
                         price: 180,
                         label: '汉堡王',
                         num: 10,
+                        kind:'black '
                     },
                     {
                         src: 'https://shadow.elemecdn.com/app/element/hamburger.9cf7b091-55e9-11e9-a976-7f4d0b07eef6.png',
                         price: 180,
                         label: '汉堡王',
                         num: 10,
+                        kind:'black '
                     },
                 ]
 
@@ -259,7 +263,31 @@
                     }
                     this.cart = cart;
                 });
+            },
+            sumCountset(){
+
+                return this.sumCount = this.tableData.length;
+            },
+            changeOpt(val){
+                console.log(val)
+                this.checkBox = val;
+            },
+           setSunNum(){
+                console.log(this.checkBox.length);
+                return this.sumNum = this.checkBox.length;
+           },
+            setSumPrice(){
+                let sum = 0;
+                for(let i = 0; i < this.checkBox.length; i ++){
+                    sum += this.checkBox[i].price * this.checkBox[i].num;
+                }
+                this.sumPrice = sum;
+                return this.sumPrice;
+            },
+            deleteRow(index, rows) {
+                rows.splice(index, 1);
             }
+
         }
     }
 </script>
