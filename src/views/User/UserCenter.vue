@@ -79,13 +79,11 @@
             <el-container>
                 <el-header style="padding: 0">
                     <el-menu
-
                             mode="horizontal"
                             background-color="#545c64"
                             text-color="#fff"
                             active-text-color="black"
-                            router
-                    >
+                            router>
                         <div class="my_logo">
                             我的衣橱
                         </div>
@@ -114,7 +112,8 @@
                                 <el-input class="userCenter_search  " prefix-icon="el-icon-search" type="text"
                                           v-model="from.search"
                                           :clearable="true" size=mini></el-input>
-                                <el-button class="userCenter_btnSearch" size="small" plain @click="user_search">搜索
+                                <el-button class="userCenter_btnSearch" size="small" plain @click="user_search">
+                                    搜索
                                 </el-button>
                             </div>
                         </div>

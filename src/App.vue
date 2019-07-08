@@ -16,11 +16,16 @@
                     router
                     class="nav-width"
             >
+                <el-menu-item @click="dialogVis = !dialogVis">
+                    <template slot="title">
+                        <el-avatar>U</el-avatar>
+                    </template>
+                </el-menu-item>
                 <el-menu-item
                         class="menu-heigh"
                         index="UserCenter">用户中心
                 </el-menu-item>
-                <el-submenu index="2">
+                <el-submenu index="2" disabled>
                     <template slot="title">我的工作台</template>
                     <el-menu-item index="2-1">选项1</el-menu-item>
                     <el-menu-item index="2-2">选项2</el-menu-item>
@@ -38,31 +43,18 @@
                 <el-menu-item
                         index="GoodsPage">商品浏览
                 </el-menu-item>
-                <el-menu-item
-                        index="GoodDialog">浏览
-                </el-menu-item>
-
-                <el-submenu>
-                    <template slot="title">
-                        <el-avatar>123</el-avatar>
-                    </template>
-                </el-submenu>
             </el-menu>
-
-
         </el-header>
 
         <!--        </el-header>-->
-
-
         <el-main style="padding: 0">
             <router-view></router-view>
         </el-main>
 
         <el-footer>
-            <el-button @click="changeVuex">按钮测试</el-button>
-            <el-button @click="dialogVis = !dialogVis">显示登陆对话框</el-button>
-            <el-button @click="checkToken">检查token有效</el-button>
+<!--            <el-button @click="changeVuex">按钮测试</el-button>-->
+<!--            <el-button @click="dialogVis = !dialogVis">显示登陆对话框</el-button>-->
+<!--            <el-button @click="checkToken">检查token有效</el-button>-->
         </el-footer>
     </el-container>
 </template>
