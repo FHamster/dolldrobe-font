@@ -39,6 +39,9 @@
                 <el-menu-item
                         index="GoodDialog">浏览
                 </el-menu-item>
+                <el-menu-item
+                        index="GoodOrder">浏览
+                </el-menu-item>
             </el-menu>
             <!--        </el-header>-->
 

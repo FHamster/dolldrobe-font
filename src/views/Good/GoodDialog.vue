@@ -62,7 +62,7 @@
                 <el-divider></el-divider>
             </el-main>
             <el-footer>
-                <el-input-number v-model="num" step="1" min="0" ></el-input-number>
+                <el-input-number v-model="num" step="1" :min="1" ></el-input-number>
                 <el-button plain style="float: right">加入购物车</el-button>
             </el-footer>
         </el-main>
