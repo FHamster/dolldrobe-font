@@ -49,33 +49,72 @@
 
              </el-table>-->
             <el-table
-                    :data="cart"
+                    :data="tableData"
                     style="width: 100%"
                     show-summary
                     :show-overflow-tooltip="true"
             >
                 <el-table-column
                         type="selection"
-                        width="55">
+                        width="100" label="全选">
                 </el-table-column>
                 <el-table-column
                         prop="skuId"
                         label="商品"
                         width="180">
+                    <template slot-scope="scope">
+                        <span>
+
+                            <!--<el-image ：src={{scope.row.src}}></el-image>-->
+                            <div>{{scope.row.label}}</div>
+                        </span>
+                    </template>
                 </el-table-column>
                 <el-table-column
                         prop="cPrice"
                         label="单价"
                         width="180">
+                    <template slot-scope="scope">
+                        <span>
+                            {{scope.row.price}}
+                        </span>
+                    </template>
                 </el-table-column>
                 <el-table-column
                         prop="scNum"
                         label="数量">
+                    <template slot-scope="scope">
+                        <span>
+                            <el-input-number v-model="scope.row.num" min="1"></el-input-number>
+                        </span>
+                    </template>
                 </el-table-column>
                 <el-table-column
                         prop="sum"
                         label="小计"
                         width="200">
+                    <template slot-scope="scope">
+                        <span>
+                            {{scope.row.price * scope.row.num}}
+                        </span>
+                    </template>
+                </el-table-column>
+                <el-table-column
+                        width="100"
+                        label="操作"
+                >
+                    <template slot-scope="scope">
+                        <span>
+                            <el-button
+                                    type="text"
+                            >删除
+                            </el-button>
+                            <el-button
+                                    type="text"
+                            >添加关注
+                            </el-button>
+                        </span>
+                    </template>
                 </el-table-column>
             </el-table>
         </el-container>
@@ -135,24 +174,26 @@
                 //     sum: 17.5 * 5,
                 //     caozuo: 'delete'
                 // }]
-
+                url: 'https://shadow.elemecdn.com/app/element/hamburger.9cf7b091-55e9-11e9-a976-7f4d0b07eef6.png',
                 tableData: [{
-                    date: '2016-05-02',
-                    name: '王小虎',
-                    address: '上海市普陀区金沙江路 1518 弄'
-                }, {
-                    date: '2016-05-04',
-                    name: '王小虎',
-                    address: '上海市普陀区金沙江路 1517 弄'
-                }, {
-                    date: '2016-05-01',
-                    name: '王小虎',
-                    address: '上海市普陀区金沙江路 1519 弄'
-                }, {
-                    date: '2016-05-03',
-                    name: '王小虎',
-                    address: '上海市普陀区金沙江路 1516 弄'
-                }]
+                    src: 'https://shadow.elemecdn.com/app/element/hamburger.9cf7b091-55e9-11e9-a976-7f4d0b07eef6.png',
+                    price: 180,
+                    label: '汉堡王',
+                    num: 10,
+                },
+                    {
+                        src: 'https://shadow.elemecdn.com/app/element/hamburger.9cf7b091-55e9-11e9-a976-7f4d0b07eef6.png',
+                        price: 180,
+                        label: '汉堡王',
+                        num: 10,
+                    },
+                    {
+                        src: 'https://shadow.elemecdn.com/app/element/hamburger.9cf7b091-55e9-11e9-a976-7f4d0b07eef6.png',
+                        price: 180,
+                        label: '汉堡王',
+                        num: 10,
+                    },
+                ]
 
             }
 
