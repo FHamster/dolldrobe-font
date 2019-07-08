@@ -91,13 +91,13 @@
                 //sku的名称
                 skuLabel: '',
                 //sku的价格
-                price: '3.1415',
+                price: '',
                 //当前商品库存单位的库存
                 stack: 0,
 
 
                 flag: false,
-                num: 5,
+                num: 1,
             };
         },
         methods: {
@@ -123,6 +123,9 @@
                 }
                 return s;
             },
+            iniCursku(newCur) {
+                this.curSku = newCur;
+            },
             getSku(cNum) {
                 axios.get('api/GoodPage/SKU', {
                     params: {
@@ -132,6 +135,11 @@
                     // eslint-disable-next-line no-console
                     console.log(res.data)
                     this.skuList = res.data;
+
+                    let list = this.skuList;
+                    if (list.length > 0) {
+                        this.curSku = list[0];
+                    }
                     // eslint-disable-next-line no-unused-vars
                 }).catch(err => {
 
@@ -141,7 +149,7 @@
         },
         watch: {
             CNum: function (newValue) {
-                // console.log(newValue);
+                console.log(newValue);
                 this.GoodNum = newValue;
                 this.getSku(newValue);
             },
@@ -179,6 +187,7 @@
 
     .good-lable {
         text-align: center;
+
         margin: 3px 5px;
     }
 
