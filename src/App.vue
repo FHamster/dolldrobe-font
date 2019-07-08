@@ -41,7 +41,15 @@
                 <el-menu-item
                         index="GoodDialog">浏览
                 </el-menu-item>
+
+                <el-submenu>
+                    <template slot="title">
+                        <el-avatar>123</el-avatar>
+                    </template>
+                </el-submenu>
             </el-menu>
+
+
         </el-header>
 
         <!--        </el-header>-->
@@ -134,4 +142,7 @@
     }
 
 
+    .avatar-panel {
+        align-self: center;
+    }
 </style>
