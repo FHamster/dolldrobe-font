@@ -28,17 +28,17 @@ export default new Router({
                 {
                     path: '/ShoppingBag',
                     name: 'ShoppingBag',
-                    component: () => import( './views/ShoppingBag.vue')
+                    component: () => import( './views/User/ShoppingBag.vue')
                 },{
                     path: '/BookMark',
                     name: 'BookMark',
-                    component: () => import( './views/BookMark.vue')
+                    component: () => import( './views/User/BookMark.vue')
                 }
             ],
             // route level code-splitting
             // this generates a separate chunk (about.[hash].js) for this route
             // which is lazy-loaded when the route is visited.
-            component: () => import( './views/UserCenter')
+            component: () => import( './views/User/UserCenter')
 
         },
         {
@@ -47,7 +47,7 @@ export default new Router({
             // route level code-splitting
             // this generates a separate chunk (about.[hash].js) for this route
             // which is lazy-loaded when the route is visited.
-            component: () => import( './views/GoodsPage')
+            component: () => import( './views/Good/GoodsPage')
         },
         {
             path: '/ShoppingBag',
@@ -55,7 +55,7 @@ export default new Router({
             // route level code-splitting
             // this generates a separate chunk (about.[hash].js) for this route
             // which is lazy-loaded when the route is visited.
-            component: () => import( './views/ShoppingBag')
+            component: () => import( './views/User/ShoppingBag')
         },
         {
             path: '/GoodDialog',
@@ -63,7 +63,15 @@ export default new Router({
             // route level code-splitting
             // this generates a separate chunk (about.[hash].js) for this route
             // which is lazy-loaded when the route is visited.
-            component: () => import( './views/GoodDialog')
+            component: () => import( './views/Good/GoodDialog')
         },
+        {
+            path: '/GoodOrder',
+            name: 'GoodOrder',
+            // route level code-splitting
+            // this generates a separate chunk (about.[hash].js) for this route
+            // which is lazy-loaded when the route is visited.
+            component: () => import( './views/User/GoodOrder')
+        }
     ]
 })

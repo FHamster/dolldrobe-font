@@ -6,7 +6,7 @@
         </el-dialog>
 
         <el-header class="myhead">
-            <img src=".././assets/icon.png" class="myimg">
+            <img src="../../assets/icon.png" class="myimg">
             <div class="my_logo">玩偶衣橱</div>
             <div class="rowdir">
                 <el-input prefix-icon="el-icon-search" type="text"
