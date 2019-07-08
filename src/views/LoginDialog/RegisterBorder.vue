@@ -74,7 +74,7 @@
                     }
                 })
                     .then(res => {
-                        console.log(res.data)
+                        // console.log(res.data)
                         if (res.data) {
                             callback();
                         } else {
@@ -101,21 +101,23 @@
                     uPsw: [
                         {required: true, message: '请输入登录密码', trigger: 'blur'},
                         {min: 6, max: 20, message: '密码长度应在6到20位', trigger: 'blur'},
-                        {pattern: '^[a-zA-Z]\\w{5,19}$', message: '以字母开头 只包含字母 数字和下划线'}
-                    ],
+                        {pattern: '^[a-zA-Z]\\w{5,19}$', message: '以字母开头 只包含字母 数字和下划线'}],
                     uRePsw: [
                         {required: true, validator: validateRePsw, trigger: 'blur'}
                     ],
-                    phone: [{
-                        pattern: '^(13[0-9]|14[5|7]|15[0|1|2|3|5|6|7|8|9]|18[0|1|2|3|5|6|7|8|9])\\d{8}$',
-                        message: '不合法的手机号'
-                    }],
+                    phone: [
+                        {required: true, message: '请输入手机号码', trigger: 'blur'},
+                        {
+                            pattern: '^(13[0-9]|14[5|7]|15[0|1|2|3|5|6|7|8|9]|18[0|1|2|3|5|6|7|8|9])\\d{8}$',
+                            message: '不合法的手机号'
+                        }],
                     mail: [
                         {required: true, message: '请输入绑定邮箱', trigger: 'blur'},
                         {
                             pattern: '^[a-zA-Z_]{1,}[0-9]{0,}@(([a-zA-z0-9]-*){1,}\\.){1,3}[a-zA-z\\-]{1,}$',
                             message: '不合法的邮箱'
-                        }]
+                        }
+                    ]
                 }
             };
         },
@@ -126,13 +128,11 @@
                     uPsw: this.reg.uPsw,
                     uTel: this.reg.phone,
                     uEmail: this.reg.mail
-                })
-                    .then(res => {
-                        this.$message.success('注册成功啦');
-                    })
-                    .catch(err => {
-                        this.$message.error('出了些问题注册失败了');
-                    });
+                }).then(res => {
+                    this.$message.success('注册成功啦');
+                }).catch(err => {
+                    this.$message.error('出了些问题注册失败了');
+                });
             }
         }
     }

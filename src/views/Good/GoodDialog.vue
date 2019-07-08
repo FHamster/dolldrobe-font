@@ -1,105 +1,119 @@
-<template >
-
-
-    <el-container style="width:100% ;max-width: 1000px">
+<template>
+    <el-container>
+        <!--走马灯-->
         <el-aside>
             <el-carousel :interval="5000" arrow="always" height="440px" indicator-position="outside">
-                <el-carousel-item v-for="item in 4" :key="item" >
+                <el-carousel-item v-for="item in 4" :key="item">
                     <h3>{{ item }}</h3>
                 </el-carousel-item>
             </el-carousel>
         </el-aside>
-        <el-main>
-            <el-header height="50px">
-                <div style="text-align: center;margin: 3px 5px">{{goodLabel}}</div>
-            </el-header>
-            <el-header style="background-color: lightgray ;height: 40px">
 
-                <div style="display: inline ;margin: 10px 10px ">
-                    <div style="float: left;text-align:center ; margin: 10px 5px">
-                        <div style="display: inline;">衣&nbsp;架&nbsp;:&nbsp;</div>
-                        <div style="display:inline;">&nbsp;{{doubleChange(price)}}</div>
-                    </div>
-                    <div style="float: right;text-align:center ; margin: 10px 10px">
-                        <el-divider direction="vertical" style="float: left ; height: 20px"></el-divider>
-                        <div style="display: inline; float: left">评&nbsp;价&nbsp;:&nbsp;</div>
-                        <div style="display: inline; float: right">{{comentNum}}</div>
+        <!--商品信息主面板-->
+        <el-main>
+            <div height="50px">
+                <div class="good-lable">{{goodLabel}}</div>
+            </div>
+
+            <div class="info-pane">
+                <div>衣&nbsp;架&nbsp;:&nbsp;&nbsp;{{doubleChange(curSku.cPrice)}}</div>
+                <div>{{curSku.cSpecification}}</div>
+                <div>评&nbsp;价:{{comentNum}}</div>
+            </div>
+            <el-divider></el-divider>
+            <div>
+                <div style="display: inline">配送至：</div>
+                <el-select v-model="select" slot="prepend" placeholder="请选择" size="small">
+                    <el-option v-for="(o) in 5" :key="o" label="五社区" value="(o)"></el-option>
+                </el-select>
+                <div v-if="sku  === 0 && flag === false" style="display: inline">
+                    入定
+                </div>
+                <div v-else-if="sku === 0 && flag">
+                    尾款
+                </div>
+                <div v-else>
+                    库存:{{curSku.cInventory}}
+                </div>
+            </div>
+            <el-divider></el-divider>
+            <div>
+                <div class="good-info-pane">
+                    <div style="white-space: nowrap">款式分类&nbsp;:&nbsp;</div>
+
+                    <div v-for="index of skuList" :key="index.skuId"
+                         @click="changeCurGood(index)">
+                        <el-card :body-style="{ padding: '3px', }"
+                                 shadow="hover"
+                                 style="width: 70px;margin: 5px 2px; height: 75px ;border: 1px solid #ccc">
+                            <el-image src="index.skuImg">
+                                <div slot="error">
+                                    <i class="el-icon-picture-outline"></i>
+                                </div>
+                            </el-image>
+                        </el-card>
                     </div>
                 </div>
-            </el-header>
-            <el-footer height="40px" style="margin-bottom: 0; padding-bottom: 0;margin-top: 20px">
-                <div style="float: left">
-                    <div style="display: inline">配送至：</div>
-                    <el-select v-model="select" slot="prepend" placeholder="请选择" size="small">
-                        <el-option v-for="(o) in 5" :key="o" label="五社区" value="(o)"></el-option>
-                    </el-select>
-                    &nbsp;
-                    <div v-if="sku  == 0 && flag == false" style="display: inline">
-                        入定
-                    </div>
-                    <div v-else-if="sku == 0 && flag">
-                        尾款
-                    </div>
-                    <div v-else>
-                        库存&nbsp;:&nbsp;{{sku}}
-                    </div>
-                </div>
-            </el-footer>
-            <el-main style="padding-top: 0">
-                <el-divider style="margin: 3px"></el-divider>
-                <div style="display: inline">
-                    <div style="display: inline;float: left">款式分类&nbsp;:&nbsp;</div>
-                    <el-row style="width: 500px ;display: inline">
-                        <el-col span="4" v-for="index of 5" :key="index">
-                            <el-card :body-style="{ padding: '3px', }" shadow="hover"
-                                     style="width: 70px;margin: 5px 2px; height: 75px ;border: 1px solid #ccc">
-                                <img src="https://shadow.elemecdn.com/app/element/hamburger.9cf7b091-55e9-11e9-a976-7f4d0b07eef6.png"
-                                     class="image">
-                            </el-card>
-                        </el-col>
-                    </el-row>
-                </div>
-                <el-divider></el-divider>
-            </el-main>
-            <el-footer>
-                <el-input-number v-model="num" step="1" :min="1" ></el-input-number>
+
+            </div>
+            <el-divider></el-divider>
+            <div>
+                <el-input-number v-model="num" :min='1' :step="1"></el-input-number>
                 <el-button plain style="float: right">加入购物车</el-button>
-            </el-footer>
+            </div>
         </el-main>
     </el-container>
-
 </template>
 
 <script>
+    import axios from 'axios';
 
     export default {
         name: "GoodDialog",
         props: {
-            IsVis: {
-                type: Boolean,
-                default: false
-            }
+            CNum: {type: String},
+            CName: {type: String}
         },
         data: function () {
             return {
-                isDialogVis: false,
-                comentNum:'20+',
+                GoodNum: '',
+                skuList: '',
+
+                curSku: {},
+
+                select: '',
+
+                sku: '',
+                comentNum: '20+',
+
+                //当前商品的名称
                 goodLabel: '这只是个测试',
+                //sku的名称
+                skuLabel: '',
+                //sku的价格
                 price: '3.1415',
-                sku: 0,
+                //当前商品库存单位的库存
+                stack: 0,
+
+
                 flag: false,
-                num: 1,
-            }
+                num: 5,
+            };
         },
         methods: {
+            changeCurGood(newCur) {
+                console.log(newCur);
+                this.curSku = newCur;
+
+            },
             doubleChange(x) {
-                var f = parseFloat(x);
+                let f = parseFloat(x);
                 if (isNaN(f)) {
                     return false;
                 }
                 f = Math.round(x * 100) / 100;
-                var s = f.toString();
-                var rs = s.indexOf('.');
+                let s = f.toString();
+                let rs = s.indexOf('.');
                 if (rs < 0) {
                     rs = s.length;
                     s += '.';
@@ -108,12 +122,31 @@
                     s += '0';
                 }
                 return s;
+            },
+            getSku(cNum) {
+                axios.get('api/GoodPage/SKU', {
+                    params: {
+                        CNum: cNum
+                    }
+                }).then(res => {
+                    // eslint-disable-next-line no-console
+                    console.log(res.data)
+                    this.skuList = res.data;
+                    // eslint-disable-next-line no-unused-vars
+                }).catch(err => {
+
+                });
             }
 
         },
         watch: {
-            IsVis: function (newValue) {
-                this.dialogFormVisible = newValue;
+            CNum: function (newValue) {
+                // console.log(newValue);
+                this.GoodNum = newValue;
+                this.getSku(newValue);
+            },
+            CName: function (newValuse) {
+                this.goodLabel = newValuse;
             }
         },
     }
@@ -129,8 +162,38 @@
         margin: 0;
     }
 
+    .el-main {
+        display: flex;
+        flex-direction: column;
+    }
+
     .image {
         width: 100%;
         display: block;
+    }
+
+    .el-container {
+        width: 100%;
+        max-width: 1000px
+    }
+
+    .good-lable {
+        text-align: center;
+        margin: 3px 5px;
+    }
+
+    .info-pane {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        justify-items: start;
+    }
+
+    .good-info-pane {
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-start;
+        flex-wrap: wrap;
     }
 </style>

@@ -27,16 +27,8 @@
     export default {
         name: "LoginDialog",
         components: {RegisterBorder, LoginBorder, ElCollapseTransition},
-        /* props: {
-             IsVis: {
-                 type: Boolean,
-                 default: false
-             }
-         },*/
-
-
         data() {
-            return{
+            return {
                 isRegisterShow: false
             }
         }
