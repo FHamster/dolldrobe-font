@@ -1,5 +1,5 @@
 <template>
-    <el-container style="width: 90%;margin-left: 5%">
+    <el-container style="width: 82%;margin-left: 8%">
         <el-main>
             <el-header>
                 <div class="btn-pane">
@@ -37,7 +37,7 @@
             >
                 <el-table-column
                         label="订单"
-                        width="550px"
+                        width="565px"
                 >
                     <template slot-scope="scope">
                         <el-row style="background-color: lightgray;margin-bottom: 5px">
@@ -91,7 +91,7 @@
                     </template>
                 </el-table-column>
                 <el-table-column
-                        width="200px"
+                        width="80px"
                         prop="tag"
                         label="筛选"
                         :filters="[{ text: '等待付款', value: '等待付款' }, { text: '等待收货', value: '等待收货' }
@@ -114,10 +114,14 @@
                 >
                     <div>
                         <el-button type="text">查看发票</el-button>
-                        <el-button type="text">晒单</el-button>
-                        <el-divider direction="vertical"></el-divider>
-                        <el-button type="text">评价</el-button>
-                        <el-button plain="true" icon="el-icon-position">立即购买</el-button>
+                        <div>
+                            <el-button type="text">晒单</el-button>
+                            <el-divider direction="vertical"></el-divider>
+                            <el-button type="text">评价</el-button>
+                        </div>
+                        <el-button plain="true"
+                                   size="small"
+                                   icon="el-icon-position">立即购买</el-button>
                     </div>
                 </el-table-column>
             </el-table>
