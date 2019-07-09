@@ -7,63 +7,67 @@
 
         <!--                :default-active="activeIndex2"-->
 
-        <el-aside width="60px">
+        <el-aside width="61px" style="background-image: linear-gradient(to left, #f5f7fa 0%, #c3cfe2 100%);">
             <el-menu
                     default-active="2"
-                    background-color="#9DBC7A"
                     text-color="#547A28"
                     :collapse="true"
-                    style="width: 60px"
+                    style="width: 60px;"
+                    class="back"
                     active-text-color="#B3748D"
                     router>
 
-                <el-menu-item index="1">
+                <el-menu-item index="1" class="back">
                     <i class="el-icon-location"></i>
                 </el-menu-item>
 
-                <el-menu-item index="ShoppingBag">
+                <el-menu-item index="ShoppingBag" class="back">
                     <i class="el-icon-shopping-cart-full"></i>
                     <span slot="title">我的购物车</span>
                 </el-menu-item>
-                <el-menu-item index="3">
-                    <i class="el-icon-goods"></i>
-                    <span slot="title">已购买的宝贝</span>
-                </el-menu-item>
-                <el-submenu index="4">
-                    <template slot="title">
+                <el-menu-item index="GoodOrder" class="back">
+                    <i class="el-icon-goods "></i>
+                    <span slot="title">我的订单</span>
+                </el-menu-item >
+                <el-submenu index="4" class="back">
+                    <template slot="title" >
                         <i class="el-icon-tickets"></i>
                     </template>
-                    <el-menu-item-group>
-                        <template slot="title">我的发票</template>
-                        <el-menu-item index="4-1" style="font-size: 10px">开票信息</el-menu-item>
-                        <el-menu-item index="4-2" style="font-size: 10px">发票管理</el-menu-item>
+                    <el-menu-item-group class="back">
+                        <template slot="title" >我的发票</template>
+                        <el-menu-item index="4-1" style="font-size: 10px" class="back">开票信息</el-menu-item>
+                        <el-menu-item index="4-2" style="font-size: 10px"  class="back">发票管理</el-menu-item>
                     </el-menu-item-group>
                 </el-submenu>
-                <el-menu-item index="BookMark">
+                <!--<el-menu-item index="4">-->
+                <!--<i class="el-icon-tickets"></i>-->
+                <!--<span slot="title">我的订单</span>-->
+                <!--</el-menu-item>-->
+                <el-menu-item index="BookMark" class="back">
                     <i class="el-icon-star-off"></i>
                     <span slot="title">我的收藏</span>
                 </el-menu-item>
-                <el-menu-item index="6">
+                <el-menu-item index="6" class="back">
                     <i class="el-icon-trophy-1"></i>
                     <span slot="title">我的积分</span>
                 </el-menu-item>
-                <el-menu-item index="7">
+                <el-menu-item index="7" class="back">
                     <i class="el-icon-money"></i>
                     <span slot="title">我的优惠信息</span>
                 </el-menu-item>
-                <el-menu-item index="8">
+                <el-menu-item index="8" class="back">
                     <i class="el-icon-document-checked"></i>
                     <span slot="title">评价管理</span>
                 </el-menu-item>
-                <el-menu-item index="9">
+                <el-menu-item index="9" class="back">
                     <i class="el-icon-view"></i>
                     <span slot="title">我的足迹</span>
                 </el-menu-item>
-                <el-submenu index="10">
+                <el-submenu index="10" class="back">
                     <template slot="title">
                         <i class="el-icon-warning-outline"></i>
                     </template>
-                    <el-menu-item-group>
+                    <el-menu-item-group class="back">
                         <template slot="title">退款维权</template>
                         <el-menu-item index="10-1" style="font-size: 10px">退款管理</el-menu-item>
                         <el-menu-item index="10-2" style="font-size: 10px">投诉管理</el-menu-item>
@@ -76,10 +80,10 @@
 
         <el-main>
             <el-container>
-                <el-header>
+                <el-header >
                     <el-menu
                             mode="horizontal"
-                            background-color="#CADEB3"
+                            style="background-image: linear-gradient(to right, #f5f7fa 0%, #eef1f5 100%);"
                             text-color="#547A28"
                             active-text-color="#B3748D"
                             router
@@ -108,23 +112,22 @@
 
                         <el-menu-item index="3" class="userCenter_title">消息中心</el-menu-item>
 
-                        <!--                        <div style="width: 300px;float:right;height: 29.6px">-->
-                        <!--                            <div class="panel">-->
-                        <!--                                <el-input class="userCenter_search"-->
-                        <!--                                          prefix-icon="el-icon-search"-->
-                        <!--                                          type="text"-->
-                        <!--                                          v-model="from.search"-->
-                        <!--                                          :clearable="true"-->
-                        <!--                                          size=mini>-->
-                        <!--                                </el-input>-->
-                        <!--                                <el-button class="userCenter_btnSearch"-->
-                        <!--                                           size="small"-->
-                        <!--                                           plain-->
-                        <!--                                           @click="user_search">-->
-                        <!--                                    搜索-->
-                        <!--                                </el-button>-->
-                        <!--                            </div>-->
-                        <!--                        </div>-->
+                        <div class="search" style="width: 300px;float:right!important;height: 29.6px">
+                            <div class="panel">
+                                <el-input class="userCenter_search"
+                                          prefix-icon="el-icon-search"
+                                          type="text"
+                                          v-model="from.search"
+                                          :clearable="true"
+                                          size=mini>
+                                </el-input>
+                                <el-button class="userCenter_btnSearch"
+                                           size="small"
+                                           plain
+                                           @click="user_search">搜索
+                                </el-button>
+                            </div>
+                        </div>
                     </el-menu>
                 </el-header>
                 <el-main>
@@ -158,6 +161,7 @@
 <style scoped>
 
     .userCenter_titleMenu {
+
     }
 
     .userCenter_title {
@@ -179,15 +183,15 @@
         font-size: 13px;
     }
 
-    /* .userCenter_search {
-         width: 200px;
-         height: 25px;
-         margin-top: 15px;
-         border-radius: 0;
-         border-right: 0;
-     }*/
+    .userCenter_search {
+        width: 200px;
+        height: 25px;
+        margin-top: 15px;
+        border-radius: 0;
+        border-right: 0;
+    }
 
-    /*.userCenter_btnSearch {
+    .userCenter_btnSearch {
         width: 72px;
         height: 28px;
         padding: 7px;
@@ -197,7 +201,7 @@
         border-radius: 0;
         float: right;
         border-left: 0;
-    }*/
+    }
 
     .el-main {
         padding: 0;
@@ -214,6 +218,7 @@
 
     .panel {
         display: flex;
+        float: right;
         flex-direction: row;
     }
 
@@ -221,6 +226,13 @@
         display: flex;
         flex-direction: row;
         /*justify-content: center;*/
-        align-self: center;
+        /*align-self: center;*/
+    }
+    .back{
+        background-image: linear-gradient(to left, #f5f7fa 0%, #c3cfe2 100%);
+    }
+    .search{
+        position:absolute;
+        right: 0;
     }
 </style>

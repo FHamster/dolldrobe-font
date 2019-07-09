@@ -1,10 +1,11 @@
 <template>
     <el-container>
-        <el-header>
-            <div style="width: 400px;display: inline ">
-                <div class="head_titil">关注的商品</div>
-                <div class="head_titil">关注的画稿</div>
-                <div class="head_titil">关注的画手</div>
+        <el-header height="40px">
+            <div style="width: 400px;display: inline ;align-items: center"
+            >
+                <el-button type="text" class="head_titil">关注的商品</el-button>
+                <el-button type="text" class="head_titil">关注的画稿</el-button>
+                <el-button type="text" class="head_titil">关注的画手</el-button>
             </div>
             <div style="width: 300px;float:right;height: 29.6px">
                 <div style="float: left; ">
@@ -96,7 +97,7 @@
                         }
                     }
                 ).then(res => {
-                    console.log(res.data)
+                    // console.log(res.data)
 
                     this.favo = res.data;
 
@@ -109,11 +110,12 @@
 <style scoped>
     .head_titil {
         display: inline;
-        padding: 5px 6px;
+        padding: 15px 10px;
     }
 
     .head_search {
         width: 150px;
+        padding: 10px 0px;
     }
 
     .head_btn {

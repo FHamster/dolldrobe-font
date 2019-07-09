@@ -1,7 +1,7 @@
 <template>
-    <el-container style="width: 82%;margin-left: 8%">
+    <el-container style="width: 75%;margin-left: 10%;max-width: 1000px" >
         <el-main>
-            <el-header>
+            <el-header style="background-color: #f5f7fa">
                 <div class="btn-pane">
                     <div style="display: inline ;margin-top: 20px">
                         <el-button type="text" size="mini"
@@ -37,19 +37,22 @@
             >
                 <el-table-column
                         label="订单"
-                        width="565px"
+                        width="540x"
                 >
                     <template slot-scope="scope">
-                        <el-row style="background-color: lightgray;margin-bottom: 5px">
+                        <el-row style="background-image: linear-gradient(135deg, #fdfcfb 20%, #c3cfe2 100%);margin-bottom: 5px">
                             <div style="display: inline; margin-right: 30px">{{scope.row.time}}</div>
                             <div style="display: inline">订单号：&nbsp;{{scope.row.orderNum}}</div>
                         </el-row>
-                        <span style="display: flex; flex-direction: row;justify-content: left ">
+                        <div style="padding: 5px 5px">
+                            <span style="display: flex; flex-direction: row;justify-content: left ">
                             <el-image :src="scope.row.src" style="width: 80px;height: 80px "></el-image>
-                            <div style="display: inline">{{scope.row.label}}</div><span>
+                            <div style="display: inline">{{scope.row.label}}</div>
+                            <span>
                             <div>&nbsp;{{scope.row.kind}}</div>
+                            </span>
                         </span>
-                        </span>
+                        </div>
                     </template>
                 </el-table-column>
                 <el-divider direction="vertical"></el-divider>
@@ -121,7 +124,8 @@
                         </div>
                         <el-button plain="true"
                                    size="small"
-                                   icon="el-icon-position">立即购买</el-button>
+                                   icon="el-icon-position">立即购买
+                        </el-button>
                     </div>
                 </el-table-column>
             </el-table>
@@ -198,5 +202,6 @@
 
     .btn-pane {
         align-items: center;
+
     }
 </style>

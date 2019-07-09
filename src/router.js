@@ -29,10 +29,14 @@ export default new Router({
                     path: '/ShoppingBag',
                     name: 'ShoppingBag',
                     component: () => import( './views/User/ShoppingBag.vue')
-                },{
+                }, {
                     path: '/BookMark',
                     name: 'BookMark',
                     component: () => import( './views/User/BookMark.vue')
+                }, {
+                    path: '/GoodOrder',
+                    name: 'GoodOrder',
+                    component: () => import( './views/User/GoodOrder.vue')
                 }
             ],
             // route level code-splitting
