@@ -1,5 +1,5 @@
 <template>
-    <el-container style="width: 75%;margin-left: 10%;max-width: 1000px" >
+    <el-container style="width: 79%;margin-left: 10%;max-width: 1005px" >
         <el-main>
             <el-header style="background-color: #f5f7fa">
                 <div class="btn-pane">
@@ -10,15 +10,15 @@
                             全部订单
                         </el-button>
                     </div>
-                    <el-badge :value="12" class="item" :max="10">
-                        <el-button type="text" size="mini">待付款</el-button>
+                    <el-badge id="pay" :value="badgePay" class="item" :max="10" :hidden="payIsHidden">
+                        <el-button @click="isPay" type="text" size="mini">待付款</el-button>
                     </el-badge>
-                    <el-badge :value="0" class="item" :max="10">
-                        <el-button type="text" size="mini">待收货</el-button>
+                    <el-badge  :value="badgeGet" class="item" :max="10" :hidden="getIsHidden" >
+                        <el-button @click="isGet" type="text" size="mini">待收货</el-button>
                     </el-badge>
-                    <el-badge :value="12" class="item" :max="10">
-                        <el-button size="mini" type="text">待评价</el-button>
-                    </el-badge>
+                    <!--<el-badge  :value="12" class="item" :max="10" >-->
+                        <!--<el-button size="mini" type="text">待评价</el-button>-->
+                    <!--</el-badge>-->
                 </div>
 
                 <div>
@@ -33,7 +33,7 @@
             </el-header>
             <el-table
                     :data="tabledata"
-                    border="1px"
+                    border
             >
                 <el-table-column
                         label="订单"
@@ -94,7 +94,7 @@
                     </template>
                 </el-table-column>
                 <el-table-column
-                        width="80px"
+                        width="85px"
                         prop="tag"
                         label="筛选"
                         :filters="[{ text: '等待付款', value: '等待付款' }, { text: '等待收货', value: '等待收货' }
@@ -102,7 +102,7 @@
                         :filter-method="filterTag"
                         filter-placement="bottom-end">
                     <template slot-scope="scope">
-                        <el-tag
+                        <el-tag size="mini"
                                 disable-transitions>{{scope.row.tag}}
                         </el-tag>
                         <el-button type="text">
@@ -122,7 +122,7 @@
                             <el-divider direction="vertical"></el-divider>
                             <el-button type="text">评价</el-button>
                         </div>
-                        <el-button plain="true"
+                        <el-button plain
                                    size="small"
                                    icon="el-icon-position">立即购买
                         </el-button>
@@ -138,6 +138,10 @@
         name: "GoodOrder",
         data() {
             return {
+                badgePay:0,
+                payIsHidden:true,
+                badgeGet:0,
+                getIsHidden:true,
                 tabledata: [{
                     time: '2019-7-7',
                     orderNum: 110101010,
@@ -160,7 +164,7 @@
                         name: '林先森',
                         phone: '138****0101',
                         address: '宇宙国地球省中国区',
-                        tag: '已完成'
+                        tag: '等待收货'
                     },
                     {
                         time: '2019-7-7',
@@ -172,10 +176,46 @@
                         name: '林先森',
                         phone: '138****0101',
                         address: '宇宙国地球省中国区',
-                        tag: '已完成'
+                        tag: '等待收货'
+                        // tag: '等待付款'
                     },
                 ]
             }
+        },
+        methods:{
+            isPay(){
+                // console.log(this.tabledata)
+                let cont = 0;
+                for(let i = 0; i < this.tabledata.length; i++){
+                    if(this.tabledata[i].tag =="等待付款")
+                        cont ++;
+                }
+                // console.log(document.getElementById("pay").hidden );
+                if(cont > 0 )
+                    this.payIsHidden = false;
+                // console.log(document.getElementById("pay").hidden );
+                this.badgePay = cont;
+            },
+            isGet(){
+                // console.log(this.tabledata)
+                let cont = 0;
+                for(let i = 0; i < this.tabledata.length; i++){
+                    if(this.tabledata[i].tag =="等待收货")
+                        cont ++;
+                }
+                // console.log(document.getElementById("pay").hidden );
+                if(cont > 0 )
+                    this.getIsHidden = false;
+                // console.log(document.getElementById("pay").hidden );
+                this.badgeGet = cont;
+            },
+            filterTag(value, row) {
+                return row.tag === value;
+            },
+        },
+        mounted() {
+            this.isGet();
+            this.isPay();
         }
     }
 </script>
