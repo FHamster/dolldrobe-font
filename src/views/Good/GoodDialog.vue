@@ -59,7 +59,7 @@
             <el-divider></el-divider>
             <div>
                 <el-input-number v-model="num" :min='1' :step="1"></el-input-number>
-                <el-button plain style="float: right">加入购物车</el-button>
+                <el-button plain @click="addIntoCart">加入购物车</el-button>
             </div>
         </el-main>
     </el-container>
@@ -102,7 +102,7 @@
         },
         methods: {
             changeCurGood(newCur) {
-                console.log(newCur);
+                // console.log(newCur);
                 this.curSku = newCur;
 
             },
@@ -123,13 +123,30 @@
                 }
                 return s;
             },
-            iniCursku(newCur) {
-                this.curSku = newCur;
+            addIntoCart() {
+                let skuN = this.num;
+                let curSku = this.curSku.skuId;
+                // console.log(curSku);
+                let cur = {
+                    skuId: curSku,
+                    scNum: skuN
+                };
+                axios.post('api/Cart/Cart', cur,
+                    {
+                        headers: {
+                            'token': this.$store.getters.getToken
+                        }
+                    }
+                ).then(res => {
+                    this.$message.success('添加成功');
+                }).catch(err => {
+                    this.$message.error('添加失败')
+                });
             },
             getSku(cNum) {
                 axios.get('api/GoodPage/SKU', {
                     params: {
-                        CNum: cNum
+                        CNum: cNum,
                     }
                 }).then(res => {
                     // eslint-disable-next-line no-console
@@ -149,7 +166,7 @@
         },
         watch: {
             CNum: function (newValue) {
-                console.log(newValue);
+                // console.log(newValue);
                 this.GoodNum = newValue;
                 this.getSku(newValue);
             },
