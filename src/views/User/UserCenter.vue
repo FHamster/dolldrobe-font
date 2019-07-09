@@ -31,16 +31,21 @@
                     <i class="el-icon-goods"></i>
                     <span slot="title">已购买的宝贝</span>
                 </el-menu-item>
-                <el-submenu index="4">
-                    <template slot="title">
-                        <i class="el-icon-tickets"></i>
-                    </template>
-                    <el-menu-item-group>
-                        <template slot="title">我的发票</template>
-                        <el-menu-item index="4-1" style="font-size: 10px">开票信息</el-menu-item>
-                        <el-menu-item index="4-2" style="font-size: 10px">发票管理</el-menu-item>
-                    </el-menu-item-group>
-                </el-submenu>
+                <!--<el-submenu index="4">-->
+                    <!--<template slot="title">-->
+                        <!--<i class="el-icon-tickets"></i>-->
+                    <!--</template>-->
+                    <!--<el-menu-item-group>-->
+                        <!--<template slot="title">我的订单</template>-->
+                        <!--<el-menu-item index="4-1" style="font-size: 10px">开票信息</el-menu-item>-->
+                        <!--<el-menu-item index="4-2" style="font-size: 10px">发票管理</el-menu-item>-->
+                    <!--</el-menu-item-group>-->
+                <!--</el-submenu>-->
+                <el-menu-item index="GoodOrder">
+                    <i class="el-icon-tickets"></i>
+                    <span slot="title">我的订单</span>
+                </el-menu-item>
+
                 <el-menu-item index="BookMark">
                     <i class="el-icon-star-off"></i>
                     <span slot="title">我的收藏</span>

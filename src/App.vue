@@ -5,7 +5,7 @@
         </el-dialog>
         <!--        <LoginDialog :is-vis="dialogVis"></LoginDialog>-->
         <!--        <el-header style="max-height: 40px">-->
-        <el-header style="padding: 0">
+        <el-header>
             <el-menu
                     :default-active="activeIndex2"
                     mode="horizontal"
@@ -13,12 +13,14 @@
                     background-color="#efff"
                     text-color="#545c64"
                     active-text-color="#ffd04b"
-                    router>
+                    router
+                    class="nav-width"
+            >
                 <el-menu-item
                         class="menu-heigh"
                         index="UserCenter">用户中心
                 </el-menu-item>
-                <el-submenu index="2" disabled>
+                <el-submenu index="2">
                     <template slot="title">我的工作台</template>
                     <el-menu-item index="2-1">选项1</el-menu-item>
                     <el-menu-item index="2-2">选项2</el-menu-item>
@@ -39,10 +41,20 @@
                 <el-menu-item
                         index="GoodDialog">浏览
                 </el-menu-item>
+                <el-menu-item
+                        index="GoodOrder">浏览
+                </el-menu-item>
+                <el-submenu>
+                    <template slot="title">
+                        <el-avatar>123</el-avatar>
+                    </template>
+                </el-submenu>
             </el-menu>
-            <!--        </el-header>-->
+
 
         </el-header>
+
+        <!--        </el-header>-->
 
 
         <el-main style="padding: 0">
@@ -125,5 +137,14 @@
         min-width: 700px;
         width: 50%;
 
+    }
+
+    .el-header {
+        padding: 0;
+    }
+
+
+    .avatar-panel {
+        align-self: center;
     }
 </style>
