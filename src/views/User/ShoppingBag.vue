@@ -26,7 +26,7 @@
                 <el-table
                         :data="tableData"
                         style="width: 100%"
-                        @selection-change ="changeOpt"
+                        @selection-change="changeOpt"
                 >
 
                     <el-table-column

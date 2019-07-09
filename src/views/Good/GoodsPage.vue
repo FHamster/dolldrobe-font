@@ -1,7 +1,7 @@
 <template>
     <el-container>
 
-        <el-dialog title="商品详情" :visible.sync="isGoodDialogVis"  width="1000px">
+        <el-dialog title="商品详情" :visible.sync="isGoodDialogVis" width="1000px">
             <GoodDialog :c-num="curGood" :c-name="curGoodName"></GoodDialog>
         </el-dialog>
 
@@ -11,21 +11,19 @@
             <div class="rowdir">
                 <el-input prefix-icon="el-icon-search" type="text"
                           size=large class="mysearch"
-                          v-model="keyWord"
-                ></el-input>
-                <el-button
-                        class="Good_btnSerachborder"
-                        size="media"
-                        plain
-                        @click="getCart"
-                >搜索
+                          v-model="keyWord">
+
+                </el-input>
+                <el-button @click="getCart">
+                    搜索
                 </el-button>
             </div>
         </el-header>
         <el-container>
             <el-aside class="goodaside">
                 <el-col v-for="index of 5" :key="index">
-                    <el-card :body-style="{ padding: '10px' }" shadow="hover" style="width: 250px;margin-left: 15px ;" @click="isGoodDialogVis = !isGoodDialogVis">
+                    <el-card :body-style="{ padding: '10px' }" shadow="hover" style="width: 250px;margin-left: 15px ;"
+                             @click="isGoodDialogVis = !isGoodDialogVis">
                         <img src="https://shadow.elemecdn.com/app/element/hamburger.9cf7b091-55e9-11e9-a976-7f4d0b07eef6.png"
                              class="image">
                         <div style="padding: 14px;width: 180px">
@@ -67,9 +65,17 @@
                                 <div class="bottom clearfix">
                                     <div class="price_cart">
                                         <div class="price">￥{{o.cMaxmoney}}</div>
-                                        <el-button type="warning" icon="el-icon-star-off" circle
-                                                   @click="addFavo(o)"></el-button>
-                                        <el-button type="primary" icon="el-icon-shopping-cart-2" circle></el-button>
+                                        <el-button type="warning"
+                                                   icon="el-icon-star-off"
+                                                   circle
+                                                   @click="addFavo(o)">
+
+                                        </el-button>
+                                        <el-button type="primary"
+                                                   icon="el-icon-shopping-cart-2"
+                                                   circle
+                                                   @click="visGoodDialog(o.cNum,o.cName)">
+                                        </el-button>
                                     </div>
                                 </div>
                             </div>
@@ -174,7 +180,7 @@
                 });
 
             },
-            visGoodDialog(viscNum,visName) {
+            visGoodDialog(viscNum, visName) {
                 this.curGood = viscNum;
                 this.curGoodName = visName;
                 // console.log(viscNum);
@@ -203,10 +209,10 @@
     .my_logo {
         /*position: relative;*/
         /*float: left;*/
-        width: 200px;
-        height: 65px;
+        /*width: 200px;*/
+        /*height: 65px;*/
         font-family: 华文琥珀;
-        color: rgba(193, 135, 207, 0.7);
+        color: #9DBC7A;
         font-size: 40px;
         margin-top: 20px;
         margin-bottom: 7px;
@@ -223,14 +229,6 @@
         /*background-color: rgba(192,192,192,0.5);*/
     }
 
-    .Good_btnSerachborder {
-        background-color: orangered;
-        font-family: 宋体;
-        font-weight: bold;
-        color: aliceblue;
-        border-radius: 0px;
-        align-items: center;
-    }
 
     .rowdir {
         display: flex;
@@ -268,12 +266,6 @@
         font-size: 13px;
         border-radius: 0px;
         margin: 0px;
-    }
-
-    /*test*/
-    .time {
-        font-size: 13px;
-        color: #999;
     }
 
     .bottom {
@@ -318,13 +310,13 @@
     }
 
     .price {
-        color: dodgerblue;
+        color: #9DBC7A;
     }
 
     .goodaside {
         width: 250px;
         border-style: solid;
-        border-color: dodgerblue;
+        border-color: #9DBC7A;
     }
 
     .GoodName {

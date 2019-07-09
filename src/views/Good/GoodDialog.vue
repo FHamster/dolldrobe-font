@@ -59,7 +59,7 @@
             <el-divider></el-divider>
             <div>
                 <el-input-number v-model="num" :min='1' :step="1"></el-input-number>
-                <el-button plain style="float: right">加入购物车</el-button>
+                <el-button plain @click="addIntoCart">加入购物车</el-button>
             </div>
         </el-main>
     </el-container>
@@ -91,18 +91,18 @@
                 //sku的名称
                 skuLabel: '',
                 //sku的价格
-                price: '3.1415',
+                price: '',
                 //当前商品库存单位的库存
                 stack: 0,
 
 
                 flag: false,
-                num: 5,
+                num: 1,
             };
         },
         methods: {
             changeCurGood(newCur) {
-                console.log(newCur);
+                // console.log(newCur);
                 this.curSku = newCur;
 
             },
@@ -123,15 +123,40 @@
                 }
                 return s;
             },
+            addIntoCart() {
+                let skuN = this.num;
+                let curSku = this.curSku.skuId;
+                // console.log(curSku);
+                let cur = {
+                    skuId: curSku,
+                    scNum: skuN
+                };
+                axios.post('api/Cart/Cart', cur,
+                    {
+                        headers: {
+                            'token': this.$store.getters.getToken
+                        }
+                    }
+                ).then(res => {
+                    this.$message.success('添加成功');
+                }).catch(err => {
+                    this.$message.error('添加失败')
+                });
+            },
             getSku(cNum) {
                 axios.get('api/GoodPage/SKU', {
                     params: {
-                        CNum: cNum
+                        CNum: cNum,
                     }
                 }).then(res => {
                     // eslint-disable-next-line no-console
                     console.log(res.data)
                     this.skuList = res.data;
+
+                    let list = this.skuList;
+                    if (list.length > 0) {
+                        this.curSku = list[0];
+                    }
                     // eslint-disable-next-line no-unused-vars
                 }).catch(err => {
 
@@ -155,7 +180,7 @@
 
 <style scoped>
     .el-carousel__item h3 {
-        color: #475669;
+        color: #9DBC7A;
         font-size: 18px;
         opacity: 0.75;
         line-height: 440px;
@@ -179,6 +204,7 @@
 
     .good-lable {
         text-align: center;
+
         margin: 3px 5px;
     }
 

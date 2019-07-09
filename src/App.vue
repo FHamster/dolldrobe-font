@@ -5,22 +5,35 @@
         </el-dialog>
         <!--        <LoginDialog :is-vis="dialogVis"></LoginDialog>-->
         <!--        <el-header style="max-height: 40px">-->
+        <!--
+        81ceff
+        bff199
+acc236
+4285f4
+82b548
+99cc33
+8baaff h
+9dbc7a
+        -->
         <el-header>
             <el-menu
                     :default-active="activeIndex2"
                     mode="horizontal"
                     @select="handleSelect"
-                    background-color="#efff"
-                    text-color="#545c64"
-                    active-text-color="#ffd04b"
+                    background-color="#9DBC7A"
+                    text-color="#547A28"
+                    active-text-color="#B3748D"
                     router
-                    class="nav-width"
             >
+                <el-menu-item @click="dialogVis = !dialogVis">
+                    <template slot="title">
+                        <el-avatar>U</el-avatar>
+                    </template>
+                </el-menu-item>
                 <el-menu-item
-                        class="menu-heigh"
                         index="UserCenter">用户中心
                 </el-menu-item>
-                <el-submenu index="2">
+                <el-submenu index="2" disabled>
                     <template slot="title">我的工作台</template>
                     <el-menu-item index="2-1">选项1</el-menu-item>
                     <el-menu-item index="2-2">选项2</el-menu-item>
@@ -32,39 +45,25 @@
                         <el-menu-item index="2-4-3">选项3</el-menu-item>
                     </el-submenu>
                 </el-submenu>
-                <el-menu-item index="3" class="el-icon-chat-line-round">消息</el-menu-item>
-                <el-menu-item index="4"><a href="https://www.ele.me" target="_blank">订单管理</a>
+                <el-menu-item index="3">消息</el-menu-item>
+                <el-menu-item index="4">
+                    订单管理
                 </el-menu-item>
                 <el-menu-item
                         index="GoodsPage">商品浏览
                 </el-menu-item>
-                <!--<el-menu-item-->
-                        <!--index="GoodDialog">浏览-->
-                <!--</el-menu-item>-->
-                <!--<el-menu-item-->
-                        <!--index="GoodOrder">浏览-->
-                <!--</el-menu-item>-->
-                <el-submenu>
-                    <template slot="title">
-                        <el-avatar>123</el-avatar>
-                    </template>
-                </el-submenu>
             </el-menu>
-
-
         </el-header>
 
         <!--        </el-header>-->
-
-
         <el-main style="padding: 0">
             <router-view></router-view>
         </el-main>
 
         <el-footer>
-            <el-button @click="changeVuex">按钮测试</el-button>
-            <el-button @click="dialogVis = !dialogVis">显示登陆对话框</el-button>
-            <el-button @click="checkToken">检查token有效</el-button>
+            <!--            <el-button @click="changeVuex">按钮测试</el-button>-->
+            <!--            <el-button @click="dialogVis = !dialogVis">显示登陆对话框</el-button>-->
+            <!--            <el-button @click="checkToken">检查token有效</el-button>-->
         </el-footer>
     </el-container>
 </template>
