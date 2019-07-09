@@ -8,7 +8,7 @@
                                    style="width: 70px;margin: 0px;
                                display: inline;
                                font-size: 15px;
-                               margin-top: 3px">全部商品&nbsp;
+                               margin-top: 3px">全部商品
                         </el-button>
                         <div style="display: inline">{{sumCountset()}}</div>
                         <div style="float: right;">
@@ -163,7 +163,6 @@
         data() {
             return {
                 select: '',
-                cart: [],
 
                 cartList: [],
                 sumCount: 0,
@@ -181,13 +180,37 @@
                 //     caozuo: 'delete'
                 // }]
                 url: 'https://shadow.elemecdn.com/app/element/hamburger.9cf7b091-55e9-11e9-a976-7f4d0b07eef6.png',
-                tableData: [{
-                    src: 'https://shadow.elemecdn.com/app/element/hamburger.9cf7b091-55e9-11e9-a976-7f4d0b07eef6.png',
-                    price: 180,
-                    label: '汉堡王',
-                    num: 10,
-                    kind: 'black '
-                },
+                tableData: [
+                    {
+                        src: 'https://shadow.elemecdn.com/app/element/hamburger.9cf7b091-55e9-11e9-a976-7f4d0b07eef6.png',
+                        price: 180,
+                        label: '汉堡王',
+                        num: 10,
+                        kind: 'black '
+                    },
+                    {
+                        src: 'https://shadow.elemecdn.com/app/element/hamburger.9cf7b091-55e9-11e9-a976-7f4d0b07eef6.png',
+                        price: 180,
+                        label: '汉堡王',
+                        num: 10,
+                        kind: 'black '
+                    },
+                    {
+                        src: 'https://shadow.elemecdn.com/app/element/hamburger.9cf7b091-55e9-11e9-a976-7f4d0b07eef6.png',
+                        price: 180,
+                        label: '汉堡王',
+                        num: 10,
+                        kind: 'black '
+                    }
+                ],
+                cart: [
+                    {
+                        src: 'https://shadow.elemecdn.com/app/element/hamburger.9cf7b091-55e9-11e9-a976-7f4d0b07eef6.png',
+                        price: 180,
+                        label: '汉堡王',
+                        num: 10,
+                        kind: 'black2 '
+                    },
                     {
                         src: 'https://shadow.elemecdn.com/app/element/hamburger.9cf7b091-55e9-11e9-a976-7f4d0b07eef6.png',
                         price: 180,
@@ -250,24 +273,23 @@
                     // console.log(Alist);
 
                     let cart = [];
-                    let temp1;
-                    let temp2;
                     for (var i = 0; i < Alist.length; i++) {
 
                         // console.log(Alist[i]);
-                        temp1 = Alist[i].sku.cPrice;
-                        temp2 = Alist[i].cart.scNum;
-
                         cart.push({
-                            skuId: Alist[i].sku.skuId,
-                            cPrice: Alist[i].sku.cPrice,
-                            scNum: Alist[i].cart.scNum,
-                            sum: temp1 * temp2
+                            src: Alist[i].sku.skuImg,
+                            price: Alist[i].sku.cPrice,
+                            label: Alist[i].sku.cSpecification,
+                            num: Alist[i].cart.scNum,
+                            // kind: 'black '
                         });
-
                     }
-                    this.cart = cart;
-                });
+                    // console.log(cart)
+                    this.tableData = cart;
+                }).catch(err => {
+                        this.$message.error('OOP！')
+                    }
+                );
             },
             sumCountset() {
 
