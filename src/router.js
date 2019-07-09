@@ -33,6 +33,10 @@ export default new Router({
                     path: '/BookMark',
                     name: 'BookMark',
                     component: () => import( './views/User/BookMark.vue')
+                },{
+                    path: '/GoodOrder',
+                    name: 'GoodOrder',
+                    component: () => import( './views/User/GoodOrder.vue')
                 }
             ],
             // route level code-splitting

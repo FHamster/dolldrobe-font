@@ -17,8 +17,9 @@
                     active-text-color="#B3748D"
                     router>
 
-                <el-menu-item index="1">
+                <el-menu-item index="GoodOrder">
                     <i class="el-icon-location"></i>
+                    <span slot="title">我的订单</span>
                 </el-menu-item>
 
                 <el-menu-item index="ShoppingBag">
