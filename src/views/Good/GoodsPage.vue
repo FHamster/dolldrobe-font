@@ -112,9 +112,11 @@
         components: {GoodDialog},
         mounted: {
 
-            this.getCart
+            initial() {
+                this.getCart();
+            },
         },
-            data() {
+        data() {
             return {
                 // 商品对话框当前选中商品cNum
                 curGood: '',

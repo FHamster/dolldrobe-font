@@ -74,10 +74,11 @@
                             width="130px">
                         <template slot-scope="scope">
                         <span>
+<!--                               @focus.prevent="saveCurnum(scope.row.num)"-->
+
                             <el-input-number v-model="scope.row.num" :min="1"
                                              style="width: 110px;"
-                                             @focus.prevent="saveCurnum(scope.row.num)"
-                                             @blur.prevent="changeNum(scope.row.num,scope.row.skuId)"
+                                             @change="changeNum(scope.row.num,scope.row.skuId)"
                                              size="mini">
 
                             </el-input-number>
@@ -273,33 +274,27 @@
                 this.CurNum = cur;
             },
             changeNum(newNum, chgSkuId) {
-                console.log(newNum);
-                console.log(this.CurNum);
 
 
-                if (newNum != this.CurNum) {
+                let newSku = {
+                    skuId: chgSkuId,
+                    scNum: newNum
+                };
+                console.log(newSku);
+                axios.patch('/api/Cart/Cart', newSku, {
+                    headers: {
+                        'token': this.$store.getters.getToken
+                    }
+                }).then(res => {
+                    this.$message.success("修改成功商品数量目前为" + newNum);
+                }).catch(err => {
+                    this.$message.error("没有修改成功");
+                });
 
-                    let newSku = {
-                        skuId: chgSkuId,
-                        scNum: newNum
-                    };
-                    console.log(newSku);
-                    axios.patch('/api/Cart/Cart', newSku, {
-                        headers: {
-                            'token': this.$store.getters.getToken
-                        }
-                    }).then(res => {
-                        this.$message.success("修改成功商品数量目前为" + newNum);
-                    }).catch(err => {
-                        this.$message.error("没有修改成功");
-                    });
-                }
             },
             getCart() {
                 axios.get('/api/Cart/Cart', {
-                        headers: {
-                            'token': this.$store.getters.getToken
-                        }
+                        headers: {'token': this.$store.getters.getToken}
                     }
                 ).then(res => {
                     // console.log(res.data)
@@ -326,16 +321,30 @@
                     }
                 );
             },
+            deleteCart(delSkuId) {
+                let del = {
+                    skuId: delSkuId,
+                };
+                console.log(del);
+                axios.post('api/Cart/delCart', del, {
+                    headers: {'token': this.$store.getters.getToken}
+                }).then(res => {
+                    this.$message.success('商品删除成功');
+                }).catch(err => {
+                    this.$message.error('删除商品的时候出了些问题 难受')
+                });
+
+            },
             sumCountset() {
 
                 return this.sumCount = this.tableData.length;
             },
             changeOpt(val) {
-                console.log(val)
+                // console.log(val);
                 this.checkBox = val;
             },
             setSunNum() {
-                console.log(this.checkBox.length);
+                // console.log(this.checkBox.length);
                 return this.sumNum = this.checkBox.length;
             },
             setSumPrice() {
@@ -347,7 +356,10 @@
                 return this.sumPrice;
             },
             deleteRow(index, rows) {
+                console.log(index);
+                console.log(rows);
                 rows.splice(index, 1);
+                this.deleteCart(rows[index].skuId);
             },
             // 测试专用
             open() {
