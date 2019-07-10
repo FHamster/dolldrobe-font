@@ -37,6 +37,10 @@ export default new Router({
                     path: '/GoodOrder',
                     name: 'GoodOrder',
                     component: () => import( './views/User/GoodOrder.vue')
+                }, {
+                    path: '/UserAddress',
+                    name: 'UserAddress',
+                    component: () => import( './views/User/UserAddress.vue')
                 }
             ],
             // route level code-splitting
@@ -76,6 +80,14 @@ export default new Router({
             // this generates a separate chunk (about.[hash].js) for this route
             // which is lazy-loaded when the route is visited.
             component: () => import( './views/User/GoodOrder')
+        },
+        {
+            path: '/UserAddress',
+            name: 'UserAddress',
+            // route level code-splitting
+            // this generates a separate chunk (about.[hash].js) for this route
+            // which is lazy-loaded when the route is visited.
+            component: () => import( './views/User/UserAddress')
         }
     ]
 })
