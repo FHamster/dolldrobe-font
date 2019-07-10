@@ -75,8 +75,12 @@
                         <template slot-scope="scope">
                         <span>
                             <el-input-number v-model="scope.row.num" :min="1"
-                                             style="width: 110px"
-                                             size="mini"></el-input-number>
+                                             style="width: 110px;"
+                                             @focus.prevent="saveCurnum(scope.row.num)"
+                                             @blur.prevent="changeNum(scope.row.num,scope.row.skuId)"
+                                             size="mini">
+
+                            </el-input-number>
                         </span>
                         </template>
                     </el-table-column>
@@ -99,13 +103,13 @@
                         <span>
                             <el-button
                                     type="text"
-                                    style="padding: 0px"
+                                    style="padding: 0"
                                     @click.native.prevent="deleteRow(scope.$index, tableData)"
                             >删除
                             </el-button>
                             <el-button
                                     type="text"
-                                    style="margin-left: 0px;padding: 0px "
+                                    style="margin-left: 0;padding: 0 "
                             >添加关注
                             </el-button>
                         </span>
@@ -164,6 +168,8 @@
             return {
                 select: '',
 
+                //当前选中商品库存的数量
+                CurNum: '',
                 cartList: [],
                 sumCount: 0,
                 sumNum: 0,
@@ -227,11 +233,12 @@
                     },
                 ]
 
-            }
+            };
 
 
         },
         methods: {
+
             getSummaries(param) {
                 const {columns, data} = param;
                 const sums = [];
@@ -261,6 +268,33 @@
                 return sums;
             },
 
+            saveCurnum(cur) {
+                console.log(cur);
+                this.CurNum = cur;
+            },
+            changeNum(newNum, chgSkuId) {
+                console.log(newNum);
+                console.log(this.CurNum);
+
+
+                if (newNum != this.CurNum) {
+
+                    let newSku = {
+                        skuId: chgSkuId,
+                        scNum: newNum
+                    };
+                    console.log(newSku);
+                    axios.patch('/api/Cart/Cart', newSku, {
+                        headers: {
+                            'token': this.$store.getters.getToken
+                        }
+                    }).then(res => {
+                        this.$message.success("修改成功商品数量目前为" + newNum);
+                    }).catch(err => {
+                        this.$message.error("没有修改成功");
+                    });
+                }
+            },
             getCart() {
                 axios.get('/api/Cart/Cart', {
                         headers: {
@@ -281,7 +315,8 @@
                             price: Alist[i].sku.cPrice,
                             label: Alist[i].sku.cSpecification,
                             num: Alist[i].cart.scNum,
-                            // kind: 'black '
+                            // kind:Alist[i].sku.
+                            skuId: Alist[i].sku.skuId
                         });
                     }
                     // console.log(cart)

@@ -16,16 +16,17 @@ acc236
 9dbc7a
         -->
         <el-header>
+            <!--<div style="text-align: center;background-color: lightgray">推荐使用谷歌或火狐浏览器</div>-->
             <el-menu
                     :default-active="activeIndex2"
                     mode="horizontal"
                     @select="handleSelect"
-                    background-color="#9DBC7A"
+                    style="background-image: linear-gradient(to right, #f5f7fa 0%, #c3cfe2 100%);"
                     text-color="#547A28"
                     active-text-color="#B3748D"
                     router
             >
-                <el-menu-item @click="dialogVis = !dialogVis">
+                <el-menu-item @click="dialogVis = !dialogVis" style="background-image: linear-gradient(to left, #f5f7fa 0%, #c3cfe2 100%);" >
                     <template slot="title">
                         <el-avatar>U</el-avatar>
                     </template>
@@ -52,6 +53,12 @@ acc236
                 <el-menu-item
                         index="GoodsPage">商品浏览
                 </el-menu-item>
+                <!--<el-menu-item-->
+                        <!--index="GoodOrder">商品浏览-->
+                <!--</el-menu-item>-->
+                <!--<el-menu-item-->
+                        <!--index="GoodDialog">商品浏览-->
+                <!--</el-menu-item>-->
             </el-menu>
         </el-header>
 
