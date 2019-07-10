@@ -8,6 +8,7 @@
                 <el-button size="small" plain type="success" style="display: inline"
                            @click="isAddAdrDialogVis=!isAddAdrDialogVis">新增收货地址
                 </el-button>
+<!--                <el-button @click="runFun">123</el-button>-->
                 <div style="display: inline">
                     您已创建
                     <div class="header_num">{{nowNum}}</div>
@@ -15,6 +16,8 @@
                     <div class="header_num">{{maxNum}}</div>
                     个
                 </div>
+
+
             </div>
         </el-header>
         <el-main>
@@ -79,7 +82,6 @@
                             </el-button>
                         </div>
                     </div>
-                    Z
                 </el-collapse-item>
                 <!--<el-collapse-item title="反馈 Feedback" name="2">-->
                 <!--<div>控制反馈：通过界面样式和交互动效让用户可以清晰的感知自己的操作；</div>-->
@@ -102,6 +104,19 @@
 <script>
     import AddAddress from "./AddAddress";
     import axios from 'axios';
+
+    let fun = async function getRegionById(RegId) {
+        let temp;
+        await axios.get('/api/Region/RegionName', {
+            params: {RegionId: RegId.toString()}
+        }).then(res => {
+            temp = res.data;
+        }).catch(err => {
+            this.$message.error("查询区域出错");
+        });
+        return temp;
+    };
+
 
     export default {
         name: "UserAddress",
@@ -147,18 +162,29 @@
         },
         methods: {
 
-            getRegionById(RegId) {
-                axios.get('api/Region/RegionName', {
-                    params: {LeafRegId: RegId}
-                }).then(res => {
-                    return res.data;
-                }).catch(err => {
-                    this.$message.error("查询区域出错");
-                });
+            /* getRegionById(RegId) {
+                 let temp;
+                 axios.get('/api/Region/RegionName', {
+                     params: {RegionId: RegId.toString()}
+                 }).then(res => {
+                     temp = res.data;
+                 }).catch(err => {
+                     this.$message.error("查询区域出错");
+                 });
+                 return temp;
+             },*/
+
+            runFun: async function () {
+                let a;
+                await fun("2343").then(value => a = value);
+
+                console.log(a);
+
 
             },
+
             getAddress() {
-                axios.get('api/Address/Address', {
+                axios.get('/api/Address/Address', {
                     headers: {
                         'token': this.$store.getters.getToken
                     }
@@ -166,7 +192,7 @@
                     this.items = res.data.map(it => ({
                         peopleName: it.saName,
                         localAreaId: it.arNum,
-                        localArea: this.getRegionById(it.arNum),
+                        localArea: it.arNum,
                         address: it.saDetail,
                         phone: it.saPhone,
                         telephone: it.saTelphone,
@@ -178,6 +204,7 @@
                     this.$message.error("获取收货地址列表失败");
                 });
             },
+
             setNowNum() {
                 this.nowNum = this.items.length;
             },
@@ -189,10 +216,10 @@
                         this.items[i].isDefault = true;
                     }
                 }
-                this.items.sort(function(a,b){
+                this.items.sort(function (a, b) {
                     return b.isDefault - a.isDefault
-                  });
-                },
+                });
+            },
 
             moveItem(key) {
                 this.items.splice(this.items.indexOf(key), 1);
