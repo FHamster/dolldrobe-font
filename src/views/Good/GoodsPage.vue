@@ -268,6 +268,7 @@
     .head_btn {
         font-size: 13px;
         border-radius: 0px;
+        background-image: linear-gradient(to bottom, #f5f7fa 0%, #c3cfe2 100%);
         margin: 0px;
     }
 
