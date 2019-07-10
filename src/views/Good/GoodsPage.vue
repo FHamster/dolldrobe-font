@@ -110,11 +110,8 @@
 
         name: "GoodsPage",
         components: {GoodDialog},
-        mounted: {
-
-            initial() {
-                this.getCart();
-            },
+        mounted() {
+            this.getCart();
         },
         data() {
             return {

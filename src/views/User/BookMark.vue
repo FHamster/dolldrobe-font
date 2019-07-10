@@ -89,6 +89,9 @@
                 favo: []
             }
         },
+        mounted() {
+            this.getFavorities();
+        },
         methods: {
             getFavorities() {
                 axios.get('/api/Favorities/Favorities', {

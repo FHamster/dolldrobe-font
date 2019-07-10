@@ -237,6 +237,9 @@
 
 
         },
+        mounted() {
+            this.getCart();
+        },
         methods: {
 
             getSummaries(param) {
@@ -355,10 +358,13 @@
                 return this.sumPrice;
             },
             deleteRow(index, rows) {
-                console.log(index);
-                console.log(rows);
-                rows.splice(index, 1);
+                // console.log(index);
+                // console.log(rows);
+                // console.log(rows[index].skuId);
+                // console.log(rows[index].label);
                 this.deleteCart(rows[index].skuId);
+                rows.splice(index, 1);
+                // this.getCart();
             },
             // 测试专用
             open() {
