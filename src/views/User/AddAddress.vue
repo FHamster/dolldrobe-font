@@ -4,7 +4,7 @@
             <div style="border-bottom: 2px solid darkgray ">收货地址</div>
         </el-header>
         <el-main>
-            <el-form :model="ruleForm" :rules="rules" ref="ruleForm">
+            <el-form :model="ruleForm"  ref="ruleForm">
                 <el-form-item  prop="name" class="item_he">
                     <div class="item_lab">收货人姓名:</div>
                         <el-input v-model="ruleForm.peopleName"
@@ -39,14 +39,15 @@
                 </el-form-item>
                 <el-form-item  prop="tagName" class="item_he">
                     <div class="item_lab">地址别名:</div>
-                    <el-input v-model="ruleForm.tagName" style="width: 150px">{{nowTag}}</el-input>
+                    <el-input v-model="ruleForm.tagName"
+                              style="width: 150px" >{{ruleForm.tagName}}</el-input>
                     <div
                             class="item_lab"
                             style="display: inline">建议填写常用名称</div>
-                    <el-button plain size="small" @click=changeTag(家里) >家里</el-button>
-                    <el-button plain size="small" @click=changeTag(父母家)>父母家</el-button>
-                    <el-button plain size="small" @click=changeTag(公司)>公司</el-button>
-                    <el-button plain size="small" @click=changeTag(学校)>学校</el-button>
+                    <el-button plain size="small" @click=changeTag(tagItems[0].tag) >家里</el-button>
+                    <el-button plain size="small" @click=changeTag(tagItems[1].tag)>父母家</el-button>
+                    <el-button plain size="small" @click=changeTag(tagItems[2].tag)>公司</el-button>
+                    <el-button plain size="small" @click=changeTag(tagItems[3].tag)>学校</el-button>
                 </el-form-item>
                 <el-form-item align="center" style="margin-top: 20px">
                     <el-button plain type="primary" > 保存收货地址</el-button>
@@ -61,7 +62,16 @@
         name: "AddAddress",
         data: function () {
             return {
-                nowTag:'',
+                nowTag:'123',
+                tagItems:[{
+                    tag:'家里'
+                },{
+                    tag:'父母家'
+                },{
+                    tag:'公司'
+                },{
+                    tag:'学校'
+                },],
                 ruleForm: [{
                     peopleName: '',
                     localArea: '',
@@ -93,7 +103,9 @@
         },
         methods:{
             changeTag(value){
-                    this.nowTag = value;
+                // console.log(value);
+                    this.ruleForm.tagName = value;
+                console.log(  this.ruleForm.tagName);
             }
         }
     }
