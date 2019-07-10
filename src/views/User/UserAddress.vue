@@ -1,8 +1,13 @@
 <template>
     <el-container style="background-color: #f5f7fa;width: 65%;margin-left: 15%;max-width: 1005px">
+        <el-dialog title="添加地址" :visible.sync="isAddAdrDialogVis" width="1000px">
+            <AddAddress></AddAddress>
+        </el-dialog>
         <el-header height="55px" style="margin-top: 15px">
             <div style="margin: 10px">
-                <el-button size="small" plain type="success" style="display: inline">新增收货地址</el-button>
+                <el-button size="small" plain type="success" style="display: inline"
+                           @click="isAddAdrDialogVis=!isAddAdrDialogVis">新增收货地址
+                </el-button>
                 <div style="display: inline">
                     您已创建
                     <div class="header_num">{{nowNum}}</div>
@@ -14,7 +19,7 @@
         </el-header>
         <el-main>
             <el-collapse v-model="activeName" accordion>
-                <el-collapse-item v-for="it in items" >
+                <el-collapse-item v-for="it in items" :key="it.adrKey">
                     <template slot="title">
                         <div style="font-family: 黑体 ;font-size: 15px ;padding: 5px 20px">
                             {{it.peopleName}}
@@ -67,7 +72,8 @@
                             <el-button type="text" size="mini">编辑</el-button>
                             <el-button type="text"
                                        @click="moveItem(it)"
-                                       size="mini">删除</el-button>
+                                       size="mini">删除
+                            </el-button>
                         </div>
                     </div>
                 </el-collapse-item>
@@ -90,13 +96,17 @@
 </template>
 
 <script>
+    import AddAddress from "./AddAddress";
+
     export default {
         name: "UserAddress",
+        components: {AddAddress},
         data: function () {
             return {
                 nowNum: 0,
                 maxNum: 20,
                 activeName: 1,
+                isAddAdrDialogVis: false,
                 items: [{
                     peopleName: '酷酷酷',
                     localArea: '宇宙国地球村',
@@ -105,6 +115,7 @@
                     telephone: '',
                     email: '',
                     isDefault: true,
+                    adrKey: 0
                 }, {
                     peopleName: '酷酷酷',
                     localArea: '宇宙国地球村',
@@ -113,6 +124,7 @@
                     telephone: '',
                     email: '',
                     isDefault: false,
+                    adrKey: 1
                 }, {
                     peopleName: '酷酷酷',
                     localArea: '宇宙国地球村',
@@ -121,29 +133,30 @@
                     telephone: '',
                     email: '',
                     isDeefault: false,
+                    adrKey: 2
                 }
                 ],
-            }
+            };
 
         },
-        methods:{
-            setNowNum(){
+        methods: {
+            setNowNum() {
                 this.nowNum = this.items.length;
             },
-            setDefault(key){
+            setDefault(key) {
                 // console.log(this.items);
-                for(let i = 0 ; i < this.items.length ;i ++){
+                for (let i = 0; i < this.items.length; i++) {
                     this.items[i].isDefault = false;
-                    if(this.items.indexOf(key) == i){
+                    if (this.items.indexOf(key) == i) {
                         this.items[i].isDefault = true;
                     }
                 }
             },
-            moveItem(key){
-                this.items.splice(this.items.indexOf(key),1);
+            moveItem(key) {
+                this.items.splice(this.items.indexOf(key), 1);
             }
         },
-        mounted(){
+        mounted() {
             this.setNowNum();
         },
     }
