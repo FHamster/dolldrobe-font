@@ -5,15 +5,18 @@
         </el-header>
         <el-main>
             <el-form :model="ruleForm" :rules="rules" ref="ruleForm">
-                <el-form-item prop="name" class="item_he">
+                <el-form-item class="item_he"
+                              prop="peopleName">
                     <div class="item_lab">收货人姓名:</div>
                     <el-input v-model="ruleForm.peopleName"
                               style="width: 230px; ">
                     </el-input>
                 </el-form-item>
-                <el-form-item class="item_he">
+                <el-form-item class="item_he" prop="localArea">
                     <div class="item_lab">所在地区:</div>
-                    <el-cascader :props="props"></el-cascader>
+                    <el-cascader :props="props"
+                                 v-model="ruleForm.localArea">
+                    </el-cascader>
                 </el-form-item>
                 <el-form-item prop="address" class="item_he">
                     <div class="item_lab">详细地址:</div>
@@ -58,15 +61,13 @@
 </template>
 
 <script>
-    const id = 0;
-
     import axios from 'axios';
 
     export default {
         name: "AddAddress",
         data: function () {
             return {
-                ruleForm: [{
+                ruleForm: {
                     peopleName: '',
                     //收件区域
                     localArea: '',
@@ -78,7 +79,8 @@
                     telephone: '',
                     email: '',
                     tagName: '',
-                }],
+                },
+
                 rules: {
                     peopleName: [{required: true, message: '请输入收件人姓名', trigger: 'blur'}],
                     localArea: [{required: true, message: '请输入收件人区域', trigger: 'blur'}],
@@ -99,10 +101,10 @@
                 props: {
                     lazy: true,
                     lazyLoad(node, resolve) {
-                        const {level} = node;
-                        console.log(level);
-                        console.log("node");
-                        console.log(node.value);
+                        // const {level} = node;
+                        // console.log(level);
+                        // console.log("node");
+                        // console.log(node.value);
 
                         axios.get('api/Region/RegionByParent', {
                             params: {ParentId: node.value}
@@ -114,7 +116,7 @@
                             }));
                             resolve(chilNode);
                         }).catch(err => {
-                            this.$message.error("error");
+                            this.$message.error("error" + err.message);
                         });
 
                         // console.log(resolve);
