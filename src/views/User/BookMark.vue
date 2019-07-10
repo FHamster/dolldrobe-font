@@ -1,6 +1,6 @@
 <template>
-    <el-container>
-        <el-header height="40px">
+    <el-container style="width: 85%;max-width: 1050px; margin-left: 10%">
+        <el-header height="40px" >
             <div style="width: 400px;display: inline ;align-items: center"
             >
                 <el-button type="text" class="head_titil">关注的商品</el-button>
@@ -30,7 +30,7 @@
             </el-header>
             <el-container>
 
-                <div class="goodPanel">
+                <div class="goodPanel" style="margin-left: 20px">
                     <el-card v-for="o in favo" :key="o.cNum"
                              :body-style="{ padding: '0px' }"
                              style="width: 230px;margin-right: 20px;"
