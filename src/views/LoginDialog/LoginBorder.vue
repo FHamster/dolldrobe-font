@@ -1,6 +1,6 @@
 <template>
     <el-container class="login-border" @keyup.enter.prevent="login">
-        <el-form :model="form" label-width="80px">
+        <el-form :model="form" label-width="80px" ref="form">
             <el-form-item label="帐号">
                 <el-input v-model="form.uAccountnumber"
                           autocomplete="off"
@@ -45,6 +45,7 @@
         methods: {
             login: function () {
                 //TODO 没实现
+
                 /* //使用jwt进行加密
                  // 要生成token的载荷
                  // let payload = this.form;
@@ -60,8 +61,9 @@
                      {algorithm: 'HS512'}
                  );*/
 
-
                 // console.log(123);
+
+
                 axios.post('/api/token/token', this.form)
                     .then((res) => {
                         //存储token
@@ -73,15 +75,26 @@
                         //清空输入框
                         this.uAccountnumber = '';
                         this.uPsw = '';
-
+                        this.resetForm();
                         this.$message.success('登录成功了啦');
+
                     })
                     .catch((err) => {
                         // eslint-disable-next-line no-console
                         console.log(err);
                         this.$message.error('登录失败了嘤嘤嘤');
+                        this.resetForm();
+
                     });
+            },
+            resetForm(){
+                this.form.uAccountnumber ='';
+                this.form.uPsw = '';
             }
+
+        },
+        mounted() {
+            this.resetForm();
         },
     }
 </script>

@@ -1,6 +1,6 @@
 <template>
     <div class="register-border">
-        <el-form :model="reg" status-icon :rules="rules" label-width="80px">
+        <el-form :model="reg" status-icon :rules="rules" label-width="80px" ref="regForm">
             <el-form-item label="注册帐号" prop="uAccountnumber">
                 <el-input v-model="reg.uAccountnumber" autocomplete="off" type="text"
                           prefix-icon="el-icon-user"
@@ -123,18 +123,34 @@
         },
         methods: {
             registerUser() {
-                axios.post('api/User/User', {
-                    uAccountnumber: this.reg.uAccountnumber,
-                    uPsw: this.reg.uPsw,
-                    uTel: this.reg.phone,
-                    uEmail: this.reg.mail
-                }).then(res => {
-                    this.$message.success('注册成功啦');
-                }).catch(err => {
+                if (this.submitForm("regForm")){
+                    axios.post('api/User/User', {
+                        uAccountnumber: this.reg.uAccountnumber,
+                        uPsw: this.reg.uPsw,
+                        uTel: this.reg.phone,
+                        uEmail: this.reg.mail
+                    }).then(res => {
+                        this.$message.success('注册成功啦');
+                    }).catch(err => {
+                        this.$message.error('出了些问题注册失败了');
+
+                    });
+                }
+                else{
+                    this.resetForm("regForm");
                     this.$message.error('出了些问题注册失败了');
-                });
+                }
+            },
+            submitForm(formName) {
+                this.$refs[formName].validate()
+            },
+            resetForm(formName){
+                this.$refs[formName].resetFields();
             }
-        }
+        },
+        mounted() {
+            this.resetForm("regForm");
+        },
     }
 </script>
 

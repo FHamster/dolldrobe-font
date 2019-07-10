@@ -189,7 +189,11 @@
                         this.items[i].isDefault = true;
                     }
                 }
-            },
+                this.items.sort(function(a,b){
+                    return b.isDefault - a.isDefault
+                  });
+                },
+
             moveItem(key) {
                 this.items.splice(this.items.indexOf(key), 1);
             }

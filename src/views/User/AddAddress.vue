@@ -42,15 +42,14 @@
                 </el-form-item>
                 <el-form-item prop="tagName" class="item_he">
                     <div class="item_lab">地址别名:</div>
-                    <el-input v-model="ruleForm.tagName" style="width: 150px">{{nowTag}}</el-input>
+                    <el-input v-model="ruleForm.tagName" style="width: 150px">{{ruleForm.tagName}}</el-input>
                     <div
                             class="item_lab"
-                            style="display: inline">建议填写常用名称
-                    </div>
-                    <el-button plain size="small" @click=changeTag(家里)>家里</el-button>
-                    <el-button plain size="small" @click=changeTag(父母家)>父母家</el-button>
-                    <el-button plain size="small" @click=changeTag(公司)>公司</el-button>
-                    <el-button plain size="small" @click=changeTag(学校)>学校</el-button>
+                            style="display: inline">建议填写常用名称</div>
+                    <el-button plain size="small" @click=changeTag(tagItems[0].tag) >家里</el-button>
+                    <el-button plain size="small" @click=changeTag(tagItems[1].tag)>父母家</el-button>
+                    <el-button plain size="small" @click=changeTag(tagItems[2].tag)>公司</el-button>
+                    <el-button plain size="small" @click=changeTag(tagItems[3].tag)>学校</el-button>
                 </el-form-item>
                 <el-form-item align="center" style="margin-top: 20px">
                     <el-button plain type="primary" @click="addAddress">保存收货地址</el-button>
@@ -67,8 +66,16 @@
         name: "AddAddress",
         data: function () {
             return {
-                nowTag: '',
-                ruleForm: {
+                tagItems:[{
+                    tag:'家里'
+                },{
+                    tag:'父母家'
+                },{
+                    tag:'公司'
+                },{
+                    tag:'学校'
+                },],
+                ruleForm: [{
                     peopleName: '',
                     //收件区域
                     localArea: '',
@@ -78,10 +85,9 @@
                     phone: '',
                     //固定电话号码
                     telephone: '',
-                    email: '',
+                    e_mail: '',
                     tagName: '',
-                },
-
+                }],
                 rules: {
                     peopleName: [{required: true, message: '请输入收件人姓名', trigger: 'blur'}],
                     localArea: [{required: true, message: '请输入收件人区域', trigger: 'blur'}],
@@ -93,7 +99,7 @@
                             message: '这个手机号是神仙号码吧'
                         }
                     ],
-                    email: [{
+                    e_mail: [{
                         pattern: '^[a-zA-Z_]{1,}[0-9]{0,}@(([a-zA-z0-9]-*){1,}\\.){1,3}[a-zA-z\\-]{1,}$',
                         message: '不合法的邮箱'
                     }]
@@ -150,18 +156,31 @@
                     saTelphone: this.ruleForm.telephone,
                     saPhone: this.ruleForm.phone
                 };
-                axios.post('api/Address/Address', add, {
-                    headers: {
-                        'token': this.$store.getters.getToken
-                    }
-                }).then(res => {
-                    this.$message.success("成功添加收货地址");
-                }).catch(err => {
+                if(this.submitForm("ruleForm")){
+                    axios.post('api/Address/Address', add, {
+                        headers: {
+                            'token': this.$store.getters.getToken
+                        }
+                    }).then(res => {
+                        this.$message.success("成功添加收货地址");
+                    }).catch(err => {
+                        this.$message.error("收获收货地址添加失败");
+                    });
+                }else{
                     this.$message.error("收获收货地址添加失败");
-                });
+                }
             },
             changeTag(value) {
-                this.nowTag = value;
+                // console.log(value);
+                    this.ruleForm.tagName = value;
+                this.$forceUpdate()
+                // console.log(  this.ruleForm.tagName);
+            },
+            submitForm(formName) {
+                this.$refs[formName].validate()
+            },
+            resetForm(formName){
+                this.$refs[formName].resetFields();
             }
         }
     }

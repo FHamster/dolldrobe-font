@@ -17,16 +17,22 @@
                     active-text-color="#B3748D"
                     router>
 
-                <el-menu-item index="UserAddress" class="back">
+                <el-menu-item index="UserAddress"
+                              @click="changeHidden"
+                              class="back">
                     <i class="el-icon-location"></i>
                     <span slot="title">我的地址</span>
                 </el-menu-item>
 
-                <el-menu-item index="ShoppingBag" class="back">
+                <el-menu-item index="ShoppingBag"
+                              @click="changeHidden"
+                              class="back">
                     <i class="el-icon-shopping-cart-full"></i>
                     <span slot="title">我的购物车</span>
                 </el-menu-item>
-                <el-menu-item index="GoodOrder" class="back">
+                <el-menu-item index="GoodOrder"
+                              @click="changeHidden"
+                              class="back">
                     <i class="el-icon-goods "></i>
                     <span slot="title">我的订单</span>
                 </el-menu-item>
@@ -90,7 +96,9 @@
                             router
                             class="user-center-bar">
                         <div class="my_logo">
-                            我的<del>冰箱</del>->衣橱
+                            我的
+                            <del>冰箱</del>
+                            ->衣橱
                         </div>
                         <el-menu-item index="UserCenter">首页</el-menu-item>
 
@@ -133,6 +141,13 @@
                 </el-header>
                 <el-main>
                     <router-view></router-view>
+                    <el-carousel indicator-position="outside" :hidden=isHidden
+                                 height="800px"
+                    >
+                        <el-carousel-item v-for="item of items" :key="item.url">
+                            <el-image :src=item.url fit="fill"></el-image>
+                        </el-carousel-item>
+                    </el-carousel>
                 </el-main>
             </el-container>
         </el-main>
@@ -146,6 +161,17 @@
         name: "UserCenter",
         data: function () {
             return {
+                items: [{
+                    url: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1563382908&di=c8042cc7a0825223dc848cb101c51b2a&imgtype=jpg&er=1&src=http%3A%2F%2Fpic.rmb.bdstatic.com%2Fcd2476300bbad8dfcfff1d277b79401a.jpeg'
+                     },
+                    {
+                        url:'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1562788315988&di=5c03425786b287658469608f493ddc91&imgtype=0&src=http%3A%2F%2Fb-ssl.duitang.com%2Fuploads%2Fitem%2F201801%2F13%2F20180113215940_VTkFe.jpeg'
+                    },
+                    {
+                    url:'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1562788493857&di=95900b26cd7c834bdd6913e1edd9b9bc&imgtype=0&src=http%3A%2F%2Fpic1.win4000.com%2Fwallpaper%2F9%2F54362d63810ea.jpg'
+                    },
+                ],
+                isHidden: false,
                 from: {
                     search: '',
                 },
@@ -154,6 +180,9 @@
         methods: {
             user_search() {
 
+            },
+            changeHidden() {
+                this.isHidden = true
             },
         }
     }
