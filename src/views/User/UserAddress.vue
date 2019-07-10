@@ -1,7 +1,7 @@
 <template>
     <el-container style="background-color: #f5f7fa;width: 65%;margin-left: 15%;max-width: 1005px">
-        <el-dialog title="添加地址" :visible.sync="isAddAdrDialogVis" width="1000px">
-            <AddAddress></AddAddress>
+        <el-dialog   :visible.sync="isAddAdrDialogVis" width="760px">
+            <AddAddress slot="title"></AddAddress>
         </el-dialog>
         <el-header height="55px" style="margin-top: 15px">
             <div style="margin: 10px">
