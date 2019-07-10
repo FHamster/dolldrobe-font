@@ -17,8 +17,9 @@
                     active-text-color="#B3748D"
                     router>
 
-                <el-menu-item index="1" class="back">
+                <el-menu-item index="UserAddress" class="back">
                     <i class="el-icon-location"></i>
+                    <span slot="title">我的地址</span>
                 </el-menu-item>
 
                 <el-menu-item index="ShoppingBag" class="back">
