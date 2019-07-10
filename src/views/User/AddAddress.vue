@@ -42,18 +42,18 @@
                 </el-form-item>
                 <el-form-item prop="tagName" class="item_he">
                     <div class="item_lab">地址别名:</div>
-                    <el-input v-model="ruleForm.tagName" style="width: 150px"></el-input>
+                    <el-input v-model="ruleForm.tagName" style="width: 150px">{{nowTag}}</el-input>
                     <div
                             class="item_lab"
                             style="display: inline">建议填写常用名称
                     </div>
-                    <el-button plain size="small">家里</el-button>
-                    <el-button plain size="small">父母家</el-button>
-                    <el-button plain size="small">公司</el-button>
-                    <el-button plain size="small">学校</el-button>
+                    <el-button plain size="small" @click=changeTag(家里)>家里</el-button>
+                    <el-button plain size="small" @click=changeTag(父母家)>父母家</el-button>
+                    <el-button plain size="small" @click=changeTag(公司)>公司</el-button>
+                    <el-button plain size="small" @click=changeTag(学校)>学校</el-button>
                 </el-form-item>
                 <el-form-item align="center" style="margin-top: 20px">
-                    <el-button plain type="primary"> 保存收货地址</el-button>
+                    <el-button plain type="primary" @click="addAddress">保存收货地址</el-button>
                 </el-form-item>
             </el-form>
         </el-main>
@@ -67,6 +67,7 @@
         name: "AddAddress",
         data: function () {
             return {
+                nowTag: '',
                 ruleForm: {
                     peopleName: '',
                     //收件区域
@@ -91,12 +92,11 @@
                             pattern: '^(13[0-9]|14[5|7]|15[0|1|2|3|5|6|7|8|9]|18[0|1|2|3|5|6|7|8|9])\\d{8}$',
                             message: '这个手机号是神仙号码吧'
                         }
-                    ], telephone: [
-                        {
-                            pattern: '^(13[0-9]|14[5|7]|15[0|1|2|3|5|6|7|8|9]|18[0|1|2|3|5|6|7|8|9])\\d{8}$',
-                            message: '这个号码是神仙号码吧'
-                        }
-                    ]
+                    ],
+                    email: [{
+                        pattern: '^[a-zA-Z_]{1,}[0-9]{0,}@(([a-zA-z0-9]-*){1,}\\.){1,3}[a-zA-z\\-]{1,}$',
+                        message: '不合法的邮箱'
+                    }]
                 },
                 props: {
                     lazy: true,
@@ -137,6 +137,32 @@
             };
 
         },
+        methods: {
+            addAddress() {
+                let tmpArr = Array.from(this.ruleForm.localArea);
+
+                let add = {
+                    arNum: tmpArr.pop(),
+                    saDefault: this.ruleForm.peopleName,
+                    saDetail: this.ruleForm.address,
+                    saEmail: this.ruleForm.email,
+                    saTelphone: this.ruleForm.telephone,
+                    saPhone: this.ruleForm.phone
+                };
+                axios.post('api/Address/Address', add, {
+                    headers: {
+                        'token': this.$store.getters.getToken
+                    }
+                }).then(res => {
+                    this.$message.success("成功添加收货地址");
+                }).catch(err => {
+                    this.$message.error("收获收货地址添加失败");
+                });
+            },
+            changeTag(value) {
+                this.nowTag = value;
+            }
+        }
     }
 </script>
 

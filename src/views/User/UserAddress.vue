@@ -1,6 +1,6 @@
 <template>
     <el-container style="background-color: #f5f7fa;width: 65%;margin-left: 15%;max-width: 1005px">
-        <el-dialog   :visible.sync="isAddAdrDialogVis" width="760px">
+        <el-dialog :visible.sync="isAddAdrDialogVis" width="760px">
             <AddAddress slot="title"></AddAddress>
         </el-dialog>
         <el-header height="55px" style="margin-top: 15px">
@@ -69,7 +69,10 @@
                                        v-if="it.isDefault != true"
                                        size="mini">设为默认
                             </el-button>
-                            <el-button type="text" size="mini">编辑</el-button>
+                            <el-button type="text" size="mini"
+                                       @click="isAddAdrDialogVis=!isAddAdrDialogVis"
+                            >编辑
+                            </el-button>
                             <el-button type="text"
                                        @click="moveItem(it)"
                                        size="mini">删除

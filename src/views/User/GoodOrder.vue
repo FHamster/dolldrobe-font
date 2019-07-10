@@ -5,7 +5,7 @@
                 <div class="btn-pane">
                     <div style="display: inline ;margin-top: 20px">
                         <el-button type="text" size="mini"
-                                   style="margin-right: 10px; padding-top:17px;
+                                   style="margin-right: 30px; padding-top:17px;
                                     float: left">
                             全部订单
                         </el-button>

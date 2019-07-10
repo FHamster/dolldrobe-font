@@ -1,5 +1,5 @@
 <template>
-    <el-container class="login-border">
+    <el-container class="login-border" @keyup.enter.prevent="login">
         <el-form :model="form" label-width="80px">
             <el-form-item label="帐号">
                 <el-input v-model="form.uAccountnumber"
@@ -22,7 +22,10 @@
             </el-form-item>
         </el-form>
 
-        <el-button type="primary" @click="login" :round="true" class="login_btn">登录</el-button>
+        <el-button type="primary"
+                   @click="login"
+                   @keyup.enter.native="login"
+                   :round="true" class="login_btn">登录</el-button>
     </el-container>
 </template>
 

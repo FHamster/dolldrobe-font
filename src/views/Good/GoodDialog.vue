@@ -3,7 +3,7 @@
         <!--走马灯-->
         <el-aside>
             <el-carousel :interval="5000" arrow="always" height="440px" indicator-position="outside">
-                <el-carousel-item v-for="item in 4" :key="item">
+                <el-carousel-item v-for=" item in skuImage" :key="item">
                     <h3>{{ item }}</h3>
                 </el-carousel-item>
             </el-carousel>
@@ -41,12 +41,13 @@
                 <div class="good-info-pane">
                     <div style="white-space: nowrap">款式分类&nbsp;:&nbsp;</div>
 
-                    <div v-for="index of skuList" :key="index.skuId"
+                    <div v-for="index of skuList " :key="index.skuId"
                          @click="changeCurGood(index)">
                         <el-card :body-style="{ padding: '3px', }"
                                  shadow="hover"
-                                 style="width: 70px;margin: 5px 2px; height: 75px ;border: 1px solid #ccc">
-                            <el-image src="index.skuImg">
+                                 style="width: 70px;margin: 5px 2px; height: 75px ;border: 1px solid #ccc"
+                        >
+                            <el-image :src=getImg(index)>
                                 <div slot="error">
                                     <i class="el-icon-picture-outline"></i>
                                 </div>
@@ -78,7 +79,7 @@
             return {
                 GoodNum: '',
                 skuList: '',
-
+                skuImage: [],
                 curSku: {},
 
                 select: '',
@@ -150,9 +151,15 @@
                     }
                 }).then(res => {
                     // eslint-disable-next-line no-console
-                    console.log(res.data)
-                    this.skuList = res.data;
-
+                    // console.log(res.data)
+                    let tmplist = res.data;
+                    this.skuList = tmplist;
+                    // console.log(123);
+                    // console.log(this.skuList[0].skuImg);
+                    for (let i = 0; i < this.skuList.length; i++) {
+                        this.skuImage[i] = this.skuList[i].skuImg;
+                        // console.log(tmplist[i].skuImg);
+                    }
                     let list = this.skuList;
                     if (list.length > 0) {
                         this.curSku = list[0];
@@ -161,6 +168,10 @@
                 }).catch(err => {
 
                 });
+            },
+            getImg(value){
+                let i = this.skuList.indexOf(value);
+                return this.skuList[i].skuImg;
             }
 
         },
