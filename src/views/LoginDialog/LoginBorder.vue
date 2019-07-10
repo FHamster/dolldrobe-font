@@ -1,6 +1,6 @@
 <template>
     <el-container class="login-border" @keyup.enter.prevent="login">
-        <el-form :model="form" label-width="80px">
+        <el-form :model="form" label-width="80px" ref="loginForm">
             <el-form-item label="帐号">
                 <el-input v-model="form.uAccountnumber"
                           autocomplete="off"
@@ -81,7 +81,15 @@
                         console.log(err);
                         this.$message.error('登录失败了嘤嘤嘤');
                     });
+                this.resetForm("loginForm");
+            },
+            resetForm(formName){
+                this.$refs[formName].resetFields();
             }
+
+        },
+        mounted() {
+            this.resetForm("loginForm");
         },
     }
 </script>

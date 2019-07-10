@@ -66,7 +66,6 @@
         name: "AddAddress",
         data: function () {
             return {
-                nowTag:'123',
                 tagItems:[{
                     tag:'家里'
                 },{
