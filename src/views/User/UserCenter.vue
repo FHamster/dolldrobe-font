@@ -144,8 +144,8 @@
                     <el-carousel indicator-position="outside" :hidden=isHidden
                                  height="800px"
                     >
-                        <el-carousel-item v-for="item of items" :key="item">
-                            <el-image :src=item.url :fit="fill"></el-image>
+                        <el-carousel-item v-for="item of items" :key="item.url">
+                            <el-image :src=item.url fit="fill"></el-image>
                         </el-carousel-item>
                     </el-carousel>
                 </el-main>
