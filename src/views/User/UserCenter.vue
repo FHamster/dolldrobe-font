@@ -90,7 +90,7 @@
                             router
                             class="user-center-bar">
                         <div class="my_logo">
-                            我的衣橱
+                            我的<del>冰箱</del>->衣橱
                         </div>
                         <el-menu-item index="UserCenter">首页</el-menu-item>
 
