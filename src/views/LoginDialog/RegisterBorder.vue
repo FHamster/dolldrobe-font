@@ -142,7 +142,7 @@
                 }
             },
             submitForm(formName) {
-                this.$refs[formName].validate()
+                return this.$refs[formName].validate()
             },
             resetForm(formName){
                 this.$refs[formName].resetFields();
