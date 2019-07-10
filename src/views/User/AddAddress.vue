@@ -142,8 +142,9 @@
                 let tmpArr = Array.from(this.ruleForm.localArea);
 
                 let add = {
+                    saName: this.ruleForm.peopleName,
                     arNum: tmpArr.pop(),
-                    saDefault: this.ruleForm.peopleName,
+                    // saDefault: this.ruleForm.peopleName,
                     saDetail: this.ruleForm.address,
                     saEmail: this.ruleForm.email,
                     saTelphone: this.ruleForm.telephone,

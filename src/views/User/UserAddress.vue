@@ -79,6 +79,7 @@
                             </el-button>
                         </div>
                     </div>
+                    Z
                 </el-collapse-item>
                 <!--<el-collapse-item title="反馈 Feedback" name="2">-->
                 <!--<div>控制反馈：通过界面样式和交互动效让用户可以清晰的感知自己的操作；</div>-->
@@ -100,10 +101,12 @@
 
 <script>
     import AddAddress from "./AddAddress";
+    import axios from 'axios';
 
     export default {
         name: "UserAddress",
         components: {AddAddress},
+
         data: function () {
             return {
                 nowNum: 0,
@@ -143,6 +146,38 @@
 
         },
         methods: {
+
+            getRegionById(RegId) {
+                axios.get('api/Region/RegionName', {
+                    params: {LeafRegId: RegId}
+                }).then(res => {
+                    return res.data;
+                }).catch(err => {
+                    this.$message.error("查询区域出错");
+                });
+
+            },
+            getAddress() {
+                axios.get('api/Address/Address', {
+                    headers: {
+                        'token': this.$store.getters.getToken
+                    }
+                }).then(res => {
+                    this.items = res.data.map(it => ({
+                        peopleName: it.saName,
+                        localAreaId: it.arNum,
+                        localArea: this.getRegionById(it.arNum),
+                        address: it.saDetail,
+                        phone: it.saPhone,
+                        telephone: it.saTelphone,
+                        email: it.saEmail,
+                        isDefault: false,
+                        adrKey: it.saNum
+                    }));
+                }).catch(err => {
+                    this.$message.error("获取收货地址列表失败");
+                });
+            },
             setNowNum() {
                 this.nowNum = this.items.length;
             },
@@ -161,6 +196,7 @@
         },
         mounted() {
             this.setNowNum();
+            this.getAddress();
         },
     }
 </script>
