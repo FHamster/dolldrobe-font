@@ -145,7 +145,22 @@
                 return this.$refs[formName].validate()
             },
             resetForm(formName){
-                this.$refs[formName].resetFields();
+                var flag;
+                this.$refs[formName].validate((valid) => {
+
+                    if (valid) {
+                        flag = valid;
+                        // console.log(valid);
+                        return true
+
+                    } else {
+
+                        // console.log('error submit!!');
+                        flag = valid;
+                        return false;
+                    }
+                });
+                return flag;
             }
         },
         mounted() {

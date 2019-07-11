@@ -156,7 +156,9 @@
                     saTelphone: this.ruleForm.telephone,
                     saPhone: this.ruleForm.phone
                 };
+                console.log(this.submitForm("ruleForm"));
                 if(this.submitForm("ruleForm")){
+
                     axios.post('api/Address/Address', add, {
                         headers: {
                             'token': this.$store.getters.getToken
@@ -177,7 +179,22 @@
                 // console.log(  this.ruleForm.tagName);
             },
             submitForm(formName) {
-                return this.$refs[formName].validate();
+                var flag;
+                this.$refs[formName].validate((valid) => {
+
+                    if (valid) {
+                        flag = valid;
+                        // console.log(valid);
+                       return true
+
+                    } else {
+
+                        // console.log('error submit!!');
+                        flag = valid;
+                        return false;
+                    }
+                });
+                return flag;
             },
             resetForm(formName){
                 this.$refs[formName].resetFields();
