@@ -164,7 +164,7 @@
             }
         },
         mounted() {
-            this.resetForm("regForm");
+            // this.resetForm("regForm");
         },
     }
 </script>
