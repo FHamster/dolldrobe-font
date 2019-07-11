@@ -4,7 +4,7 @@
         <el-aside>
             <el-carousel :interval="5000" arrow="always" height="440px" indicator-position="outside">
                 <el-carousel-item v-for=" item in skuImage" :key="item">
-                    <h3>{{ item }}</h3>
+                   <el-image :src=item> </el-image>
                 </el-carousel-item>
             </el-carousel>
         </el-aside>
@@ -155,11 +155,12 @@
                     let tmplist = res.data;
                     this.skuList = tmplist;
                     // console.log(123);
-                    // console.log(this.skuList[0].skuImg);
+                    console.log(this.skuList);
                     for (let i = 0; i < this.skuList.length; i++) {
                         this.skuImage[i] = this.skuList[i].skuImg;
                         // console.log(tmplist[i].skuImg);
                     }
+                    // console.log(this.skuImage);
                     let list = this.skuList;
                     if (list.length > 0) {
                         this.curSku = list[0];
