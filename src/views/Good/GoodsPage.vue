@@ -156,20 +156,6 @@
                 this.getCart();
             },
 
-            addFavores() {
-                this.$message({
-                    message: '成功加入收藏夹啦',
-                    type: 'success'
-                });
-            },
-            addFavoerr() {
-                this.$message({
-                    showClose: true,
-                    message: '不知道为什么，反正是没加入收藏夹',
-                    type: 'error'
-                });
-            },
-
             addFavo: function (Com) {
                 axios.post('/api/Favorities/addFavorities', Com, {
                         headers: {
@@ -177,9 +163,10 @@
                         }
                     }
                 ).then(res => {
-                    this.addFavores();
+                    this.$message.success('成功加入收藏夹啦' + res.statusText);
                 }).catch(err => {
-                    this.addFavoerr();
+                    console.log(err.response.data);
+                    this.$message.error('不知道为什么，反正是没加入收藏夹 ' + err.response.data.message);
                 });
 
             },

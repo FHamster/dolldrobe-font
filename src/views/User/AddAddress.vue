@@ -52,7 +52,8 @@
                     <el-button plain size="small" @click=changeTag(tagItems[3].tag)>学校</el-button>
                 </el-form-item>
                 <el-form-item align="center" style="margin-top: 20px">
-                    <el-button plain type="primary" @click="addAddress">保存收货地址</el-button>
+                    <el-button plain type="primary"
+                               @click="addAddress">保存收货地址</el-button>
                 </el-form-item>
             </el-form>
         </el-main>
