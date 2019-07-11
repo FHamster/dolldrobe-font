@@ -36,7 +36,7 @@
                               style="width: 230px"
                     ></el-input>
                 </el-form-item>
-                <el-form-item prop="email" class="item_he" style="height: 50px">
+                <el-form-item prop="e_mail" class="item_he" style="height: 50px">
                     <div class="item_lab" style="display: inline; margin-right: 60px">邮箱地址:</div>
                     <el-input v-model="ruleForm.email" style="width: 260px"></el-input>
                 </el-form-item>
@@ -177,7 +177,7 @@
                 // console.log(  this.ruleForm.tagName);
             },
             submitForm(formName) {
-                this.$refs[formName].validate()
+                return this.$refs[formName].validate();
             },
             resetForm(formName){
                 this.$refs[formName].resetFields();
