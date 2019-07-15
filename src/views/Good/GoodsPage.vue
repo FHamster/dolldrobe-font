@@ -56,7 +56,7 @@
                                  shadow="hover"
 
                         >
-                            <img src="https://shadow.elemecdn.com/app/element/hamburger.9cf7b091-55e9-11e9-a976-7f4d0b07eef6.png"
+                            <img :src=o.cImg
                                  class="image"
                                  @click="visGoodDialog(o.cNum,o.cName)"
                             >
@@ -188,6 +188,7 @@
                     }
                 ).then(res => {
                     this.goodList = res.data;
+                    // console.log(this.goodList);
                 })
             }
         }
