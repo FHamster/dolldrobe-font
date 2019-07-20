@@ -113,9 +113,13 @@
                         // console.log("node");
                         // console.log(node.value);
 
-                        axios.get('api/Region/RegionByParent', {
-                            params: {ParentId: node.value}
-                        }).then(res => {
+                        if (node.value == null) {
+                            node.value = 1;
+                        }
+                        let url = 'api/Region/RegionByParent/' + node.value;
+
+                        axios.get(url
+                        ).then(res => {
                             const chilNode = res.data.map(item => ({
                                 value: item.arNum,
                                 label: item.arName,
@@ -158,7 +162,7 @@
                     saPhone: this.ruleForm.phone
                 };
                 console.log(this.submitForm("ruleForm"));
-                if(this.submitForm("ruleForm")){
+                if (this.submitForm("ruleForm")) {
 
                     axios.post('api/Address/Address', add, {
                         headers: {
@@ -169,13 +173,13 @@
                     }).catch(err => {
                         this.$message.error("收获收货地址添加失败");
                     });
-                }else{
+                } else {
                     this.$message.error("收获收货地址添加失败");
                 }
             },
             changeTag(value) {
                 // console.log(value);
-                    this.ruleForm.tagName = value;
+                this.ruleForm.tagName = value;
                 this.$forceUpdate()
                 // console.log(  this.ruleForm.tagName);
             },
@@ -186,7 +190,7 @@
                     if (valid) {
                         flag = valid;
                         // console.log(valid);
-                       return true
+                        return true
 
                     } else {
 
@@ -197,7 +201,7 @@
                 });
                 return flag;
             },
-            resetForm(formName){
+            resetForm(formName) {
                 this.$refs[formName].resetFields();
             }
         }
