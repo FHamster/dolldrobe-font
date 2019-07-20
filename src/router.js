@@ -100,7 +100,22 @@ export default new Router({
             // route level code-splitting
             // this generates a separate chunk (about.[hash].js) for this route
             // which is lazy-loaded when the route is visited.
+            children: [
+                {
+                    path: '/Express',
+                    name: 'Express',
+                    component: () => import( './views/User/Express')
+                }
+            ],
             component: () => import( './views/User/Member/OrderDetail')
+        },
+        {
+            path: '/Express',
+            name: 'Express',
+            // route level code-splitting
+            // this generates a separate chunk (about.[hash].js) for this route
+            // which is lazy-loaded when the route is visited.
+            component: () => import( './views/User/Express')
         }
     ]
 })

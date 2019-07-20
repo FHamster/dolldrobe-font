@@ -58,8 +58,8 @@
                         </div>
                     </div>
                 </div>
-                <div style="float: right ">
-
+                <div style="float: right ;width: 690px;overflow: auto;margin-left: 5px" >
+                    <router-view></router-view>
                 </div>
             </div>
 
