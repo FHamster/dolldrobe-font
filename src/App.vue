@@ -54,10 +54,13 @@ acc236
                         index="GoodsPage">商品浏览
                 </el-menu-item>
                 <el-menu-item
-                        index="OrderDetail">浏览
+                        index="PersonalData">浏览
                 </el-menu-item>
                 <el-menu-item
                         index="Express">Express
+                </el-menu-item>
+                <el-menu-item
+                        index="PersonDetail">PersonDetail
                 </el-menu-item>
             </el-menu>
         </el-header>
