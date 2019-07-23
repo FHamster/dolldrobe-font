@@ -104,7 +104,7 @@ export default new Router({
                 {
                     path: '/Express',
                     name: 'Express',
-                    component: () => import( './views/User/Express')
+                    component: () => import( './views/User/Scattered/Express')
                 }
             ],
             component: () => import( './views/User/Member/OrderDetail')
@@ -115,7 +115,26 @@ export default new Router({
             // route level code-splitting
             // this generates a separate chunk (about.[hash].js) for this route
             // which is lazy-loaded when the route is visited.
-            component: () => import( './views/User/Express')
+            component: () => import( './views/User/Scattered/Express')
+        },
+        {
+            path: '/PersonalData',
+            name: 'PersonalData',
+            // route level code-splitting
+            // this generates a separate chunk (about.[hash].js) for this route
+            // which is lazy-loaded when the route is visited.
+            children:[
+                {
+                    path:'/PersonDetail',
+                    name:'PersonDetail',
+                    component:() => import('./views/User/BannerModule/PersonDetail')
+                }
+            ],
+            component: () => import( './views/User/BannerModule/PersonalData')
+        },{
+            path:'/PersonDetail',
+            name:'PersonDetail',
+            component:() => import('./views/User/BannerModule/PersonDetail')
         }
     ]
 })
