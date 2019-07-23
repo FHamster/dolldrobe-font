@@ -36,7 +36,7 @@
                              style="width: 230px;margin-right: 20px;"
                              shadow="hover"
                     >
-                        <img src="https://shadow.elemecdn.com/app/element/hamburger.9cf7b091-55e9-11e9-a976-7f4d0b07eef6.png"
+                        <img :src=o.cImg
                              class="image">
                         <div style="padding: 14px;">
                             <span class="GoodName">{{o.cName}}</span>
