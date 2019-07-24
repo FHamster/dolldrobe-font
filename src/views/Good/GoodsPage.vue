@@ -4,7 +4,7 @@
         <el-dialog title="商品详情" :visible.sync="isGoodDialogVis" width="1000px">
             <GoodDialog :c-num="curGood" :c-name="curGoodName"></GoodDialog>
         </el-dialog>
-
+<!--
         <el-header class="myhead">
             <img src="../../assets/icon.png" class="myimg">
             <div class="my_logo">玩偶衣橱</div>
@@ -19,22 +19,23 @@
                 </el-button>
             </div>
         </el-header>
+        -->
         <el-container>
-            <el-aside class="goodaside">
+          <!--  <el-aside class="goodaside">
                 <el-col v-for="index of 5" :key="index">
-                    <!--<el-card :body-style="{ padding: '10px' }" shadow="hover" style="width: 250px;margin-left: 15px ;"-->
-                    <!--@click="isGoodDialogVis = !isGoodDialogVis">-->
-                    <!--<img src="https://shadow.elemecdn.com/app/element/hamburger.9cf7b091-55e9-11e9-a976-7f4d0b07eef6.png"-->
-                    <!--class="image">-->
-                    <!--<div style="padding: 14px;width: 180px">-->
-                    <!--<span>好吃的汉堡</span>-->
-                    <!--<div class="bottom clearfix">-->
-                    <!--<el-button type="text" class="button">加入购物车</el-button>-->
-                    <!--</div>-->
-                    <!--</div>-->
-                    <!--</el-card>-->
+                    &lt;!&ndash;<el-card :body-style="{ padding: '10px' }" shadow="hover" style="width: 250px;margin-left: 15px ;"&ndash;&gt;
+                    &lt;!&ndash;@click="isGoodDialogVis = !isGoodDialogVis">&ndash;&gt;
+                    &lt;!&ndash;<img src="https://shadow.elemecdn.com/app/element/hamburger.9cf7b091-55e9-11e9-a976-7f4d0b07eef6.png"&ndash;&gt;
+                    &lt;!&ndash;class="image">&ndash;&gt;
+                    &lt;!&ndash;<div style="padding: 14px;width: 180px">&ndash;&gt;
+                    &lt;!&ndash;<span>好吃的汉堡</span>&ndash;&gt;
+                    &lt;!&ndash;<div class="bottom clearfix">&ndash;&gt;
+                    &lt;!&ndash;<el-button type="text" class="button">加入购物车</el-button>&ndash;&gt;
+                    &lt;!&ndash;</div>&ndash;&gt;
+                    &lt;!&ndash;</div>&ndash;&gt;
+                    &lt;!&ndash;</el-card>&ndash;&gt;
                 </el-col>
-            </el-aside>
+            </el-aside>-->
             <el-container>
                 <el-header height="20px" style="align-text: center">
                     <el-row>
