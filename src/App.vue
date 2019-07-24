@@ -26,7 +26,8 @@ acc236
                     active-text-color="#B3748D"
                     router
             >
-                <el-menu-item @click="dialogVis = !dialogVis" style="background-image: linear-gradient(to left, #f5f7fa 0%, #c3cfe2 100%);" >
+                <el-menu-item @click="dialogVis = !dialogVis"
+                              style="background-image: linear-gradient(to left, #f5f7fa 0%, #c3cfe2 100%);">
                     <template slot="title">
                         <el-avatar>U</el-avatar>
                     </template>
@@ -34,7 +35,7 @@ acc236
                 <el-menu-item
                         index="UserCenter">用户中心
                 </el-menu-item>
-                <el-submenu index="2" >
+                <el-submenu index="2">
                     <template slot="title">我的工作台</template>
                     <el-menu-item index="2-1">选项1</el-menu-item>
                     <el-menu-item index="2-2">选项2</el-menu-item>
@@ -57,7 +58,7 @@ acc236
                         index="MessageBorder">浏览
                 </el-menu-item>
                 <!--<el-menu-item-->
-                        <!--index="Express">Express-->
+                <!--index="Express">Express-->
                 <!--</el-menu-item>-->
                 <el-menu-item
                         index="PersonDetail">PersonDetail
@@ -91,7 +92,7 @@ acc236
         data() {
             return {
                 activeIndex: '1',
-                activeIndex2: '1',
+                activeIndex2: 'GoodsPage',
                 dialogVis: false
             };
         },
