@@ -53,7 +53,7 @@
                     <div class="goodPanel">
                         <el-card v-for="o in goodList" :key="o.cNum"
                                  :body-style="{ padding: '0px' }"
-                                 style="width: 230px;margin-right: 20px;"
+                                 style="width: 250px;margin-right: 20px;"
                                  shadow="hover"
 
                         >

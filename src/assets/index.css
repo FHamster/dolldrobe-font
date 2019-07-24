@@ -1,0 +1,14 @@
+.shadow-around {
+    box-shadow: 0 0 15px rgba(28, 31, 33, .1);
+    padding: 15px 40px;
+}
+
+.flex-col {
+    display: flex;
+    flex-direction: column;
+}
+
+.flex-row {
+    display: flex;
+    flex-direction: row;
+}

@@ -176,7 +176,7 @@
         /*align-self: center;*/
     }
 
-    .back {
+    .asideMenu {
         background-image: linear-gradient(to left, #f5f7fa 0%, #c3cfe2 100%);
     }
 

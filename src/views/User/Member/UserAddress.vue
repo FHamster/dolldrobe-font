@@ -1,5 +1,5 @@
 <template>
-    <el-container style="background-color: #f5f7fa;width: 65%;margin-left: 15%;max-width: 1005px">
+    <el-container style="background-color: #f5f7fa;width: 65%;max-width: 1005px">
         <el-dialog :visible.sync="isAddAdrDialogVis" width="760px">
             <AddAddress slot="title"></AddAddress>
         </el-dialog>
