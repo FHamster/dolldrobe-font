@@ -151,66 +151,66 @@
                 </el-main>
             </el-container>
         </el-main>
-        <el-aside width="61px" ref="aright"
-                  style="height:285px ; float: right;background-image: linear-gradient(to right, #f5f7fa 0%, #c3cfe2 100%);">
-            <div style="height: 61px" class="back2">
-                <el-tooltip class="item" effect="dark" content="切换画手" placement="left">
-                    <el-switch
-                            v-model="isPainter"
-                            active-color="#13ce66"
-                            inactive-color="#888888"
-                            style="z-index: 10;margin-left: 10px;margin-top: 20px"
-                    >
-                    </el-switch>
-                </el-tooltip>
+        <!--<el-aside width="61px" ref="aright"-->
+                  <!--style="height:285px ; float: right;background-image: linear-gradient(to right, #f5f7fa 0%, #c3cfe2 100%);">-->
+            <!--<div style="height: 61px" class="back2">-->
+                <!--<el-tooltip class="item" effect="dark" content="切换画手" placement="left">-->
+                    <!--<el-switch-->
+                            <!--v-model="isPainter"-->
+                            <!--active-color="#13ce66"-->
+                            <!--inactive-color="#888888"-->
+                            <!--style="z-index: 10;margin-left: 10px;margin-top: 20px"-->
+                    <!--&gt;-->
+                    <!--</el-switch>-->
+                <!--</el-tooltip>-->
 
 
-            </div>
+            <!--</div>-->
 
-            <el-menu
-                    default-active="2"
-                    text-color="#547A28"
-                    :collapse="true"
-                    style="width: 60px;"
-                    class="back2"
-                    active-text-color="#B3748D"
-                    :hidden="!isPainter"
-                    router>
+            <!--<el-menu-->
+                    <!--default-active="2"-->
+                    <!--text-color="#547A28"-->
+                    <!--:collapse="true"-->
+                    <!--style="width: 60px;"-->
+                    <!--class="back2"-->
+                    <!--active-text-color="#B3748D"-->
+                    <!--:hidden="!isPainter"-->
+                    <!--router>-->
 
-                <el-menu-item index="5" class="back2">
-                    <i class="el-icon-user"></i>
-                    <span slot="title">个人中心</span>
-                </el-menu-item>
-                <el-menu-item index="1"
-                              @click="changeHidden"
-                              class="back2">
-                    <i class="el-icon-picture-outline"></i>
-                    <span slot="title">发布画稿</span>
-                </el-menu-item>
-                <el-submenu index="4" class="back2">
-                    <template slot="title">
-                        <i class="el-icon-bangzhu"></i>
-                    </template>
-                    <el-menu-item-group class="back2">
-                        <template slot="title">画稿控制</template>
-                        <el-menu-item index="4-1" style="font-size: 10px" class="back2">修改画稿</el-menu-item>
-                        <el-menu-item index="4-2" style="font-size: 10px" class="back2">画稿状态</el-menu-item>
-                    </el-menu-item-group>
-                </el-submenu>
-                <!--<el-menu-item index="4">-->
-                <!--<i class="el-icon-tickets"></i>-->
-                <!--<span slot="title">我的订单</span>-->
+                <!--<el-menu-item index="5" class="back2">-->
+                    <!--<i class="el-icon-user"></i>-->
+                    <!--<span slot="title">个人中心</span>-->
+                <!--</el-menu-item>-->
+                <!--<el-menu-item index="1"-->
+                              <!--@click="changeHidden"-->
+                              <!--class="back2">-->
+                    <!--<i class="el-icon-picture-outline"></i>-->
+                    <!--<span slot="title">发布画稿</span>-->
+                <!--</el-menu-item>-->
+                <!--<el-submenu index="4" class="back2">-->
+                    <!--<template slot="title">-->
+                        <!--<i class="el-icon-bangzhu"></i>-->
+                    <!--</template>-->
+                    <!--<el-menu-item-group class="back2">-->
+                        <!--<template slot="title">画稿控制</template>-->
+                        <!--<el-menu-item index="4-1" style="font-size: 10px" class="back2">修改画稿</el-menu-item>-->
+                        <!--<el-menu-item index="4-2" style="font-size: 10px" class="back2">画稿状态</el-menu-item>-->
+                    <!--</el-menu-item-group>-->
+                <!--</el-submenu>-->
+                <!--&lt;!&ndash;<el-menu-item index="4">&ndash;&gt;-->
+                <!--&lt;!&ndash;<i class="el-icon-tickets"></i>&ndash;&gt;-->
+                <!--&lt;!&ndash;<span slot="title">我的订单</span>&ndash;&gt;-->
+                <!--&lt;!&ndash;</el-menu-item>&ndash;&gt;-->
+
+                <!--<el-menu-item index="6" class="back2">-->
+                    <!--<i class="el-icon-star-off"></i>-->
+                    <!--<span slot="title">我的关注</span>-->
                 <!--</el-menu-item>-->
 
-                <el-menu-item index="6" class="back2">
-                    <i class="el-icon-star-off"></i>
-                    <span slot="title">我的关注</span>
-                </el-menu-item>
 
 
-
-            </el-menu>
-        </el-aside>
+            <!--</el-menu>-->
+        <!--</el-aside>-->
 
     </el-container>
 </template>
