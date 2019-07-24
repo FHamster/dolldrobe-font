@@ -12,11 +12,11 @@
                 我的衣橱
             </div>
 
+            <!--操作栏子菜单-->
             <el-submenu>
                 <template slot="title">操作栏</template>
                 <el-menu-item index="UserAddress"
-                              @click="changeHidden"
-                >
+                              @click="changeHidden">
                     <i class="el-icon-location"></i>
                     <span slot="title">我的地址</span>
                 </el-menu-item>
@@ -25,12 +25,12 @@
                 <el-submenu index="4" class="asideMenu">
                     <template slot="title">
                         <i class="el-icon-tickets"></i>
+                        <span>我的发票</span>
                     </template>
-                    <el-menu-item-group>
-                        <template slot="title">我的发票</template>
-                        <el-menu-item index="4-1" style="font-size: 10px">开票信息</el-menu-item>
-                        <el-menu-item index="4-2" style="font-size: 10px">发票管理</el-menu-item>
-                    </el-menu-item-group>
+
+                    <el-menu-item index="4-1">开票信息</el-menu-item>
+                    <el-menu-item index="4-2">发票管理</el-menu-item>
+
                 </el-submenu>
                 <!--<el-menu-item index="4">-->
                 <!--<i class="el-icon-tickets"></i>-->
@@ -56,29 +56,24 @@
                 <el-submenu index="10">
                     <template slot="title">
                         <i class="el-icon-warning-outline"></i>
+                        <span>退款维权</span>
                     </template>
-                    <el-menu-item-group>
-                        <template slot="title">退款维权</template>
-                        <el-menu-item index="10-1" style="font-size: 10px">退款管理</el-menu-item>
-                        <el-menu-item index="10-2" style="font-size: 10px">投诉管理</el-menu-item>
-                        <el-menu-item index="10-3" style="font-size: 10px">举报管理</el-menu-item>
-                    </el-menu-item-group>
+                    <el-menu-item index="10-1">退款管理</el-menu-item>
+                    <el-menu-item index="10-2">投诉管理</el-menu-item>
+                    <el-menu-item index="10-3">举报管理</el-menu-item>
+
                 </el-submenu>
-
-
             </el-submenu>
             <el-menu-item index="UserCenter">首页</el-menu-item>
 
             <el-menu-item index="ShoppingBag"
-                          @click="changeHidden"
-            >
+                          @click="changeHidden">
                 <i class="el-icon-shopping-cart-full"></i>
                 <span slot="title">我的购物车</span>
             </el-menu-item>
 
             <el-menu-item index="GoodOrder"
-                          @click="changeHidden"
-            >
+                          @click="changeHidden">
                 <i class="el-icon-goods "></i>
                 <span slot="title">我的订单</span>
             </el-menu-item>
@@ -86,8 +81,12 @@
                 <i class="el-icon-star-off"></i>
                 <span slot="title">我的收藏</span>
             </el-menu-item>
+
             <el-submenu index="2">
-                <template slot="title">账户设置</template>
+                <template slot="title">
+                    <i class="el-icon-user"></i>
+                    <span>账户设置</span>
+                </template>
                 <el-submenu index="2-1">
                     <template slot="title">安全设置</template>
                     <el-menu-item index="2-1-1">修改登录密码</el-menu-item>

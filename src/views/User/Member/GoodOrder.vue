@@ -62,8 +62,7 @@
             <el-table-column
                     label="收货人"
                     width="100px"
-                    align="center"
-            >
+                    align="center">
                 <template slot-scope="scope">
                     <el-popover trigger="hover"
                                 placement="top">
@@ -85,8 +84,7 @@
             <el-table-column
                     label="金额"
                     width="110px"
-                    align="center"
-            >
+                    align="center">
                 <template slot-scope="scope">
                         <span>
                             <div>

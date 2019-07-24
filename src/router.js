@@ -6,13 +6,20 @@ Vue.use(Router)
 export default new Router({
     routes: [
         {
+            // 默认页面
             path: '/',
-            redirect: "/GoodsPage"
+            redirect: "/MainPage"
         },
         {
-            path: '/about',
-            name: 'about',
-            component: () => import(/* webpackChunkName: "about" */ './views/About.vue')
+            // 未找到页面
+            path: '*',
+            redirect: "/MainPage"
+        },
+
+        {
+            path: '/MainPage',
+            name: 'MainPage',
+            component: () => import( './views/MainPage')
         },
         {
             path: '/UserCenter',
