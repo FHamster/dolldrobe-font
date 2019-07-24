@@ -105,7 +105,7 @@
                         <el-tag size="mini"
                                 disable-transitions>{{scope.row.tag}}
                         </el-tag>
-                        <el-button type="text">
+                        <el-button type="text" >
                             订单详情
                         </el-button>
                     </template>

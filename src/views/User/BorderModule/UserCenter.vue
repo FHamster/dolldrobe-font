@@ -7,13 +7,14 @@
 
         <!--                :default-active="activeIndex2"-->
 
-        <el-aside width="61px" style="background-image: linear-gradient(to left, #f5f7fa 0%, #c3cfe2 100%);">
+        <el-aside width="61px" style="background-image: linear-gradient(to left, #f5f7fa 0%, #c3cfe2 100%); height: 560px" ref="aleft" >
             <el-menu
                     default-active="2"
                     text-color="#547A28"
                     :collapse="true"
                     style="width: 60px;"
                     class="back"
+                    :hidden="isPainter"
                     active-text-color="#B3748D"
                     router>
 
@@ -113,8 +114,8 @@
                             </el-submenu>
                             <el-submenu index="2-2">
                                 <template slot="title">个人设置</template>
-                                <el-menu-item index="2-1-1">收获地址</el-menu-item>
-                                <el-menu-item index="2-1-2">修改头像、昵称</el-menu-item>
+                                <el-menu-item index="UserAddress">收货地址</el-menu-item>
+                                <el-menu-item index="PersonDetail">修改头像、昵称</el-menu-item>
                                 <el-menu-item index="2-1-3">消息提醒设置</el-menu-item>
                             </el-submenu>
                         </el-submenu>
@@ -137,21 +138,79 @@
                                 </el-button>
                             </div>
                         </div>
+                        <!--<di>-->
+                        <!--<el-switch-->
+                        <!--&gt;-->
+                        <!--</el-switch>-->
+                        <!--</di>-->
                     </el-menu>
                 </el-header>
                 <el-main>
                     <router-view></router-view>
-                    <el-carousel indicator-position="outside" :hidden=isHidden
-                                 height="800px"
-                    >
-                        <el-carousel-item v-for="item of items" :key="item.url">
-                            <el-image :src=item.url fit="fill"></el-image>
-                        </el-carousel-item>
-                    </el-carousel>
+
                 </el-main>
             </el-container>
         </el-main>
+        <el-aside width="61px" ref="aright"
+                  style="height:285px ; float: right;background-image: linear-gradient(to right, #f5f7fa 0%, #c3cfe2 100%);">
+            <div style="height: 61px" class="back2">
+                <el-tooltip class="item" effect="dark" content="切换画手" placement="left">
+                    <el-switch
+                            v-model="isPainter"
+                            active-color="#13ce66"
+                            inactive-color="#888888"
+                            style="z-index: 10;margin-left: 10px;margin-top: 20px"
+                    >
+                    </el-switch>
+                </el-tooltip>
 
+
+            </div>
+
+            <el-menu
+                    default-active="2"
+                    text-color="#547A28"
+                    :collapse="true"
+                    style="width: 60px;"
+                    class="back2"
+                    active-text-color="#B3748D"
+                    :hidden="!isPainter"
+                    router>
+
+                <el-menu-item index="5" class="back2">
+                    <i class="el-icon-user"></i>
+                    <span slot="title">个人中心</span>
+                </el-menu-item>
+                <el-menu-item index="1"
+                              @click="changeHidden"
+                              class="back2">
+                    <i class="el-icon-picture-outline"></i>
+                    <span slot="title">发布画稿</span>
+                </el-menu-item>
+                <el-submenu index="4" class="back2">
+                    <template slot="title">
+                        <i class="el-icon-bangzhu"></i>
+                    </template>
+                    <el-menu-item-group class="back2">
+                        <template slot="title">画稿控制</template>
+                        <el-menu-item index="4-1" style="font-size: 10px" class="back2">修改画稿</el-menu-item>
+                        <el-menu-item index="4-2" style="font-size: 10px" class="back2">画稿状态</el-menu-item>
+                    </el-menu-item-group>
+                </el-submenu>
+                <!--<el-menu-item index="4">-->
+                <!--<i class="el-icon-tickets"></i>-->
+                <!--<span slot="title">我的订单</span>-->
+                <!--</el-menu-item>-->
+
+                <el-menu-item index="6" class="back2">
+                    <i class="el-icon-star-off"></i>
+                    <span slot="title">我的关注</span>
+                </el-menu-item>
+
+
+
+            </el-menu>
+        </el-aside>
 
     </el-container>
 </template>
@@ -161,14 +220,15 @@
         name: "UserCenter",
         data: function () {
             return {
+                isPainter: false,
                 items: [{
                     url: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1563382908&di=c8042cc7a0825223dc848cb101c51b2a&imgtype=jpg&er=1&src=http%3A%2F%2Fpic.rmb.bdstatic.com%2Fcd2476300bbad8dfcfff1d277b79401a.jpeg'
-                     },
+                },
                     {
-                        url:'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1562788315988&di=5c03425786b287658469608f493ddc91&imgtype=0&src=http%3A%2F%2Fb-ssl.duitang.com%2Fuploads%2Fitem%2F201801%2F13%2F20180113215940_VTkFe.jpeg'
+                        url: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1562788315988&di=5c03425786b287658469608f493ddc91&imgtype=0&src=http%3A%2F%2Fb-ssl.duitang.com%2Fuploads%2Fitem%2F201801%2F13%2F20180113215940_VTkFe.jpeg'
                     },
                     {
-                    url:'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1562788493857&di=95900b26cd7c834bdd6913e1edd9b9bc&imgtype=0&src=http%3A%2F%2Fpic1.win4000.com%2Fwallpaper%2F9%2F54362d63810ea.jpg'
+                        url: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1562788493857&di=95900b26cd7c834bdd6913e1edd9b9bc&imgtype=0&src=http%3A%2F%2Fpic1.win4000.com%2Fwallpaper%2F9%2F54362d63810ea.jpg'
                     },
                 ],
                 isHidden: false,
@@ -184,6 +244,7 @@
             changeHidden() {
                 this.isHidden = true
             },
+
         }
     }
 </script>
@@ -261,6 +322,10 @@
 
     .back {
         background-image: linear-gradient(to left, #f5f7fa 0%, #c3cfe2 100%);
+    }
+
+    .back2 {
+        background-image: linear-gradient(to right, #f5f7fa 0%, #c3cfe2 100%);
     }
 
     .search {

@@ -8,7 +8,7 @@
                 <el-button size="small" plain type="success" style="display: inline"
                            @click="isAddAdrDialogVis=!isAddAdrDialogVis">新增收货地址
                 </el-button>
-<!--                <el-button @click="runFun">123</el-button>-->
+                <!--                <el-button @click="runFun">123</el-button>-->
                 <div style="display: inline">
                     您已创建
                     <div class="header_num">{{nowNum}}</div>
@@ -41,7 +41,7 @@
                             <div class="card_main">{{it.peopleName}}</div>
                             <div class="clr"></div>
                         </div>
-                        <div style="width: 450px">
+                        <div style="width: 550px">
                             <div class="card_span ">所在地区：&nbsp;</div>
                             <div class="card_main">{{it.localArea}}</div>
                             <div class="clr"></div>
@@ -66,6 +66,7 @@
                             <div class="card_main">{{it.email}}</div>
 
                         </div>
+
                         <div style="float: right">
                             <el-button type="text"
                                        @click="setDefault(it)"
@@ -214,6 +215,7 @@
                 this.items.splice(this.items.indexOf(key), 1);
             }
         },
+
         mounted() {
             this.getAddress();
             this.setNowNum();
@@ -232,12 +234,15 @@
         margin: 5px 10px;
         padding: 5px 10px;
         border: 2px solid #e2ebf0;
-        height: 150px;
+        display: flex;
+        flex-direction: column;
+
+        /*height: 150px;*/
     }
 
     .card_span {
         float: left;
-        width: 70px;
+        width: 100px;
         color: #999;
         display: inline;
         text-align: right;

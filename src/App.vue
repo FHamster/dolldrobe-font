@@ -53,12 +53,15 @@ acc236
                 <el-menu-item
                         index="GoodsPage">商品浏览
                 </el-menu-item>
+                <el-menu-item
+                        index="MessageBorder">浏览
+                </el-menu-item>
                 <!--<el-menu-item-->
-                        <!--index="UserAddress">浏览-->
+                        <!--index="Express">Express-->
                 <!--</el-menu-item>-->
-                <!--<el-menu-item-->
-                        <!--index="GoodDialog">商品浏览-->
-                <!--</el-menu-item>-->
+                <el-menu-item
+                        index="PersonDetail">PersonDetail
+                </el-menu-item>
             </el-menu>
         </el-header>
 

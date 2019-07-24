@@ -114,7 +114,7 @@
                     mail: [
                         {required: true, message: '请输入绑定邮箱', trigger: 'blur'},
                         {
-                            pattern: '^[a-zA-Z_]{1,}[0-9]{0,}@(([a-zA-z0-9]-*){1,}\\.){1,3}[a-zA-z\\-]{1,}$',
+                            pattern: '^[a-zA-Z_0-9]{1,}[0-9]{0,}@(([a-zA-z0-9]-*){1,}\\.){1,3}[a-zA-z\\-]{1,}$',
                             message: '不合法的邮箱'
                         }
                     ]
