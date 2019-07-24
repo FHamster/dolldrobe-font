@@ -114,8 +114,8 @@
                             </el-submenu>
                             <el-submenu index="2-2">
                                 <template slot="title">个人设置</template>
-                                <el-menu-item index="2-1-1">收获地址</el-menu-item>
-                                <el-menu-item index="2-1-2">修改头像、昵称</el-menu-item>
+                                <el-menu-item index="UserAddress">收货地址</el-menu-item>
+                                <el-menu-item index="PersonDetail">修改头像、昵称</el-menu-item>
                                 <el-menu-item index="2-1-3">消息提醒设置</el-menu-item>
                             </el-submenu>
                         </el-submenu>

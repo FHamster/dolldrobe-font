@@ -14,9 +14,6 @@ export default new Router({
         {
             path: '/about',
             name: 'about',
-            // route level code-splitting
-            // this generates a separate chunk (about.[hash].js) for this route
-            // which is lazy-loaded when the route is visited.
             component: () => import(/* webpackChunkName: "about" */ './views/About.vue')
         },
         {
@@ -48,58 +45,37 @@ export default new Router({
                     component: () => import( './views/User/Member/OrderDetail.vue')
                 }
             ],
-            // route level code-splitting
-            // this generates a separate chunk (about.[hash].js) for this route
-            // which is lazy-loaded when the route is visited.
-            component: () => import( './views/User/UserCenter')
+            component: () => import( './views/User/BorderModule/UserCenter')
 
         },
         {
             path: '/GoodsPage',
             name: 'GoodsPage',
-            // route level code-splitting
-            // this generates a separate chunk (about.[hash].js) for this route
-            // which is lazy-loaded when the route is visited.
             component: () => import( './views/Good/GoodsPage')
         },
         {
             path: '/ShoppingBag',
             name: 'ShoppingBag',
-            // route level code-splitting
-            // this generates a separate chunk (about.[hash].js) for this route
-            // which is lazy-loaded when the route is visited.
             component: () => import( './views/User/Member/ShoppingBag')
         },
         {
             path: '/GoodDialog',
             name: 'GoodDialog',
-            // route level code-splitting
-            // this generates a separate chunk (about.[hash].js) for this route
-            // which is lazy-loaded when the route is visited.
             component: () => import( './views/Good/GoodDialog')
         },
         {
             path: '/GoodOrder',
             name: 'GoodOrder',
-            // route level code-splitting
-            // this generates a separate chunk (about.[hash].js) for this route
-            // which is lazy-loaded when the route is visited.
             component: () => import( './views/User/Member/GoodOrder')
         },
         {
             path: '/UserAddress',
             name: 'UserAddress',
-            // route level code-splitting
-            // this generates a separate chunk (about.[hash].js) for this route
-            // which is lazy-loaded when the route is visited.
             component: () => import( './views/User/Member/UserAddress')
         },
         {
             path: '/OrderDetail',
             name: 'OrderDetail',
-            // route level code-splitting
-            // this generates a separate chunk (about.[hash].js) for this route
-            // which is lazy-loaded when the route is visited.
             children: [
                 {
                     path: '/Express',
@@ -112,9 +88,6 @@ export default new Router({
         {
             path: '/Express',
             name: 'Express',
-            // route level code-splitting
-            // this generates a separate chunk (about.[hash].js) for this route
-            // which is lazy-loaded when the route is visited.
             component: () => import( './views/User/Scattered/Express')
         },
         {
@@ -123,18 +96,28 @@ export default new Router({
             // route level code-splitting
             // this generates a separate chunk (about.[hash].js) for this route
             // which is lazy-loaded when the route is visited.
-            children:[
+            children: [
                 {
-                    path:'/PersonDetail',
-                    name:'PersonDetail',
-                    component:() => import('./views/User/BannerModule/PersonDetail')
-                }
+                    path: '/PersonDetail',
+                    name: 'PersonDetail',
+                    component: () => import('./views/User/BannerModule/PersonDetail')
+                }, {
+                    path: '/UserAddress',
+                    name: 'UserAddress',
+                    component: () => import( './views/User/Member/UserAddress.vue')
+                },
             ],
-            component: () => import( './views/User/BannerModule/PersonalData')
-        },{
-            path:'/PersonDetail',
-            name:'PersonDetail',
-            component:() => import('./views/User/BannerModule/PersonDetail')
+            component: () => import( './views/User/BorderModule/PersonalData')
+        },
+        {
+            path: '/PersonDetail',
+            name: 'PersonDetail',
+            component: () => import('./views/User/BannerModule/PersonDetail')
+        },
+        {
+            path: '/MessageBorder',
+            name: 'MessageBorder',
+            component: () => import('./views/User/BorderModule/MessageBorder')
         }
     ]
 })
