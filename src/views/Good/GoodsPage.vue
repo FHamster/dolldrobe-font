@@ -23,15 +23,15 @@
             <el-aside class="goodaside">
                 <el-col v-for="index of 5" :key="index">
                     <!--<el-card :body-style="{ padding: '10px' }" shadow="hover" style="width: 250px;margin-left: 15px ;"-->
-                             <!--@click="isGoodDialogVis = !isGoodDialogVis">-->
-                        <!--<img src="https://shadow.elemecdn.com/app/element/hamburger.9cf7b091-55e9-11e9-a976-7f4d0b07eef6.png"-->
-                             <!--class="image">-->
-                        <!--<div style="padding: 14px;width: 180px">-->
-                            <!--<span>好吃的汉堡</span>-->
-                            <!--<div class="bottom clearfix">-->
-                                <!--<el-button type="text" class="button">加入购物车</el-button>-->
-                            <!--</div>-->
-                        <!--</div>-->
+                    <!--@click="isGoodDialogVis = !isGoodDialogVis">-->
+                    <!--<img src="https://shadow.elemecdn.com/app/element/hamburger.9cf7b091-55e9-11e9-a976-7f4d0b07eef6.png"-->
+                    <!--class="image">-->
+                    <!--<div style="padding: 14px;width: 180px">-->
+                    <!--<span>好吃的汉堡</span>-->
+                    <!--<div class="bottom clearfix">-->
+                    <!--<el-button type="text" class="button">加入购物车</el-button>-->
+                    <!--</div>-->
+                    <!--</div>-->
                     <!--</el-card>-->
                 </el-col>
             </el-aside>
@@ -64,7 +64,7 @@
                                 <span class="GoodName">{{o.cName}}</span>
                                 <div class="bottom clearfix">
                                     <div class="price_cart">
-                                        <div class="price">￥{{o.cMaxmoney}}</div>
+                                        <div class="price">￥{{o.cMinmoney}}</div>
                                         <el-button type="warning"
                                                    icon="el-icon-star-off"
                                                    circle
@@ -147,7 +147,7 @@
             },
             getPageByC_MaxMoney() {
 
-                this.order = "C_MaxMoney";
+                this.order = "C_MinMoney";
                 this.getCart();
             },
 
@@ -271,7 +271,9 @@
     }
 
     .image {
-        width: 100%;
+        width: 200px;
+        height: 250px;
+        /*width: 100%;*/
         display: block;
     }
 

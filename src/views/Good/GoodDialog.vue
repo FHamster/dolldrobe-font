@@ -132,7 +132,10 @@
                     skuId: curSku,
                     scNum: skuN
                 };
-                axios.post('api/Cart/Cart', cur,
+
+
+                console.log(cur);
+                axios.post('api/Cart', cur,
                     {
                         headers: {
                             'token': this.$store.getters.getToken

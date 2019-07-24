@@ -1,13 +1,8 @@
 <template>
     <el-container>
-
-        <!--                    @open="handleOpen"-->
-        <!--                    @close="handleClose"-->
-
-
-        <!--                :default-active="activeIndex2"-->
-
-        <el-aside width="61px" style="background-image: linear-gradient(to left, #f5f7fa 0%, #c3cfe2 100%); height: 560px" ref="aleft" >
+        <el-aside width="61px"
+                  style="background-image: linear-gradient(to left, #f5f7fa 0%, #c3cfe2 100%); height: 560px"
+                  ref="aleft">
             <el-menu
                     default-active="2"
                     text-color="#547A28"
@@ -97,9 +92,7 @@
                             router
                             class="user-center-bar">
                         <div class="my_logo">
-                            我的
-                            <del>冰箱</del>
-                            ->衣橱
+                            我的衣橱
                         </div>
                         <el-menu-item index="UserCenter">首页</el-menu-item>
 
@@ -138,19 +131,14 @@
                                 </el-button>
                             </div>
                         </div>
-                        <!--<di>-->
-                        <!--<el-switch-->
-                        <!--&gt;-->
-                        <!--</el-switch>-->
-                        <!--</di>-->
                     </el-menu>
                 </el-header>
                 <el-main>
                     <router-view></router-view>
-
                 </el-main>
             </el-container>
         </el-main>
+<!--
         <el-aside width="61px" ref="aright"
                   style="height:285px ; float: right;background-image: linear-gradient(to right, #f5f7fa 0%, #c3cfe2 100%);">
             <div style="height: 61px" class="back2">
@@ -197,10 +185,10 @@
                         <el-menu-item index="4-2" style="font-size: 10px" class="back2">画稿状态</el-menu-item>
                     </el-menu-item-group>
                 </el-submenu>
-                <!--<el-menu-item index="4">-->
-                <!--<i class="el-icon-tickets"></i>-->
-                <!--<span slot="title">我的订单</span>-->
-                <!--</el-menu-item>-->
+                &lt;!&ndash;<el-menu-item index="4">&ndash;&gt;
+                &lt;!&ndash;<i class="el-icon-tickets"></i>&ndash;&gt;
+                &lt;!&ndash;<span slot="title">我的订单</span>&ndash;&gt;
+                &lt;!&ndash;</el-menu-item>&ndash;&gt;
 
                 <el-menu-item index="6" class="back2">
                     <i class="el-icon-star-off"></i>
@@ -208,9 +196,8 @@
                 </el-menu-item>
 
 
-
             </el-menu>
-        </el-aside>
+        </el-aside>-->
 
     </el-container>
 </template>
