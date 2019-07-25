@@ -1,22 +1,23 @@
 <template>
-    <el-card :body-style="{padding: 0,
+    <el-card class="cardHover" :body-style="{padding: 0,
         width: '265px',
         height: '360px',
         display: 'flex',
         'flex-direction': 'column',
         'align-content': 'center'}"
-             shadow="hover">
+             shadow="hover"
+               >
 
         <el-image :src=good.cImg
                   class="image"
-                  style="height: 265px;width: 265px"
+                  style="height: 250px;width: 265px"
                   fit="fill">
         </el-image>
-        <div style="padding: 10px;">
-            <div class="GoodName">{{good.cName}}</div>
+        <div style="padding: 10px 10px 0 10px;">
+            <div class="GoodName textAlign">{{good.cName}}</div>
 
-            <div class="price_cart">
-                <div class="price">￥{{good.cMinmoney}}</div>
+            <div class="price_cart" >
+                <div class="price" style="margin: 0 auto">￥{{good.cMinmoney}}</div>
                 <!--              <el-button type="warning"
                                          icon="el-icon-star-off"
                                          circle
@@ -31,7 +32,10 @@
 -->
             </div>
         </div>
-
+        <hr>
+        <div class="textAlign" style="color: #999;margin-top: 5px">
+            sbgx
+        </div>
     </el-card>
 </template>
 <script>
@@ -43,7 +47,6 @@
     }
 </script>
 <style scoped>
-
 
     .price_cart {
         display: flex;
@@ -57,8 +60,32 @@
 
         color: #9DBC7A;
     }
-.GoodName {
-    word-wrap: break-word;
-}
+    .GoodName {
+        word-wrap: break-word;
+        cursor: pointer;
+    }
+
+    .GoodName:hover{
+        color: #9DBC7A;
+    }
+
+    .textAlign{
+        text-align:center;
+        white-space:nowrap;
+        overflow:hidden;
+        text-overflow:ellipsis;
+    }
+
+    hr{
+        width: 50%;
+        border: 0;
+        border-top: 1px solid #e8e8e8;
+    }
+
+    .cardHover:hover{
+        margin-top: -3px;
+        /*box-shadow: black;*/
+        background-color: rgba(235,245,197,0.20);
+    }
 
 </style>
