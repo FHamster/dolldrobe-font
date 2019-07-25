@@ -48,35 +48,9 @@
                 <el-main>
                     <!--商品展示面板-->
                     <div class="goodPanel">
-
-                        <el-card v-for="o in goodList" :key="o.cNum"
-                                 :body-style="{}"
-                                 style="margin-right: 20px;"
-                                 shadow="hover">
-
-                            <img :src=o.cImg
-                                 class="image"
-                                 @click="visGoodDialog(o.cNum,o.cName)">
-                            <div style="padding: 14px;">
-                                <div class="GoodName">{{o.cName}}</div>
-                                <div class="bottom clearfix">
-                                    <div class="price_cart">
-                                        <div class="price">￥{{o.cMinmoney}}</div>
-                                        <el-button type="warning"
-                                                   icon="el-icon-star-off"
-                                                   circle
-                                                   @click="addFavo(o)">
-
-                                        </el-button>
-                                        <el-button type="primary"
-                                                   icon="el-icon-shopping-cart-2"
-                                                   circle
-                                                   @click="visGoodDialog(o.cNum,o.cName)">
-                                        </el-button>
-                                    </div>
-                                </div>
-                            </div>
-                        </el-card>
+                        <div v-for="good in goodList" :key="good.cNum" @click="visGoodDialog(good.cNum,good.cName)">
+                            <GoodCard :good="good"/>
+                        </div>
 
                     </div>
 
@@ -102,12 +76,13 @@
 <script>
     import axios from 'axios';
     import GoodDialog from "./GoodDialog";
+    import GoodCard from "./GoodCard";
 
 
     export default {
 
         name: "GoodsPage",
-        components: {GoodDialog},
+        components: {GoodCard, GoodDialog},
         mounted() {
             this.getCart();
         },
@@ -197,6 +172,8 @@
 <style scoped>
 
     .good-card {
+        padding: 0;
+        width: 250px;
 
         display: flex;
         flex-direction: column;
@@ -266,32 +243,12 @@
         margin: 0px;
     }
 
-    .bottom {
-        margin-top: 13px;
-        line-height: 12px;
-    }
 
     .button {
         padding: auto;
         float: right;
     }
 
-    .image {
-        width: 200px;
-        height: 250px;
-        /*width: 100%;*/
-        display: block;
-    }
-
-    .clearfix:before,
-    .clearfix:after {
-        display: table;
-        content: "";
-    }
-
-    .clearfix:after {
-        clear: both
-    }
 
     .goodPanel {
         /*width: 100%;*/
@@ -302,25 +259,11 @@
         flex-wrap: wrap;
     }
 
-    .price_cart {
-        display: flex;
-        flex-direction: row;
-        justify-content: space-between;
-        align-items: center;
-    }
-
-    .price {
-        color: #9DBC7A;
-    }
-
     .goodaside {
         width: 250px;
         border-style: solid;
         border-color: #9DBC7A;
     }
 
-    .GoodName {
-        white-space: nowrap;
-    }
 
 </style>
