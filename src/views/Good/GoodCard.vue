@@ -1,7 +1,7 @@
 <template>
     <el-card :body-style="{padding: 0,
-        width: '280px',
-        height: '420px',
+        width: '265px',
+        height: '360px',
         display: 'flex',
         'flex-direction': 'column',
         'align-content': 'center'}"
