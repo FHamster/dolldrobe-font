@@ -63,9 +63,9 @@ acc236
         </el-header>
 
         <!--        </el-header>-->
-        <el-main style="padding: 0">
+        <el-container style="padding: 0;justify-content: center;margin-top: 20px">
             <router-view></router-view>
-        </el-main>
+        </el-container>
 
         <el-footer>
             <!--            <el-button @click="changeVuex">按钮测试</el-button>-->
