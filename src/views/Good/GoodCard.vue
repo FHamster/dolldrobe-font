@@ -9,7 +9,7 @@
 
         <el-image :src=good.cImg
                   class="image"
-                  style="height: 300px;width: 300px"
+                  style="height: 265px;width: 265px"
                   fit="fill">
         </el-image>
         <div style="padding: 10px;">
