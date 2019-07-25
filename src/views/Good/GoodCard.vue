@@ -1,6 +1,6 @@
 <template>
     <el-card :body-style="{padding: 0,
-        width: '300px',
+        width: '280px',
         height: '420px',
         display: 'flex',
         'flex-direction': 'column',
