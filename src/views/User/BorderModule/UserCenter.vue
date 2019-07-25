@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div style="width: 100%">
 
         <!--header菜单-->
         <el-menu
@@ -362,7 +362,7 @@
 
     .user-center-bar {
         display: flex;
-        flex-direction: row;
+        /*flex-direction: row;*/
         /*justify-content: center;*/
         /*align-self: center;*/
     }

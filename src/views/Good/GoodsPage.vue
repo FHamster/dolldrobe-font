@@ -1,5 +1,5 @@
 <template>
-    <el-container style="width: 79%;max-width: 1400px;justify-content: center;">
+    <el-container style="width: 79%;max-width: 1400px;min-width: 1300px;justify-content: center;">
         <el-dialog title="商品详情" :visible.sync="isGoodDialogVis" width="1000px">
             <GoodDialog :c-num="curGood" :c-name="curGoodName"></GoodDialog>
         </el-dialog>
@@ -162,7 +162,7 @@
                     }
                 ).then(res => {
                     this.goodList = res.data;
-                    // console.log(this.goodList);
+                    console.log(this.goodList);
                 })
             }
         }
@@ -186,7 +186,7 @@
         /*float: left;*/
         /*width: 200px;*/
         /*height: 65px;*/
-        font-family: 华文琥珀;
+        /*font-family: 华文琥珀;*/
         color: #9DBC7A;
         font-size: 40px;
         margin-top: 20px;

@@ -1,21 +1,17 @@
 <template>
-    <el-container>
+    <div>
         <el-dialog :visible.sync="dialogVis" width="500px">
             <LoginDialog></LoginDialog>
         </el-dialog>
-        <!--        <LoginDialog :is-vis="dialogVis"></LoginDialog>-->
-        <!--        <el-header style="max-height: 40px">-->
-        <!--
-        81ceff
+      <!--  81ceff
         bff199
 acc236
 4285f4
 82b548
 99cc33
 8baaff h
-9dbc7a
-        -->
-        <el-header>
+9dbc7a-->
+        <div>
             <!--<div style="text-align: center;background-color: lightgray">推荐使用谷歌或火狐浏览器</div>-->
             <el-menu
                     :default-active="activeIndex2"
@@ -60,28 +56,28 @@ acc236
                             index="Express">Express
                     </el-menu-item>-->
             </el-menu>
-        </el-header>
+        </div>
 
         <!--        </el-header>-->
         <el-container style="padding: 0;justify-content: center;margin-top: 20px">
             <router-view></router-view>
         </el-container>
 
-        <el-footer>
-            <!--            <el-button @click="changeVuex">按钮测试</el-button>-->
-            <!--            <el-button @click="dialogVis = !dialogVis">显示登陆对话框</el-button>-->
-            <!--            <el-button @click="checkToken">检查token有效</el-button>-->
-        </el-footer>
-    </el-container>
+        <div>
+            <MainFooter/>
+        </div>
+    </div>
 </template>
 
 <script>
     import LoginDialog from "./views/LoginDialog/LoginDialog";
     import axios from 'axios';
+    import MainFooter from "./views/MainFooter";
 
     export default {
         name: 'app',
         components: {
+            MainFooter,
             LoginDialog
             // HelloWorld
         },
