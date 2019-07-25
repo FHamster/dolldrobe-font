@@ -1,78 +1,59 @@
 <template>
-    <el-container style="width: 82%;margin-left: 8%">
-        <el-container>
-            <el-header height="35px">
-                <el-row style="display: inline">
-                    <div>
-                        <el-button type="text" @click="getCart"
-                                   style="width: 70px;margin: 0px;
-                               display: inline;
-                               font-size: 15px;
-                               margin-top: 3px">全部商品
-                        </el-button>
-                        <div style="display: inline">{{sumCountset()}}</div>
-                        <div style="float: right;">
-                            <div style="display: inline">配送至：</div>
-                            <el-select v-model="select" slot="prepend" placeholder="请选择" size="small">
-                                <el-option v-for="(o) in 5" :key="o" label="五社区" value="(o)"></el-option>
-                            </el-select>
-                        </div>
-                    </div>
-                </el-row>
-            </el-header>
+    <div class="shadow-around">
+        <div height="40px">
 
+            <el-button @click="getCart">全部商品</el-button>
 
-            <el-container>
-                <el-table
-                        :data="tableData"
-                        style="width: 100%"
-                        @selection-change="changeOpt"
-                >
+        </div>
 
-                    <el-table-column
-                            type="selection"
-                            width="45" label="全选"
-                    >
-                    </el-table-column>
-                    <el-table-column
-                            prop="skuId"
-                            label="商品"
-                            width="300"
-                    >
-                        <template slot-scope="scope">
-                        <span style="display: flex; flex-direction: row;justify-content: left ">
+        <div class="center-pane">
+
+            <el-table
+                    style="display: flex; flex-direction: column;justify-content: center"
+                    :data="tableData"
+                    @selection-change="changeOpt">
+
+                <el-table-column
+                        type="selection"
+                        width="45" label="全选">
+                </el-table-column>
+                <el-table-column
+                        prop="skuId"
+                        label="商品"
+                        width="300">
+                    <template slot-scope="scope">
+                        <span style="display: flex; flex-direction: row;justify-content: space-between ">
                             <el-image :src="scope.row.src" style="width: 80px;height: 80px "></el-image>
-                            <div style="display: inline">{{scope.row.label}}</div>
+                            <div>{{scope.row.label}}</div>
                         </span>
-                        </template>
-                    </el-table-column>
-                    <el-table-column
-                            width="170px"
-                    >
-                        <template slot-scope="scope">
+                    </template>
+                </el-table-column>
+
+                <el-table-column
+                        width="170px">
+                    <template slot-scope="scope">
                         <span>
                             {{scope.row.kind}}
                         </span>
-                        </template>
-                    </el-table-column>
-                    <el-table-column
-                            prop="cPrice"
-                            label="单价"
-                            width="160"
-                            style="float: right"
-                    >
-                        <template slot-scope="scope">
+                    </template>
+                </el-table-column>
+                <el-table-column
+                        prop="cPrice"
+                        label="单价"
+                        width="160"
+                        style="float: right">
+                    <template slot-scope="scope">
                         <span>
                             ￥{{scope.row.price}}
                         </span>
-                        </template>
-                    </el-table-column>
-                    <el-table-column
-                            prop="scNum"
-                            label="数量"
-                            style="text-align: center"
-                            width="130px">
-                        <template slot-scope="scope">
+                    </template>
+                </el-table-column>
+                <el-table-column
+                        prop="scNum"
+                        label="数量"
+                        style="text-align: center"
+                        width="130px">
+                    <template slot-scope="scope">
                         <span>
 <!--                               @focus.prevent="saveCurnum(scope.row.num)"-->
 
@@ -83,24 +64,24 @@
 
                             </el-input-number>
                         </span>
-                        </template>
-                    </el-table-column>
-                    <el-table-column
-                            prop="sum"
-                            label="小计"
-                            style="float: right"
-                            width="140">
-                        <template slot-scope="scope">
+                    </template>
+                </el-table-column>
+                <el-table-column
+                        prop="sum"
+                        label="小计"
+                        style="float: right"
+                        width="140">
+                    <template slot-scope="scope">
                         <span>
                             ￥{{scope.row.price * scope.row.num}}
                         </span>
-                        </template>
-                    </el-table-column>
-                    <el-table-column
-                            width="75"
-                            label="操作"
-                    >
-                        <template slot-scope="scope">
+                    </template>
+                </el-table-column>
+                <el-table-column
+                        width="75"
+                        label="操作"
+                >
+                    <template slot-scope="scope">
                         <span>
                             <el-button
                                     type="text"
@@ -114,49 +95,42 @@
                             >添加关注
                             </el-button>
                         </span>
-                        </template>
-                    </el-table-column>
-                </el-table>
-            </el-container>
-            <el-footer height="50px" style="padding-left: 15px">
-                <div style="width: 50px;text-align: center;display: inline;margin-right: 2px">
-                    <!--@click="setCont"-->
-                    <!--<el-checkbox v-model="checked"-->
-
-                    <!--label="全选"></el-checkbox>-->
-                </div>
-                <el-button type="text">&nbsp;移到关注</el-button>
-                <el-button type="text">清理购物车</el-button>
+                    </template>
+                </el-table-column>
+            </el-table>
+        </div>
 
 
-                <div style="float: right">
-                    <div style="width: 270px">
-                        <div style="display: inline;
+        <div height="50px" style="padding-left: 15px">
+            <el-button type="text">移到关注</el-button>
+            <el-button type="text">清理购物车</el-button>
+            <div style="float: right">
+                <div style="width: 270px">
+                    <div style="
                     width: 100px;
                     margin-top: 2px;
                     float: left;font-size: 12px">已选择
-                            <div style="display: inline">{{setSunNum()}}</div>
-                            件商品
-                        </div>
-                        <div style="display: inline;width: 50px">
-                            <el-col style="display: inline;width: 70px">
-                                <div style="display: inline;font-size: 12px">总价：
-                                    <div style="display: inline">{{setSumPrice()}}</div>
-                                </div>
-                                <div style="font-size: 12px">促销：-￥{{ducePrice}}</div>
-                            </el-col>
-                        </div>
+                        <div style="display: inline">{{setSunNum()}}</div>
+                        件商品
                     </div>
-
-                    <el-button size="media"
-                               @click="open()"
-                               plain style="float: right">去结算
-                    </el-button>
-                    <!--<el-button @click="out">out</el-button>-->
+                    <div style="display: inline;width: 50px">
+                        <el-col style="display: inline;width: 70px">
+                            <div style="display: inline;font-size: 12px">总价：
+                                <div style="display: inline">{{setSumPrice()}}</div>
+                            </div>
+                            <div style="font-size: 12px">促销：-￥{{ducePrice}}</div>
+                        </el-col>
+                    </div>
                 </div>
-            </el-footer>
-        </el-container>
-    </el-container>
+
+                <el-button size="media"
+                           @click="open()"
+                           plain style="float: right">去结算
+                </el-button>
+                <!--<el-button @click="out">out</el-button>-->
+            </div>
+        </div>
+    </div>
 </template>
 
 
@@ -328,7 +302,7 @@
                     skuId: delSkuId,
                 };
                 console.log(del);
-                axios.post('api/Cart/delCart', del, {
+                axios.delete('api/Cart/' + del.skuId, {
                     headers: {'token': this.$store.getters.getToken}
                 }).then(res => {
                     this.$message.success('商品删除成功');
@@ -397,8 +371,9 @@
 
 <style scoped>
 
-    .el-col {
-        border-radius: 4px;
+    .el-header {
+        margin: 0;
+        padding: 0;
     }
 
     .bg-purple-dark {
@@ -422,5 +397,6 @@
         padding: 10px 0;
         background-color: #f9fafc;
     }
+
 
 </style>

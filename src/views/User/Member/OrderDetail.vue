@@ -1,5 +1,5 @@
 <template>
-    <el-container style="width: 90%; max-width: 1100px;">
+    <el-container  style="width: 90%; max-width: 1100px;">
         <el-header height="15px" style="margin-top: 20px">
             <el-breadcrumb separator-class="el-icon-arrow-right">
                 <el-breadcrumb-item :to="{ path: '/UserCenter' }">用户中心</el-breadcrumb-item>

@@ -24,8 +24,7 @@ acc236
                     style="background-image: linear-gradient(to right, #f5f7fa 0%, #c3cfe2 100%);"
                     text-color="#547A28"
                     active-text-color="#B3748D"
-                    router
-            >
+                    router>
                 <el-menu-item @click="dialogVis = !dialogVis"
                               style="background-image: linear-gradient(to left, #f5f7fa 0%, #c3cfe2 100%);">
                     <template slot="title">
@@ -33,36 +32,33 @@ acc236
                     </template>
                 </el-menu-item>
                 <el-menu-item
+                        index="MainPage">首页
+                </el-menu-item>
+                <el-menu-item
                         index="UserCenter">用户中心
                 </el-menu-item>
-                <el-submenu index="2">
-                    <template slot="title">我的工作台</template>
-                    <el-menu-item index="2-1">选项1</el-menu-item>
-                    <el-menu-item index="2-2">选项2</el-menu-item>
-                    <el-menu-item index="2-3">选项3</el-menu-item>
-                    <el-submenu index="2-4">
-                        <template slot="title">选项4</template>
-                        <el-menu-item index="2-4-1">选项1</el-menu-item>
-                        <el-menu-item index="2-4-2">选项2</el-menu-item>
-                        <el-menu-item index="2-4-3">选项3</el-menu-item>
-                    </el-submenu>
-                </el-submenu>
-                <el-menu-item index="3">消息</el-menu-item>
-                <el-menu-item index="4">
-                    订单管理
-                </el-menu-item>
+                <!--   <el-submenu index="2">
+                       <template slot="title">我的工作台</template>
+                       <el-menu-item index="2-1">选项1</el-menu-item>
+                       <el-menu-item index="2-2">选项2</el-menu-item>
+                       <el-menu-item index="2-3">选项3</el-menu-item>
+                       <el-submenu index="2-4">
+                           <template slot="title">选项4</template>
+                           <el-menu-item index="2-4-1">选项1</el-menu-item>
+                           <el-menu-item index="2-4-2">选项2</el-menu-item>
+                           <el-menu-item index="2-4-3">选项3</el-menu-item>
+                       </el-submenu>
+                   </el-submenu>-->
+
                 <el-menu-item
                         index="GoodsPage">商品浏览
                 </el-menu-item>
                 <el-menu-item
                         index="MessageBorder">浏览
                 </el-menu-item>
-                <!--<el-menu-item-->
-                <!--index="Express">Express-->
-                <!--</el-menu-item>-->
-                <el-menu-item
-                        index="PersonDetail">PersonDetail
-                </el-menu-item>
+                <!--    <el-menu-item
+                            index="Express">Express
+                    </el-menu-item>-->
             </el-menu>
         </el-header>
 
@@ -135,12 +131,14 @@ acc236
 
 
     #app {
-        font-family: 'Avenir', Helvetica, Arial, sans-serif;
+
+        font-family: "Helvetica Neue",Helvetica,"PingFang SC","Hiragino Sans GB","Microsoft YaHei","微软雅黑",Arial,sans-serif;
         -webkit-font-smoothing: antialiased;
         -moz-osx-font-smoothing: grayscale;
         text-align: center;
         color: #2c3e50;
         margin-top: 60px;
+        background-color: #42b983;
     }
 
     .con {

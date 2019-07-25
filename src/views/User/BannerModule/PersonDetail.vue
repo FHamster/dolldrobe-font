@@ -1,5 +1,4 @@
 <template>
-    <el-container style="width: 800px;height: 500px;">
         <el-tabs type="border-card" style="width: 850px">
             <el-tab-pane label="基本资料">
                 <div>
@@ -99,7 +98,6 @@
 
             </el-tab-pane>
         </el-tabs>
-    </el-container>
 </template>
 
 <script>

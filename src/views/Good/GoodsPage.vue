@@ -1,86 +1,57 @@
 <template>
     <el-container>
-
         <el-dialog title="商品详情" :visible.sync="isGoodDialogVis" width="1000px">
             <GoodDialog :c-num="curGood" :c-name="curGoodName"></GoodDialog>
         </el-dialog>
-<!--
-        <el-header class="myhead">
-            <img src="../../assets/icon.png" class="myimg">
-            <div class="my_logo">玩偶衣橱</div>
-            <div class="rowdir">
-                <el-input prefix-icon="el-icon-search" type="text"
-                          size=large class="mysearch"
-                          v-model="keyWord">
+        <!--
+                <el-header class="myhead">
+                    <img src="../../assets/icon.png" class="myimg">
+                    <div class="my_logo">玩偶衣橱</div>
+                    <div class="rowdir">
+                        <el-input prefix-icon="el-icon-search" type="text"
+                                  size=large class="mysearch"
+                                  v-model="keyWord">
 
-                </el-input>
-                <el-button @click="getCart">
-                    搜索
-                </el-button>
-            </div>
-        </el-header>
-        -->
-        <el-container>
-          <!--  <el-aside class="goodaside">
-                <el-col v-for="index of 5" :key="index">
-                    &lt;!&ndash;<el-card :body-style="{ padding: '10px' }" shadow="hover" style="width: 250px;margin-left: 15px ;"&ndash;&gt;
-                    &lt;!&ndash;@click="isGoodDialogVis = !isGoodDialogVis">&ndash;&gt;
-                    &lt;!&ndash;<img src="https://shadow.elemecdn.com/app/element/hamburger.9cf7b091-55e9-11e9-a976-7f4d0b07eef6.png"&ndash;&gt;
-                    &lt;!&ndash;class="image">&ndash;&gt;
-                    &lt;!&ndash;<div style="padding: 14px;width: 180px">&ndash;&gt;
-                    &lt;!&ndash;<span>好吃的汉堡</span>&ndash;&gt;
-                    &lt;!&ndash;<div class="bottom clearfix">&ndash;&gt;
-                    &lt;!&ndash;<el-button type="text" class="button">加入购物车</el-button>&ndash;&gt;
-                    &lt;!&ndash;</div>&ndash;&gt;
-                    &lt;!&ndash;</div>&ndash;&gt;
-                    &lt;!&ndash;</el-card>&ndash;&gt;
-                </el-col>
-            </el-aside>-->
-            <el-container>
-                <el-header height="20px" style="align-text: center">
-                    <el-row>
-                        <el-button :autofocus="true" class="head_btn" plain @click=getPageByC_Num>综合排序
+                        </el-input>
+                        <el-button @click="getCart">
+                            搜索
                         </el-button>
-                        <el-button plain class="head_btn">销量</el-button>
-                        <el-button plain class="head_btn" @click="getPageByC_MaxMoney">价格</el-button>
-                        <el-button plain class="head_btn">评论数</el-button>
-                        <el-button plain class="head_btn" @click="getPageByC_EndTime">上架时间</el-button>
-                    </el-row>
+                    </div>
                 </el-header>
+                -->
+        <el-container>
+            <!--  <el-aside class="goodaside">
+                  <el-col v-for="index of 5" :key="index">
+                      &lt;!&ndash;<el-card :body-style="{ padding: '10px' }" shadow="hover" style="width: 250px;margin-left: 15px ;"&ndash;&gt;
+                      &lt;!&ndash;@click="isGoodDialogVis = !isGoodDialogVis">&ndash;&gt;
+                      &lt;!&ndash;<img src="https://shadow.elemecdn.com/app/element/hamburger.9cf7b091-55e9-11e9-a976-7f4d0b07eef6.png"&ndash;&gt;
+                      &lt;!&ndash;class="image">&ndash;&gt;
+                      &lt;!&ndash;<div style="padding: 14px;width: 180px">&ndash;&gt;
+                      &lt;!&ndash;<span>好吃的汉堡</span>&ndash;&gt;
+                      &lt;!&ndash;<div class="bottom clearfix">&ndash;&gt;
+                      &lt;!&ndash;<el-button type="text" class="button">加入购物车</el-button>&ndash;&gt;
+                      &lt;!&ndash;</div>&ndash;&gt;
+                      &lt;!&ndash;</div>&ndash;&gt;
+                      &lt;!&ndash;</el-card>&ndash;&gt;
+                  </el-col>
+              </el-aside>-->
+            <div>
+                <!--
+                <div class="el-row" height="20px" style="align-text: center">
+                    <el-button plain class="head_btn" @click=getPageByC_Num>综合排序</el-button>
+                    <el-button plain class="head_btn">销量</el-button>
+                    <el-button plain class="head_btn" @click="getPageByC_MaxMoney">价格</el-button>
+                    <el-button plain class="head_btn">评论数</el-button>
+                    <el-button plain class="head_btn" @click="getPageByC_EndTime">上架时间</el-button>
+                </div>
+-->
                 <el-main>
-
                     <!--商品展示面板-->
                     <div class="goodPanel">
-                        <el-card v-for="o in goodList" :key="o.cNum"
-                                 :body-style="{ padding: '0px' }"
-                                 style="width: 230px;margin-right: 20px;"
-                                 shadow="hover"
+                        <div v-for="good in goodList" :key="good.cNum" @click="visGoodDialog(good.cNum,good.cName)">
+                            <GoodCard :good="good"/>
+                        </div>
 
-                        >
-                            <img :src=o.cImg
-                                 class="image"
-                                 @click="visGoodDialog(o.cNum,o.cName)"
-                            >
-                            <div style="padding: 14px;">
-                                <span class="GoodName">{{o.cName}}</span>
-                                <div class="bottom clearfix">
-                                    <div class="price_cart">
-                                        <div class="price">￥{{o.cMinmoney}}</div>
-                                        <el-button type="warning"
-                                                   icon="el-icon-star-off"
-                                                   circle
-                                                   @click="addFavo(o)">
-
-                                        </el-button>
-                                        <el-button type="primary"
-                                                   icon="el-icon-shopping-cart-2"
-                                                   circle
-                                                   @click="visGoodDialog(o.cNum,o.cName)">
-                                        </el-button>
-                                    </div>
-                                </div>
-                            </div>
-                        </el-card>
                     </div>
 
 
@@ -96,7 +67,7 @@
                     >
                     </el-pagination>
                 </el-main>
-            </el-container>
+            </div>
         </el-container>
 
     </el-container>
@@ -105,12 +76,13 @@
 <script>
     import axios from 'axios';
     import GoodDialog from "./GoodDialog";
+    import GoodCard from "./GoodCard";
 
 
     export default {
 
         name: "GoodsPage",
-        components: {GoodDialog},
+        components: {GoodCard, GoodDialog},
         mounted() {
             this.getCart();
         },
@@ -198,6 +170,16 @@
 </script>
 
 <style scoped>
+
+    .good-card {
+        padding: 0;
+        width: 250px;
+
+        display: flex;
+        flex-direction: column;
+        align-content: center;
+    }
+
     .my_logo {
         /*position: relative;*/
         /*float: left;*/
@@ -261,32 +243,12 @@
         margin: 0px;
     }
 
-    .bottom {
-        margin-top: 13px;
-        line-height: 12px;
-    }
 
     .button {
         padding: auto;
         float: right;
     }
 
-    .image {
-        width: 200px;
-        height: 250px;
-        /*width: 100%;*/
-        display: block;
-    }
-
-    .clearfix:before,
-    .clearfix:after {
-        display: table;
-        content: "";
-    }
-
-    .clearfix:after {
-        clear: both
-    }
 
     .goodPanel {
         /*width: 100%;*/
@@ -297,25 +259,11 @@
         flex-wrap: wrap;
     }
 
-    .price_cart {
-        display: flex;
-        flex-direction: row;
-        justify-content: space-between;
-        align-items: center;
-    }
-
-    .price {
-        color: #9DBC7A;
-    }
-
     .goodaside {
         width: 250px;
         border-style: solid;
         border-color: #9DBC7A;
     }
 
-    .GoodName {
-        white-space: nowrap;
-    }
 
 </style>
