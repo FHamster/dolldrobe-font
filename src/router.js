@@ -128,6 +128,15 @@ export default new Router({
         {
             path: '/MessageBorder',
             name: 'MessageBorder',
+            children: [{
+                path: 'InteractiveInform/:choose',
+                name: 'InteractiveInform',
+                component: () => import('./views/User/Message/InteractiveInform')
+            }, {
+                path: 'SystemInform/:choose',
+                name: 'SystemInform',
+                component: () => import('./views/User/Message/SystemInform')
+            }],
             component: () => import('./views/User/BorderModule/MessageBorder')
         }
     ]
