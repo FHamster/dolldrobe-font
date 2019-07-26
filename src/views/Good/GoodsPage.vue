@@ -92,6 +92,7 @@
                 // 商品对话框当前选中商品cNum
                 curGood: '',
                 curGoodName: '',
+                isGoodDialogVis: false,
 
                 total: 200,
                 C_Num: "C_Num",
@@ -104,7 +105,7 @@
                 order: '',
                 isAsc: true,
 
-                isGoodDialogVis: false
+
             };
         },
         methods: {
