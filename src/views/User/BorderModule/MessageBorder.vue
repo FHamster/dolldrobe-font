@@ -53,7 +53,7 @@
             </el-menu>
         </el-header>
         <el-main>
-            <el-aside width="15%">
+            <el-aside width="15%" style="float: left">
 
                 <el-menu default-active="1-4-1" class="el-menu-vertical-demo" @open="handleOpen" @close="handleClose"
                          :collapse="isCollapse">
@@ -69,10 +69,10 @@
                             <span slot="title">系统消息</span>
                         </template>
                         <el-menu-item-group>
-                            <el-menu-item index="1-1">成团通知</el-menu-item>
-                            <el-menu-item index="1-2">打样通知</el-menu-item>
-                            <el-menu-item index="1-3">尾款通知</el-menu-item>
-                            <el-menu-item index="1-4">系统通知</el-menu-item>
+                            <el-menu-item index="SystemInform" @click="changeCheng">成团通知</el-menu-item>
+                            <el-menu-item index="SystemInform" @click="changeDa">打样通知</el-menu-item>
+                            <el-menu-item index="SystemInform" @click="changeWei">尾款通知</el-menu-item>
+                            <el-menu-item index="SystemInform" @click="changeSys">系统通知</el-menu-item>
                         </el-menu-item-group>
                     </el-submenu>
                     <el-submenu index="2">
@@ -81,10 +81,10 @@
                             <span slot="title">互动消息</span>
                         </template>
                         <el-menu-item-group>
-                            <el-menu-item index="2-1">评论</el-menu-item>
-                            <el-menu-item index="2-2">私信</el-menu-item>
-                            <el-menu-item index="2-3">提到我</el-menu-item>
-                            <el-menu-item index="2-4">互动提醒</el-menu-item>
+                            <el-menu-item index="InteractiveInform" @click="changePing">评论</el-menu-item>
+                            <el-menu-item index="InteractiveInform" @click="changeSi">私信</el-menu-item>
+                            <el-menu-item index="InteractiveInform" @click="changeTi">提到我</el-menu-item>
+                            <el-menu-item index="InteractiveInform" @click="changeHu">互动提醒</el-menu-item>
                         </el-menu-item-group>
                     </el-submenu>
                     <!--目前设置没有实际需求，延后开发-->
@@ -122,6 +122,82 @@
             },
             handleClose(key, keyPath) {
                 console.log(key, keyPath);
+            },
+            changePing(){
+                this.$router.push({
+                    name: 'InteractiveInform',
+                    params: {
+                        choose:1,
+                    }
+                })
+                this.myReload();
+            },
+            changeHu(){
+                this.$router.push({
+                    name: 'InteractiveInform',
+                    params: {
+                        choose:4,
+                    }
+                })
+                this.myReload();
+            },
+            changeSi(){
+                this.$router.push({
+                    name: 'InteractiveInform',
+                    params: {
+                        choose:2,
+                    }
+                })
+                this.myReload();
+            },
+            changeTi(){
+                this.$router.push({
+                    name: 'InteractiveInform',
+                    params: {
+                        choose:3,
+                    }
+                })
+                this.myReload();
+            },
+            myReload(){
+                location.reload();
+                this.$router.go(0);
+            },
+            changeCheng(){
+                this.$router.push({
+                    name: 'SystemInform',
+                    params: {
+                        choose:1,
+                    }
+                })
+                this.myReload();
+            },
+            changeDa(){
+                this.$router.push({
+                    name: 'SystemInform',
+                    params: {
+                        choose:2,
+                    }
+                })
+                this.myReload();
+            },
+            changeWei(){
+                this.$router.push({
+                    name: 'SystemInform',
+                    params: {
+                        choose:3
+                    }
+                })
+                this.myReload();
+            },
+            changeSys(){
+                this.$router.push({
+                    name: 'SystemInform',
+                    params: {
+                        choose:4,
+                    }
+                })
+                this.myReload();
             },
         },
     }
