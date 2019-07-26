@@ -1,5 +1,10 @@
 <template>
     <el-container>
+        <el-button @click="isGoodDialogVis =!isGoodDialogVis">123</el-button>
+        <el-dialog title="商品详情" :visible.sync="isGoodDialogVis" width="1000px">
+            <GoodDialog :c-num="curGood" :c-name="curGoodName"></GoodDialog>
+        </el-dialog>
+
         <el-header style="padding: 0;" height="300px">
             <el-carousel :interval="5000" arrow="always" style="width: 100%; height: 300px">
                 <el-carousel-item v-for="it in item" :key="it">
@@ -8,7 +13,7 @@
             </el-carousel>
         </el-header>
         <div>
-            <el-main class="a-block">
+            <div class="a-block">
                 <div class="infopane">
                     <div class="title">
                         <div class="maintitle">
@@ -18,18 +23,21 @@
                         <el-button type="text">更多新品</el-button>
                     </div>
                     <div class="Pane">
-                        <el-carousel arrow="never" height="365px" indicator-position="outside"
+                        <!--                        <el-carousel arrow="never" height="365px" indicator-position="outside" :interval="4000" style="width: 1140px;">-->
+                        <el-carousel arrow="never"
+                                     height="365px"
+                                     indicator-position="outside"
                                      :interval="4000"
-                                     style="width: 1140px;justify-content: center">
-                            <el-carousel-item v-for="goods in newList" :key="goods">
-                            <span v-for="good in goods" :key="good.cNum">
-                                <GoodCard class="card" :good="good"/>
-                            </span>
+                                     style="width: 100%">
+                            <el-carousel-item v-for="goods in newList" :key="goods"
+                                              class="card">
+                                <GoodCard v-for="good in goods" :key="good.cNum"
+                                          :good="good" style=" margin-left: 15px;"/>
                             </el-carousel-item>
                         </el-carousel>
                     </div>
                 </div>
-            </el-main>
+            </div>
 
             <div class="a-block" style="background-color: #e2cdb1">
                 <div class="infopane">
@@ -42,9 +50,8 @@
                     </div>
 
                     <div class="Pane">
-                        <div v-for="good in sentimentList" :key="good">
-                            <GoodCard style="margin-left: 20px;margin-top: 15px" :good="good"/>
-                        </div>
+                        <GoodCard v-for="good in sentimentList" :key="good"
+                                  style="margin-left: 20px;margin-top: 15px" :good="good"/>
                     </div>
                 </div>
             </div>
@@ -63,7 +70,7 @@
             return {
                 curGood: '',
                 curGoodName: '',
-                isGoodDialogVis2: true,
+                isGoodDialogVis: false,
 
                 item: [{
                     url: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1564047462046&di=416866d09fa13a973ff69861166420ee&imgtype=0&src=http%3A%2F%2Ftour.btggl.com%2Fupfile%2FC_CABEBCCEBBDHDAJBIHJ%2F2014122618175598.jpg'
@@ -163,7 +170,7 @@
                 this.curGood = viscNum;
                 this.curGoodName = visName;
                 // console.log(viscNum);
-                this.isGoodDialogVis = true;
+                this.isGoodDialogVis = false;
             },
         }
     }
@@ -188,8 +195,8 @@
         /*width: 265px;*/
         /*height: 345px;*/
         display: flex;
-        float: left;
-        margin-left: 15px
+        flex-direction: row;
+
     }
 
     .a-block {
