@@ -120,7 +120,6 @@
                         }
                         let url = 'api/Region/RegionByParent/' + node.value;
 
-                        console.log(url);
                         axios.get(url
                         ).then(res => {
                             const chilNode = res.data.map(item => ({

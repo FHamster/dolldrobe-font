@@ -1,5 +1,5 @@
 <template>
-    <el-container>
+    <el-container style="width: 79%;max-width: 1400px;min-width: 1300px;justify-content: center;">
         <el-dialog title="商品详情" :visible.sync="isGoodDialogVis" width="1000px">
             <GoodDialog :c-num="curGood" :c-name="curGoodName"></GoodDialog>
         </el-dialog>
@@ -19,7 +19,7 @@
                     </div>
                 </el-header>
                 -->
-        <el-container>
+        <div>
             <!--  <el-aside class="goodaside">
                   <el-col v-for="index of 5" :key="index">
                       &lt;!&ndash;<el-card :body-style="{ padding: '10px' }" shadow="hover" style="width: 250px;margin-left: 15px ;"&ndash;&gt;
@@ -45,10 +45,12 @@
                     <el-button plain class="head_btn" @click="getPageByC_EndTime">上架时间</el-button>
                 </div>
 -->
-                <el-main>
+                <div>
                     <!--商品展示面板-->
                     <div class="goodPanel">
-                        <div v-for="good in goodList" :key="good.cNum" @click="visGoodDialog(good.cNum,good.cName)">
+                        <div v-for="good in goodList" :key="good.cNum"
+                             style="margin-left: 10px;margin-top: 5px"
+                             @click="visGoodDialog(good.cNum,good.cName)">
                             <GoodCard :good="good"/>
                         </div>
 
@@ -63,12 +65,11 @@
                             :page-size="5"
                             layout="prev, pager, next, jumper"
                             :total="total"
-                            style="float: right"
-                    >
+                            style="float: right">
                     </el-pagination>
-                </el-main>
+                </div>
             </div>
-        </el-container>
+        </div>
 
     </el-container>
 </template>
@@ -91,6 +92,7 @@
                 // 商品对话框当前选中商品cNum
                 curGood: '',
                 curGoodName: '',
+                isGoodDialogVis: false,
 
                 total: 200,
                 C_Num: "C_Num",
@@ -99,11 +101,11 @@
                 keyWord: '',
                 goodList: [],
                 curPage: 1,
-                pageSize: 18,
+                pageSize: 20,
                 order: '',
                 isAsc: true,
 
-                isGoodDialogVis: false
+
             };
         },
         methods: {
@@ -161,7 +163,7 @@
                     }
                 ).then(res => {
                     this.goodList = res.data;
-                    // console.log(this.goodList);
+                    console.log(this.goodList);
                 })
             }
         }
@@ -185,7 +187,7 @@
         /*float: left;*/
         /*width: 200px;*/
         /*height: 65px;*/
-        font-family: 华文琥珀;
+        /*font-family: 华文琥珀;*/
         color: #9DBC7A;
         font-size: 40px;
         margin-top: 20px;

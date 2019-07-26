@@ -28,6 +28,11 @@ export default new Router({
                 //购物车界面写在这里面才会嵌套在用户中心里
                 //否则购物车界面会替换掉用户中心界面
                 {
+                    // 默认页面
+                    path: '/',
+                    redirect: "/BookMark"
+                },
+                {
                     path: '/ShoppingBag',
                     name: 'ShoppingBag',
                     component: () => import( './views/User/Member/ShoppingBag.vue')
