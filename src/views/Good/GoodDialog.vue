@@ -72,7 +72,7 @@
 
             </div>
             <el-divider></el-divider>
-            <div>
+            <div style="display: flex;justify-content: space-around">
                 <el-input-number v-model="num" :min='1' :step="1"></el-input-number>
                 <el-button plain @click="addIntoCart" style="float: right">加入购物车</el-button>
                 <el-button v-if="isMark" icon="el-icon-star-off" circle @click="isMark=!isMark"></el-button>
