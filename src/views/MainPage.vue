@@ -31,6 +31,18 @@
                     <div style="font-size: 14px;display: inline">快去看看，说不定就做出来了呢</div>
                     <el-button type="text" style="float: right">更多画稿</el-button>
                 </el-header>
+                <el-main style="height: 560px;width: 1200px;display: flex; justify-content: center;">
+                    <div >
+                        <GoodCard style="width: 390px; height: 530px;margin-top: 5px" :good="sentimentList[6]"/>
+                    </div>
+                    <div style="width: 800px;display: flex;flex-wrap: wrap">
+                        <div v-for="good in sentimentList" v-if="good.num == 1" :key="good" style="display: flex;flex-wrap: wrap;">
+                            <div style="display: flex;flex-wrap: wrap;" >
+                                <GoodCard style="width: 223px;height: 260px; margin-left: 10px;margin-top: 5px" :good="good"/>
+                            </div>
+                        </div>
+                    </div>
+                </el-main>
             </el-main>
         </el-main>
     </el-container>
@@ -56,19 +68,54 @@
                     url: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1564047511077&di=58ecae960761e006304e0e8a6dd02668&imgtype=0&src=http%3A%2F%2Fwww.goodmorningtenerife.com%2Fwp-content%2Fuploads%2F2015%2F02%2F01b_slide_excursions_GM_Tenerife-1920x420.jpg'
                 }
                 ],
-                sentimentList: [],
+                sentimentList: [{
+                    cImg: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1564047462046&di=416866d09fa13a973ff69861166420ee&imgtype=0&src=http%3A%2F%2Ftour.btggl.com%2Fupfile%2FC_CABEBCCEBBDHDAJBIHJ%2F2014122618175598.jpg',
+                    cName: 'kjfkdsjfsd',
+                    cMinmoney: '44.12',
+                    num: 0,
+                }, {
+                    cImg: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1564047511077&di=58ecae960761e006304e0e8a6dd02668&imgtype=0&src=http%3A%2F%2Fwww.goodmorningtenerife.com%2Fwp-content%2Fuploads%2F2015%2F02%2F01b_slide_excursions_GM_Tenerife-1920x420.jpg',
+                    cName: 'kjfkdsjfsfsd',
+                    cMinmoney: '44.12',
+                    num: 1,
+                }, {
+                    cImg: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1564047462046&di=416866d09fa13a973ff69861166420ee&imgtype=0&src=http%3A%2F%2Ftour.btggl.com%2Fupfile%2FC_CABEBCCEBBDHDAJBIHJ%2F2014122618175598.jpg',
+                    cName: 'kjfkdsjfsd',
+                    cMinmoney: '44.12',
+                    num: 1,
+                }, {
+                    cImg: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1564047511077&di=58ecae960761e006304e0e8a6dd02668&imgtype=0&src=http%3A%2F%2Fwww.goodmorningtenerife.com%2Fwp-content%2Fuploads%2F2015%2F02%2F01b_slide_excursions_GM_Tenerife-1920x420.jpg',
+                    cName: 'kjfkdsjfsfsd',
+                    cMinmoney: '44.12',
+                    num: 1,
+                }, {
+                    cImg: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1564047462046&di=416866d09fa13a973ff69861166420ee&imgtype=0&src=http%3A%2F%2Ftour.btggl.com%2Fupfile%2FC_CABEBCCEBBDHDAJBIHJ%2F2014122618175598.jpg',
+                    cName: 'kjfkdsjfsd',
+                    cMinmoney: '44.12',
+                    num: 1,
+                }, {
+                    cImg: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1564047511077&di=58ecae960761e006304e0e8a6dd02668&imgtype=0&src=http%3A%2F%2Fwww.goodmorningtenerife.com%2Fwp-content%2Fuploads%2F2015%2F02%2F01b_slide_excursions_GM_Tenerife-1920x420.jpg',
+                    cName: 'kjfkdsjfsfsd',
+                    cMinmoney: '44.12',
+                    num: 1,
+                }, {
+                    cImg: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1564047462046&di=416866d09fa13a973ff69861166420ee&imgtype=0&src=http%3A%2F%2Ftour.btggl.com%2Fupfile%2FC_CABEBCCEBBDHDAJBIHJ%2F2014122618175598.jpg',
+                    cName: 'kjfkdsjfsd',
+                    cMinmoney: '44.12',
+                    num: 1,
+                },],
                 newList: [
                     [{
                         cImg: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1564047462046&di=416866d09fa13a973ff69861166420ee&imgtype=0&src=http%3A%2F%2Ftour.btggl.com%2Fupfile%2FC_CABEBCCEBBDHDAJBIHJ%2F2014122618175598.jpg',
                         cName: 'kjfkdsjfsd',
                         cMinmoney: '44.12',
-                        num: 0,
+                        num:0,
                     }, {
                         cImg: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1564047511077&di=58ecae960761e006304e0e8a6dd02668&imgtype=0&src=http%3A%2F%2Fwww.goodmorningtenerife.com%2Fwp-content%2Fuploads%2F2015%2F02%2F01b_slide_excursions_GM_Tenerife-1920x420.jpg',
                         cName: 'kjfkdsjfsfsd',
                         cMinmoney: '44.12',
-                        num: 1,
-                    }, {
+                        num:1,
+                    },{
                         cImg: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1564047462046&di=416866d09fa13a973ff69861166420ee&imgtype=0&src=http%3A%2F%2Ftour.btggl.com%2Fupfile%2FC_CABEBCCEBBDHDAJBIHJ%2F2014122618175598.jpg',
                         cName: 'kjfkdsjfsd',
                         cMinmoney: '44.12',
