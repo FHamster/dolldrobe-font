@@ -1,19 +1,20 @@
 <template>
     <el-container>
-        <el-button @click="isGoodDialogVis =!isGoodDialogVis">123</el-button>
         <el-dialog title="商品详情" :visible.sync="isGoodDialogVis" width="1000px">
             <GoodDialog :c-num="curGood" :c-name="curGoodName"></GoodDialog>
         </el-dialog>
 
+        <el-button @click="isGoodDialogVis=!isGoodDialogVis"> 123</el-button>
+
         <el-header style="padding: 0;" height="300px">
             <el-carousel :interval="5000" arrow="always" style="width: 100%; height: 300px">
-                <el-carousel-item v-for="it in item" :key="it">
+                <el-carousel-item v-for="(it,index) in item" :key="index">
                     <el-image :src=it.url style="width: 100%;height: 420px"></el-image>
                 </el-carousel-item>
             </el-carousel>
         </el-header>
         <div>
-            <div class="a-block">
+            <div class="a-block" style="background-color: white">
                 <div class="infopane">
                     <div class="title">
                         <div class="maintitle">
@@ -28,11 +29,13 @@
                                      height="365px"
                                      indicator-position="outside"
                                      :interval="4000"
-                                     style="width: 100%">
-                            <el-carousel-item v-for="goods in newList" :key="goods"
+                                     style="width: 100%;">
+                            <el-carousel-item v-for="(goods,index) in newList" :key="index"
                                               class="card">
-                                <GoodCard v-for="good in goods" :key="good.cNum"
-                                          :good="good" style=" margin-left: 15px;"/>
+                                <div v-for="good in goods" :key="good.cNum"
+                                     @click="visGoodDialog(good.cNum,good.cName)">
+                                    <GoodCard :good="good" style=" margin-left: 15px;"/>
+                                </div>
                             </el-carousel-item>
                         </el-carousel>
                     </div>
@@ -50,8 +53,29 @@
                     </div>
 
                     <div class="Pane">
-                        <GoodCard v-for="good in sentimentList" :key="good"
+                        <GoodCard v-for="good in sentimentList" :key="good.cNum"
                                   style="margin-left: 20px;margin-top: 15px" :good="good"/>
+                    </div>
+                </div>
+            </div>
+
+            <div class="a-block" style="background-color: white">
+                <div class="infopane">
+                    <div class="title">
+                        <div class="maintitle">
+                            <div style="font-size: 28px; margin-right: 20px">人气画稿</div>
+                            <div style="font-size: 14px;">快去看看，说不定就做出来了呢</div>
+                        </div>
+                        <el-button type="text">更多画稿</el-button>
+                    </div>
+
+                    <div class="Pane">
+                        <div v-for="good in sentimentList" :key="good.cNum"
+                             @click="visGoodDialog(good.cNum,good.cName)">
+                            <GoodCard
+                                    style="margin-left: 20px;margin-top: 15px" :good="good"/>
+
+                        </div>
                     </div>
                 </div>
             </div>
@@ -62,10 +86,15 @@
 <script>
     import axios from 'axios';
     import GoodCard from "./Good/GoodCard";
+    import GoodDialog from "./Good/GoodDialog";
 
     export default {
         name: "MainPage",
-        components: {GoodCard},
+        components: {GoodDialog, GoodCard},
+        mounted() {
+            this.getNewList();
+            this.getSentimentList();
+        },
         data: function () {
             return {
                 curGood: '',
@@ -78,99 +107,55 @@
                     url: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1564047511077&di=58ecae960761e006304e0e8a6dd02668&imgtype=0&src=http%3A%2F%2Fwww.goodmorningtenerife.com%2Fwp-content%2Fuploads%2F2015%2F02%2F01b_slide_excursions_GM_Tenerife-1920x420.jpg'
                 }
                 ],
-                sentimentList: [{
-                    cImg: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1564047462046&di=416866d09fa13a973ff69861166420ee&imgtype=0&src=http%3A%2F%2Ftour.btggl.com%2Fupfile%2FC_CABEBCCEBBDHDAJBIHJ%2F2014122618175598.jpg',
-                    cName: 'kjfkdsjfsd',
-                    cMinmoney: '44.12',
-                    num: 0,
-                }, {
-                    cImg: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1564047511077&di=58ecae960761e006304e0e8a6dd02668&imgtype=0&src=http%3A%2F%2Fwww.goodmorningtenerife.com%2Fwp-content%2Fuploads%2F2015%2F02%2F01b_slide_excursions_GM_Tenerife-1920x420.jpg',
-                    cName: 'kjfkdsjfsfsd',
-                    cMinmoney: '44.12',
-                    num: 1,
-                }, {
-                    cImg: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1564047462046&di=416866d09fa13a973ff69861166420ee&imgtype=0&src=http%3A%2F%2Ftour.btggl.com%2Fupfile%2FC_CABEBCCEBBDHDAJBIHJ%2F2014122618175598.jpg',
-                    cName: 'kjfkdsjfsd',
-                    cMinmoney: '44.12',
-                    num: 1,
-                }, {
-                    cImg: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1564047511077&di=58ecae960761e006304e0e8a6dd02668&imgtype=0&src=http%3A%2F%2Fwww.goodmorningtenerife.com%2Fwp-content%2Fuploads%2F2015%2F02%2F01b_slide_excursions_GM_Tenerife-1920x420.jpg',
-                    cName: 'kjfkdsjfsfsd',
-                    cMinmoney: '44.12',
-                    num: 1,
-                }, {
-                    cImg: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1564047462046&di=416866d09fa13a973ff69861166420ee&imgtype=0&src=http%3A%2F%2Ftour.btggl.com%2Fupfile%2FC_CABEBCCEBBDHDAJBIHJ%2F2014122618175598.jpg',
-                    cName: 'kjfkdsjfsd',
-                    cMinmoney: '44.12',
-                    num: 1,
-                }, {
-                    cImg: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1564047511077&di=58ecae960761e006304e0e8a6dd02668&imgtype=0&src=http%3A%2F%2Fwww.goodmorningtenerife.com%2Fwp-content%2Fuploads%2F2015%2F02%2F01b_slide_excursions_GM_Tenerife-1920x420.jpg',
-                    cName: 'kjfkdsjfsfsd',
-                    cMinmoney: '44.12',
-                    num: 1,
-                }, {
-                    cImg: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1564047462046&di=416866d09fa13a973ff69861166420ee&imgtype=0&src=http%3A%2F%2Ftour.btggl.com%2Fupfile%2FC_CABEBCCEBBDHDAJBIHJ%2F2014122618175598.jpg',
-                    cName: 'kjfkdsjfsd',
-                    cMinmoney: '44.12',
-                    num: 1,
-                }, {
-                    cImg: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1564047462046&di=416866d09fa13a973ff69861166420ee&imgtype=0&src=http%3A%2F%2Ftour.btggl.com%2Fupfile%2FC_CABEBCCEBBDHDAJBIHJ%2F2014122618175598.jpg',
-                    cName: 'kjfkdsjfsd',
-                    cMinmoney: '44.12',
-                    num: 1,
-                },],
-                newList: [
-                    [{
-                        cImg: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1564047462046&di=416866d09fa13a973ff69861166420ee&imgtype=0&src=http%3A%2F%2Ftour.btggl.com%2Fupfile%2FC_CABEBCCEBBDHDAJBIHJ%2F2014122618175598.jpg',
-                        cName: 'kjfkdsjfsd',
-                        cMinmoney: '44.12',
-                        num: 0,
-                    }, {
-                        cImg: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1564047511077&di=58ecae960761e006304e0e8a6dd02668&imgtype=0&src=http%3A%2F%2Fwww.goodmorningtenerife.com%2Fwp-content%2Fuploads%2F2015%2F02%2F01b_slide_excursions_GM_Tenerife-1920x420.jpg',
-                        cName: 'kjfkdsjfsfsd',
-                        cMinmoney: '44.12',
-                        num: 1,
-                    }, {
-                        cImg: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1564047462046&di=416866d09fa13a973ff69861166420ee&imgtype=0&src=http%3A%2F%2Ftour.btggl.com%2Fupfile%2FC_CABEBCCEBBDHDAJBIHJ%2F2014122618175598.jpg',
-                        cName: 'kjfkdsjfsd',
-                        cMinmoney: '44.12',
-                        num: 0,
-                    }, {
-                        cImg: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1564047511077&di=58ecae960761e006304e0e8a6dd02668&imgtype=0&src=http%3A%2F%2Fwww.goodmorningtenerife.com%2Fwp-content%2Fuploads%2F2015%2F02%2F01b_slide_excursions_GM_Tenerife-1920x420.jpg',
-                        cName: 'kjfkdsjfsfsd',
-                        cMinmoney: '44.12',
-                        num: 1,
-                    },],
-                    [{
-                        cImg: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1564047462046&di=416866d09fa13a973ff69861166420ee&imgtype=0&src=http%3A%2F%2Ftour.btggl.com%2Fupfile%2FC_CABEBCCEBBDHDAJBIHJ%2F2014122618175598.jpg',
-                        cName: 'kjfkdsjfsd',
-                        cMinmoney: '44.12',
-                        num: 0,
-                    }, {
-                        cImg: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1564047511077&di=58ecae960761e006304e0e8a6dd02668&imgtype=0&src=http%3A%2F%2Fwww.goodmorningtenerife.com%2Fwp-content%2Fuploads%2F2015%2F02%2F01b_slide_excursions_GM_Tenerife-1920x420.jpg',
-                        cName: 'kjfkdsjfsfsd',
-                        cMinmoney: '44.12',
-                        num: 1,
-                    }, {
-                        cImg: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1564047462046&di=416866d09fa13a973ff69861166420ee&imgtype=0&src=http%3A%2F%2Ftour.btggl.com%2Fupfile%2FC_CABEBCCEBBDHDAJBIHJ%2F2014122618175598.jpg',
-                        cName: 'kjfkdsjfsd',
-                        cMinmoney: '44.12',
-                        num: 0,
-                    }, {
-                        cImg: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1564047511077&di=58ecae960761e006304e0e8a6dd02668&imgtype=0&src=http%3A%2F%2Fwww.goodmorningtenerife.com%2Fwp-content%2Fuploads%2F2015%2F02%2F01b_slide_excursions_GM_Tenerife-1920x420.jpg',
-                        cName: 'kjfkdsjfsfsd',
-                        cMinmoney: '44.12',
-                        num: 1,
-                    },],
-                ],
-            }
+                sentimentList: [],
+                newList: [],
+            };
         },
         methods: {
+            getSentimentList() {
+                this.sentimentList = [];
+                axios.get('/api/GoodPage/GoodPageByOrder', {
+                        params: {
+                            keyWord: 'hot',
+                            startPage: 0,
+                            pageSize: 8,
+                            order: this.order,
+                            isAsc: this.isAsc
+                        }
+                    }
+                ).then(res => {
+                    this.sentimentList = res.data;
+                });
+            },
+            getNewList() {
+                //清空新品
+                this.newList = [];
+                let tmplist1 = [];
+                // 设置页数
+                let pagenum = 6;
+                axios.get('/api/GoodPage/GoodPageByOrder', {
+                        params: {
+                            keyWord: 'new',
+                            startPage: 0,
+                            pageSize: pagenum * 4,
+                            order: this.order,
+                            isAsc: this.isAsc
+                        }
+                    }
+                ).then(res => {
+                    for (let i = 0; i < pagenum; i++) {
+                        tmplist1 = res.data.slice(i * 4, (i * 4) + 4);
+                        this.newList.push(tmplist1);
+                    }
+                });
+
+
+            },
             visGoodDialog(viscNum, visName) {
                 this.curGood = viscNum;
                 this.curGoodName = visName;
-                // console.log(viscNum);
-                this.isGoodDialogVis = false;
+                console.log(viscNum);
+                this.isGoodDialogVis = true;
             },
         }
     }
@@ -196,7 +181,7 @@
         /*height: 345px;*/
         display: flex;
         flex-direction: row;
-
+        justify-content: center;
     }
 
     .a-block {
