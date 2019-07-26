@@ -101,7 +101,7 @@
                 keyWord: '',
                 goodList: [],
                 curPage: 1,
-                pageSize: 18,
+                pageSize: 20,
                 order: '',
                 isAsc: true,
 

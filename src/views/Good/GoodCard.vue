@@ -34,7 +34,7 @@
         </div>
         <hr>
         <div class="textAlign" style="color: #999;margin-top: 5px">
-            sbgx
+            假装这是一段商品介绍
         </div>
     </el-card>
 </template>
@@ -85,7 +85,7 @@
     .cardHover:hover{
         margin-top: -3px;
         /*box-shadow: black;*/
-        background-color: rgba(235,245,197,0.20);
+        background-color: #ecffeb;
     }
 
 </style>
