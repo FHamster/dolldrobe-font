@@ -37,7 +37,7 @@
             return {
                 bigTag: [
                     {
-                        title: "网易自营电商",
+                        title: "DollDrobe自营电商",
                         icon: "el-icon-mobile"
                     },
                     {
@@ -75,16 +75,11 @@
         display: flex;
         flex-direction: column;
         /*height: 500px;*/
-        background-color: #9DBC7A;
+        background-color: #f5f7fa;
+        /*background-color: #eaeaea;*/
         /*border: 1px solid black;*/
     }
 
-    .b1 {
-        width: 210px;
-        height: 60px;
-        margin-left: 200px;
-        float: left;
-    }
 
 
     .bt1 p, .bt2 p, .bt3 p, .bt4 p {
@@ -92,66 +87,20 @@
         color: white;
     }
 
-    .b2 {
-        width: 210px;
-        height: 60px;
-        margin-left: 50px;
-        float: left;
-    }
 
     .b2 img {
         margin-top: 3px;
     }
 
-    .bt2 {
-        width: 160px;
-        height: 60px;
-        margin-left: 50px;
-        margin-top: -55px;
-    }
-
-    .b3 {
-        width: 210px;
-        height: 60px;
-        margin-left: 50px;
-        float: left;
-    }
 
     .b3 img {
         margin-top: 2px;
-    }
-
-    .bt3 {
-        width: 160px;
-        height: 60px;
-        margin-left: 50px;
-        margin-top: -55px;
-    }
-
-    .b4 {
-        width: 210px;
-        height: 60px;
-        margin-left: 50px;
-        float: left;
     }
 
     .b4 img {
         margin-top: 3px;
     }
 
-    .bt4 {
-        width: 160px;
-        height: 60px;
-        margin-left: 50px;
-        margin-top: -55px;
-    }
-
-    .dbz {
-        width: 100%;
-        height: 200px;
-        border-top: 1px solid white;
-        margin-top: 100px;
-    }
 
     .bz {
 

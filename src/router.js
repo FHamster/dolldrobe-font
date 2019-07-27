@@ -13,17 +13,19 @@ export default new Router({
         {
             // 未找到页面
             path: '*',
-            redirect: "/MainPage"
+            // name: 'MainPage',
+            component: () => import( './views/404.vue')
         },
 
         {
             path: '/MainPage',
-            name: 'MainPage',
+            // name: 'MainPage',
             component: () => import( './views/MainPage')
         },
         {
             path: '/UserCenter',
-            name: 'UserCenter',
+            // name: 'UserCenter',
+            component: () => import( './views/User/BorderModule/UserCenter'),
             children: [
                 //购物车界面写在这里面才会嵌套在用户中心里
                 //否则购物车界面会替换掉用户中心界面
@@ -34,59 +36,53 @@ export default new Router({
                 },
                 {
                     path: '/ShoppingBag',
-                    name: 'ShoppingBag',
+                    // name: 'ShoppingBag',
                     component: () => import( './views/User/Member/ShoppingBag.vue')
                 }, {
                     path: '/BookMark',
-                    name: 'BookMark',
+                    // name: 'BookMark',
                     component: () => import( './views/User/Member/BookMark.vue')
                 }, {
                     path: '/GoodOrder',
-                    name: 'GoodOrder',
+                    // name: 'GoodOrder',
                     component: () => import( './views/User/Member/GoodOrder.vue')
                 }, {
                     path: '/UserAddress',
-                    name: 'UserAddress',
+                    // name: 'UserAddress',
                     component: () => import( './views/User/Member/UserAddress.vue')
                 },
                 {
                     path: '/OrderDetail',
-                    name: 'OrderDetail',
+                    // name: 'OrderDetail',
                     component: () => import( './views/User/Member/OrderDetail.vue')
                 },
                 {
                     path: '/PersonDetail',
-                    name: 'PersonDetail',
+                    // name: 'PersonDetail',
                     component: () => import('./views/User/BannerModule/PersonDetail')
+                },
+                {
+                    path: '/MessageBorder',
+                    // name: 'MessageBorder',
+                    component: () => import('./views/User/BorderModule/MessageBorder'),
+                    children: [
+                        {
+                            path: '/InteractiveInform/:type',
+                            component: () => import('./views/User/Message/InteractiveInform')
+                        },
+                        {
+                            path: '/SystemInform/:type',
+                            name: 'SystemInform',
+                            component: () => import('./views/User/Message/SystemInform')
+                        }
+                    ],
                 }
             ],
-            component: () => import( './views/User/BorderModule/UserCenter')
-
         },
         {
             path: '/GoodsPage',
-            name: 'GoodsPage',
+            // name: 'GoodsPage',
             component: () => import( './views/Good/GoodsPage')
-        },
-        {
-            path: '/ShoppingBag',
-            name: 'ShoppingBag',
-            component: () => import( './views/User/Member/ShoppingBag')
-        },
-        {
-            path: '/GoodDialog',
-            name: 'GoodDialog',
-            component: () => import( './views/Good/GoodDialog')
-        },
-        {
-            path: '/GoodOrder',
-            name: 'GoodOrder',
-            component: () => import( './views/User/Member/GoodOrder')
-        },
-        {
-            path: '/UserAddress',
-            name: 'UserAddress',
-            component: () => import( './views/User/Member/UserAddress')
         },
         {
             path: '/OrderDetail',
@@ -124,20 +120,5 @@ export default new Router({
             ],
             component: () => import( './views/User/BorderModule/PersonalData')
         },
-
-        {
-            path: '/MessageBorder',
-            name: 'MessageBorder',
-            children: [{
-                path: 'InteractiveInform/:choose',
-                name: 'InteractiveInform',
-                component: () => import('./views/User/Message/InteractiveInform')
-            }, {
-                path: 'SystemInform/:choose',
-                name: 'SystemInform',
-                component: () => import('./views/User/Message/SystemInform')
-            }],
-            component: () => import('./views/User/BorderModule/MessageBorder')
-        }
     ]
 })

@@ -1,6 +1,7 @@
 <template>
     <el-container >
-        <el-main v-if="choose == 1">
+        <div>{{this.$route.params}}</div>
+        <el-main v-if="choose === '1'">
             <el-header height="30px">
                 <div style="font-size: 20px;color: orangered;display: inline">收到的评论</div>
                 <div style="display: inline;color: gray;margin-left: 5px">共{{this.pNum}}条</div>
@@ -13,7 +14,7 @@
                 </div>
             </el-main>
         </el-main>
-        <el-main v-if="choose == 2">
+        <el-main v-if="choose === '2'">
             <el-header height="30px">
                 <div style="font-size: 20px;display: inline">私信</div>
                 <div style="display: inline;color: gray;margin-left: 5px">共{{this.sNum}}条</div>
@@ -26,7 +27,7 @@
                 </div>
             </el-main>
         </el-main>
-        <el-main v-if="choose == 3">
+        <el-main v-if="choose === '3'">
             <el-header height="30px">
                 <div style="font-size: 20px;display: inline">提到我</div>
                 <div style="display: inline;color: gray;margin-left: 5px">共{{this.tNum}}条</div>
@@ -39,7 +40,7 @@
                 </div>
             </el-main>
         </el-main>
-        <el-main v-if="choose == 4">
+        <el-main v-if="choose === '4'">
             <el-header height="30px">
                 <div style="font-size: 20px;display: inline">互动消息</div>
                 <div style="display: inline;color: gray;margin-left: 5px">共{{this.hNum}}条</div>
@@ -58,9 +59,17 @@
 <script>
     export default {
         name: "InteractiveInform",
+        watch: {
+            '$route'(to, from) {
+                // 对路由变化作出响应...
+                console.log("from " + from.params.type);
+                console.log("to " + to.params.type);
+                this.choose = to.params.type;
+            }
+        },
         data: function () {
             return {
-                choose: '0',
+                choose: "",
 
                 failSrc:'../../../assets/NullImg.jpg',
 

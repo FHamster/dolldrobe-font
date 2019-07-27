@@ -15,7 +15,7 @@
             <!--操作栏子菜单-->
             <el-submenu>
                 <template slot="title">操作栏</template>
-                <el-menu-item index="UserAddress"
+                <el-menu-item index="/UserAddress"
                               @click="changeHidden">
                     <i class="el-icon-location"></i>
                     <span slot="title">我的地址</span>
@@ -64,20 +64,20 @@
 
                 </el-submenu>
             </el-submenu>
-            <el-menu-item index="UserCenter">首页</el-menu-item>
+            <el-menu-item index="/UserCenter">首页</el-menu-item>
 
-            <el-menu-item index="ShoppingBag"
+            <el-menu-item index="/ShoppingBag"
                           @click="changeHidden">
                 <i class="el-icon-shopping-cart-full"></i>
                 <span slot="title">我的购物车</span>
             </el-menu-item>
 
-            <el-menu-item index="GoodOrder"
+            <el-menu-item index="/GoodOrder"
                           @click="changeHidden">
                 <i class="el-icon-goods "></i>
                 <span slot="title">我的订单</span>
             </el-menu-item>
-            <el-menu-item index="BookMark">
+            <el-menu-item index="/BookMark">
                 <i class="el-icon-star-off"></i>
                 <span slot="title">我的收藏</span>
             </el-menu-item>
@@ -96,13 +96,13 @@
                 </el-submenu>
                 <el-submenu index="2-2">
                     <template slot="title">个人设置</template>
-                    <el-menu-item index="UserAddress">收货地址</el-menu-item>
-                    <el-menu-item index="PersonDetail">修改头像、昵称</el-menu-item>
+                    <el-menu-item index="/UserAddress">收货地址</el-menu-item>
+                    <el-menu-item index="/PersonDetail">修改头像、昵称</el-menu-item>
                     <el-menu-item index="2-1-3">消息提醒设置</el-menu-item>
                 </el-submenu>
             </el-submenu>
 
-            <el-menu-item index="3">消息中心</el-menu-item>
+            <el-menu-item index="/MessageBorder">消息中心</el-menu-item>
 
             <!-- <div class="search" style="width: 300px;float:right!important;height: 29.6px">
                  <div class="panel">
