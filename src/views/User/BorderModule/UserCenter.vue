@@ -98,11 +98,11 @@
                     <template slot="title">个人设置</template>
                     <el-menu-item index="UserAddress">收货地址</el-menu-item>
                     <el-menu-item index="PersonDetail">修改头像、昵称</el-menu-item>
-                    <el-menu-item index="2-1-3">消息提醒设置</el-menu-item>
+                    <el-menu-item index="MessageBorder">消息提醒设置</el-menu-item>
                 </el-submenu>
             </el-submenu>
 
-            <el-menu-item index="3">消息中心</el-menu-item>
+            <el-menu-item index="MessageBorder">消息中心</el-menu-item>
 
             <!-- <div class="search" style="width: 300px;float:right!important;height: 29.6px">
                  <div class="panel">
