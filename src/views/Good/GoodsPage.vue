@@ -1,25 +1,24 @@
 <template>
-    <el-container style="width: 79%;max-width: 1400px;min-width: 1300px;justify-content: center;">
+    <el-container>
         <el-dialog title="商品详情" :visible.sync="isGoodDialogVis" width="1000px">
             <GoodDialog :c-num="curGood" :c-name="curGoodName"></GoodDialog>
         </el-dialog>
-        <!--
-                <el-header class="myhead">
-                    <img src="../../assets/icon.png" class="myimg">
-                    <div class="my_logo">玩偶衣橱</div>
-                    <div class="rowdir">
-                        <el-input prefix-icon="el-icon-search" type="text"
-                                  size=large class="mysearch"
-                                  v-model="keyWord">
-
-                        </el-input>
-                        <el-button @click="getCart">
-                            搜索
-                        </el-button>
-                    </div>
-                </el-header>
-                -->
-        <div>
+        <el-header class="myhead">
+            <div class="flex-row" style="align-items: center">
+                <img src="@/assets/icon.png" class="myimg">
+                <div class="my_logo">玩偶衣橱</div>
+            </div>
+            <div class="rowdir">
+                <el-input prefix-icon="el-icon-search" type="text"
+                          size=large class="mysearch"
+                          v-model="keyWord">
+                </el-input>
+                <el-button @click="getCart">
+                    搜索
+                </el-button>
+            </div>
+        </el-header>
+        <el-main>
             <!--  <el-aside class="goodaside">
                   <el-col v-for="index of 5" :key="index">
                       &lt;!&ndash;<el-card :body-style="{ padding: '10px' }" shadow="hover" style="width: 250px;margin-left: 15px ;"&ndash;&gt;
@@ -35,41 +34,38 @@
                       &lt;!&ndash;</el-card>&ndash;&gt;
                   </el-col>
               </el-aside>-->
-            <div>
-                <!--
-                <div class="el-row" height="20px" style="align-text: center">
-                    <el-button plain class="head_btn" @click=getPageByC_Num>综合排序</el-button>
-                    <el-button plain class="head_btn">销量</el-button>
-                    <el-button plain class="head_btn" @click="getPageByC_MaxMoney">价格</el-button>
-                    <el-button plain class="head_btn">评论数</el-button>
-                    <el-button plain class="head_btn" @click="getPageByC_EndTime">上架时间</el-button>
-                </div>
+
+            <!--
+            <div class="el-row" height="20px" style="align-text: center">
+                <el-button plain class="head_btn" @click=getPageByC_Num>综合排序</el-button>
+                <el-button plain class="head_btn">销量</el-button>
+                <el-button plain class="head_btn" @click="getPageByC_MaxMoney">价格</el-button>
+                <el-button plain class="head_btn">评论数</el-button>
+                <el-button plain class="head_btn" @click="getPageByC_EndTime">上架时间</el-button>
+            </div>
 -->
-                <div>
-                    <!--商品展示面板-->
-                    <div class="goodPanel">
-                        <div v-for="good in goodList" :key="good.cNum"
-                             style="margin-left: 10px;margin-top: 5px"
-                             @click="visGoodDialog(good.cNum,good.cName)">
-                            <GoodCard :good="good"/>
-                        </div>
-
+            <div style="justify-content: center" class="flex-row">
+                <!--商品展示面板-->
+                <div class="goodPanel">
+                    <div v-for="good in goodList" :key="good.cNum"
+                         style="margin-left: 10px;margin-top: 5px"
+                         @click="visGoodDialog(good.cNum,good.cName)">
+                        <GoodCard :good="good"/>
                     </div>
-
-
-                    <el-pagination
-                            background
-                            @size-change="handleSizeChange"
-                            @current-change="handleCurrentChange"
-                            :current-page.sync="curPage"
-                            :page-size="5"
-                            layout="prev, pager, next, jumper"
-                            :total="total"
-                            style="float: right">
-                    </el-pagination>
                 </div>
             </div>
-        </div>
+            <el-pagination
+                    background
+                    @size-change="handleSizeChange"
+                    @current-change="handleCurrentChange"
+                    :current-page.sync="curPage"
+                    :page-size="5"
+                    layout="prev, pager, next, jumper"
+                    :total="total"
+                    style="float: right;margin-top: 50px;margin-right: 100px">
+            </el-pagination>
+
+        </el-main>
 
     </el-container>
 </template>
@@ -101,7 +97,7 @@
                 keyWord: '',
                 goodList: [],
                 curPage: 1,
-                pageSize: 20,
+                pageSize: 24,
                 order: '',
                 isAsc: true,
 
@@ -131,20 +127,6 @@
                 this.getCart();
             },
 
-            addFavo: function (Com) {
-                axios.post('/api/Favorities/addFavorities', Com, {
-                        headers: {
-                            'token': this.$store.getters.getToken
-                        }
-                    }
-                ).then(res => {
-                    this.$message.success('成功加入收藏夹啦' + res.statusText);
-                }).catch(err => {
-                    console.log(err.response.data);
-                    this.$message.error('不知道为什么，反正是没加入收藏夹 ' + err.response.data.message);
-                });
-
-            },
             visGoodDialog(viscNum, visName) {
                 this.curGood = viscNum;
                 this.curGoodName = visName;
@@ -190,8 +172,6 @@
         /*font-family: 华文琥珀;*/
         color: #9DBC7A;
         font-size: 40px;
-        margin-top: 20px;
-        margin-bottom: 7px;
         white-space: nowrap;
     }
 
@@ -210,22 +190,21 @@
         display: flex;
         flex-direction: row;
         align-items: center;
-        margin: 0px 250px;
     }
 
     .myhead {
         min-height: 90px;
         padding: 0;
+        margin: 0;
         display: flex;
         flex-direction: row;
-        justify-self: center;
-        margin-left: 40px;
-        margin-right: 40px;
+        justify-content: space-around;
+        background-color: #f5f7fa;
     }
 
     .myimg {
         /*float: left;*/
-        margin-top: 10px;
+
         width: 70px;
         height: 70px;
 
@@ -253,11 +232,10 @@
 
 
     .goodPanel {
-        /*width: 100%;*/
-        /*height: auto;*/
+        width: 1350px;
         display: flex;
-        justify-content: flex-start;
         flex-direction: row;
+        justify-content: center;
         flex-wrap: wrap;
     }
 

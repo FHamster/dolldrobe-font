@@ -75,8 +75,8 @@
             <div style="display: flex;justify-content: space-around">
                 <el-input-number v-model="num" :min='1' :step="1"></el-input-number>
                 <el-button plain @click="addIntoCart" style="float: right">加入购物车</el-button>
-                <el-button v-if="isMark" icon="el-icon-star-off" circle @click="isMark=!isMark"></el-button>
-                <el-button v-else type="warning" icon="el-icon-star-on" circle @click="isMark=!isMark"></el-button>
+                <el-button icon="el-icon-star-off" circle @click="addFavo(CNum)"></el-button>
+<!--                <el-button v-else type="warning" icon="el-icon-star-on" circle @click="isMark=!isMark"></el-button>-->
             </div>
 
         </div>
@@ -120,6 +120,20 @@
             };
         },
         methods: {
+            addFavo: function (Com) {
+                axios.post('/api/Favorities', Com, {
+                        headers: {
+                            'token': this.$store.getters.getToken
+                        }
+                    }
+                ).then(res => {
+                    this.$message.success('成功加入收藏夹啦' + res.statusText);
+                }).catch(err => {
+                    console.log(err.response.data);
+                    this.$message.error('不知道为什么，反正是没加入收藏夹 ' + err.response.data.message);
+                });
+
+            },
             changeCurGood(newCur) {
                 // console.log(newCur);
                 this.curSku = newCur;

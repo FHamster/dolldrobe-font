@@ -4,8 +4,6 @@
             <GoodDialog :c-num="curGood" :c-name="curGoodName"></GoodDialog>
         </el-dialog>
 
-        <el-button @click="isGoodDialogVis=!isGoodDialogVis"> 123</el-button>
-
         <el-header style="padding: 0;" height="300px">
             <el-carousel :interval="5000" arrow="always" style="width: 100%; height: 300px">
                 <el-carousel-item v-for="(it,index) in item" :key="index">
@@ -21,7 +19,9 @@
                             <div style="font-size: 28px; margin-right: 20px">新品首发</div>
                             <div style="font-size: 14px;">衣橱里总觉得少一件</div>
                         </div>
-                        <el-button type="text">更多新品</el-button>
+                        <router-link to="/GoodsPage">
+                            <el-button type="text">更多新品</el-button>
+                        </router-link>
                     </div>
                     <div class="Pane">
                         <!--                        <el-carousel arrow="never" height="365px" indicator-position="outside" :interval="4000" style="width: 1140px;">-->
@@ -49,7 +49,9 @@
                             <div style="font-size: 28px; margin-right: 20px">人气画稿</div>
                             <div style="font-size: 14px;">快去看看，说不定就做出来了呢</div>
                         </div>
-                        <el-button type="text">更多画稿</el-button>
+                        <router-link to="/GoodsPage">
+                            <el-button type="text">更多画稿</el-button>
+                        </router-link>
                     </div>
 
                     <div class="Pane">
@@ -63,10 +65,12 @@
                 <div class="infopane">
                     <div class="title">
                         <div class="maintitle">
-                            <div style="font-size: 28px; margin-right: 20px">人气画稿</div>
-                            <div style="font-size: 14px;">快去看看，说不定就做出来了呢</div>
+                            <div style="font-size: 28px; margin-right: 20px">限时抢购</div>
+                            <div style="font-size: 14px;">抢抢看喽，反正也抢不完</div>
                         </div>
-                        <el-button type="text">更多画稿</el-button>
+                        <router-link to="/GoodsPage">
+                            <el-button type="text">更多成品</el-button>
+                        </router-link>
                     </div>
 
                     <div class="Pane">

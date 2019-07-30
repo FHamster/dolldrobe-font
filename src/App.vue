@@ -11,27 +11,29 @@ acc236
 99cc33
 8baaff h
 9dbc7a-->
-        <div>
+
             <!--<div style="text-align: center;background-color: lightgray">推荐使用谷歌或火狐浏览器</div>-->
+        <!-- style="background-image: linear-gradient(to right, #f5f7fa 0%, #c3cfe2 100%);"
+                    text-color="#547A28"
+                    active-text-color="#B3748D"-->
+        <div class="menu-border">
             <el-menu
                     :default-active="activeIndex2"
                     mode="horizontal"
-                    @select="handleSelect"
-                    style="background-image: linear-gradient(to right, #f5f7fa 0%, #c3cfe2 100%);"
                     text-color="#547A28"
                     active-text-color="#B3748D"
+                    @select="handleSelect"
                     router>
-                <el-menu-item @click="dialogVis = !dialogVis"
-                              style="background-image: linear-gradient(to left, #f5f7fa 0%, #c3cfe2 100%);">
+                <el-menu-item @click="dialogVis = !dialogVis">
                     <template slot="title">
                         <el-avatar>U</el-avatar>
                     </template>
                 </el-menu-item>
                 <el-menu-item
-                        index="MainPage">首页
+                        index="/MainPage">首页
                 </el-menu-item>
                 <el-menu-item
-                        index="UserCenter">用户中心
+                        index="/UserCenter">用户中心
                 </el-menu-item>
                 <!--   <el-submenu index="2">
                        <template slot="title">我的工作台</template>
@@ -47,11 +49,11 @@ acc236
                    </el-submenu>-->
 
                 <el-menu-item
-                        index="GoodsPage">商品浏览
+                        index="/GoodsPage">商品浏览
                 </el-menu-item>
-                <el-menu-item
+               <!-- <el-menu-item
                         index="MessageBorder">浏览
-                </el-menu-item>
+                </el-menu-item>-->
                 <!--    <el-menu-item
                             index="Express">Express
                     </el-menu-item>-->
@@ -59,7 +61,7 @@ acc236
         </div>
 
         <!--        </el-header>-->
-        <el-container style="padding: 0;justify-content: center;margin-top: 20px">
+        <el-container style="padding: 0;justify-content: center;margin-top: 20px;min-height: 700px">
             <router-view></router-view>
         </el-container>
 
@@ -150,5 +152,16 @@ acc236
 
     .avatar-panel {
         align-self: center;
+    }
+
+    .menu-border {
+        padding: 0;
+        margin: 0;
+        border-top: 20px;
+        border-bottom: 20px;
+        border-left-width: 0;
+        border-right-width: 0;
+        border-color: #CADEB3;
+        border-style: solid;
     }
 </style>
