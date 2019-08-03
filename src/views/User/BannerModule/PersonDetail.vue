@@ -11,31 +11,36 @@
                         <el-image v-else style="width: 80px;height: 80px;background-color: #9DBC7A"></el-image>
                     </el-form-item>
                     <el-form-item label="昵称:" style="height: 25px; width: 280px">
-                        <el-input v-model="pdform.nickName" style="width: 200px;float: right" size="mini">{{pdform.nickName}}</el-input>
+                        <el-input v-model="pdform.nickName" style="width: 200px;float: right" size="mini">
+                            {{pdform.nickName}}
+                        </el-input>
                     </el-form-item>
                     <el-form-item label="真实姓名：" style="height: 25px;width: 280px">
-                        <el-input v-model="pdform.realName" style="width: 150px;float: right" size="mini">{{pdform.realName}}</el-input>
+                        <el-input v-model="pdform.realName" style="width: 150px;float: right" size="mini">
+                            {{pdform.realName}}
+                        </el-input>
                     </el-form-item>
                     <el-form-item label="性别：" style="height: 25px;width: 300px" size="mini">
                         <template>
                             <el-radio style="margin-left: 25px" v-model="pdform.sex" label="1">男</el-radio>
-                            <el-radio v-model="pdform.sex"  label="2">女</el-radio>
+                            <el-radio v-model="pdform.sex" label="2">女</el-radio>
                         </template>
                     </el-form-item>
                     <el-form-item label="生日：" style="height: 25px;width: 280px">
                         <template>
-                            <div class="block">
-                                <el-date-picker
-                                        size="mini"
-                                        v-model="pdform.birthday"
-                                        type="date"
-                                        style="width: 200px;float: right"
-                                        placeholder="选择日期">
-                                </el-date-picker>
-                            </div>
-                        </template>
+                        <div class="block">
+                            <el-date-picker
+                                    size="mini"
+                                    v-model="pdform.birthday"
+                                    type="date"
+                                    style="width: 200px;float: right"
+                                    placeholder="选择日期">
+                            </el-date-picker>
+                        </div>
+                    </template>
                     </el-form-item>
-                    <el-form-item label="星座：" style="height: 25px; float: right; margin-top: -45px ;margin-right: 100px; width: 250px">
+                    <el-form-item label="星座："
+                                  style="height: 25px; float: right; margin-top: -45px ;margin-right: 100px; width: 250px">
                         <el-select v-model="pdform.constellation" placeholder="请选择"
                                    style=" float: right;"
                                    size="mini">
@@ -109,6 +114,7 @@
         name: "PersonDetail",
         data() {
             return {
+                // message:"helloworld",
                 imageUrl: '',
                 pdform: {
                     userName: '',//*

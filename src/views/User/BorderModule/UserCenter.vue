@@ -1,13 +1,8 @@
 <template>
     <el-container>
-
-        <!--                    @open="handleOpen"-->
-        <!--                    @close="handleClose"-->
-
-
-        <!--                :default-active="activeIndex2"-->
-
-        <el-aside width="61px" style="background-image: linear-gradient(to left, #f5f7fa 0%, #c3cfe2 100%); height: 560px" ref="aleft" >
+        <el-aside width="61px"
+                  style="background-image: linear-gradient(to left, #f5f7fa 0%, #c3cfe2 100%); height: 560px"
+                  ref="aleft">
             <el-menu
                     default-active="2"
                     text-color="#547A28"
@@ -147,7 +142,6 @@
                 </el-header>
                 <el-main>
                     <router-view></router-view>
-
                 </el-main>
             </el-container>
         </el-main>
@@ -206,7 +200,6 @@
                     <i class="el-icon-star-off"></i>
                     <span slot="title">我的关注</span>
                 </el-menu-item>
-
 
 
             </el-menu>

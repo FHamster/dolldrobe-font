@@ -118,6 +118,12 @@ export default new Router({
             path: '/MessageBorder',
             name: 'MessageBorder',
             component: () => import('./views/User/BorderModule/MessageBorder')
+        },
+        {
+            path:'/InteractiveInform',
+            name:'InteractiveInform',
+            component:()=> import('./views/User/Message/InteractiveInform')
         }
+
     ]
 })

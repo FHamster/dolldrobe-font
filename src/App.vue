@@ -62,6 +62,9 @@ acc236
                 <el-menu-item
                         index="PersonDetail">PersonDetail
                 </el-menu-item>
+                <el-menu-item
+                        index="InteractiveInform">InteractiveInform
+                </el-menu-item>
             </el-menu>
         </el-header>
 
