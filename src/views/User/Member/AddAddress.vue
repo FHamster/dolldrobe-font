@@ -45,15 +45,17 @@
                     <el-input v-model="ruleForm.tagName" style="width: 150px">{{ruleForm.tagName}}</el-input>
                     <div
                             class="item_lab"
-                            style="display: inline">建议填写常用名称</div>
-                    <el-button plain size="small" @click=changeTag(tagItems[0].tag) >家里</el-button>
+                            style="display: inline">建议填写常用名称
+                    </div>
+                    <el-button plain size="small" @click=changeTag(tagItems[0].tag)>家里</el-button>
                     <el-button plain size="small" @click=changeTag(tagItems[1].tag)>父母家</el-button>
                     <el-button plain size="small" @click=changeTag(tagItems[2].tag)>公司</el-button>
                     <el-button plain size="small" @click=changeTag(tagItems[3].tag)>学校</el-button>
                 </el-form-item>
                 <el-form-item align="center" style="margin-top: 20px">
                     <el-button plain type="primary"
-                               @click="addAddress">保存收货地址</el-button>
+                               @click="addAddress">保存收货地址
+                    </el-button>
                 </el-form-item>
             </el-form>
         </el-main>
@@ -67,14 +69,14 @@
         name: "AddAddress",
         data: function () {
             return {
-                tagItems:[{
-                    tag:'家里'
-                },{
-                    tag:'父母家'
-                },{
-                    tag:'公司'
-                },{
-                    tag:'学校'
+                tagItems: [{
+                    tag: '家里'
+                }, {
+                    tag: '父母家'
+                }, {
+                    tag: '公司'
+                }, {
+                    tag: '学校'
                 },],
                 ruleForm: [{
                     peopleName: '',
@@ -173,7 +175,7 @@
                     }).catch(err => {
                         this.$message.error("收获收货地址添加失败");
                     });
-                }else{
+                } else {
                     this.$message.error("收获收货地址添加失败");
                 }
             },

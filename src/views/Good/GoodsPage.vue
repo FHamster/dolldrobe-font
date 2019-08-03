@@ -1,102 +1,71 @@
 <template>
     <el-container>
-
         <el-dialog title="商品详情" :visible.sync="isGoodDialogVis" width="1000px">
             <GoodDialog :c-num="curGood" :c-name="curGoodName"></GoodDialog>
         </el-dialog>
-
         <el-header class="myhead">
-            <img src="../../assets/icon.png" class="myimg">
-            <div class="my_logo">玩偶衣橱</div>
+            <div class="flex-row" style="align-items: center">
+                <img src="@/assets/icon.png" class="myimg">
+                <div class="my_logo">玩偶衣橱</div>
+            </div>
             <div class="rowdir">
                 <el-input prefix-icon="el-icon-search" type="text"
                           size=large class="mysearch"
                           v-model="keyWord">
-
                 </el-input>
                 <el-button @click="getCart">
                     搜索
                 </el-button>
             </div>
         </el-header>
-        <el-container>
-            <el-aside class="goodaside">
-                <el-col v-for="index of 5" :key="index">
-                    <!--<el-card :body-style="{ padding: '10px' }" shadow="hover" style="width: 250px;margin-left: 15px ;"-->
-                             <!--@click="isGoodDialogVis = !isGoodDialogVis">-->
-                        <!--<img src="https://shadow.elemecdn.com/app/element/hamburger.9cf7b091-55e9-11e9-a976-7f4d0b07eef6.png"-->
-                             <!--class="image">-->
-                        <!--<div style="padding: 14px;width: 180px">-->
-                            <!--<span>好吃的汉堡</span>-->
-                            <!--<div class="bottom clearfix">-->
-                                <!--<el-button type="text" class="button">加入购物车</el-button>-->
-                            <!--</div>-->
-                        <!--</div>-->
-                    <!--</el-card>-->
-                </el-col>
-            </el-aside>
-            <el-container>
-                <el-header height="20px" style="align-text: center">
-                    <el-row>
-                        <el-button :autofocus="true" class="head_btn" plain @click=getPageByC_Num>综合排序
-                        </el-button>
-                        <el-button plain class="head_btn">销量</el-button>
-                        <el-button plain class="head_btn" @click="getPageByC_MaxMoney">价格</el-button>
-                        <el-button plain class="head_btn">评论数</el-button>
-                        <el-button plain class="head_btn" @click="getPageByC_EndTime">上架时间</el-button>
-                    </el-row>
-                </el-header>
-                <el-main>
+        <el-main>
+            <!--  <el-aside class="goodaside">
+                  <el-col v-for="index of 5" :key="index">
+                      &lt;!&ndash;<el-card :body-style="{ padding: '10px' }" shadow="hover" style="width: 250px;margin-left: 15px ;"&ndash;&gt;
+                      &lt;!&ndash;@click="isGoodDialogVis = !isGoodDialogVis">&ndash;&gt;
+                      &lt;!&ndash;<img src="https://shadow.elemecdn.com/app/element/hamburger.9cf7b091-55e9-11e9-a976-7f4d0b07eef6.png"&ndash;&gt;
+                      &lt;!&ndash;class="image">&ndash;&gt;
+                      &lt;!&ndash;<div style="padding: 14px;width: 180px">&ndash;&gt;
+                      &lt;!&ndash;<span>好吃的汉堡</span>&ndash;&gt;
+                      &lt;!&ndash;<div class="bottom clearfix">&ndash;&gt;
+                      &lt;!&ndash;<el-button type="text" class="button">加入购物车</el-button>&ndash;&gt;
+                      &lt;!&ndash;</div>&ndash;&gt;
+                      &lt;!&ndash;</div>&ndash;&gt;
+                      &lt;!&ndash;</el-card>&ndash;&gt;
+                  </el-col>
+              </el-aside>-->
 
-                    <!--商品展示面板-->
-                    <div class="goodPanel">
-                        <el-card v-for="o in goodList" :key="o.cNum"
-                                 :body-style="{ padding: '0px' }"
-                                 style="width: 230px;margin-right: 20px;"
-                                 shadow="hover"
-
-                        >
-                            <img :src=o.cImg
-                                 class="image"
-                                 @click="visGoodDialog(o.cNum,o.cName)"
-                            >
-                            <div style="padding: 14px;">
-                                <span class="GoodName">{{o.cName}}</span>
-                                <div class="bottom clearfix">
-                                    <div class="price_cart">
-                                        <div class="price">￥{{o.cMaxmoney}}</div>
-                                        <el-button type="warning"
-                                                   icon="el-icon-star-off"
-                                                   circle
-                                                   @click="addFavo(o)">
-
-                                        </el-button>
-                                        <el-button type="primary"
-                                                   icon="el-icon-shopping-cart-2"
-                                                   circle
-                                                   @click="visGoodDialog(o.cNum,o.cName)">
-                                        </el-button>
-                                    </div>
-                                </div>
-                            </div>
-                        </el-card>
+            <!--
+            <div class="el-row" height="20px" style="align-text: center">
+                <el-button plain class="head_btn" @click=getPageByC_Num>综合排序</el-button>
+                <el-button plain class="head_btn">销量</el-button>
+                <el-button plain class="head_btn" @click="getPageByC_MaxMoney">价格</el-button>
+                <el-button plain class="head_btn">评论数</el-button>
+                <el-button plain class="head_btn" @click="getPageByC_EndTime">上架时间</el-button>
+            </div>
+-->
+            <div style="justify-content: center" class="flex-row">
+                <!--商品展示面板-->
+                <div class="goodPanel">
+                    <div v-for="good in goodList" :key="good.cNum"
+                         style="margin-left: 10px;margin-top: 5px"
+                         @click="visGoodDialog(good.cNum,good.cName)">
+                        <GoodCard :good="good"/>
                     </div>
+                </div>
+            </div>
+            <el-pagination
+                    background
+                    @size-change="handleSizeChange"
+                    @current-change="handleCurrentChange"
+                    :current-page.sync="curPage"
+                    :page-size="5"
+                    layout="prev, pager, next, jumper"
+                    :total="total"
+                    style="float: right;margin-top: 50px;margin-right: 100px">
+            </el-pagination>
 
-
-                    <el-pagination
-                            background
-                            @size-change="handleSizeChange"
-                            @current-change="handleCurrentChange"
-                            :current-page.sync="curPage"
-                            :page-size="5"
-                            layout="prev, pager, next, jumper"
-                            :total="total"
-                            style="float: right"
-                    >
-                    </el-pagination>
-                </el-main>
-            </el-container>
-        </el-container>
+        </el-main>
 
     </el-container>
 </template>
@@ -104,12 +73,13 @@
 <script>
     import axios from 'axios';
     import GoodDialog from "./GoodDialog";
+    import GoodCard from "./GoodCard";
 
 
     export default {
 
         name: "GoodsPage",
-        components: {GoodDialog},
+        components: {GoodCard, GoodDialog},
         mounted() {
             this.getCart();
         },
@@ -118,6 +88,7 @@
                 // 商品对话框当前选中商品cNum
                 curGood: '',
                 curGoodName: '',
+                isGoodDialogVis: false,
 
                 total: 200,
                 C_Num: "C_Num",
@@ -126,11 +97,11 @@
                 keyWord: '',
                 goodList: [],
                 curPage: 1,
-                pageSize: 18,
+                pageSize: 24,
                 order: '',
                 isAsc: true,
 
-                isGoodDialogVis: false
+
             };
         },
         methods: {
@@ -147,7 +118,7 @@
             },
             getPageByC_MaxMoney() {
 
-                this.order = "C_MaxMoney";
+                this.order = "C_MinMoney";
                 this.getCart();
             },
 
@@ -156,20 +127,6 @@
                 this.getCart();
             },
 
-            addFavo: function (Com) {
-                axios.post('/api/Favorities/addFavorities', Com, {
-                        headers: {
-                            'token': this.$store.getters.getToken
-                        }
-                    }
-                ).then(res => {
-                    this.$message.success('成功加入收藏夹啦' + res.statusText);
-                }).catch(err => {
-                    console.log(err.response.data);
-                    this.$message.error('不知道为什么，反正是没加入收藏夹 ' + err.response.data.message);
-                });
-
-            },
             visGoodDialog(viscNum, visName) {
                 this.curGood = viscNum;
                 this.curGoodName = visName;
@@ -188,7 +145,7 @@
                     }
                 ).then(res => {
                     this.goodList = res.data;
-                    // console.log(this.goodList);
+                    console.log(this.goodList);
                 })
             }
         }
@@ -197,16 +154,24 @@
 </script>
 
 <style scoped>
+
+    .good-card {
+        padding: 0;
+        width: 250px;
+
+        display: flex;
+        flex-direction: column;
+        align-content: center;
+    }
+
     .my_logo {
         /*position: relative;*/
         /*float: left;*/
         /*width: 200px;*/
         /*height: 65px;*/
-        font-family: 华文琥珀;
+        /*font-family: 华文琥珀;*/
         color: #9DBC7A;
         font-size: 40px;
-        margin-top: 20px;
-        margin-bottom: 7px;
         white-space: nowrap;
     }
 
@@ -225,22 +190,21 @@
         display: flex;
         flex-direction: row;
         align-items: center;
-        margin: 0px 250px;
     }
 
     .myhead {
         min-height: 90px;
         padding: 0;
+        margin: 0;
         display: flex;
         flex-direction: row;
-        justify-self: center;
-        margin-left: 40px;
-        margin-right: 40px;
+        justify-content: space-around;
+        background-color: #f5f7fa;
     }
 
     .myimg {
         /*float: left;*/
-        margin-top: 10px;
+
         width: 70px;
         height: 70px;
 
@@ -260,49 +224,19 @@
         margin: 0px;
     }
 
-    .bottom {
-        margin-top: 13px;
-        line-height: 12px;
-    }
 
     .button {
         padding: auto;
         float: right;
     }
 
-    .image {
-        width: 100%;
-        display: block;
-    }
-
-    .clearfix:before,
-    .clearfix:after {
-        display: table;
-        content: "";
-    }
-
-    .clearfix:after {
-        clear: both
-    }
 
     .goodPanel {
-        /*width: 100%;*/
-        /*height: auto;*/
+        width: 1350px;
         display: flex;
-        justify-content: flex-start;
         flex-direction: row;
+        justify-content: center;
         flex-wrap: wrap;
-    }
-
-    .price_cart {
-        display: flex;
-        flex-direction: row;
-        justify-content: space-between;
-        align-items: center;
-    }
-
-    .price {
-        color: #9DBC7A;
     }
 
     .goodaside {
@@ -311,8 +245,5 @@
         border-color: #9DBC7A;
     }
 
-    .GoodName {
-        white-space: nowrap;
-    }
 
 </style>
