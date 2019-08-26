@@ -1,6 +1,6 @@
 <template>
     <el-container >
-        <div>{{this.$route.params}}</div>
+        <!--<div>{{this.$route.params}}</div>-->
         <el-main v-if="choose === '1'">
             <el-header height="30px">
                 <div style="font-size: 20px;color: orangered;display: inline">收到的评论</div>

@@ -16,7 +16,7 @@
                </el-switch>-->
             <!--=======================我想这样子==============================-->
             <el-menu-item-group title="系统消息">
-                <el-menu-item index="/SystemInform/1">成团通知</el-menu-item>
+                <el-menu-item index="/SystemInform/1">团的通知</el-menu-item>
                 <el-menu-item index="/SystemInform/2">打样通知</el-menu-item>
                 <el-menu-item index="/SystemInform/3">尾款通知</el-menu-item>
                 <el-menu-item index="/SystemInform/4">系统通知</el-menu-item>

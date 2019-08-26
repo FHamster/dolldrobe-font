@@ -118,7 +118,7 @@
     }
 
     .bz a:hover {
-        color: white;
+        color: #9DBC7A;
     }
 
     .sm1 {
@@ -138,7 +138,7 @@
     }
 
     .sm1 a:hover {
-        color: white;
+        color: #9DBC7A;
     }
 
     .sm2 {
@@ -156,7 +156,7 @@
     }
 
     .sm2 a:hover {
-        color: white;
+        color: #9DBC7A;
     }
 
     .tag {
