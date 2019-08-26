@@ -30,6 +30,9 @@
                             <div class="box" v-if="!isFalse">
                                 二维码已失效
                             </div>
+                            <div class="box" style="background-color: rgba(255,255,255,0.8);color: green" v-if="isSuccess">
+                                扫码成功
+                            </div>
                             <div style="display: block;float: left;margin-top: 10px;font-size: 15px;color: #141f2a;margin-left: 35px">
                                 请使用支付宝扫码完成付款
                             </div>
@@ -66,6 +69,9 @@
                             <div class="box" v-show="!isFalse">
                                 二维码已失效
                             </div>
+                            <div class="box" style="background-color: rgba(255,255,255,0.8);color: darkgreen" v-if="isSuccess">
+                                扫码成功
+                            </div>
                             <div style="display: block;float: left;margin-top: 10px;font-size: 15px;color: #141f2a;margin-left: 35px">
                                 请使用支付宝扫码完成付款
                             </div>
@@ -98,6 +104,7 @@
 </template>
 src="https://ssl.ptlogin2.qq.com/ptqrshow?appid=716027609&amp;e=2&amp;l=M&amp;s=3&amp;d=72&amp;v=4&amp;t=0.5286219520035389&amp;daid=383&amp;pt_3rd_aid=100495085"
 <script>
+    import QR from "@/assets/test.jpg";
     export default {
         name: "PayFor",
         data: function () {
@@ -105,7 +112,8 @@ src="https://ssl.ptlogin2.qq.com/ptqrshow?appid=716027609&amp;e=2&amp;l=M&amp;s=
                 money: 100.00,
                 t_s: 10,
                 t_show: '',
-                z_src: 'https://p2.music.126.net/JL_id1CFwNJpzgrXwemh4Q==/109951164172892390.jpg?param=130y130',
+                z_src: QR,
+                // z_src: 'https://p2.music.126.net/JL_id1CFwNJpzgrXwemh4Q==/109951164172892390.jpg?param=130y130',
                 w_src: 'https://p2.music.126.net/JL_id1CFwNJpzgrXwemh4Q==/109951164172892390.jpg?param=130y130',
                 orderNum: '132515641561',
                 orderCont: '莓兔兔',
@@ -125,7 +133,7 @@ src="https://ssl.ptlogin2.qq.com/ptqrshow?appid=716027609&amp;e=2&amp;l=M&amp;s=
                         t_ss = '0' + t_ss;
                     this.t_show = t_min + ':' + t_ss;
                     this.t_s--;
-                    if(this.t_s < 0){
+                    if (this.t_s < 0) {
                         this.isFalse = false;
                         // console.log(this.isFalse);
                     }
@@ -135,7 +143,7 @@ src="https://ssl.ptlogin2.qq.com/ptqrshow?appid=716027609&amp;e=2&amp;l=M&amp;s=
                 let go;
                 if (this.t_s >= 0) {
                     go = setInterval(this.changeTime, 1000);
-                }else {
+                } else {
                     clearInterval(go);
                 }
 
@@ -144,10 +152,10 @@ src="https://ssl.ptlogin2.qq.com/ptqrshow?appid=716027609&amp;e=2&amp;l=M&amp;s=
                 var myDate = new Date();
                 return myDate.getFullYear() + "." + myDate.getMonth() + "." + myDate.getDate() + " " + myDate.getHours() + ':' + myDate.getMinutes();
             },
-            successFunction(){
+            successFunction() {
 
             },
-            rePayFunction(){
+            rePayFunction() {
 
             }
         },
