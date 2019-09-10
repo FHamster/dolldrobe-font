@@ -25,14 +25,14 @@
                                     </div>
                                 </div>
                             </template>
-                            <div style="margin-top: 5px; font-family: 仿宋;font-size: 20px" v-if="it.flag == 1">
+                            <div style="margin-top: 5px;margin-left:25px; font-family: 仿宋;font-size: 20px" v-if="it.flag == 1">
                                 宝宝，你参与数调的{{it.goodName}}已经成团啦，离出样又近一步啦!!!
                             </div>
-                            <div style="margin-top: 5px; font-family: 仿宋;font-size: 20px" v-if="it.flag == -1">
+                            <div style="margin-top: 5px; margin-left:25px;font-family: 仿宋;font-size: 20px" v-if="it.flag == -1">
                                 宝宝很抱歉，你参与数调的{{it.goodName}}成团失败，预付的定金将以积分形式退回至你的账户，请注意查收噢，有问题请联系客服人员。
                             </div>
                             <div style="width: 100%">
-                                <el-link :href=it.href>查看详情</el-link>
+                                <el-link :href=it.href style="margin-left:25px;">查看详情</el-link>
                                 <el-button type="text" style="float: right;padding: 0">删除消息</el-button>
                             </div>
                         </el-collapse-item>
@@ -69,17 +69,17 @@
                                     </div>
                                 </div>
                             </template>
-                            <div style="margin-top: 5px; font-family: 仿宋;font-size: 20px" v-if="it.flag > 0">
+                            <div style="margin-top: 5px; margin-left:25px;font-family: 仿宋;font-size: 20px" v-if="it.flag > 0">
                                 宝宝，{{it.goodName}}的{{it.flag}}样已经出来啦，有什么小建议可以通过下面链接反馈给我们噢。
                             </div>
-                            <div style="margin-top: 5px; font-family: 仿宋;font-size: 20px" v-if="it.flag == 0">
+                            <div style="margin-top: 5px; margin-left:25px;font-family: 仿宋;font-size: 20px" v-if="it.flag == 0">
                                 宝宝，{{it.goodName}}的终样出来啦， 请关注补款时间噢。可以通过下面链接去查看噢。
                             </div>
-                            <div style="margin-top: 5px; font-family: 仿宋;font-size: 20px" v-if="it.flag < 0">
+                            <div style="margin-top: 5px; margin-left:25px;font-family: 仿宋;font-size: 20px" v-if="it.flag < 0">
                                 宝宝，{{it.goodName}}的打样反馈我们已经收到啦！请期待下一次出样哦！。
                             </div>
                             <div style="width: 100%">
-                                <el-link :href=it.href>了解详情</el-link>
+                                <el-link :href=it.href style="margin-left:25px;">了解详情</el-link>
                                 <el-button type="text" style="float: right;padding: 0">删除消息</el-button>
                             </div>
                         </el-collapse-item>
@@ -111,11 +111,11 @@
                                     </div>
                                 </div>
                             </template>
-                            <div style="margin-top: 5px; font-family: 仿宋;font-size: 20px">
+                            <div style="margin-top: 5px; margin-left:25px;font-family: 仿宋;font-size: 20px">
                                 宝宝定制的{{it.goodName}}已经开始补款啦，截止时间是{{it.otherDate}}，别错过时间噢！
                             </div>
                             <div style="width: 100%">
-                                <el-link :href=it.href>去往衣橱加衣服</el-link>
+                                <el-link :href=it.href style="margin-left:25px;">去往衣橱加衣服</el-link>
                                 <el-button type="text" style="float: right;padding: 0">删除消息</el-button>
                             </div>
                         </el-collapse-item>
