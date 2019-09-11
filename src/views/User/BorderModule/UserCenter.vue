@@ -22,16 +22,16 @@
                 </el-menu-item>
 
 
-                <el-submenu index="4" class="asideMenu">
-                    <template slot="title">
-                        <i class="el-icon-tickets"></i>
-                        <span>我的发票</span>
-                    </template>
+                <!--<el-submenu index="4" class="asideMenu">-->
+                    <!--<template slot="title">-->
+                        <!--<i class="el-icon-tickets"></i>-->
+                        <!--<span>我的发票</span>-->
+                    <!--</template>-->
 
-                    <el-menu-item index="4-1">开票信息</el-menu-item>
-                    <el-menu-item index="4-2">发票管理</el-menu-item>
+                    <!--<el-menu-item index="4-1">开票信息</el-menu-item>-->
+                    <!--<el-menu-item index="4-2">发票管理</el-menu-item>-->
 
-                </el-submenu>
+                <!--</el-submenu>-->
                 <!--<el-menu-item index="4">-->
                 <!--<i class="el-icon-tickets"></i>-->
                 <!--<span slot="title">我的订单</span>-->

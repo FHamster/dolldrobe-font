@@ -61,8 +61,8 @@
                 <el-row style="margin: 0">
                     <div style="display: inline; font-size: 13px">筛选条件&nbsp;:</div>
                     <el-button plain :autofocus="true" size="mini" class="head_btn">不限</el-button>
-                    <el-button plain class="head_btn" size="mini">降价({{jiangjia}})</el-button>
-                    <el-button plain class="head_btn" size="mini">满减({{manjian}})</el-button>
+                    <!--<el-button plain class="head_btn" size="mini">降价({{jiangjia}})</el-button>-->
+                    <!--<el-button plain class="head_btn" size="mini">满减({{manjian}})</el-button>-->
                     <el-button plain class="head_btn" size="mini">优惠券({{youhui}}</el-button>
                     <el-button plain class="head_btn" size="mini">下柜({{xiagui}})</el-button>
 
