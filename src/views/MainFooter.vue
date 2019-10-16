@@ -75,7 +75,7 @@
         display: flex;
         flex-direction: column;
         /*height: 500px;*/
-        background-color: #9DBC7A;
+        background-color: #eaeaea;
         /*border: 1px solid black;*/
     }
 

@@ -4,7 +4,7 @@
             <GoodDialog :c-num="curGood" :c-name="curGoodName"></GoodDialog>
         </el-dialog>
 
-        <el-button @click="isGoodDialogVis=!isGoodDialogVis"> 123</el-button>
+        <!--<el-button @click="isGoodDialogVis=!isGoodDialogVis"> 123</el-button>-->
 
         <el-header style="padding: 0;" height="300px">
             <el-carousel :interval="5000" arrow="always" style="width: 100%; height: 300px">
