@@ -106,9 +106,9 @@
                 isGoodDialogVis: false,
 
                 item: [{
-                    url: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1564047462046&di=416866d09fa13a973ff69861166420ee&imgtype=0&src=http%3A%2F%2Ftour.btggl.com%2Fupfile%2FC_CABEBCCEBBDHDAJBIHJ%2F2014122618175598.jpg'
+                    url: 'http://localhost:8083/file/banner1'
                 }, {
-                    url: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1564047511077&di=58ecae960761e006304e0e8a6dd02668&imgtype=0&src=http%3A%2F%2Fwww.goodmorningtenerife.com%2Fwp-content%2Fuploads%2F2015%2F02%2F01b_slide_excursions_GM_Tenerife-1920x420.jpg'
+                    url: 'http://localhost:8083/file/banner2'
                 }
                 ],
                 sentimentList: [],
