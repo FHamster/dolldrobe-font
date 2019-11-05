@@ -1,5 +1,4 @@
 <template>
-    <el-container style="width: 800px;height: 500px;">
         <el-tabs type="border-card" style="width: 850px">
             <el-tab-pane label="基本资料">
                 <div>
@@ -87,19 +86,18 @@
                     </div>
                     <div style="width: 160px;margin-top: 10px">
                         <img v-if="imageUrl" :src="imageUrl" class="avatar" style="width: 100px;height: 100px;">
-                        <img v-else style="width: 100px;height: 100px;background-color: #9DBC7A">
+                        <img v-else style="width: 100px;height: 100px;" src="../../../assets/NullImg.jpg">
                         <div style="font-size: 11px;color: darkgray">中尺寸头像&nbsp;100x100像素</div>
                     </div>
                     <div style="width: 160px;margin-top: 10px">
                         <img v-if="imageUrl" :src="imageUrl" class="avatar" style="width: 50px;height: 50px;">
-                        <img v-else style="width: 50px;height: 50px;background-color: #9DBC7A">
+                        <img v-else style="width: 50px;height: 50px;" src="../../../assets/NullImg.jpg">
                         <div style="font-size: 11px;color: darkgray">小尺寸头像&nbsp;50x50像素</div>
                     </div>
                 </div>
 
             </el-tab-pane>
         </el-tabs>
-    </el-container>
 </template>
 
 <script>

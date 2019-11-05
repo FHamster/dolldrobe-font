@@ -1,6 +1,5 @@
 <template>
-<el-container>
-    <el-header>
+    <!--<el-header>-->
         <el-menu
                 mode="horizontal"
                 style="background-image: linear-gradient(to right, #f5f7fa 0%, #eef1f5 100%);"
@@ -26,8 +25,8 @@
                 </el-submenu>
                 <el-submenu index="2-2">
                     <template slot="title">个人设置</template>
-                    <el-menu-item index="UserAddress">收货地址</el-menu-item>
-                    <el-menu-item index="PersonDetail">修改头像、昵称</el-menu-item>
+                    <el-menu-item index="2-1-1">收获地址</el-menu-item>
+                    <el-menu-item index="2-1-2">修改头像、昵称</el-menu-item>
                     <el-menu-item index="2-1-3">消息提醒设置</el-menu-item>
                 </el-submenu>
             </el-submenu>
@@ -51,58 +50,18 @@
                 </div>
             </div>
         </el-menu>
-    </el-header>
-    <el-main>
-        <el-aside width="20%" style="border: 2px ;position: absolute">
-            <div style="float: right">
-                <el-image style="width: 100px;height: 100px" src="https://ss0.bdstatic.com/70cFvHSh_Q1YnxGkpoWK1HF6hhy/it/u=3127190984,2058914612&fm=26&gp=0.jpg"></el-image>
-                <div style="width: 20px">
-                    <el-button type="text" size="small" style="margin-left: 10px">安全设置</el-button>
-                    <el-button type="text" size="small" @click="jumpDetail">个人资料</el-button>
-                    <el-button type="text" size="small">个人成长信息</el-button>
-                    <el-button type="text" size="small">个人交易信息</el-button>
-                    <el-button type="text" size="small" @click="jumpAddress">收货地址</el-button>
-                    <el-button type="text" size="small">分享绑定</el-button>
-                    <el-button type="text" size="small">消息提醒</el-button>
-                </div>
-            </div>
-        </el-aside>
-        <el-main style="width: 850px; position: absolute;margin-left: 22%">
-            <router-view></router-view>
-        </el-main>
-    </el-main>
-</el-container>
+    <!--</el-header>-->
 </template>
-
 <script>
     export default {
-        name: "PersonalData",
-        data:function () {
-            return {
-                from: {
-                    search: '',
-                },
-            }
-        },
-        methods: {
-            user_search() {
-
-            },
-
-            jumpDetail(){
-                this.$router.push({path: './PersonDetail'});
-            },
-
-            jumpAddress(){
-                this.$router.push({path: './UserAddress'});
-            }
-        },
+        name: 'headerMenu',
+        props: {
+            from: {},
+            user_search: {}
+        }
     }
 </script>
-
 <style scoped>
-
-
     .my_logo {
         /*float: left;*/
         /*width: 16%;*/
@@ -112,10 +71,6 @@
         margin-left: 10px;
         font-family: 华文琥珀;
         white-space: nowrap;
-    }
-
-    .userCenter_titleMenu_font {
-        font-size: 13px;
     }
 
     .userCenter_search {
@@ -149,14 +104,6 @@
         flex-direction: row;
         /*justify-content: center;*/
         /*align-self: center;*/
-    }
-
-    .asideMenu {
-        background-image: linear-gradient(to left, #f5f7fa 0%, #c3cfe2 100%);
-    }
-
-    .back2 {
-        background-image: linear-gradient(to right, #f5f7fa 0%, #c3cfe2 100%);
     }
 
     .search {

@@ -1,97 +1,92 @@
 <template>
-    <el-container>
+    <div>
         <el-dialog :visible.sync="dialogVis" width="500px">
             <LoginDialog></LoginDialog>
         </el-dialog>
-        <!--        <LoginDialog :is-vis="dialogVis"></LoginDialog>-->
-        <!--        <el-header style="max-height: 40px">-->
-        <!--
-        81ceff
+      <!--  81ceff
         bff199
 acc236
 4285f4
 82b548
 99cc33
 8baaff h
-9dbc7a
-        -->
-        <el-header>
+9dbc7a-->
+
             <!--<div style="text-align: center;background-color: lightgray">推荐使用谷歌或火狐浏览器</div>-->
+        <!-- style="background-image: linear-gradient(to right, #f5f7fa 0%, #c3cfe2 100%);"
+                    text-color="#547A28"
+                    active-text-color="#B3748D"-->
+        <div class="menu-border">
             <el-menu
                     :default-active="activeIndex2"
                     mode="horizontal"
-                    @select="handleSelect"
-                    style="background-image: linear-gradient(to right, #f5f7fa 0%, #c3cfe2 100%);"
                     text-color="#547A28"
                     active-text-color="#B3748D"
-                    router
-            >
-                <el-menu-item @click="dialogVis = !dialogVis" style="background-image: linear-gradient(to left, #f5f7fa 0%, #c3cfe2 100%);" >
+                    @select="handleSelect"
+                    router>
+                <el-menu-item @click="dialogVis = !dialogVis">
                     <template slot="title">
                         <el-avatar>U</el-avatar>
                     </template>
                 </el-menu-item>
                 <el-menu-item
-                        index="UserCenter">用户中心
-                </el-menu-item>
-                <el-submenu index="2" >
-                    <template slot="title">我的工作台</template>
-                    <el-menu-item index="2-1">选项1</el-menu-item>
-                    <el-menu-item index="2-2">选项2</el-menu-item>
-                    <el-menu-item index="2-3">选项3</el-menu-item>
-                    <el-submenu index="2-4">
-                        <template slot="title">选项4</template>
-                        <el-menu-item index="2-4-1">选项1</el-menu-item>
-                        <el-menu-item index="2-4-2">选项2</el-menu-item>
-                        <el-menu-item index="2-4-3">选项3</el-menu-item>
-                    </el-submenu>
-                </el-submenu>
-                <el-menu-item index="3">消息</el-menu-item>
-                <el-menu-item index="4">
-                    订单管理
+                        index="/MainPage">首页
                 </el-menu-item>
                 <el-menu-item
-                        index="GoodsPage">商品浏览
+                        index="/UserCenter">用户中心
                 </el-menu-item>
+                <!--   <el-submenu index="2">
+                       <template slot="title">我的工作台</template>
+                       <el-menu-item index="2-1">选项1</el-menu-item>
+                       <el-menu-item index="2-2">选项2</el-menu-item>
+                       <el-menu-item index="2-3">选项3</el-menu-item>
+                       <el-submenu index="2-4">
+                           <template slot="title">选项4</template>
+                           <el-menu-item index="2-4-1">选项1</el-menu-item>
+                           <el-menu-item index="2-4-2">选项2</el-menu-item>
+                           <el-menu-item index="2-4-3">选项3</el-menu-item>
+                       </el-submenu>
+                   </el-submenu>-->
+
                 <el-menu-item
+                        index="/GoodsPage">商品浏览
+                </el-menu-item>
+               <!-- <el-menu-item
                         index="MessageBorder">浏览
-                </el-menu-item>
-                <!--<el-menu-item-->
-                        <!--index="Express">Express-->
-                <!--</el-menu-item>-->
-                <el-menu-item
-                        index="PersonDetail">PersonDetail
-                </el-menu-item>
+                </el-menu-item>-->
+                <!--    <el-menu-item
+                            index="Express">Express
+                    </el-menu-item>-->
             </el-menu>
-        </el-header>
+        </div>
 
         <!--        </el-header>-->
-        <el-main style="padding: 0">
+        <el-container style="padding: 0;justify-content: center;margin-top: 20px;min-height: 700px">
             <router-view></router-view>
-        </el-main>
+        </el-container>
 
-        <el-footer>
-            <!--            <el-button @click="changeVuex">按钮测试</el-button>-->
-            <!--            <el-button @click="dialogVis = !dialogVis">显示登陆对话框</el-button>-->
-            <!--            <el-button @click="checkToken">检查token有效</el-button>-->
-        </el-footer>
-    </el-container>
+        <div>
+            <MainFooter/>
+        </div>
+    </div>
 </template>
 
 <script>
     import LoginDialog from "./views/LoginDialog/LoginDialog";
     import axios from 'axios';
+    import MainFooter from "./views/MainFooter";
 
     export default {
         name: 'app',
         components: {
+            MainFooter,
             LoginDialog
             // HelloWorld
         },
         data() {
             return {
                 activeIndex: '1',
-                activeIndex2: '1',
+                activeIndex2: 'GoodsPage',
                 dialogVis: false
             };
         },
@@ -134,12 +129,13 @@ acc236
 
 
     #app {
-        font-family: 'Avenir', Helvetica, Arial, sans-serif;
+        font-family: "Helvetica Neue",Helvetica,"PingFang SC","Hiragino Sans GB","Microsoft YaHei","微软雅黑",Arial,sans-serif;
         -webkit-font-smoothing: antialiased;
         -moz-osx-font-smoothing: grayscale;
         text-align: center;
         color: #2c3e50;
         margin-top: 60px;
+        background-color: #42b983;
     }
 
     .con {
@@ -155,5 +151,16 @@ acc236
 
     .avatar-panel {
         align-self: center;
+    }
+
+    .menu-border {
+        padding: 0;
+        margin: 0;
+        border-top: 20px;
+        border-bottom: 20px;
+        border-left-width: 0;
+        border-right-width: 0;
+        border-color: #CADEB3;
+        border-style: solid;
     }
 </style>
