@@ -124,7 +124,7 @@
         methods: {
             registerUser() {
                 if (this.submitForm("regForm")){
-                    axios.post('api/User/User', {
+                    axios.post('api/authUsers', {
                         uAccountnumber: this.reg.uAccountnumber,
                         uPsw: this.reg.uPsw,
                         uTel: this.reg.phone,
@@ -133,7 +133,6 @@
                         this.$message.success('注册成功啦');
                     }).catch(err => {
                         this.$message.error('出了些问题注册失败了');
-
                     });
                 }
                 else{
