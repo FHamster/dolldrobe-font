@@ -96,11 +96,11 @@ export default new Router({
             ],
             component: () => import( './views/User/Member/OrderDetail')
         },
-        {
+        /*{
             path: '/Express',
             name: 'Express',
             component: () => import( './views/User/Scattered/Express')
-        },
+        },*/
         {
             path: '/PersonalData',
             name: 'PersonalData',

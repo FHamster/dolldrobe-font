@@ -212,8 +212,6 @@
     .infopane {
         width: 1200px;
         margin: 30px 0;
-
-
     }
 
     .maintitle {
