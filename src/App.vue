@@ -66,7 +66,7 @@ acc236
         </el-container>
 
         <div>
-            <MainFooter/>
+<!--            <MainFooter/>-->
         </div>
     </div>
 </template>
