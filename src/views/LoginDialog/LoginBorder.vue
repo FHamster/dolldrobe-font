@@ -78,6 +78,12 @@
                         this.resetForm();
                         this.$message.success('登录成功了啦');
 
+                        //强制刷新
+                        this.$router.ruplace({
+                            path: '../MainPage',
+                            name: 'MainPage'
+                        })
+
                     })
                     .catch((err) => {
                         // eslint-disable-next-line no-console
