@@ -77,7 +77,6 @@
 
 
     export default {
-
         name: "GoodsPage",
         components: {GoodCard, GoodDialog},
         mounted() {
