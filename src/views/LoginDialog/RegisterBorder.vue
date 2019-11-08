@@ -46,12 +46,19 @@
                 </el-input>
             </el-form-item>
         </el-form>
-        <el-button type="warning" :round="true" class="register_btn" @click="registerUser">注册</el-button>
+        <el-row type="flex" justify="center">
+            <el-col>
+            <el-button type="primary" class="register_btn" @click="registerUser">注册</el-button>
+            </el-col>
+            <el-col>
+                <el-button class="register_btn" @click="resetForm('reg')" style="margin-left: 20px;">重置</el-button>
+            </el-col>
+        </el-row>
     </div>
 </template>
 
 <script>
-    import axios from 'axios';
+    import axios from 'axios'
 
     export default {
         name: "RegisterBorder",
@@ -123,8 +130,8 @@
         },
         methods: {
             registerUser() {
-                if (this.submitForm("regForm")){
-                    axios.post('api/authUsers', {
+                if (this.submitForm("regForm")) {
+                    axios.post('api/User/User', {
                         uAccountnumber: this.reg.uAccountnumber,
                         uPsw: this.reg.uPsw,
                         uTel: this.reg.phone,
@@ -133,39 +140,24 @@
                         this.$message.success('注册成功啦');
                     }).catch(err => {
                         this.$message.error('出了些问题注册失败了');
+
                     });
-                }
-                else{
+                } else {
                     this.resetForm("regForm");
                     this.$message.error('出了些问题注册失败了');
                 }
             },
             submitForm(formName) {
-                return this.$refs[formName].validate()
+                return this.$refs[formName].validate();
             },
-            resetForm(formName){
-                var flag;
-                this.$refs[formName].validate((valid) => {
-
-                    if (valid) {
-                        flag = valid;
-                        // console.log(valid);
-                        return true
-
-                    } else {
-
-                        // console.log('error submit!!');
-                        flag = valid;
-                        return false;
-                    }
-                });
-                return flag;
+            resetForm(formName) {
+                this.$refs[formName].resetFields();
+            },
+            mounted() {
+                // this.resetForm("regForm");
             }
         },
-        mounted() {
-            // this.resetForm("regForm");
-        },
-    }
+    };
 </script>
 
 <style scoped>
@@ -182,8 +174,7 @@
     }
 
     .register_btn {
-        width: 50%;
+        width: 80px;
         font-size: 20px;
-        align-self: center;
     }
 </style>
