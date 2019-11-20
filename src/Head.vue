@@ -12,7 +12,7 @@
                 </el-input>
             </div>
 
-            <div class=" flex-row">
+            <div class="flex-row">
                 <router-link to="/UserCenter">
                     <el-avatar shape="square">U</el-avatar>
                 </router-link>
