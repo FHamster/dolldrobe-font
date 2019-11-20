@@ -1,13 +1,10 @@
 <template>
-    <el-container>
+    <div class="flex-col">
         <el-dialog title="商品详情" :visible.sync="isGoodDialogVis" width="1000px">
             <GoodDialog :c-num="curGood" :c-name="curGoodName"></GoodDialog>
         </el-dialog>
-        <el-header class="myhead">
-            <div class="flex-row" style="align-items: center">
-                <img src="@/assets/icon.png" class="myimg">
-                <div class="my_logo">玩偶衣橱</div>
-            </div>
+
+        <div class="myhead">
             <div class="rowdir">
                 <el-input prefix-icon="el-icon-search" type="text"
                           size=large class="mysearch"
@@ -17,7 +14,7 @@
                     搜索
                 </el-button>
             </div>
-        </el-header>
+        </div>
         <el-main>
             <!--  <el-aside class="goodaside">
                   <el-col v-for="index of 5" :key="index">
@@ -67,7 +64,7 @@
 
         </el-main>
 
-    </el-container>
+    </div>
 </template>
 
 <script>
@@ -198,7 +195,7 @@
         display: flex;
         flex-direction: row;
         justify-content: space-around;
-        background-color: #f5f7fa;
+        background-color: whitesmoke;
     }
 
     .myimg {

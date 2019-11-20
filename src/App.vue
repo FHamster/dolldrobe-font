@@ -3,36 +3,7 @@
         <el-dialog :visible.sync="dialogVis" width="500px">
             <LoginDialog></LoginDialog>
         </el-dialog>
-        <div style="width: 100%;height: 64px;background-color: #C2ADED"></div>
-
-        <div class="head_background flex-row">
-            <div style="width: 184px;height: 80px;background-color: #A78EDB"></div>
-            <div style="width: 320px">
-                <el-input
-                        placeholder="DollDrobe"
-                        v-model="input4">
-                    <i slot="prefix" class="el-input__icon el-icon-search"></i>
-                </el-input>
-            </div>
-
-            <div class="flex-row">
-                <router-link to="/UserCenter">
-                    <el-avatar>U</el-avatar>
-                </router-link>
-                <el-button style="margin-left: 40px" plain icon="el-icon-goods">¥{{100}}</el-button>
-            </div>
-        </div>
-
-        <ul class="flex-row nav-menu">
-            <router-link tag="li" to="/MainPage">首页</router-link>
-            <span>|</span>
-            <router-link tag="li" to="/GoodsPage">娃衣展示</router-link>
-            <span>|</span>
-            <router-link tag="li" to="/">晒娃墙</router-link>
-            <span>|</span>
-            <router-link tag="li" to="/">衣橱快报</router-link>
-        </ul>
-
+        <Head/>
         <!-- <div class="menu-border">
              <el-menu
                      background-color="#ffffff"
@@ -79,9 +50,9 @@
          </div>-->
 
         <!--        </el-header>-->
-        <el-container style="padding: 0;justify-content: center;min-height: 700px">
+        <div style="padding: 0;justify-content: center;min-height: 700px">
             <router-view></router-view>
-        </el-container>
+        </div>
 
         <div>
             <MainFooter/>
@@ -93,11 +64,13 @@
     import LoginDialog from "./views/LoginDialog/LoginDialog";
     import axios from 'axios';
     import MainFooter from "./views/MainFooter";
+    import Head from "./Head";
 
 
     export default {
         name: 'app',
         components: {
+            Head,
             MainFooter,
             LoginDialog
             // HelloWorld
@@ -152,9 +125,7 @@
         -webkit-font-smoothing: antialiased;
         -moz-osx-font-smoothing: grayscale;
         text-align: center;
-        color: #2c3e50;
         margin-top: 60px;
-        background-color: #42b983;
     }
 
 
@@ -169,10 +140,6 @@
            border-style: solid;
        }*/
 
-    .nav-menu {
-        margin: 0;
-    }
-
     .nav-menu > li {
         list-style-type: none;
         display: inline-block;
@@ -180,6 +147,7 @@
         padding: 0 54px;
         font-weight: bold;
         font-size: 14px;
+        color: #6C7BC1;
     }
 
     .nav-menu > span {
@@ -188,12 +156,6 @@
         padding: 0;
         font-size: 14px;
         color: #b4b4b4;
-    }
-
-    .head_background {
-        padding: 0 128px ;
-        align-items: center;
-        justify-content: space-between;
     }
 
 </style>
