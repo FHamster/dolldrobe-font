@@ -4,10 +4,10 @@
             <GoodDialog :c-num="curGood" :c-name="curGoodName"></GoodDialog>
         </el-dialog>
 
-        <el-header style="padding: 0;" height="300px">
-            <el-carousel :interval="5000" arrow="always" style="width: 100%; height: 300px">
+        <el-header style="padding: 0;" height="420px">
+            <el-carousel :interval="5000" arrow="always" style="width: 100%">
                 <el-carousel-item v-for="(it,index) in item" :key="index">
-                    <el-image :src=it.url style="width: 100%;height: 420px"></el-image>
+                    <el-image :src=it.url style="width: 100%"></el-image>
                 </el-carousel-item>
             </el-carousel>
         </el-header>
@@ -106,9 +106,9 @@
                 isGoodDialogVis: false,
 
                 item: [{
-                    url: 'http://localhost:8083/file/banner1'
+                    url: 'http://139.9.133.60:8072/banner1.png'
                 }, {
-                    url: 'http://localhost:8083/file/banner2'
+                    url: 'http://139.9.133.60:8072/banner2.png'
                 }
                 ],
                 sentimentList: [],
