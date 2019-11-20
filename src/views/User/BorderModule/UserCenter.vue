@@ -204,7 +204,7 @@
                 <div class="user-card">
                     <div class="user-card-box1">
                         <div style="height: 60px;font-size:50px;font-family: 黑体;
-                        text-align:center;color: rgba(255,255,255,0.3);">
+                        text-align:center;color: rgba(255,255,255,0.4);">
                             玩偶衣橱
                         </div>
                         <div class="user-card-avater">
@@ -215,9 +215,23 @@
                                 {{username}}
                             </div>
                         </div>
+                        <div style="align-items: center">
+                            <el-button round
+                                       style="display: flex;justify-content: center;margin: auto;
+                                               color: slateblue;font-size: 17px;font-family: 华文彩云;">
+                                OPEN
+                            </el-button>
+                        </div>
+                        <!--<div class="user-card-bottom">-->
+
+                        <!--</div>-->
                     </div>
                     <div class="user-card-box2">
-
+                        <div class="user-card-box2-purse">
+                            <div style="float: left ">
+                                我的钱包
+                            </div>
+                        </div>
                     </div>
                 </div>
             </el-main>
@@ -435,14 +449,15 @@
         height: 243px;
         max-height: 254px;
         padding: 20px 0;
-        background-color: #CADEB3;
+        //background-color: #CADEB3;
     }
     .user-card-box1{
         width: 25%;
         max-width: 250px;
         height: 243px;
         float: left;
-        background-image: linear-gradient(to top, #fbc2eb 0%, #a6c1ee 100%);
+        background-color: #A78EDB;
+        /*background-image: linear-gradient(135deg, #667eea 0%, #764ba2 100%);*/
     }
     .user-card-box2{
         width: 75%;
@@ -474,5 +489,18 @@
         align-items: center;
         overflow: hidden;
         text-align: center;
+    }
+    .user-card-bottom{
+        padding: 10px 20px;
+        height: 36px;
+        background-color: #232331;
+        display: flex;
+    }
+    .user-card-box2-purse{
+        padding: 0 20px;
+        height: 55px;
+        line-height: 55px;
+        border-bottom: 1px solid #f0f3ef;
+        overflow: visible;
     }
 </style>
