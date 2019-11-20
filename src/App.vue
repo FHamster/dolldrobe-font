@@ -3,7 +3,7 @@
         <el-dialog :visible.sync="dialogVis" width="500px">
             <LoginDialog></LoginDialog>
         </el-dialog>
-<!--        <div style="width: 100%;height: 64px;background-color: #6C7BC1"></div>-->
+        <div style="width: 100%;height: 64px;background-color: #C2ADED"></div>
 
         <div class="head_background flex-row">
             <div style="width: 184px;height: 80px;background-color: #A78EDB"></div>
