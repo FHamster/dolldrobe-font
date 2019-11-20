@@ -14,7 +14,9 @@
             </div>
 
             <div class="flex-row">
-                <el-avatar>U</el-avatar>
+                <router-link to="/UserCenter">
+                    <el-avatar>U</el-avatar>
+                </router-link>
                 <el-button plain icon="el-icon-goods">¥{{100}}</el-button>
             </div>
         </div>
