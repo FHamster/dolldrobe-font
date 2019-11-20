@@ -3,9 +3,11 @@
         <el-dialog :visible.sync="dialogVis" width="500px">
             <LoginDialog></LoginDialog>
         </el-dialog>
-        <div class="head_background">
+<!--        <div style="width: 100%;height: 64px;background-color: #6C7BC1"></div>-->
+
+        <div class="head_background flex-row">
             <div style="width: 184px;height: 80px;background-color: #A78EDB"></div>
-            <div style="width: 400px">
+            <div style="width: 320px">
                 <el-input
                         placeholder="DollDrobe"
                         v-model="input4">
@@ -17,7 +19,7 @@
                 <router-link to="/UserCenter">
                     <el-avatar>U</el-avatar>
                 </router-link>
-                <el-button plain icon="el-icon-goods">¥{{100}}</el-button>
+                <el-button style="margin-left: 40px" plain icon="el-icon-goods">¥{{100}}</el-button>
             </div>
         </div>
 
@@ -189,12 +191,9 @@
     }
 
     .head_background {
-        padding: 0 80px ;
-        display: flex;
+        padding: 0 128px ;
         align-items: center;
+        justify-content: space-between;
     }
 
-    a:active a:hover {
-        outline: 0;
-    }
 </style>
