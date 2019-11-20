@@ -106,9 +106,9 @@
                 isGoodDialogVis: false,
 
                 item: [{
-                    url: 'http://119.3.226.50:8071/dolldrobe/banner1.png'
+                    url: 'http://139.9.133.60:8072/banner1.png'
                 }, {
-                    url: 'http://119.3.226.50:8071/dolldrobe/banner2.png'
+                    url: 'http://139.9.133.60:8072/banner2.png'
                 }
                 ],
                 sentimentList: [],
