@@ -231,6 +231,49 @@
                             <div style="float: left ">
                                 我的钱包
                             </div>
+                            <el-tooltip  :content=card_tool_content placement="bottom" effect="light">
+                                <img :src="icon_select" style="width: 20px;height: 20px;float: right;margin: 18px auto" @click="changeTooltip">
+                            </el-tooltip>
+                        </div>
+                        <div style="max-width: 750px;height: 169px;">
+                            <div class="user-card-box3">
+                                <div style="width: 350px;height:100%;margin-right: 10px;display: block;background-color: white">
+                                    <el-container style="height: 129px;width: 36px;">
+                                        <el-header height="36px" style="display: block;">
+                                            <div style="padding-top: 10px; height: 24px;line-height: 24px;
+                                                    font-size: 22px;font-weight: 700;margin-bottom: 15px">
+                                                {{couNum}}
+                                            </div>
+                                            <div style="font-size: 12px;height: 20px;line-height: 20px;margin-bottom: 10px">
+                                                优惠券
+                                            </div>
+                                            <el-button type="text" style="font-size: 12px;height: 20px;line-height: 20px">
+                                                领券
+                                            </el-button>
+                                        </el-header>
+                                    </el-container>
+                                </div>
+                                <div style="width: 350px;height:100%;background-color: white">
+                                    <el-container style="height: 129px;">
+                                        <el-header  style="display: block;">
+                                            <div style="padding-top: 10px; height: 24px;line-height: 24px;
+                                                    font-size: 22px;font-weight: 700;margin-bottom: 15px">
+                                                {{intNum}}
+                                            </div>
+                                            <div style="font-size: 12px;height: 20px;line-height: 20px;margin-bottom: 10px">
+                                                积分
+                                            </div>
+                                            <el-button type="text" style="font-size: 12px;height: 20px;line-height: 20px">
+                                                领积分
+                                            </el-button>
+                                            <el-divider direction="vertical"></el-divider>
+                                            <el-button type="text" style="font-size: 12px;height: 20px;line-height: 20px">
+                                                花积分
+                                            </el-button>
+                                        </el-header>
+                                    </el-container>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -302,12 +345,20 @@
 </template>
 
 <script>
+    import view from '../../../assets/view.png'
+    import view_off from '../../../assets/view-off.png'
     export default {
         name: "UserCenter",
         data: function () {
             return {
                 isPainter: false,
                 username:"NONE",
+                icon_select:view,
+                card_show:true,
+                card_tool_content:"隐藏金额",
+                couNum:0,
+                intNum:0,
+                intNumTrue:0,
                 items: [{
                     url: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1563382908&di=c8042cc7a0825223dc848cb101c51b2a&imgtype=jpg&er=1&src=http%3A%2F%2Fpic.rmb.bdstatic.com%2Fcd2476300bbad8dfcfff1d277b79401a.jpeg'
                 },
@@ -331,6 +382,18 @@
             changeHidden() {
                 this.isHidden = true
             },
+            changeTooltip(){
+                this.card_show = !this.card_show;
+                if(this.card_show == true){
+                    this.intNum = this.intNumTrue;
+                    this.icon_select = view;
+                    this.card_tool_content = "隐藏金额";
+                } else {
+                    this.intNum = "****"
+                    this.icon_select = view_off;
+                    this.card_tool_content = "显示金额";
+                }
+            }
 
         }
     }
@@ -502,5 +565,13 @@
         line-height: 55px;
         border-bottom: 1px solid #f0f3ef;
         overflow: visible;
+        border-bottom: 1px solid white;
+    }
+    .user-card-box3{
+        padding: 20px;
+        width: auto;
+        height: 76.3%;
+        display: flex;
+        justify-content: left;
     }
 </style>
