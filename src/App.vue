@@ -5,9 +5,9 @@
         </el-dialog>
         <div class="head_background">
             <div style="width: 184px;height: 80px;background-color: #A78EDB"></div>
-            <div>
+            <div style="width: 400px">
                 <el-input
-                        placeholder="请输入内容"
+                        placeholder="DollDrobe"
                         v-model="input4">
                     <i slot="prefix" class="el-input__icon el-icon-search"></i>
                 </el-input>
@@ -22,13 +22,13 @@
         </div>
 
         <ul class="flex-row nav-menu">
-            <li>首页</li>
+            <router-link tag="li" to="/MainPage">首页</router-link>
             <span>|</span>
-            <li>娃衣展示</li>
+            <router-link tag="li" to="/GoodsPage">娃衣展示</router-link>
             <span>|</span>
-            <li>晒娃墙</li>
+            <router-link tag="li" to="/">晒娃墙</router-link>
             <span>|</span>
-            <li>衣橱快报</li>
+            <router-link tag="li" to="/">衣橱快报</router-link>
         </ul>
 
         <!-- <div class="menu-border">
@@ -189,7 +189,12 @@
     }
 
     .head_background {
+        padding: 0 80px ;
         display: flex;
         align-items: center;
+    }
+
+    a:active a:hover {
+        outline: 0;
     }
 </style>
