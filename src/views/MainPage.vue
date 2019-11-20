@@ -24,7 +24,6 @@
                         </router-link>
                     </div>
                     <div class="Pane">
-                        <!--                        <el-carousel arrow="never" height="365px" indicator-position="outside" :interval="4000" style="width: 1140px;">-->
                         <el-carousel arrow="never"
                                      height="365px"
                                      indicator-position="outside"

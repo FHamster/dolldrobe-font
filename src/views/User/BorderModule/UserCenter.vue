@@ -1,4 +1,4 @@
-<template>
+<template >
     <!--<div style="width: 100%">-->
 
         <!--header菜单-->
@@ -277,6 +277,67 @@
                         </div>
                     </div>
                 </div>
+                <div class="user-con-box">
+                    <div class="user-order">
+                    </div>
+                </div>
+                <div class="user-box-aside">
+                    <div class="user-box-aside-box1">
+                        <div class="user-aside-Title">
+                            我的关注
+                        </div>
+                        <div style="display: flex;justify-content: space-between;padding: 20px;height: 60px">
+                            <el-button type="text" class="user-aside-mark-li">
+                                <div  class=" user-aside-mark-num">
+                                    {{goodMark}}
+                                </div>
+                                <div type="text" class="user-aside-mark-text">
+                                    画稿关注
+                                </div>
+                            </el-button>
+                            <el-button  type="text" class="user-aside-mark-li">
+                                <div class=" user-aside-mark-num" >
+                                    {{paintMark}}
+                                </div>
+                                <div  class="user-aside-mark-text">
+                                    画手关注
+                                </div>
+                            </el-button>
+                            <el-button  type="text" class="user-aside-mark-li">
+                                <div class=" user-aside-mark-num">
+                                    {{numMark}}
+                                </div>
+                                <div  class="user-aside-mark-text">
+                                    我的收藏
+                                </div>
+                            </el-button>
+                        </div>
+                    </div>
+                    <div class="user-box-aside-box2">
+                        <div class="user-aside-Title">
+                            浏览记录
+                            <el-button type="text" class="user-browse-icon">
+                                更多<i class=" el-icon-d-arrow-right"></i>
+                            </el-button>
+                        </div>
+                        <div style="width: 100%;height: 110px;">
+                            <el-carousel :interval="5000"
+                                         height="90px"
+                                         arrow="hover"
+                                         style="align-items: center"
+                                         indicator-position="outside"
+                            >
+                                <el-carousel-item v-for="(goods,index) in newList" :key="index"
+                                                  style="display: flex;flex-direction: row;ustify-content: center;">
+                                    <div v-for="good in goods" :key="good.cNum"
+                                         @click="visGoodDialog(good.cNum,good.cName)">
+                                        <GoodCard :good="good" style="height: 80px;width: 60px;margin: 10px 0"/>
+                                    </div>
+                                </el-carousel-item>
+                            </el-carousel>
+                        </div>
+                    </div>
+                </div>
             </el-main>
             <router-view></router-view>
         </el-container>
@@ -347,8 +408,12 @@
 <script>
     import view from '../../../assets/view.png'
     import view_off from '../../../assets/view-off.png'
+    import axios from 'axios';
+    import GoodCard from "../../Good/GoodCard";
+    import GoodDialog from "../..//Good/GoodDialog";
     export default {
         name: "UserCenter",
+        components: {GoodDialog, GoodCard},
         data: function () {
             return {
                 isPainter: false,
@@ -359,6 +424,10 @@
                 couNum:0,
                 intNum:0,
                 intNumTrue:0,
+                goodMark:0,
+                paintMark:0,
+                numMark:0,
+
                 items: [{
                     url: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1563382908&di=c8042cc7a0825223dc848cb101c51b2a&imgtype=jpg&er=1&src=http%3A%2F%2Fpic.rmb.bdstatic.com%2Fcd2476300bbad8dfcfff1d277b79401a.jpeg'
                 },
@@ -373,6 +442,11 @@
                 from: {
                     search: '',
                 },
+
+                curGood: '',
+                curGoodName: '',
+                isGoodDialogVis: false,
+                newList: [],
             }
         },
         methods: {
@@ -393,9 +467,41 @@
                     this.icon_select = view_off;
                     this.card_tool_content = "显示金额";
                 }
-            }
+            },
+            getNewList() {
+                //清空新品
+                this.newList = [];
+                let tmplist1 = [];
+                // 设置页数
+                let pagenum = 3;
+                axios.get('/api/GoodPage/GoodPageByOrder', {
+                        params: {
+                            keyWord: 'new',
+                            startPage: 0,
+                            pageSize: pagenum * 4,
+                            order: this.order,
+                            isAsc: this.isAsc
+                        }
+                    }
+                ).then(res => {
+                    for (let i = 0; i < pagenum; i++) {
+                        tmplist1 = res.data.slice(i * 4, (i * 4) + 4);
+                        this.newList.push(tmplist1);
+                    }
+                });
 
-        }
+
+            },
+            visGoodDialog(viscNum, visName) {
+                this.curGood = viscNum;
+                this.curGoodName = visName;
+                this.isGoodDialogVis = true;
+            },
+
+        },
+        mounted() {
+            this.getNewList();
+        },
     }
 </script>
 
@@ -485,20 +591,30 @@
         justify-content: center;
     }
 
+    /*.user-center-con {*/
+        /*width: 90%;*/
+        /*max-width: 1200px;*/
+        /*display: flex;*/
+        /*justify-content: center;*/
+        /*margin-right: 5%;*/
+        /*margin-left: 5%;*/
+
+    /*}*/
     .user-center-con {
-        width: 90%;
-        max-width: 1200px;
+        /*width: 90%;*/
+        /*max-width: 1200px;*/
         display: flex;
         justify-content: center;
-        margin-right: 5%;
-        margin-left: 5%;
-
+        /*margin-right: 5%;*/
+        /*margin-left: 5%;*/
+        background-color: whitesmoke;
     }
     .user-center-aside{
         width: 16%;
-        max-width: 190px;
+        max-width: 170px;
         float: left;
-
+        margin-right: 20px;
+        background-color: white;
     }
 
     .user-center-main{
@@ -527,7 +643,7 @@
         max-width: 750px;
         height: 225px;
         margin: 9px 0 9px 250px;
-        background-color: whitesmoke;
+        background-color: white;
         overflow: visible;
     }
     .user-card-avater{
@@ -565,7 +681,7 @@
         line-height: 55px;
         border-bottom: 1px solid #f0f3ef;
         overflow: visible;
-        border-bottom: 1px solid white;
+        background-color: white;
     }
     .user-card-box3{
         padding: 20px;
@@ -573,5 +689,71 @@
         height: 76.3%;
         display: flex;
         justify-content: left;
+    }
+    .user-con-box{
+        width: 70%;
+        max-width: 700px;
+        float: left;
+        height: auto;
+    }
+    .user-order{
+        width: 100%;
+        max-width: 700px;
+        height: 400px;
+        float: left;
+        background-color: white;
+    }
+    .user-box-aside{
+        float: right;
+        width: 28%;
+        max-width:280px ;
+    }
+
+    .user-box-aside-box1{
+        float: right;
+        width: 100%;
+        max-width:280px ;
+        background-color: white;
+        height: 150px;
+        margin:5px 0 20px 0;
+    }
+
+    .user-aside-Title{
+        padding: 0 20px;
+        max-width: 280px;
+        height: 50px;
+        line-height: 50px;
+        border-bottom: 1px solid #f0f3ef;
+        overflow: visible;
+    }
+    .user-aside-mark-li{
+        height: 60px;
+        line-height: 30px;
+        color: #333;
+        font-size: 16px;
+        padding: 0;
+    }
+    .user-aside-mark-num{
+        margin: 0;
+        padding: 0;
+        text-align: left;
+    }
+    .user-aside-mark-text{
+        font-size: 12px;
+        color: #363636;
+    }
+    .user-box-aside-box2{
+        width: 100%;
+        max-width: 280px;
+        height: 160px;
+        background-color: white;
+        margin:5px 0 20px 0;
+        display: inline-block;
+    }
+    .user-browse-icon{
+        float: right;
+        color: #666;
+        font-size: 13px;
+        padding: 18px 0;
     }
 </style>
