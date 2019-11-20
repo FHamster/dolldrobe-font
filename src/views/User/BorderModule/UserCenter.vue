@@ -1,203 +1,226 @@
 <template>
-    <div style="width: 100%">
+    <!--<div style="width: 100%">-->
 
         <!--header菜单-->
-        <el-menu
-                mode="horizontal"
-                text-color="#547A28"
-                active-text-color="#B3748D"
-                router
-                class="user-center-bar">
-            <div class="my_logo">
-                我的衣橱
-            </div>
+        <!--<el-menu-->
+                <!--mode="horizontal"-->
+                <!--text-color="#547A28"-->
+                <!--active-text-color="#B3748D"-->
+                <!--router-->
+                <!--class="user-center-bar">-->
+            <!--<div class="my_logo">-->
+                <!--我的衣橱-->
+            <!--</div>-->
 
-            <!--操作栏子菜单-->
-            <el-submenu>
-                <template slot="title">操作栏</template>
-                <el-menu-item index="/UserAddress"
-                              @click="changeHidden">
-                    <i class="el-icon-location"></i>
-                    <span slot="title">我的地址</span>
-                </el-menu-item>
-
-
-                <!--<el-submenu index="4" class="asideMenu">-->
-                    <!--<template slot="title">-->
-                        <!--<i class="el-icon-tickets"></i>-->
-                        <!--<span>我的发票</span>-->
-                    <!--</template>-->
-
-                    <!--<el-menu-item index="4-1">开票信息</el-menu-item>-->
-                    <!--<el-menu-item index="4-2">发票管理</el-menu-item>-->
-
-                <!--</el-submenu>-->
-                <!--<el-menu-item index="4">-->
-                <!--<i class="el-icon-tickets"></i>-->
-                <!--<span slot="title">我的订单</span>-->
+            <!--&lt;!&ndash;操作栏子菜单&ndash;&gt;-->
+            <!--<el-submenu>-->
+                <!--<template slot="title">操作栏</template>-->
+                <!--<el-menu-item index="/UserAddress"-->
+                              <!--@click="changeHidden">-->
+                    <!--<i class="el-icon-location"></i>-->
+                    <!--<span slot="title">我的地址</span>-->
                 <!--</el-menu-item>-->
 
-                <el-menu-item index="6">
-                    <i class="el-icon-trophy-1"></i>
-                    <span slot="title">我的积分</span>
-                </el-menu-item>
-                <el-menu-item index="7">
-                    <i class="el-icon-money"></i>
-                    <span slot="title">我的优惠信息</span>
-                </el-menu-item>
-                <el-menu-item index="8">
-                    <i class="el-icon-document-checked"></i>
-                    <span slot="title">评价管理</span>
-                </el-menu-item>
-                <el-menu-item index="9">
-                    <i class="el-icon-view"></i>
-                    <span slot="title">我的足迹</span>
-                </el-menu-item>
-                <el-submenu index="10">
-                    <template slot="title">
-                        <i class="el-icon-warning-outline"></i>
-                        <span>退款维权</span>
-                    </template>
-                    <el-menu-item index="10-1">退款管理</el-menu-item>
-                    <el-menu-item index="10-2">投诉管理</el-menu-item>
-                    <el-menu-item index="10-3">举报管理</el-menu-item>
 
-                </el-submenu>
-            </el-submenu>
-            <el-menu-item index="/UserCenter">首页</el-menu-item>
+                <!--&lt;!&ndash;<el-submenu index="4" class="asideMenu">&ndash;&gt;-->
+                    <!--&lt;!&ndash;<template slot="title">&ndash;&gt;-->
+                        <!--&lt;!&ndash;<i class="el-icon-tickets"></i>&ndash;&gt;-->
+                        <!--&lt;!&ndash;<span>我的发票</span>&ndash;&gt;-->
+                    <!--&lt;!&ndash;</template>&ndash;&gt;-->
 
-            <el-menu-item index="/ShoppingBag"
-                          @click="changeHidden">
-                <i class="el-icon-shopping-cart-full"></i>
-                <span slot="title">我的购物车</span>
-            </el-menu-item>
+                    <!--&lt;!&ndash;<el-menu-item index="4-1">开票信息</el-menu-item>&ndash;&gt;-->
+                    <!--&lt;!&ndash;<el-menu-item index="4-2">发票管理</el-menu-item>&ndash;&gt;-->
 
-            <el-menu-item index="/GoodOrder"
-                          @click="changeHidden">
-                <i class="el-icon-goods "></i>
-                <span slot="title">我的订单</span>
-            </el-menu-item>
-            <el-menu-item index="/BookMark">
-                <i class="el-icon-star-off"></i>
-                <span slot="title">我的收藏</span>
-            </el-menu-item>
+                <!--&lt;!&ndash;</el-submenu>&ndash;&gt;-->
+                <!--&lt;!&ndash;<el-menu-item index="4">&ndash;&gt;-->
+                <!--&lt;!&ndash;<i class="el-icon-tickets"></i>&ndash;&gt;-->
+                <!--&lt;!&ndash;<span slot="title">我的订单</span>&ndash;&gt;-->
+                <!--&lt;!&ndash;</el-menu-item>&ndash;&gt;-->
 
-            <el-submenu index="2">
-                <template slot="title">
-                    <i class="el-icon-user"></i>
-                    <span>账户设置</span>
-                </template>
-                <el-submenu index="2-1">
-                    <template slot="title">安全设置</template>
-                    <el-menu-item index="2-1-1">修改登录密码</el-menu-item>
-                    <el-menu-item index="2-1-2">手机绑定</el-menu-item>
-                    <el-menu-item index="2-1-3">密保问题设置</el-menu-item>
-                    <el-menu-item index="2-1-4">其他</el-menu-item>
-                </el-submenu>
-                <el-submenu index="2-2">
-                    <template slot="title">个人设置</template>
-                    <el-menu-item index="/UserAddress">收货地址</el-menu-item>
-                    <el-menu-item index="/PersonDetail">修改头像、昵称</el-menu-item>
-                    <el-menu-item index="/MessageBorder">消息提醒设置</el-menu-item>
-                </el-submenu>
-            </el-submenu>
+                <!--<el-menu-item index="6">-->
+                    <!--<i class="el-icon-trophy-1"></i>-->
+                    <!--<span slot="title">我的积分</span>-->
+                <!--</el-menu-item>-->
+                <!--<el-menu-item index="7">-->
+                    <!--<i class="el-icon-money"></i>-->
+                    <!--<span slot="title">我的优惠信息</span>-->
+                <!--</el-menu-item>-->
+                <!--<el-menu-item index="8">-->
+                    <!--<i class="el-icon-document-checked"></i>-->
+                    <!--<span slot="title">评价管理</span>-->
+                <!--</el-menu-item>-->
+                <!--<el-menu-item index="9">-->
+                    <!--<i class="el-icon-view"></i>-->
+                    <!--<span slot="title">我的足迹</span>-->
+                <!--</el-menu-item>-->
+                <!--<el-submenu index="10">-->
+                    <!--<template slot="title">-->
+                        <!--<i class="el-icon-warning-outline"></i>-->
+                        <!--<span>退款维权</span>-->
+                    <!--</template>-->
+                    <!--<el-menu-item index="10-1">退款管理</el-menu-item>-->
+                    <!--<el-menu-item index="10-2">投诉管理</el-menu-item>-->
+                    <!--<el-menu-item index="10-3">举报管理</el-menu-item>-->
 
-            <el-menu-item index="/InteractiveInform/1">消息中心</el-menu-item>
+                <!--</el-submenu>-->
+            <!--</el-submenu>-->
+            <!--<el-menu-item index="/UserCenter">首页</el-menu-item>-->
 
-            <!-- <div class="search" style="width: 300px;float:right!important;height: 29.6px">
-                 <div class="panel">
-                     <el-input class="userCenter_search"
-                               prefix-icon="el-icon-search"
-                               type="text"
-                               v-model="from.search"
-                               :clearable="true"
-                               size=mini>
-                     </el-input>
-                     <el-button class="userCenter_btnSearch"
-                                size="small"
-                                plain
-                                @click="user_search">搜索
-                     </el-button>
-                 </div>
-             </div>
-        -->
-        </el-menu>
+            <!--<el-menu-item index="/ShoppingBag"-->
+                          <!--@click="changeHidden">-->
+                <!--<i class="el-icon-shopping-cart-full"></i>-->
+                <!--<span slot="title">我的购物车</span>-->
+            <!--</el-menu-item>-->
+
+            <!--<el-menu-item index="/GoodOrder"-->
+                          <!--@click="changeHidden">-->
+                <!--<i class="el-icon-goods "></i>-->
+                <!--<span slot="title">我的订单</span>-->
+            <!--</el-menu-item>-->
+            <!--<el-menu-item index="/BookMark">-->
+                <!--<i class="el-icon-star-off"></i>-->
+                <!--<span slot="title">我的收藏</span>-->
+            <!--</el-menu-item>-->
+
+            <!--<el-submenu index="2">-->
+                <!--<template slot="title">-->
+                    <!--<i class="el-icon-user"></i>-->
+                    <!--<span>账户设置</span>-->
+                <!--</template>-->
+                <!--<el-submenu index="2-1">-->
+                    <!--<template slot="title">安全设置</template>-->
+                    <!--<el-menu-item index="2-1-1">修改登录密码</el-menu-item>-->
+                    <!--<el-menu-item index="2-1-2">手机绑定</el-menu-item>-->
+                    <!--<el-menu-item index="2-1-3">密保问题设置</el-menu-item>-->
+                    <!--<el-menu-item index="2-1-4">其他</el-menu-item>-->
+                <!--</el-submenu>-->
+                <!--<el-submenu index="2-2">-->
+                    <!--<template slot="title">个人设置</template>-->
+                    <!--<el-menu-item index="/UserAddress">收货地址</el-menu-item>-->
+                    <!--<el-menu-item index="/PersonDetail">修改头像、昵称</el-menu-item>-->
+                    <!--<el-menu-item index="/MessageBorder">消息提醒设置</el-menu-item>-->
+                <!--</el-submenu>-->
+            <!--</el-submenu>-->
+
+            <!--<el-menu-item index="/InteractiveInform/1">消息中心</el-menu-item>-->
+
+            <!--&lt;!&ndash; <div class="search" style="width: 300px;float:right!important;height: 29.6px">-->
+                 <!--<div class="panel">-->
+                     <!--<el-input class="userCenter_search"-->
+                               <!--prefix-icon="el-icon-search"-->
+                               <!--type="text"-->
+                               <!--v-model="from.search"-->
+                               <!--:clearable="true"-->
+                               <!--size=mini>-->
+                     <!--</el-input>-->
+                     <!--<el-button class="userCenter_btnSearch"-->
+                                <!--size="small"-->
+                                <!--plain-->
+                                <!--@click="user_search">搜索-->
+                     <!--</el-button>-->
+                 <!--</div>-->
+             <!--</div>-->
+        <!--&ndash;&gt;-->
+        <!--</el-menu>-->
         <el-container class="user-center-con">
             <!--侧边菜单-->
-            <!-- <el-menu
-                     :collapse="true"
-                     text-color="#547A28"
-                     class="asideMenu"
-                     :hidden="isPainter"
-                     active-text-color="#B3748D"
-                     router>
-                 <el-menu-item index="UserAddress"
-                               @click="changeHidden"
-                               class="asideMenu">
-                     <i class="el-icon-location"></i>
-                     <span slot="title">我的地址</span>
-                 </el-menu-item>
+            <el-aside class="user-center-aside">
+                <el-menu
+                        style="max-width: 170px"
+                        :collapse="true"
+                        text-color="#547A28"
+                        class="asideMenu"
+                        :hidden="isPainter"
+                        active-text-color="#B3748D"
+                        router>
+                    <el-menu-item index="UserAddress"
+                                  @click="changeHidden"
+                                  class="asideMenu">
+                        <i class="el-icon-location"></i>
+                        <span slot="title">我的地址</span>
+                    </el-menu-item>
 
-                 <el-menu-item index="ShoppingBag"
-                               @click="changeHidden"
-                               class="asideMenu">
-                     <i class="el-icon-shopping-cart-full"></i>
-                     <span slot="title">我的购物车</span>
-                 </el-menu-item>
-                 <el-menu-item index="GoodOrder"
-                               @click="changeHidden"
-                               class="asideMenu">
-                     <i class="el-icon-goods "></i>
-                     <span slot="title">我的订单</span>
-                 </el-menu-item>
-                 <el-submenu index="4" class="asideMenu">
-                     <template slot="title">
-                         <i class="el-icon-tickets"></i>
-                     </template>
-                     <el-menu-item-group class="asideMenu">
-                         <template slot="title">我的发票</template>
-                         <el-menu-item index="4-1" style="font-size: 10px" class="asideMenu">开票信息</el-menu-item>
-                         <el-menu-item index="4-2" style="font-size: 10px" class="asideMenu">发票管理</el-menu-item>
-                     </el-menu-item-group>
-                 </el-submenu>
-                 &lt;!&ndash;<el-menu-item index="4">&ndash;&gt;
-                 &lt;!&ndash;<i class="el-icon-tickets"></i>&ndash;&gt;
-                 &lt;!&ndash;<span slot="title">我的订单</span>&ndash;&gt;
-                 &lt;!&ndash;</el-menu-item>&ndash;&gt;
-                 <el-menu-item index="BookMark" class="asideMenu">
-                     <i class="el-icon-star-off"></i>
-                     <span slot="title">我的收藏</span>
-                 </el-menu-item>
-                 <el-menu-item index="6" class="asideMenu">
-                     <i class="el-icon-trophy-1"></i>
-                     <span slot="title">我的积分</span>
-                 </el-menu-item>
-                 <el-menu-item index="7" class="asideMenu">
-                     <i class="el-icon-money"></i>
-                     <span slot="title">我的优惠信息</span>
-                 </el-menu-item>
-                 <el-menu-item index="8" class="asideMenu">
-                     <i class="el-icon-document-checked"></i>
-                     <span slot="title">评价管理</span>
-                 </el-menu-item>
-                 <el-menu-item index="9" class="asideMenu">
-                     <i class="el-icon-view"></i>
-                     <span slot="title">我的足迹</span>
-                 </el-menu-item>
-                 <el-submenu index="10" class="asideMenu">
-                     <template slot="title">
-                         <i class="el-icon-warning-outline"></i>
-                     </template>
-                     <el-menu-item-group class="asideMenu">
-                         <template slot="title">退款维权</template>
-                         <el-menu-item index="10-1" style="font-size: 10px">退款管理</el-menu-item>
-                         <el-menu-item index="10-2" style="font-size: 10px">投诉管理</el-menu-item>
-                         <el-menu-item index="10-3" style="font-size: 10px">举报管理</el-menu-item>
-                     </el-menu-item-group>
-                 </el-submenu>
+                    <el-menu-item index="ShoppingBag"
+                                  @click="changeHidden"
+                                  class="asideMenu">
+                        <i class="el-icon-shopping-cart-full"></i>
+                        <span slot="title">我的购物车</span>
+                    </el-menu-item>
+                    <el-menu-item index="GoodOrder"
+                                  @click="changeHidden"
+                                  class="asideMenu">
+                        <i class="el-icon-goods "></i>
+                        <span slot="title">我的订单</span>
+                    </el-menu-item>
+                    <el-submenu index="4" class="asideMenu">
+                        <template slot="title">
+                            <i class="el-icon-tickets"></i>
+                        </template>
+                        <el-menu-item-group class="asideMenu">
+                            <template slot="title">我的发票</template>
+                            <el-menu-item index="4-1" style="font-size: 10px" class="asideMenu">开票信息</el-menu-item>
+                            <el-menu-item index="4-2" style="font-size: 10px" class="asideMenu">发票管理</el-menu-item>
+                        </el-menu-item-group>
+                    </el-submenu>
+                    <el-menu-item index="4">
+                        <i class="el-icon-tickets"></i>
+                        <span slot="title">我的订单</span>
+                    </el-menu-item>
+                    <el-menu-item index="BookMark" class="asideMenu">
+                        <i class="el-icon-star-off"></i>
+                        <span slot="title">我的收藏</span>
+                    </el-menu-item>
+                    <el-menu-item index="6" class="asideMenu">
+                        <i class="el-icon-trophy-1"></i>
+                        <span slot="title">我的积分</span>
+                    </el-menu-item>
+                    <el-menu-item index="7" class="asideMenu">
+                        <i class="el-icon-money"></i>
+                        <span slot="title">我的优惠信息</span>
+                    </el-menu-item>
+                    <el-menu-item index="8" class="asideMenu">
+                        <i class="el-icon-document-checked"></i>
+                        <span slot="title">评价管理</span>
+                    </el-menu-item>
+                    <el-menu-item index="9" class="asideMenu">
+                        <i class="el-icon-view"></i>
+                        <span slot="title">我的足迹</span>
+                    </el-menu-item>
+                    <el-submenu index="10" class="asideMenu">
+                        <template slot="title">
+                            <i class="el-icon-warning-outline"></i>
+                        </template>
+                        <el-menu-item-group class="asideMenu">
+                            <template slot="title">退款维权</template>
+                            <el-menu-item index="10-1" style="font-size: 10px">退款管理</el-menu-item>
+                            <el-menu-item index="10-2" style="font-size: 10px">投诉管理</el-menu-item>
+                            <el-menu-item index="10-3" style="font-size: 10px">举报管理</el-menu-item>
+                        </el-menu-item-group>
+                    </el-submenu>
 
-             </el-menu>-->
+                </el-menu>
+            </el-aside>
+            <el-main class="user-center-main">
+                <div class="user-card">
+                    <div class="user-card-box1">
+                        <div style="height: 60px;font-size:50px;font-family: 黑体;
+                        text-align:center;color: rgba(255,255,255,0.3);">
+                            玩偶衣橱
+                        </div>
+                        <div class="user-card-avater">
+                            <img src="http://storage.360buyimg.com/i.imageUpload/465f4c5f5a31343233383930323933373032_mid.jpg" style="border-radius: 50%;width: 64px;height: 64px">
+                        </div>
+                        <div class="user-card-username">
+                            <div style="font: 700 18px/20px Arial; color: #fff;">
+                                {{username}}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="user-card-box2">
 
+                    </div>
+                </div>
+            </el-main>
             <router-view></router-view>
         </el-container>
 
@@ -261,7 +284,7 @@
 
                     </el-menu>
                 </el-aside>-->
-    </div>
+    <!--</div>-->
 </template>
 
 <script>
@@ -270,6 +293,7 @@
         data: function () {
             return {
                 isPainter: false,
+                username:"NONE",
                 items: [{
                     url: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1563382908&di=c8042cc7a0825223dc848cb101c51b2a&imgtype=jpg&er=1&src=http%3A%2F%2Fpic.rmb.bdstatic.com%2Fcd2476300bbad8dfcfff1d277b79401a.jpeg'
                 },
@@ -385,7 +409,70 @@
     }
 
     .user-center-con {
+        width: 90%;
+        max-width: 1200px;
+        display: flex;
         justify-content: center;
-        padding: 10px;
+        margin-right: 5%;
+        margin-left: 5%;
+
+    }
+    .user-center-aside{
+        width: 16%;
+        max-width: 190px;
+        float: left;
+
+    }
+
+    .user-center-main{
+        width: 84%;
+        max-width: 1000px;
+    }
+
+    .user-card{
+        width: auto;
+        max-width: 1000px;
+        height: 243px;
+        max-height: 254px;
+        padding: 20px 0;
+        background-color: #CADEB3;
+    }
+    .user-card-box1{
+        width: 25%;
+        max-width: 250px;
+        height: 243px;
+        float: left;
+        background-image: linear-gradient(to top, #fbc2eb 0%, #a6c1ee 100%);
+    }
+    .user-card-box2{
+        width: 75%;
+        max-width: 750px;
+        height: 225px;
+        margin: 9px 0 9px 250px;
+        background-color: whitesmoke;
+        overflow: visible;
+    }
+    .user-card-avater{
+        display: block;
+        position: relative;
+        z-index: 2;
+        margin-top: -15px;
+        margin-left: auto;
+        margin-right: auto;
+        margin-bottom: 20px;
+        border-radius: 100%;
+        border: 4px solid #fff;
+        -webkit-box-shadow: 3px 2px 10px 0 rgba(79,5,1,.84);
+        box-shadow: 3px 2px 10px 0 rgba(79,5,1,.84);
+        overflow: hidden;
+        width: 64px;
+        height: 64px;
+    }
+    .user-card-username{
+        margin-bottom: 10px;
+        height: 20px;
+        align-items: center;
+        overflow: hidden;
+        text-align: center;
     }
 </style>

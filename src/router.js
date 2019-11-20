@@ -32,7 +32,7 @@ export default new Router({
                 {
                     // 默认页面
                     path: '/',
-                    redirect: "/BookMark"
+                    //redirect: "/"
                 },
                 {
                     path: '/ShoppingBag',
