@@ -281,6 +281,53 @@
             </div>
             <div class="user-con-box">
                 <div class="user-order">
+                    <div class="user-con-title">
+                        我的订单
+                    </div>
+                    <div class="user-order-con">
+                        <div style="height: 120px;padding: 15px 20px">
+                            <el-card shadow="hover" class="user-order-card" :body-style="{ padding: '0px' }">
+                                <div class="flex-col"
+                                     @mousemove="mouseMv(icon_fukuan)"
+                                     @mouseover="mouseHov(icon_fukuan)">
+                                    <el-image :src="icon_fukuan" class="user-order-card-img"/>
+                                    <span class="user-order-card-text">待付款</span>
+                                </div>
+                            </el-card>
+                            <el-card shadow="hover" class="user-order-card" :body-style="{ padding: '0px' }">
+                                <div class="flex-col"
+                                     @mousemove="mouseMv(icon_shouhuo)"
+                                     @mouseover="mouseHov(icon_shouhuo)">
+                                    <el-image :src="icon_shouhuo" class="user-order-card-img"/>
+                                    <span class="user-order-card-text">待收货</span>
+                                </div>
+                            </el-card>
+                            <el-card shadow="hover" class="user-order-card" :body-style="{ padding: '0px' }">
+                                <div class="flex-col"
+                                     @mousemove="mouseMv(icon_pingjia)"
+                                     @mouseover="mouseHov(icon_pingjia)">
+                                    <el-image :src="icon_pingjia" class="user-order-card-img"/>
+                                    <span class="user-order-card-text">待评价</span>
+                                </div>
+                            </el-card>
+                            <el-card shadow="hover" class="user-order-card" :body-style="{ padding: '0px' }">
+                                <div class="flex-col"
+                                     @mousemove="mouseMv(icon_shouhou)"
+                                     @mouseover="mouseHov(icon_shouhou)">
+                                    <el-image :src="icon_shouhou" class="user-order-card-img"/>
+                                    <span class="user-order-card-text">售后服务</span>
+                                </div>
+                            </el-card>
+                            <el-card shadow="hover" class="user-order-card" :body-style="{ padding: '0px' }">
+                                <div class="flex-col"
+                                     @mousemove="mouseMv(icon_gengduo)"
+                                     @mouseover="mouseHov(icon_gengduo)">
+                                    <el-image :src="icon_gengduo" class="user-order-card-img"/>
+                                    <span class="user-order-card-text">全部订单</span>
+                                </div>
+                            </el-card>
+                        </div>
+                    </div>
                 </div>
             </div>
             <div class="user-box-aside">
@@ -413,6 +460,18 @@
     import GoodCard from "../../Good/GoodCard";
     import GoodDialog from "../..//Good/GoodDialog";
 
+    import fukuan from "../../../assets/iconblack/fukuan.png";
+    import gengduo from '../../../assets/iconblack/gengduo.png';
+    import pingjia from '../../../assets/iconblack/pingjia.png';
+    import shouhou from '../../../assets/iconblack/shouhou.png';
+    import shouhuo from '../../../assets/iconblack/shouhuo.png';
+    import fukuanr from '../../../assets/iconred/fukuan.png';
+    import gengduor from '../../../assets/iconred/gengduo.png';
+    import pingjiar from '../../../assets/iconred/pingjia.png';
+    import shouhour from '../../../assets/iconred/shouhou.png';
+    import shouhuor from '../../../assets/iconred/shouhuo.png';
+
+
     export default {
         name: "UserCenter",
         components: {GoodDialog, GoodCard},
@@ -429,6 +488,12 @@
                 goodMark: 0,
                 paintMark: 0,
                 numMark: 0,
+
+                icon_fukuan: fukuan,
+                icon_gengduo: gengduo,
+                icon_pingjia: pingjia,
+                icon_shouhou: shouhou,
+                icon_shouhuo: shouhuo,
 
                 items: [{
                     url: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1563382908&di=c8042cc7a0825223dc848cb101c51b2a&imgtype=jpg&er=1&src=http%3A%2F%2Fpic.rmb.bdstatic.com%2Fcd2476300bbad8dfcfff1d277b79401a.jpeg'
@@ -487,7 +552,7 @@
                     }
                 ).then(res => {
                     for (let i = 0; i < pagenum; i++) {
-                        tmplist1 = res.data.slice(i , i + 1);
+                        tmplist1 = res.data.slice(i, i + 1);
                         this.newList.push(tmplist1);
                     }
                     console.log(this.newList);
@@ -501,12 +566,55 @@
                 this.isGoodDialogVis = true;
             },
 
+            mouseHov(iconName) {
+                let temp = iconName;
+                switch (temp) {
+                    case fukuan:
+                        this.icon_fukuan = fukuanr;
+                        break;
+                    case shouhuo:
+                        this.icon_shouhuo = shouhuor;
+                        break;
+                    case pingjia:
+                        this.icon_pingjia = pingjiar;
+                        break;
+                    case shouhou:
+                        this.icon_shouhou = shouhour;
+                        break;
+                    case gengduo :
+                        this.icon_gengduo = gengduor;
+                        break;
+                }
+            },
+
+            mouseMv(iconName) {
+                let temp = iconName;
+                switch (temp) {
+                    case fukuanr:
+                        this.icon_fukuan = fukuan;
+                        break;
+                    case shouhuor:
+                        this.icon_shouhuo = shouhuo;
+                        break;
+                    case pingjiar:
+                        this.icon_pingjia = pingjia;
+                        break;
+                    case shouhour:
+                        this.icon_shouhou = shouhou;
+                        break;
+                    case gengduor :
+                        this.icon_gengduo = gengduo;
+                        break;
+                }
+            }
+
         },
         mounted() {
             this.getNewList();
         },
     }
 </script>
+
 
 <style scoped>
 
@@ -632,7 +740,7 @@
         height: 243px;
         max-height: 254px;
         padding: 20px 0;
-    //background-color: #CADEB3;
+        background-color: #CADEB3;
     }
 
     .user-card-box1 {
@@ -774,5 +882,53 @@
         color: #666;
         font-size: 13px;
         padding: 18px 0;
+    }
+
+    .user-con-title {
+        padding: 0 20px;
+        height: 55px;
+        line-height: 55px;
+        border-bottom: 1px solid #f0f3ef;
+        overflow: visible;
+    }
+
+    .user-order-con {
+        overflow: visible;
+        height: 345px;
+    }
+
+    .user-order-card {
+        float: left;
+        -webkit-box-sizing: border-box;
+        box-sizing: border-box;
+        padding: 13px 0 0;
+        margin: 0 20px;
+        width: 90px;
+        height: 90px;
+        text-align: center;
+        color: #333;
+        -webkit-transition: all .4s ease;
+        -o-transition: all .4s ease;
+        transition: all .4s ease;
+        border: 0;
+    }
+
+    .user-order-card-text {
+        padding-top: 10px;
+        height: 16px;
+        line-height: 16px;
+        font-size: 12px;
+        color: darkgray;
+    }
+
+    .user-order-card-img {
+        width: 40px;
+        height: 40px;
+        margin: 3px auto;
+
+    }
+    .badge-item{
+        margin-top: 10px;
+        margin-right: 40px;
     }
 </style>
