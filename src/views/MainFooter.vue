@@ -12,21 +12,21 @@
         <div class="bz">
             <a v-for="(tag1,index) in otherList" :key="index" y href="#">{{tag1}}|</a>
         </div>
-
-        <div class="sm1">
-            <a href="http://yanxuan.nosdn.127.net/284cbf85c80d3b1146f4df247b0d57cc.jpg?imageView">食品经营许可证：JY13301080111719</a>
-            <a href="http://yanxuan.nosdn.127.net/e45ef8d5f69114977fefff52495354eb.jpg?imageView">出版物经营许可证：新出发滨字第0132号</a>
-            <a href="#">妙得ICP证号：ICP 证浙B2-20160106</a>
-            <a href="http://yanxuan.nosdn.127.net/1a2b5c83529ee1bd53531a5726e76ebe.jpg?imageView">浙杭食药监械经营备20171029号</a>
-            <a href="http://yanxuan.nosdn.127.net/9f9d7a8a8529f97b33c351cc85f8db81.jpg?imageView">营业执照</a>
-            <a href="#">网易公司版权所有 © 1997-2019</a>
-        </div>
-        <div class="sm2">
-            <a href="http://ewm.zjfda.gov.cn:8088/qcode.action?id=0000000069A47A7D0169A492778E07C6&user_type=WLFW">（浙杭）网械企备字[2019]第00119号</a>
-            <a href="#">（粤）网械平台备字（2019）第00004号</a>
-            <a href="http://yanxuan.nosdn.127.net/d678ac17014b97f97d25bb86ae288af2.jpg?imageView">单用途商业预付卡备案证：330100AAC0024</a>
-            <!--                <a href="#"><img alt="sbiao" src="../image/ghui.png"></a>-->
-        </div>
+        <!--
+                <div class="sm1">
+                    <a href="http://yanxuan.nosdn.127.net/284cbf85c80d3b1146f4df247b0d57cc.jpg?imageView">食品经营许可证：JY13301080111719</a>
+                    <a href="http://yanxuan.nosdn.127.net/e45ef8d5f69114977fefff52495354eb.jpg?imageView">出版物经营许可证：新出发滨字第0132号</a>
+                    <a href="#">妙得ICP证号：ICP 证浙B2-20160106</a>
+                    <a href="http://yanxuan.nosdn.127.net/1a2b5c83529ee1bd53531a5726e76ebe.jpg?imageView">浙杭食药监械经营备20171029号</a>
+                    <a href="http://yanxuan.nosdn.127.net/9f9d7a8a8529f97b33c351cc85f8db81.jpg?imageView">营业执照</a>
+                    <a href="#">网易公司版权所有 © 1997-2019</a>
+                </div>-->
+        <!--       <div class="sm2">
+                   <a href="http://ewm.zjfda.gov.cn:8088/qcode.action?id=0000000069A47A7D0169A492778E07C6&user_type=WLFW">（浙杭）网械企备字[2019]第00119号</a>
+                   <a href="#">（粤）网械平台备字（2019）第00004号</a>
+                   <a href="http://yanxuan.nosdn.127.net/d678ac17014b97f97d25bb86ae288af2.jpg?imageView">单用途商业预付卡备案证：330100AAC0024</a>
+                   &lt;!&ndash;                <a href="#"><img alt="sbiao" src="../image/ghui.png"></a>&ndash;&gt;
+               </div>-->
     </div>
 
 </template>
@@ -75,11 +75,10 @@
         display: flex;
         flex-direction: column;
         /*height: 500px;*/
-        background-color: #f5f7fa;
+        background-color: whitesmoke;
         /*background-color: #eaeaea;*/
         /*border: 1px solid black;*/
     }
-
 
 
     .bt1 p, .bt2 p, .bt3 p, .bt4 p {
@@ -112,13 +111,13 @@
 
     }
 
-    .bz a {
+    .bz > a {
         color: gray;
-
+        margin: 8px 0;
     }
 
-    .bz a:hover {
-        color: #9DBC7A;
+    .bz > a:hover {
+        color: #6C7BC1;
     }
 
     .sm1 {
@@ -164,5 +163,6 @@
         flex-direction: row;
         justify-content: space-around;
         margin-top: 50px;
+
     }
 </style>
