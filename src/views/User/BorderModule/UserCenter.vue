@@ -213,8 +213,8 @@
                         玩偶衣橱
                     </div>
                     <div class="user-card-avater">
-                        <img src="http://storage.360buyimg.com/i.imageUpload/465f4c5f5a31343233383930323933373032_mid.jpg"
-                             style="border-radius: 50%;width: 64px;height: 64px">
+                        <el-image :src="headicon"
+                                  style="border-radius: 50%;width: 64px;height: 64px"/>
                     </div>
                     <div class="user-card-username">
                         <div style="font: 700 18px/20px Arial; color: #fff;">
@@ -281,6 +281,109 @@
             </div>
             <div class="user-con-box">
                 <div class="user-order">
+                    <div class="user-con-title">
+                        我的订单
+                    </div>
+                    <div class="user-order-con">
+                        <div style="height: 120px;padding: 15px 20px">
+                            <el-card shadow="hover" class="user-order-card" :body-style="{ padding: '0px' }">
+                                <div class="flex-col"
+                                     @mousemove="mouseMv(icon_fukuan)"
+                                     @mouseover="mouseHov(icon_fukuan)">
+                                    <el-badge :value=fknum v-if="fknum > 0" class="badge-item" max="20"/>
+                                    <el-image :src="icon_fukuan" class="user-order-card-img"/>
+                                    <span class="user-order-card-text">待付款</span>
+                                </div>
+                            </el-card>
+                            <el-card shadow="hover" class="user-order-card" :body-style="{ padding: '0px' }">
+                                <div class="flex-col"
+                                     @mousemove="mouseMv(icon_shouhuo)"
+                                     @mouseover="mouseHov(icon_shouhuo)">
+                                    <el-badge :value=shnum v-if="shnum > 0" class="badge-item" max="20"/>
+                                    <el-image :src="icon_shouhuo" class="user-order-card-img"/>
+                                    <span class="user-order-card-text">待收货</span>
+                                </div>
+                            </el-card>
+                            <el-card shadow="hover" class="user-order-card" :body-style="{ padding: '0px' }">
+                                <div class="flex-col"
+                                     @mousemove="mouseMv(icon_pingjia)"
+                                     @mouseover="mouseHov(icon_pingjia)">
+                                    <el-badge :value=pjnum v-if="pjnum > 0" class="badge-item" max="20"/>
+                                    <el-image :src="icon_pingjia" class="user-order-card-img"/>
+                                    <span class="user-order-card-text">待评价</span>
+                                </div>
+                            </el-card>
+                            <el-card shadow="hover" class="user-order-card" :body-style="{ padding: '0px' }">
+                                <div class="flex-col"
+                                     @mousemove="mouseMv(icon_shouhou)"
+                                     @mouseover="mouseHov(icon_shouhou)">
+                                    <el-badge :value=sonum v-if="sonum > 0" class="badge-item" max="20"/>
+                                    <el-image :src="icon_shouhou" class="user-order-card-img"/>
+                                    <span class="user-order-card-text">售后服务</span>
+                                </div>
+                            </el-card>
+                            <el-card shadow="hover" class="user-order-card" :body-style="{ padding: '0px' }">
+                                <div class="flex-col"
+                                     @mousemove="mouseMv(icon_gengduo)"
+                                     @mouseover="mouseHov(icon_gengduo)">
+                                    <el-image :src="icon_gengduo" class="user-order-card-img"/>
+                                    <span class="user-order-card-text">全部订单</span>
+                                </div>
+                            </el-card>
+                        </div>
+                        <div class="user-order-table" v-if="tableNum > 0">
+                            <el-table
+                                    style="display: flex; flex-direction: column;justify-content: center"
+                                    :data="tableData">
+                                <el-table-column prop="skuId" label="商品" width="200px">
+                                    <template slot-scope="scope">
+                                        <span style="display: flex; flex-direction: row;justify-content: space-between ">
+                                            <el-image :src="scope.row.src" style="width: 80px;height: 80px "></el-image>
+                                            <div class="user-order-table-text" style="float: left">
+                                                {{scope.row.label}}
+                                            </div>
+                                        </span>
+                                    </template>
+                                </el-table-column>
+                                <el-table-column width="80px" label="款式">
+                                    <template slot-scope="scope">
+                                        <span class="user-order-table">
+                                            {{scope.row.kind}}
+                                        </span>
+                                    </template>
+                                </el-table-column>
+                                <el-table-column prop="scNum" label="数量"
+                                        style="text-align: center" width="50px">
+                                    <template slot-scope="scope">
+                                        <span style="font-size: 12px;color: #696969;text-align: center">
+                                            {{scope.row.num}}
+                                        </span>
+                                    </template>
+                                </el-table-column>
+                                <el-table-column width="150px" label="最近物流">
+                                    <template slot-scope="scope">
+                                        <span class="user-order-table-text">
+                                            {{scope.row.direction}}
+                                        </span>
+                                    </template>
+                                </el-table-column>
+                                <el-table-column width="75px" label="操作">
+                                    <template >
+                                        <span>
+                                            <el-button type="text" size="small" tyle="margin-left: 0;padding: 0 ">
+                                                查看详情
+                                            </el-button>
+                                        </span>
+                                    </template>
+                                </el-table-column>
+                            </el-table>
+                        </div>
+                        <div v-else class="user-order-empty">
+                            <el-image :src="icon_yichu" class="user-order-empty-img" />
+                            衣橱里好久没有添加新衣服了，快去逛逛吧！
+                        </div>
+                    </div>
+
                 </div>
             </div>
             <div class="user-box-aside">
@@ -407,11 +510,24 @@
 </template>
 
 <script>
-    import view from '../../../assets/view.png'
-    import view_off from '../../../assets/view-off.png'
     import axios from 'axios';
     import GoodCard from "../../Good/GoodCard";
     import GoodDialog from "../..//Good/GoodDialog";
+
+    import view from '../../../assets/view.png'
+    import view_off from '../../../assets/view-off.png'
+    import fukuan from "../../../assets/iconblack/fukuan.png";
+    import gengduo from '../../../assets/iconblack/gengduo.png';
+    import pingjia from '../../../assets/iconblack/pingjia.png';
+    import shouhou from '../../../assets/iconblack/shouhou.png';
+    import shouhuo from '../../../assets/iconblack/shouhuo.png';
+    import fukuanr from '../../../assets/iconred/fukuan.png';
+    import gengduor from '../../../assets/iconred/gengduo.png';
+    import pingjiar from '../../../assets/iconred/pingjia.png';
+    import shouhour from '../../../assets/iconred/shouhou.png';
+    import shouhuor from '../../../assets/iconred/shouhuo.png';
+    import yichu from '../../../assets/yichu.png';
+
 
     export default {
         name: "UserCenter",
@@ -430,16 +546,47 @@
                 paintMark: 0,
                 numMark: 0,
 
-                items: [{
-                    url: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1563382908&di=c8042cc7a0825223dc848cb101c51b2a&imgtype=jpg&er=1&src=http%3A%2F%2Fpic.rmb.bdstatic.com%2Fcd2476300bbad8dfcfff1d277b79401a.jpeg'
-                },
+                headicon: "http://storage.360buyimg.com/i.imageUpload/465f4c5f5a31343233383930323933373032_mid.jpg",
+
+                icon_yichu:yichu,
+                icon_fukuan: fukuan,
+                icon_gengduo: gengduo,
+                icon_pingjia: pingjia,
+                icon_shouhou: shouhou,
+                icon_shouhuo: shouhuo,
+
+                fknum: 0, //付款
+                pjnum: 0, //评价
+                shnum: 0, //收货
+                sonum: 0, //售后
+
+                tableData: [
                     {
-                        url: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1562788315988&di=5c03425786b287658469608f493ddc91&imgtype=0&src=http%3A%2F%2Fb-ssl.duitang.com%2Fuploads%2Fitem%2F201801%2F13%2F20180113215940_VTkFe.jpeg'
+                        src: 'https://shadow.elemecdn.com/app/element/hamburger.9cf7b091-55e9-11e9-a976-7f4d0b07eef6.png',
+                        label: '汉堡王汉堡王汉堡王',
+                        num: 10,
+                        direction:"南山南北山北同住地球村",
+                        kind: 'black '
                     },
                     {
-                        url: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1562788493857&di=95900b26cd7c834bdd6913e1edd9b9bc&imgtype=0&src=http%3A%2F%2Fpic1.win4000.com%2Fwallpaper%2F9%2F54362d63810ea.jpg'
+                        src: 'https://shadow.elemecdn.com/app/element/hamburger.9cf7b091-55e9-11e9-a976-7f4d0b07eef6.png',
+                        label: '汉堡王',
+                        num: 10,
+                        direction:"南山南北山北同住地球村",
+                        kind: 'black '
                     },
                 ],
+                tableNum:2,
+                // items: [{
+                //     url: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1563382908&di=c8042cc7a0825223dc848cb101c51b2a&imgtype=jpg&er=1&src=http%3A%2F%2Fpic.rmb.bdstatic.com%2Fcd2476300bbad8dfcfff1d277b79401a.jpeg'
+                // },
+                //     {
+                //         url: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1562788315988&di=5c03425786b287658469608f493ddc91&imgtype=0&src=http%3A%2F%2Fb-ssl.duitang.com%2Fuploads%2Fitem%2F201801%2F13%2F20180113215940_VTkFe.jpeg'
+                //     },
+                //     {
+                //         url: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1562788493857&di=95900b26cd7c834bdd6913e1edd9b9bc&imgtype=0&src=http%3A%2F%2Fpic1.win4000.com%2Fwallpaper%2F9%2F54362d63810ea.jpg'
+                //     },
+                // ],
                 isHidden: false,
                 from: {
                     search: '',
@@ -487,9 +634,10 @@
                     }
                 ).then(res => {
                     for (let i = 0; i < pagenum; i++) {
-                        tmplist1 = res.data.slice(i , i + 1);
+                        tmplist1 = res.data.slice(i, i + 1);
                         this.newList.push(tmplist1);
                     }
+                    //console.log(this.newList);
                 });
 
 
@@ -500,12 +648,55 @@
                 this.isGoodDialogVis = true;
             },
 
+            mouseHov(iconName) {
+                let temp = iconName;
+                switch (temp) {
+                    case fukuan:
+                        this.icon_fukuan = fukuanr;
+                        break;
+                    case shouhuo:
+                        this.icon_shouhuo = shouhuor;
+                        break;
+                    case pingjia:
+                        this.icon_pingjia = pingjiar;
+                        break;
+                    case shouhou:
+                        this.icon_shouhou = shouhour;
+                        break;
+                    case gengduo :
+                        this.icon_gengduo = gengduor;
+                        break;
+                }
+            },
+
+            mouseMv(iconName) {
+                let temp = iconName;
+                switch (temp) {
+                    case fukuanr:
+                        this.icon_fukuan = fukuan;
+                        break;
+                    case shouhuor:
+                        this.icon_shouhuo = shouhuo;
+                        break;
+                    case pingjiar:
+                        this.icon_pingjia = pingjia;
+                        break;
+                    case shouhour:
+                        this.icon_shouhou = shouhou;
+                        break;
+                    case gengduor :
+                        this.icon_gengduo = gengduo;
+                        break;
+                }
+            }
+
         },
         mounted() {
             this.getNewList();
         },
     }
 </script>
+
 
 <style scoped>
 
@@ -631,7 +822,6 @@
         height: 243px;
         max-height: 254px;
         padding: 20px 0;
-    //background-color: #CADEB3;
     }
 
     .user-card-box1 {
@@ -711,7 +901,7 @@
     .user-order {
         width: 100%;
         max-width: 700px;
-        height: 400px;
+        height: auto;
         float: left;
         background-color: white;
     }
@@ -773,5 +963,80 @@
         color: #666;
         font-size: 13px;
         padding: 18px 0;
+    }
+
+    .user-con-title {
+        padding: 0 20px;
+        height: 55px;
+        line-height: 55px;
+        border-bottom: 1px solid #f0f3ef;
+        overflow: visible;
+    }
+
+    .user-order-con {
+        overflow: visible;
+        min-height: 350px;
+        height: auto;
+    }
+
+    .user-order-card {
+        float: left;
+        -webkit-box-sizing: border-box;
+        box-sizing: border-box;
+        padding: 13px 0 0;
+        margin: 0 20px;
+        width: 90px;
+        height: 90px;
+        text-align: center;
+        color: #333;
+        -webkit-transition: all .4s ease;
+        -o-transition: all .4s ease;
+        transition: all .4s ease;
+        border: 0;
+    }
+
+    .user-order-card-text {
+        padding-top: 10px;
+        height: 16px;
+        line-height: 16px;
+        font-size: 12px;
+        color: darkgray;
+    }
+
+    .user-order-card-img {
+        width: 40px;
+        height: 40px;
+        margin: 3px auto;
+
+    }
+
+    .badge-item {
+        z-index: 1;
+        position: absolute;
+        margin-left: 50px;
+    }
+
+    .user-order-table {
+        width: auto;
+        min-height: 150px;
+    }
+    .user-order-table-text{
+        font-size: 12px;
+        color: #696969;
+        text-align:center;
+        word-wrap: break-word;
+        max-height: 80px;
+    }
+    .user-order-empty{
+        padding: 60px 0 90px;
+        color: #999;
+        text-align: center;
+        background-color: #fff;
+    }
+    .user-order-empty-img{
+        display: inline-block;
+        margin-right: 20px;
+        overflow: hidden;
+        vertical-align: middle;
     }
 </style>
