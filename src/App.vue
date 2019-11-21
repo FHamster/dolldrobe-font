@@ -64,7 +64,7 @@
     import LoginDialog from "./views/LoginDialog/LoginDialog";
     import axios from 'axios';
     import MainFooter from "./views/MainFooter";
-    import Head from "./Head";
+    import Head from "./views/Head";
 
 
     export default {

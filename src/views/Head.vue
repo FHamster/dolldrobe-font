@@ -41,7 +41,7 @@
     </div>
 </template>
 <script>
-    import '../assets/DollDrobe.png';
+    // import '../assets/DollDrobe.png';
 
     export default {
         name: 'Head'
