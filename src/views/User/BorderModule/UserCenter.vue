@@ -213,8 +213,8 @@
                         玩偶衣橱
                     </div>
                     <div class="user-card-avater">
-                        <img src="http://storage.360buyimg.com/i.imageUpload/465f4c5f5a31343233383930323933373032_mid.jpg"
-                             style="border-radius: 50%;width: 64px;height: 64px">
+                        <el-image :src="headicon"
+                             style="border-radius: 50%;width: 64px;height: 64px"/>
                     </div>
                     <div class="user-card-username">
                         <div style="font: 700 18px/20px Arial; color: #fff;">
@@ -492,6 +492,8 @@
                 goodMark: 0,
                 paintMark: 0,
                 numMark: 0,
+
+                headicon:"http://storage.360buyimg.com/i.imageUpload/465f4c5f5a31343233383930323933373032_mid.jpg",
 
                 icon_fukuan: fukuan,
                 icon_gengduo: gengduo,
