@@ -490,7 +490,6 @@
                         tmplist1 = res.data.slice(i , i + 1);
                         this.newList.push(tmplist1);
                     }
-                    console.log(this.newList);
                 });
 
 
