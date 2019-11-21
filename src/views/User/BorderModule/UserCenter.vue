@@ -290,6 +290,7 @@
                                 <div class="flex-col"
                                      @mousemove="mouseMv(icon_fukuan)"
                                      @mouseover="mouseHov(icon_fukuan)">
+                                    <el-badge :value=fknum v-if="fknum > 0" class="badge-item" max="20"/>
                                     <el-image :src="icon_fukuan" class="user-order-card-img"/>
                                     <span class="user-order-card-text">待付款</span>
                                 </div>
@@ -298,6 +299,7 @@
                                 <div class="flex-col"
                                      @mousemove="mouseMv(icon_shouhuo)"
                                      @mouseover="mouseHov(icon_shouhuo)">
+                                    <el-badge :value=shnum v-if="shnum > 0" class="badge-item" max="20"/>
                                     <el-image :src="icon_shouhuo" class="user-order-card-img"/>
                                     <span class="user-order-card-text">待收货</span>
                                 </div>
@@ -306,6 +308,7 @@
                                 <div class="flex-col"
                                      @mousemove="mouseMv(icon_pingjia)"
                                      @mouseover="mouseHov(icon_pingjia)">
+                                    <el-badge :value=pjnum v-if="pjnum > 0" class="badge-item" max="20"/>
                                     <el-image :src="icon_pingjia" class="user-order-card-img"/>
                                     <span class="user-order-card-text">待评价</span>
                                 </div>
@@ -314,6 +317,7 @@
                                 <div class="flex-col"
                                      @mousemove="mouseMv(icon_shouhou)"
                                      @mouseover="mouseHov(icon_shouhou)">
+                                    <el-badge :value=sonum v-if="sonum > 0" class="badge-item" max="20"/>
                                     <el-image :src="icon_shouhou" class="user-order-card-img"/>
                                     <span class="user-order-card-text">售后服务</span>
                                 </div>
@@ -495,6 +499,11 @@
                 icon_shouhou: shouhou,
                 icon_shouhuo: shouhuo,
 
+                fknum: 0, //付款
+                pjnum: 0, //评价
+                shnum: 0, //收货
+                sonum: 0, //售后
+
                 items: [{
                     url: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1563382908&di=c8042cc7a0825223dc848cb101c51b2a&imgtype=jpg&er=1&src=http%3A%2F%2Fpic.rmb.bdstatic.com%2Fcd2476300bbad8dfcfff1d277b79401a.jpeg'
                 },
@@ -555,7 +564,7 @@
                         tmplist1 = res.data.slice(i, i + 1);
                         this.newList.push(tmplist1);
                     }
-                    console.log(this.newList);
+                    //console.log(this.newList);
                 });
 
 
@@ -740,7 +749,6 @@
         height: 243px;
         max-height: 254px;
         padding: 20px 0;
-        background-color: #CADEB3;
     }
 
     .user-card-box1 {
@@ -927,8 +935,10 @@
         margin: 3px auto;
 
     }
-    .badge-item{
-        margin-top: 10px;
-        margin-right: 40px;
+
+    .badge-item {
+        z-index: 1;
+        position: absolute;
+        margin-left: 50px;
     }
 </style>
