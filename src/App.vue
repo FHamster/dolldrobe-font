@@ -50,7 +50,7 @@
          </div>-->
 
         <!--        </el-header>-->
-        <div style="padding: 0;justify-content: center;min-height: 700px">
+        <div style="padding: 0;min-height: 700px">
             <router-view></router-view>
         </div>
 
@@ -75,6 +75,9 @@
             LoginDialog
             // HelloWorld
         },
+        beforeCreate: function () {
+            document.querySelector('body').setAttribute('style',' margin: 0;')
+        },
         data() {
             return {
                 activeIndex: '1',
@@ -83,6 +86,7 @@
             };
         },
         methods: {
+
             handleSelect(key, keyPath) {
                 // eslint-disable-next-line no-console
                 console.log(key, keyPath);
@@ -125,9 +129,13 @@
         -webkit-font-smoothing: antialiased;
         -moz-osx-font-smoothing: grayscale;
         text-align: center;
-        margin-top: 60px;
+
     }
 
+    * {
+        margin: 0;
+        padding: 0;
+    }
 
     /*   .menu-border {
            padding: 0;

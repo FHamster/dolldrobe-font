@@ -8,31 +8,6 @@
 
         </div>
 
-        <!--  <el-aside class="goodaside">
-              <el-col v-for="index of 5" :key="index">
-                  &lt;!&ndash;<el-card :body-style="{ padding: '10px' }" shadow="hover" style="width: 250px;margin-left: 15px ;"&ndash;&gt;
-                  &lt;!&ndash;@click="isGoodDialogVis = !isGoodDialogVis">&ndash;&gt;
-                  &lt;!&ndash;<img src="https://shadow.elemecdn.com/app/element/hamburger.9cf7b091-55e9-11e9-a976-7f4d0b07eef6.png"&ndash;&gt;
-                  &lt;!&ndash;class="image">&ndash;&gt;
-                  &lt;!&ndash;<div style="padding: 14px;width: 180px">&ndash;&gt;
-                  &lt;!&ndash;<span>好吃的汉堡</span>&ndash;&gt;
-                  &lt;!&ndash;<div class="bottom clearfix">&ndash;&gt;
-                  &lt;!&ndash;<el-button type="text" class="button">加入购物车</el-button>&ndash;&gt;
-                  &lt;!&ndash;</div>&ndash;&gt;
-                  &lt;!&ndash;</div>&ndash;&gt;
-                  &lt;!&ndash;</el-card>&ndash;&gt;
-              </el-col>
-          </el-aside>-->
-
-        <!--
-        <div class="el-row" height="20px" style="align-text: center">
-            <el-button plain class="head_btn" @click=getPageByC_Num>综合排序</el-button>
-            <el-button plain class="head_btn">销量</el-button>
-            <el-button plain class="head_btn" @click="getPageByC_MaxMoney">价格</el-button>
-            <el-button plain class="head_btn">评论数</el-button>
-            <el-button plain class="head_btn" @click="getPageByC_EndTime">上架时间</el-button>
-        </div>
--->
         <el-container style="padding:24px 80px">
             <el-aside>
                 <el-card>
@@ -78,45 +53,23 @@
                     </div>
                 </el-card>
 
-                <el-card>
+                <el-card style="margin-top: 32px">
+                    <div slot="header"><span>排序方式</span></div>
                     <el-button plain @click=getPageByC_Num>综合排序</el-button>
                     <el-button plain>销量</el-button>
                     <el-button plain @click="getPageByC_MaxMoney">价格</el-button>
                     <el-button plain>评论数</el-button>
                     <el-button plain @click="getPageByC_EndTime">上架时间</el-button>
                 </el-card>
-                <!--      <el-card>
-                          <div class="flex-col" style="align-items: center">
-                              <el-divider></el-divider>
-                              <div>
-                                  <el-button type="text">文字按钮</el-button>
-                              </div>
-                              <div>
-                                  <el-button type="text">文字按钮</el-button>
-                              </div>
-                              <div>
-                                  <el-button type="text">文字按钮</el-button>
-                              </div>
-                              <div>
-                                  <el-button type="text">文字按钮</el-button>
-                              </div>
-                              <div>
-                                  <el-button type="text">文字按钮</el-button>
-                              </div>
-                              <div>
-                                  <el-button type="text">文字按钮</el-button>
-                              </div>
-                              <el-divider></el-divider>
-                          </div>
-                      </el-card>-->
+
             </el-aside>
             <el-main style="padding: 0;margin-left: 32px">
-                <el-card>
+                <el-card style="padding:16px 0 ">
                     <div style="justify-content: center" class="flex-row">
                         <!--商品展示面板-->
                         <div class="goodPanel">
                             <div v-for="good in goodList" :key="good.cNum"
-                                 style="margin-left: 16px;margin-top: 8px"
+                                 style="margin: 8px 16px"
                                  @click="visGoodDialog(good.cNum,good.cName)">
                                 <GoodCard :good="good"/>
                             </div>
@@ -169,204 +122,6 @@
                 pageSize: 12,
                 order: '',
                 isAsc: true,
-
-                options: [{
-                    value: 'zhinan',
-                    label: '指南',
-                    children: [{
-                        value: 'shejiyuanze',
-                        label: '设计原则',
-                        children: [{
-                            value: 'yizhi',
-                            label: '一致'
-                        }, {
-                            value: 'fankui',
-                            label: '反馈'
-                        }, {
-                            value: 'xiaolv',
-                            label: '效率'
-                        }, {
-                            value: 'kekong',
-                            label: '可控'
-                        }]
-                    }, {
-                        value: 'daohang',
-                        label: '导航',
-                        children: [{
-                            value: 'cexiangdaohang',
-                            label: '侧向导航'
-                        }, {
-                            value: 'dingbudaohang',
-                            label: '顶部导航'
-                        }]
-                    }]
-                }, {
-                    value: 'zujian',
-                    label: '组件',
-                    children: [{
-                        value: 'basic',
-                        label: 'Basic',
-                        children: [{
-                            value: 'layout',
-                            label: 'Layout 布局'
-                        }, {
-                            value: 'color',
-                            label: 'Color 色彩'
-                        }, {
-                            value: 'typography',
-                            label: 'Typography 字体'
-                        }, {
-                            value: 'icon',
-                            label: 'Icon 图标'
-                        }, {
-                            value: 'button',
-                            label: 'Button 按钮'
-                        }]
-                    }, {
-                        value: 'form',
-                        label: 'Form',
-                        children: [{
-                            value: 'radio',
-                            label: 'Radio 单选框'
-                        }, {
-                            value: 'checkbox',
-                            label: 'Checkbox 多选框'
-                        }, {
-                            value: 'input',
-                            label: 'Input 输入框'
-                        }, {
-                            value: 'input-number',
-                            label: 'InputNumber 计数器'
-                        }, {
-                            value: 'select',
-                            label: 'Select 选择器'
-                        }, {
-                            value: 'cascader',
-                            label: 'Cascader 级联选择器'
-                        }, {
-                            value: 'switch',
-                            label: 'Switch 开关'
-                        }, {
-                            value: 'slider',
-                            label: 'Slider 滑块'
-                        }, {
-                            value: 'time-picker',
-                            label: 'TimePicker 时间选择器'
-                        }, {
-                            value: 'date-picker',
-                            label: 'DatePicker 日期选择器'
-                        }, {
-                            value: 'datetime-picker',
-                            label: 'DateTimePicker 日期时间选择器'
-                        }, {
-                            value: 'upload',
-                            label: 'Upload 上传'
-                        }, {
-                            value: 'rate',
-                            label: 'Rate 评分'
-                        }, {
-                            value: 'form',
-                            label: 'Form 表单'
-                        }]
-                    }, {
-                        value: 'data',
-                        label: 'Data',
-                        children: [{
-                            value: 'table',
-                            label: 'Table 表格'
-                        }, {
-                            value: 'tag',
-                            label: 'Tag 标签'
-                        }, {
-                            value: 'progress',
-                            label: 'Progress 进度条'
-                        }, {
-                            value: 'tree',
-                            label: 'Tree 树形控件'
-                        }, {
-                            value: 'pagination',
-                            label: 'Pagination 分页'
-                        }, {
-                            value: 'badge',
-                            label: 'Badge 标记'
-                        }]
-                    }, {
-                        value: 'notice',
-                        label: 'Notice',
-                        children: [{
-                            value: 'alert',
-                            label: 'Alert 警告'
-                        }, {
-                            value: 'loading',
-                            label: 'Loading 加载'
-                        }, {
-                            value: 'message',
-                            label: 'Message 消息提示'
-                        }, {
-                            value: 'message-box',
-                            label: 'MessageBox 弹框'
-                        }, {
-                            value: 'notification',
-                            label: 'Notification 通知'
-                        }]
-                    }, {
-                        value: 'navigation',
-                        label: 'Navigation',
-                        children: [{
-                            value: 'menu',
-                            label: 'NavMenu 导航菜单'
-                        }, {
-                            value: 'tabs',
-                            label: 'Tabs 标签页'
-                        }, {
-                            value: 'breadcrumb',
-                            label: 'Breadcrumb 面包屑'
-                        }, {
-                            value: 'dropdown',
-                            label: 'Dropdown 下拉菜单'
-                        }, {
-                            value: 'steps',
-                            label: 'Steps 步骤条'
-                        }]
-                    }, {
-                        value: 'others',
-                        label: 'Others',
-                        children: [{
-                            value: 'dialog',
-                            label: 'Dialog 对话框'
-                        }, {
-                            value: 'tooltip',
-                            label: 'Tooltip 文字提示'
-                        }, {
-                            value: 'popover',
-                            label: 'Popover 弹出框'
-                        }, {
-                            value: 'card',
-                            label: 'Card 卡片'
-                        }, {
-                            value: 'carousel',
-                            label: 'Carousel 走马灯'
-                        }, {
-                            value: 'collapse',
-                            label: 'Collapse 折叠面板'
-                        }]
-                    }]
-                }, {
-                    value: 'ziyuan',
-                    label: '资源',
-                    children: [{
-                        value: 'axure',
-                        label: 'Axure Components'
-                    }, {
-                        value: 'sketch',
-                        label: 'Sketch Templates'
-                    }, {
-                        value: 'jiaohu',
-                        label: '组件交互文档'
-                    }]
-                }]
-
-
             };
         },
         methods: {
