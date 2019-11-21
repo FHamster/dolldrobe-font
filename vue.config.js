@@ -7,7 +7,8 @@ let proxyObj = {};
 
 proxyObj['/'] = {
     ws: false,
-    target: 'http://localhost:8080',
+    target: 'http://139.9.133.60:8082',
+    // target: 'http://localhost:8080',
     changeOrigin: true,
   /*  pathRewrite: {
         '^/': ''

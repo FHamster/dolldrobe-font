@@ -1,30 +1,27 @@
 <template>
-    <el-container>
+    <div class="flex-col">
         <el-dialog title="商品详情" :visible.sync="isGoodDialogVis" width="1000px">
             <GoodDialog :c-num="curGood" :c-name="curGoodName"></GoodDialog>
         </el-dialog>
 
-        <el-header style="padding: 0;" height="420px">
+        <div style="padding: 0;">
             <el-carousel :interval="5000" arrow="always" style="width: 100%">
                 <el-carousel-item v-for="(it,index) in item" :key="index">
                     <el-image :src=it.url style="width: 100%"></el-image>
                 </el-carousel-item>
             </el-carousel>
-        </el-header>
+        </div>
         <div>
-            <div class="a-block" style="background-color: white">
+            <div class="infopane-background" style="background-color: white">
                 <div class="infopane">
-                    <div class="title">
-                        <div class="maintitle">
-                            <div style="font-size: 28px; margin-right: 20px">新品首发</div>
-                            <div style="font-size: 14px;">衣橱里总觉得少一件</div>
-                        </div>
+                    <div class="info-title">新品首发</div>
+                    <el-divider content-position="right">
                         <router-link to="/GoodsPage">
-                            <el-button type="text">更多新品</el-button>
+                            <el-link :underline="false">More</el-link>
                         </router-link>
-                    </div>
+                    </el-divider>
+
                     <div class="Pane">
-                        <!--                        <el-carousel arrow="never" height="365px" indicator-position="outside" :interval="4000" style="width: 1140px;">-->
                         <el-carousel arrow="never"
                                      height="365px"
                                      indicator-position="outside"
@@ -42,37 +39,32 @@
                 </div>
             </div>
 
-            <div class="a-block" style="background-color: #e2cdb1">
+            <div class="infopane-background" style="background-color: white">
                 <div class="infopane">
-                    <div class="title">
-                        <div class="maintitle">
-                            <div style="font-size: 28px; margin-right: 20px">人气画稿</div>
-                            <div style="font-size: 14px;">快去看看，说不定就做出来了呢</div>
-                        </div>
+                    <div class="info-title">人气画稿</div>
+                    <el-divider content-position="right">
                         <router-link to="/GoodsPage">
-                            <el-button type="text">更多画稿</el-button>
+                            <el-link :underline="false">More</el-link>
                         </router-link>
-                    </div>
+                    </el-divider>
 
                     <div class="Pane">
                         <GoodCard v-for="good in sentimentList" :key="good.cNum"
-                                  style="margin-left: 20px;margin-top: 15px" :good="good"/>
+                                  style="margin-left: 20px;margin-top: 15px"
+                                  :good="good"/>
                     </div>
                 </div>
             </div>
 
-            <div class="a-block" style="background-color: white">
+            <div class="infopane-background" style="background-color: white">
                 <div class="infopane">
-                    <div class="title">
-                        <div class="maintitle">
-                            <div style="font-size: 28px; margin-right: 20px">限时抢购</div>
-                            <div style="font-size: 14px;">抢抢看喽，反正也抢不完</div>
-                        </div>
-                        <router-link to="/GoodsPage">
-                            <el-button type="text">更多成品</el-button>
-                        </router-link>
-                    </div>
+                    <div class="info-title">限时抢购</div>
 
+                    <el-divider content-position="right">
+                        <router-link to="/GoodsPage">
+                            <el-link :underline="false">More</el-link>
+                        </router-link>
+                    </el-divider>
                     <div class="Pane">
                         <div v-for="good in sentimentList" :key="good.cNum"
                              @click="visGoodDialog(good.cNum,good.cName)">
@@ -84,7 +76,7 @@
                 </div>
             </div>
         </div>
-    </el-container>
+    </div>
 </template>
 
 <script>
@@ -106,9 +98,9 @@
                 isGoodDialogVis: false,
 
                 item: [{
-                    url: 'http://119.3.226.50:8071/dolldrobe/banner1.png'
+                    url: 'http://139.9.133.60:8072/banner1.png'
                 }, {
-                    url: 'http://119.3.226.50:8071/dolldrobe/banner2.png'
+                    url: 'http://139.9.133.60:8072/banner2.png'
                 }
                 ],
                 sentimentList: [],
@@ -188,7 +180,7 @@
         justify-content: center;
     }
 
-    .a-block {
+    .infopane-background {
         display: flex;
         flex-direction: row;
         justify-content: center;
@@ -196,13 +188,13 @@
         margin: 0;
     }
 
-    .a-block > .infopane > .Pane {
+    .infopane-background > .infopane > .Pane {
         display: flex;
         justify-content: center;
         flex-wrap: wrap
     }
 
-    .a-block > .infopane > .title {
+    .infopane-background > .infopane > .title {
         display: flex;
         justify-content: space-between;
         padding: 0 75px;
@@ -217,5 +209,12 @@
     .maintitle {
         display: flex;
         align-items: baseline;
+    }
+
+    .info-title {
+        font-size: 28px;
+        margin-right: 20px;
+        padding-left: 40px;
+        color: #303133;
     }
 </style>

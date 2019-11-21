@@ -3,70 +3,59 @@
         <el-dialog :visible.sync="dialogVis" width="500px">
             <LoginDialog></LoginDialog>
         </el-dialog>
-      <!--  81ceff
-        bff199
-acc236
-4285f4
-82b548
-99cc33
-8baaff h
-9dbc7a-->
+        <Head/>
+        <!-- <div class="menu-border">
+             <el-menu
+                     background-color="#ffffff"
+                     :default-active="activeIndex2"
+                     mode="horizontal"
+                     text-color="#547A28"
+                     active-text-color="#B3748D"
+                     @select="handleSelect"
+                     router>
+                 <el-menu-item @click="dialogVis = !dialogVis">
+                     <template slot="title">
+                         <el-avatar>U</el-avatar>
+                     </template>
+                 </el-menu-item>
+                 <el-menu-item
+                         index="/MainPage">首页
+                 </el-menu-item>
+                 <el-menu-item
+                         index="/UserCenter">用户中心
+                 </el-menu-item>
+                 &lt;!&ndash;   <el-submenu index="2">
+                        <template slot="title">我的工作台</template>
+                        <el-menu-item index="2-1">选项1</el-menu-item>
+                        <el-menu-item index="2-2">选项2</el-menu-item>
+                        <el-menu-item index="2-3">选项3</el-menu-item>
+                        <el-submenu index="2-4">
+                            <template slot="title">选项4</template>
+                            <el-menu-item index="2-4-1">选项1</el-menu-item>
+                            <el-menu-item index="2-4-2">选项2</el-menu-item>
+                            <el-menu-item index="2-4-3">选项3</el-menu-item>
+                        </el-submenu>
+                    </el-submenu>&ndash;&gt;
 
-            <!--<div style="text-align: center;background-color: lightgray">推荐使用谷歌或火狐浏览器</div>-->
-        <!-- style="background-image: linear-gradient(to right, #f5f7fa 0%, #c3cfe2 100%);"
-                    text-color="#547A28"
-                    active-text-color="#B3748D"-->
-        <div class="menu-border">
-            <el-menu
-                    :default-active="activeIndex2"
-                    mode="horizontal"
-                    text-color="#547A28"
-                    active-text-color="#B3748D"
-                    @select="handleSelect"
-                    router>
-                <el-menu-item @click="dialogVis = !dialogVis">
-                    <template slot="title">
-                        <el-avatar>U</el-avatar>
-                    </template>
-                </el-menu-item>
-                <el-menu-item
-                        index="/MainPage">首页
-                </el-menu-item>
-                <el-menu-item
-                        index="/UserCenter">用户中心
-                </el-menu-item>
-                <!--   <el-submenu index="2">
-                       <template slot="title">我的工作台</template>
-                       <el-menu-item index="2-1">选项1</el-menu-item>
-                       <el-menu-item index="2-2">选项2</el-menu-item>
-                       <el-menu-item index="2-3">选项3</el-menu-item>
-                       <el-submenu index="2-4">
-                           <template slot="title">选项4</template>
-                           <el-menu-item index="2-4-1">选项1</el-menu-item>
-                           <el-menu-item index="2-4-2">选项2</el-menu-item>
-                           <el-menu-item index="2-4-3">选项3</el-menu-item>
-                       </el-submenu>
-                   </el-submenu>-->
-
-                <el-menu-item
-                        index="/GoodsPage">商品浏览
-                </el-menu-item>
-               <!-- <el-menu-item
-                        index="MessageBorder">浏览
-                </el-menu-item>-->
-                <!--    <el-menu-item
-                            index="Express">Express
-                    </el-menu-item>-->
-            </el-menu>
-        </div>
+                 <el-menu-item
+                         index="/GoodsPage">商品浏览
+                 </el-menu-item>
+                 &lt;!&ndash; <el-menu-item
+                          index="MessageBorder">浏览
+                  </el-menu-item>&ndash;&gt;
+                 &lt;!&ndash;    <el-menu-item
+                             index="Express">Express
+                     </el-menu-item>&ndash;&gt;
+             </el-menu>
+         </div>-->
 
         <!--        </el-header>-->
-        <el-container style="padding: 0;justify-content: center;margin-top: 20px;min-height: 700px">
+        <div style="padding: 0;min-height: 700px">
             <router-view></router-view>
-        </el-container>
+        </div>
 
         <div>
-<!--            <MainFooter/>-->
+            <MainFooter/>
         </div>
     </div>
 </template>
@@ -75,13 +64,19 @@ acc236
     import LoginDialog from "./views/LoginDialog/LoginDialog";
     import axios from 'axios';
     import MainFooter from "./views/MainFooter";
+    import Head from "./Head";
+
 
     export default {
         name: 'app',
         components: {
+            Head,
             MainFooter,
             LoginDialog
             // HelloWorld
+        },
+        beforeCreate: function () {
+            document.querySelector('body').setAttribute('style',' margin: 0;')
         },
         data() {
             return {
@@ -91,6 +86,7 @@ acc236
             };
         },
         methods: {
+
             handleSelect(key, keyPath) {
                 // eslint-disable-next-line no-console
                 console.log(key, keyPath);
@@ -129,38 +125,45 @@ acc236
 
 
     #app {
-        font-family: "Helvetica Neue",Helvetica,"PingFang SC","Hiragino Sans GB","Microsoft YaHei","微软雅黑",Arial,sans-serif;
+        font-family: "Helvetica Neue", Helvetica, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑", Arial, sans-serif;
         -webkit-font-smoothing: antialiased;
         -moz-osx-font-smoothing: grayscale;
         text-align: center;
-        color: #2c3e50;
-        margin-top: 60px;
-        background-color: #42b983;
-    }
-
-    .con {
-        min-width: 700px;
-        width: 50%;
 
     }
 
-    .el-header {
-        padding: 0;
-    }
-
-
-    .avatar-panel {
-        align-self: center;
-    }
-
-    .menu-border {
-        padding: 0;
+    * {
         margin: 0;
-        border-top: 20px;
-        border-bottom: 20px;
-        border-left-width: 0;
-        border-right-width: 0;
-        border-color: #CADEB3;
-        border-style: solid;
+        padding: 0;
     }
+
+    /*   .menu-border {
+           padding: 0;
+           margin: 0;
+           border-top: 20px;
+           border-bottom: 20px;
+           border-left-width: 0;
+           border-right-width: 0;
+           border-color: #CADEB3;
+           border-style: solid;
+       }*/
+
+    .nav-menu > li {
+        list-style-type: none;
+        display: inline-block;
+        line-height: 44px;
+        padding: 0 54px;
+        font-weight: bold;
+        font-size: 14px;
+        color: #6C7BC1;
+    }
+
+    .nav-menu > span {
+        display: inline-block;
+        line-height: 44px;
+        padding: 0;
+        font-size: 14px;
+        color: #b4b4b4;
+    }
+
 </style>

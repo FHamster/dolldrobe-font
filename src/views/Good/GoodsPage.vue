@@ -1,73 +1,96 @@
 <template>
-    <el-container>
+    <div class="flex-col">
         <el-dialog title="商品详情" :visible.sync="isGoodDialogVis" width="1000px">
             <GoodDialog :c-num="curGood" :c-name="curGoodName"></GoodDialog>
         </el-dialog>
-        <el-header class="myhead">
-            <div class="flex-row" style="align-items: center">
-                <img src="@/assets/icon.png" class="myimg">
-                <div class="my_logo">玩偶衣橱</div>
-            </div>
-            <div class="rowdir">
-                <el-input prefix-icon="el-icon-search" type="text"
-                          size=large class="mysearch"
-                          v-model="keyWord">
-                </el-input>
-                <el-button @click="getCart">
-                    搜索
-                </el-button>
-            </div>
-        </el-header>
-        <el-main>
-            <!--  <el-aside class="goodaside">
-                  <el-col v-for="index of 5" :key="index">
-                      &lt;!&ndash;<el-card :body-style="{ padding: '10px' }" shadow="hover" style="width: 250px;margin-left: 15px ;"&ndash;&gt;
-                      &lt;!&ndash;@click="isGoodDialogVis = !isGoodDialogVis">&ndash;&gt;
-                      &lt;!&ndash;<img src="https://shadow.elemecdn.com/app/element/hamburger.9cf7b091-55e9-11e9-a976-7f4d0b07eef6.png"&ndash;&gt;
-                      &lt;!&ndash;class="image">&ndash;&gt;
-                      &lt;!&ndash;<div style="padding: 14px;width: 180px">&ndash;&gt;
-                      &lt;!&ndash;<span>好吃的汉堡</span>&ndash;&gt;
-                      &lt;!&ndash;<div class="bottom clearfix">&ndash;&gt;
-                      &lt;!&ndash;<el-button type="text" class="button">加入购物车</el-button>&ndash;&gt;
-                      &lt;!&ndash;</div>&ndash;&gt;
-                      &lt;!&ndash;</div>&ndash;&gt;
-                      &lt;!&ndash;</el-card>&ndash;&gt;
-                  </el-col>
-              </el-aside>-->
 
-            <!--
-            <div class="el-row" height="20px" style="align-text: center">
-                <el-button plain class="head_btn" @click=getPageByC_Num>综合排序</el-button>
-                <el-button plain class="head_btn">销量</el-button>
-                <el-button plain class="head_btn" @click="getPageByC_MaxMoney">价格</el-button>
-                <el-button plain class="head_btn">评论数</el-button>
-                <el-button plain class="head_btn" @click="getPageByC_EndTime">上架时间</el-button>
-            </div>
--->
-            <div style="justify-content: center" class="flex-row">
-                <!--商品展示面板-->
-                <div class="goodPanel">
-                    <div v-for="good in goodList" :key="good.cNum"
-                         style="margin-left: 10px;margin-top: 5px"
-                         @click="visGoodDialog(good.cNum,good.cName)">
-                        <GoodCard :good="good"/>
+        <div class="myhead">
+
+        </div>
+
+        <el-container style="padding:24px 80px">
+            <el-aside>
+                <el-card>
+                    <!--         套装
+                             帽子
+                             上衣
+                             下装
+                             鞋靴
+                             配饰 (口罩眼罩娃用包假发贴纸奶嘴辫子眼镜游泳圈气球滑板跑车)
+                             家具-->
+                    <el-collapse accordion>
+                        <el-collapse-item title="全部" name="全部">
+                            <div>世界是我的想象</div>
+                        </el-collapse-item>
+                        <el-collapse-item title="套装" name="套装">
+                            <div>波西米亚是一种精神</div>
+                        </el-collapse-item>
+                        <el-collapse-item title="帽子" name="帽子">
+                            <div>奥黛丽赫本式的优雅味道</div>
+                        </el-collapse-item>
+                        <el-collapse-item title="上衣" name="上衣">
+                            <div>翻出新鲜的花样</div>
+                        </el-collapse-item>
+                        <el-collapse-item title="下装" name="下装">
+                            <div>百慕大短裤就像夏天的冰可乐</div>
+                        </el-collapse-item>
+                        <el-collapse-item title="鞋靴" name="鞋靴">
+                            <div>有磨损才会有故事</div>
+                        </el-collapse-item>
+                        <el-collapse-item title="配饰" name="配饰">
+                            <div>小礼帽、红襟花、羊皮长手套</div>
+                        </el-collapse-item>
+                    </el-collapse>
+                    <el-divider content-position="left">KeyWord</el-divider>
+                    <div class="rowdir">
+                        <el-input prefix-icon="el-icon-search" type="text"
+                                  size=large class="mysearch"
+                                  v-model="keyWord">
+                        </el-input>
+                        <el-button @click="getCart">
+                            搜索
+                        </el-button>
                     </div>
-                </div>
-            </div>
-            <el-pagination
-                    background
-                    @size-change="handleSizeChange"
-                    @current-change="handleCurrentChange"
-                    :current-page.sync="curPage"
-                    :page-size="5"
-                    layout="prev, pager, next, jumper"
-                    :total="total"
-                    style="float: right;margin-top: 50px;margin-right: 100px">
-            </el-pagination>
+                </el-card>
 
-        </el-main>
+                <el-card style="margin-top: 32px">
+                    <div slot="header"><span>排序方式</span></div>
+                    <el-button plain @click=getPageByC_Num>综合排序</el-button>
+                    <el-button plain>销量</el-button>
+                    <el-button plain @click="getPageByC_MaxMoney">价格</el-button>
+                    <el-button plain>评论数</el-button>
+                    <el-button plain @click="getPageByC_EndTime">上架时间</el-button>
+                </el-card>
 
-    </el-container>
+            </el-aside>
+            <el-main style="padding: 0;margin-left: 32px">
+                <el-card style="padding:16px 0 ">
+                    <div style="justify-content: center" class="flex-row">
+                        <!--商品展示面板-->
+                        <div class="goodPanel">
+                            <div v-for="good in goodList" :key="good.cNum"
+                                 style="margin: 8px 16px"
+                                 @click="visGoodDialog(good.cNum,good.cName)">
+                                <GoodCard :good="good"/>
+                            </div>
+                        </div>
+                    </div>
+                    <el-pagination
+                            background
+                            @size-change="handleSizeChange"
+                            @current-change="handleCurrentChange"
+                            :current-page.sync="curPage"
+                            :page-size="5"
+                            layout="prev, pager, next, jumper"
+                            :total="total"
+                            style="float: right;margin-top: 50px;margin-right: 100px">
+                    </el-pagination>
+                </el-card>
+            </el-main>
+
+        </el-container>
+
+    </div>
 </template>
 
 <script>
@@ -96,11 +119,9 @@
                 keyWord: '',
                 goodList: [],
                 curPage: 1,
-                pageSize: 24,
+                pageSize: 12,
                 order: '',
                 isAsc: true,
-
-
             };
         },
         methods: {
@@ -198,7 +219,7 @@
         display: flex;
         flex-direction: row;
         justify-content: space-around;
-        background-color: #f5f7fa;
+        background-color: whitesmoke;
     }
 
     .myimg {
@@ -206,13 +227,6 @@
 
         width: 70px;
         height: 70px;
-
-    }
-
-    .mysearch {
-        width: 50%;
-        min-width: 300px;
-        max-width: 600px;
 
     }
 
@@ -236,12 +250,6 @@
         flex-direction: row;
         justify-content: center;
         flex-wrap: wrap;
-    }
-
-    .goodaside {
-        width: 250px;
-        border-style: solid;
-        border-color: #9DBC7A;
     }
 
 

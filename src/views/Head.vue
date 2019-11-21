@@ -1,0 +1,97 @@
+<template>
+    <div>
+        <div class="head-top"></div>
+
+        <div class="head_background flex-row">
+            <img width="256px" height="80px" src="../assets/DollDrobe.png" alt="">
+            <!--            <div style="width: 184px;height: 80px;background-color: #C2ADED"></div>-->
+            <div style="width: 320px">
+                <el-input
+                        placeholder="DollDrobe"
+                        v-model="input4">
+                    <i slot="prefix" class="el-input__icon el-icon-search"></i>
+                </el-input>
+            </div>
+
+            <div class="flex-row">
+                <router-link to="/UserCenter">
+                    <el-avatar shape="square">U</el-avatar>
+                </router-link>
+                <el-button style="margin-left: 40px" plain icon="el-icon-goods">¥{{100}}</el-button>
+            </div>
+        </div>
+
+        <ul class="flex-row nav-menu">
+            <router-link tag="li" to="/MainPage">
+                <el-link :underline="false">首页</el-link>
+            </router-link>
+            <span>|</span>
+            <router-link tag="li" to="/GoodsPage">
+                <el-link :underline="false">娃衣展示</el-link>
+            </router-link>
+            <span>|</span>
+            <router-link tag="li" to="/">
+                <el-link :underline="false">晒娃墙</el-link>
+            </router-link>
+            <span>|</span>
+            <router-link tag="li" to="/">
+                <el-link :underline="false">衣橱快报</el-link>
+            </router-link>
+        </ul>
+    </div>
+</template>
+<script>
+    import '../assets/DollDrobe.png';
+
+    export default {
+        name: 'Head'
+    }
+</script>
+<style scoped>
+
+
+    /*   .menu-border {
+           padding: 0;
+           margin: 0;
+           border-top: 20px;
+           border-bottom: 20px;
+           border-left-width: 0;
+           border-right-width: 0;
+           border-color: #CADEB3;
+           border-style: solid;
+       }*/
+
+    .nav-menu {
+        margin: 0;
+    }
+
+    .nav-menu > li {
+        list-style-type: none;
+        display: inline-block;
+        line-height: 44px;
+        padding: 0 54px;
+        font-weight: bold;
+        font-size: 14px;
+        color: #6C7BC1;
+    }
+
+    .nav-menu > span {
+        display: inline-block;
+        line-height: 44px;
+        padding: 0;
+        font-size: 14px;
+        color: #b4b4b4;
+    }
+
+    .head_background {
+        padding: 0 64px;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    .head-top {
+        width: 100%;
+        height: 64px;
+        background-color: #C2ADED;
+    }
+</style>
