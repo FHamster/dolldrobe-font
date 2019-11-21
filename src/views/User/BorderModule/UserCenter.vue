@@ -127,7 +127,7 @@
         <el-dialog title="商品详情" :visible.sync="isGoodDialogVis" width="1000px">
             <GoodDialog :c-num="curGood" :c-name="curGoodName"></GoodDialog>
         </el-dialog>
-        <div style="width: 100%; height: 30px;background-color: #AFBAED"></div>
+        <div style="width: 100%; height: 8px;background-color: #C2ADED"></div>
         <!--侧边菜单-->
         <!--  <el-aside class="user-center-aside">
               <el-menu

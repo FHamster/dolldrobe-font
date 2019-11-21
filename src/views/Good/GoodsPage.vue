@@ -4,9 +4,7 @@
             <GoodDialog :c-num="curGood" :c-name="curGoodName"></GoodDialog>
         </el-dialog>
 
-        <div class="myhead">
-
-        </div>
+        <div style="width: 100%; height: 8px;background-color: #C2ADED"></div>
 
         <el-container style="padding:24px 80px">
             <el-aside>
@@ -17,7 +15,8 @@
                              下装
                              鞋靴
                              配饰 (口罩眼罩娃用包假发贴纸奶嘴辫子眼镜游泳圈气球滑板跑车)
-                             家具-->
+                             家具
+                             -->
                     <el-collapse accordion>
                         <el-collapse-item title="全部" name="全部">
                             <div>世界是我的想象</div>
@@ -165,7 +164,7 @@
                     }
                 ).then(res => {
                     this.goodList = res.data;
-                    console.log(this.goodList);
+                    // console.log(this.goodList);
                 })
             }
         }
@@ -175,72 +174,10 @@
 
 <style scoped>
 
-    .good-card {
-        padding: 0;
-        width: 250px;
-
-        display: flex;
-        flex-direction: column;
-        align-content: center;
-    }
-
-    .my_logo {
-        /*position: relative;*/
-        /*float: left;*/
-        /*width: 200px;*/
-        /*height: 65px;*/
-        /*font-family: 华文琥珀;*/
-        color: #9DBC7A;
-        font-size: 40px;
-        white-space: nowrap;
-    }
-
-    .el-input__inner5 {
-        /*width: 40%;*/
-        /*margin-top: 12px;*/
-        /*border-color: red;*/
-        /*border-width: 1px;*/
-        /*margin-left: 20px;*/
-        /*border-radius: 0px;*/
-        /*background-color: rgba(192,192,192,0.5);*/
-    }
-
-
     .rowdir {
         display: flex;
         flex-direction: row;
         align-items: center;
-    }
-
-    .myhead {
-        min-height: 90px;
-        padding: 0;
-        margin: 0;
-        display: flex;
-        flex-direction: row;
-        justify-content: space-around;
-        background-color: whitesmoke;
-    }
-
-    .myimg {
-        /*float: left;*/
-
-        width: 70px;
-        height: 70px;
-
-    }
-
-    .head_btn {
-        font-size: 13px;
-        border-radius: 0px;
-        background-image: linear-gradient(to bottom, #f5f7fa 0%, #c3cfe2 100%);
-        margin: 0px;
-    }
-
-
-    .button {
-        padding: auto;
-        float: right;
     }
 
 
