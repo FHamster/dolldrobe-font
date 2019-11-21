@@ -3,7 +3,7 @@
         <div class="head-top"></div>
 
         <div class="head_background flex-row">
-            <img width="256px" height="80px" src="../assets/DollDrobe.png" alt="">
+            <img width="256" height="80" src="../assets/DollDrobe.png" alt="">
             <!--            <div style="width: 184px;height: 80px;background-color: #C2ADED"></div>-->
             <div style="width: 320px">
                 <el-input
