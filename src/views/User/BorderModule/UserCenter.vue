@@ -124,6 +124,9 @@
     <!--</el-menu>-->
 
     <el-container class="user-center-con flex-col">
+        <el-dialog title="商品详情" :visible.sync="isGoodDialogVis" width="1000px">
+            <GoodDialog :c-num="curGood" :c-name="curGoodName"></GoodDialog>
+        </el-dialog>
         <div style="width: 100%; height: 30px;background-color: #AFBAED"></div>
         <!--侧边菜单-->
         <!--  <el-aside class="user-center-aside">
@@ -319,17 +322,17 @@
                             更多<i class=" el-icon-d-arrow-right"></i>
                         </el-button>
                     </div>
-                    <div style="width: 100%;height: 110px;">
+                    <div style="width: 100%;height: 280px;">
                         <el-carousel :interval="5000"
-                                     height="90px"
+                                     height="260px"
                                      arrow="hover"
-                                     style="align-items: center"
+                                     style="margin: auto 10px"
                                      indicator-position="outside">
                             <el-carousel-item v-for="(goods,index) in newList" :key="index"
                                               style="display: flex;flex-direction: row;ustify-content: center;">
                                 <div v-for="good in goods" :key="good.cNum"
                                      @click="visGoodDialog(good.cNum,good.cName)">
-                                    <GoodCard :good="good" style="height: 80px;width: 60px;margin: 10px 0"/>
+                                    <GoodCard :good="good" style="height: 250px;width: 260px;margin: 10px 0"/>
                                 </div>
                             </el-carousel-item>
                         </el-carousel>
@@ -477,16 +480,17 @@
                         params: {
                             keyWord: 'new',
                             startPage: 0,
-                            pageSize: pagenum * 4,
+                            pageSize: 5,
                             order: this.order,
                             isAsc: this.isAsc
                         }
                     }
                 ).then(res => {
                     for (let i = 0; i < pagenum; i++) {
-                        tmplist1 = res.data.slice(i * 4, (i * 4) + 4);
+                        tmplist1 = res.data.slice(i , i + 1);
                         this.newList.push(tmplist1);
                     }
+                    console.log(this.newList);
                 });
 
 
@@ -759,7 +763,7 @@
     .user-box-aside-box2 {
         width: 100%;
         max-width: 280px;
-        height: 160px;
+        height: 340px;
         background-color: white;
         margin: 5px 0 20px 0;
         display: inline-block;
