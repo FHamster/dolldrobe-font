@@ -3,7 +3,8 @@
         <div class="head-top"></div>
 
         <div class="head_background flex-row">
-            <div style="width: 184px;height: 80px;background-color: #C2ADED"></div>
+            <img width="256px" height="80px" src="../assets/DollDrobe.png" alt="">
+            <!--            <div style="width: 184px;height: 80px;background-color: #C2ADED"></div>-->
             <div style="width: 320px">
                 <el-input
                         placeholder="DollDrobe"
@@ -40,6 +41,8 @@
     </div>
 </template>
 <script>
+    import '../assets/DollDrobe.png';
+
     export default {
         name: 'Head'
     }
@@ -81,7 +84,7 @@
     }
 
     .head_background {
-        padding: 0 128px;
+        padding: 0 64px;
         align-items: center;
         justify-content: space-between;
     }
