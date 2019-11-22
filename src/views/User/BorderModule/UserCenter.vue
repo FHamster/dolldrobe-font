@@ -214,7 +214,7 @@
                     </div>
                     <div class="user-card-avater">
                         <el-image :src="headicon"
-                             style="border-radius: 50%;width: 64px;height: 64px"/>
+                                  style="border-radius: 50%;width: 64px;height: 64px"/>
                     </div>
                     <div class="user-card-username">
                         <div style="font: 700 18px/20px Arial; color: #fff;">
@@ -331,7 +331,59 @@
                                 </div>
                             </el-card>
                         </div>
+                        <div class="user-order-table" v-if="tableNum > 0">
+                            <el-table
+                                    style="display: flex; flex-direction: column;justify-content: center"
+                                    :data="tableData">
+                                <el-table-column prop="skuId" label="商品" width="200px">
+                                    <template slot-scope="scope">
+                                        <span style="display: flex; flex-direction: row;justify-content: space-between ">
+                                            <el-image :src="scope.row.src" style="width: 80px;height: 80px "></el-image>
+                                            <div class="user-order-table-text" style="float: left">
+                                                {{scope.row.label}}
+                                            </div>
+                                        </span>
+                                    </template>
+                                </el-table-column>
+                                <el-table-column width="80px" label="款式">
+                                    <template slot-scope="scope">
+                                        <span class="user-order-table">
+                                            {{scope.row.kind}}
+                                        </span>
+                                    </template>
+                                </el-table-column>
+                                <el-table-column prop="scNum" label="数量"
+                                        style="text-align: center" width="50px">
+                                    <template slot-scope="scope">
+                                        <span style="font-size: 12px;color: #696969;text-align: center">
+                                            {{scope.row.num}}
+                                        </span>
+                                    </template>
+                                </el-table-column>
+                                <el-table-column width="150px" label="最近物流">
+                                    <template slot-scope="scope">
+                                        <span class="user-order-table-text">
+                                            {{scope.row.direction}}
+                                        </span>
+                                    </template>
+                                </el-table-column>
+                                <el-table-column width="75px" label="操作">
+                                    <template >
+                                        <span>
+                                            <el-button type="text" size="small" tyle="margin-left: 0;padding: 0 ">
+                                                查看详情
+                                            </el-button>
+                                        </span>
+                                    </template>
+                                </el-table-column>
+                            </el-table>
+                        </div>
+                        <div v-else class="user-order-empty">
+                            <el-image :src="icon_yichu" class="user-order-empty-img" />
+                            衣橱里好久没有添加新衣服了，快去逛逛吧！
+                        </div>
                     </div>
+
                 </div>
             </div>
             <div class="user-box-aside">
@@ -458,12 +510,12 @@
 </template>
 
 <script>
-    import view from '../../../assets/view.png'
-    import view_off from '../../../assets/view-off.png'
     import axios from 'axios';
     import GoodCard from "../../Good/GoodCard";
     import GoodDialog from "../..//Good/GoodDialog";
 
+    import view from '../../../assets/view.png'
+    import view_off from '../../../assets/view-off.png'
     import fukuan from "../../../assets/iconblack/fukuan.png";
     import gengduo from '../../../assets/iconblack/gengduo.png';
     import pingjia from '../../../assets/iconblack/pingjia.png';
@@ -474,6 +526,7 @@
     import pingjiar from '../../../assets/iconred/pingjia.png';
     import shouhour from '../../../assets/iconred/shouhou.png';
     import shouhuor from '../../../assets/iconred/shouhuo.png';
+    import yichu from '../../../assets/yichu.png';
 
 
     export default {
@@ -493,8 +546,9 @@
                 paintMark: 0,
                 numMark: 0,
 
-                headicon:"http://storage.360buyimg.com/i.imageUpload/465f4c5f5a31343233383930323933373032_mid.jpg",
+                headicon: "http://storage.360buyimg.com/i.imageUpload/465f4c5f5a31343233383930323933373032_mid.jpg",
 
+                icon_yichu:yichu,
                 icon_fukuan: fukuan,
                 icon_gengduo: gengduo,
                 icon_pingjia: pingjia,
@@ -506,16 +560,33 @@
                 shnum: 0, //收货
                 sonum: 0, //售后
 
-                items: [{
-                    url: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1563382908&di=c8042cc7a0825223dc848cb101c51b2a&imgtype=jpg&er=1&src=http%3A%2F%2Fpic.rmb.bdstatic.com%2Fcd2476300bbad8dfcfff1d277b79401a.jpeg'
-                },
+                tableData: [
                     {
-                        url: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1562788315988&di=5c03425786b287658469608f493ddc91&imgtype=0&src=http%3A%2F%2Fb-ssl.duitang.com%2Fuploads%2Fitem%2F201801%2F13%2F20180113215940_VTkFe.jpeg'
+                        src: 'https://shadow.elemecdn.com/app/element/hamburger.9cf7b091-55e9-11e9-a976-7f4d0b07eef6.png',
+                        label: '汉堡王汉堡王汉堡王',
+                        num: 10,
+                        direction:"南山南北山北同住地球村",
+                        kind: 'black '
                     },
                     {
-                        url: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1562788493857&di=95900b26cd7c834bdd6913e1edd9b9bc&imgtype=0&src=http%3A%2F%2Fpic1.win4000.com%2Fwallpaper%2F9%2F54362d63810ea.jpg'
+                        src: 'https://shadow.elemecdn.com/app/element/hamburger.9cf7b091-55e9-11e9-a976-7f4d0b07eef6.png',
+                        label: '汉堡王',
+                        num: 10,
+                        direction:"南山南北山北同住地球村",
+                        kind: 'black '
                     },
                 ],
+                tableNum:2,
+                // items: [{
+                //     url: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1563382908&di=c8042cc7a0825223dc848cb101c51b2a&imgtype=jpg&er=1&src=http%3A%2F%2Fpic.rmb.bdstatic.com%2Fcd2476300bbad8dfcfff1d277b79401a.jpeg'
+                // },
+                //     {
+                //         url: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1562788315988&di=5c03425786b287658469608f493ddc91&imgtype=0&src=http%3A%2F%2Fb-ssl.duitang.com%2Fuploads%2Fitem%2F201801%2F13%2F20180113215940_VTkFe.jpeg'
+                //     },
+                //     {
+                //         url: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1562788493857&di=95900b26cd7c834bdd6913e1edd9b9bc&imgtype=0&src=http%3A%2F%2Fpic1.win4000.com%2Fwallpaper%2F9%2F54362d63810ea.jpg'
+                //     },
+                // ],
                 isHidden: false,
                 from: {
                     search: '',
@@ -830,7 +901,7 @@
     .user-order {
         width: 100%;
         max-width: 700px;
-        height: 400px;
+        height: auto;
         float: left;
         background-color: white;
     }
@@ -904,7 +975,8 @@
 
     .user-order-con {
         overflow: visible;
-        height: 345px;
+        min-height: 350px;
+        height: auto;
     }
 
     .user-order-card {
@@ -942,5 +1014,29 @@
         z-index: 1;
         position: absolute;
         margin-left: 50px;
+    }
+
+    .user-order-table {
+        width: auto;
+        min-height: 150px;
+    }
+    .user-order-table-text{
+        font-size: 12px;
+        color: #696969;
+        text-align:center;
+        word-wrap: break-word;
+        max-height: 80px;
+    }
+    .user-order-empty{
+        padding: 60px 0 90px;
+        color: #999;
+        text-align: center;
+        background-color: #fff;
+    }
+    .user-order-empty-img{
+        display: inline-block;
+        margin-right: 20px;
+        overflow: hidden;
+        vertical-align: middle;
     }
 </style>
