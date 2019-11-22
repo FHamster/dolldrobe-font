@@ -1,5 +1,8 @@
 <template>
     <div>
+        <el-dialog :visible.sync="dialogVis" width="500px">
+            <LoginDialog></LoginDialog>
+        </el-dialog>
         <div class="head-top"></div>
 
         <div class="head_background flex-row">
@@ -13,11 +16,14 @@
                 </el-input>
             </div>
 
-            <div class="flex-row">
+            <div class="flex-row" style="align-content: flex-start;">
+                <el-button @click="dialogVis = !dialogVis">login</el-button>
                 <router-link to="/UserCenter">
                     <el-avatar shape="square">U</el-avatar>
                 </router-link>
-                <el-button style="margin-left: 40px" plain icon="el-icon-goods">¥{{100}}</el-button>
+                <el-badge :value="12" class="item">
+                    <el-button style="margin-left: 40px" plain icon="el-icon-goods">¥{{100}}</el-button>
+                </el-badge>
             </div>
         </div>
 
@@ -42,10 +48,19 @@
 </template>
 <script>
     // import '../assets/DollDrobe.png';
+    import LoginDialog from "@/views/LoginDialog/LoginDialog";
 
     export default {
-        name: 'Head'
-    }
+        name: 'Head',
+        components: {
+            LoginDialog
+        },
+        data() {
+            return {
+                dialogVis: false
+            };
+        },
+    };
 </script>
 <style scoped>
 
