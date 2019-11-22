@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 
-Vue.use(Router)
+Vue.use(Router);
 
 export default new Router({
     routes: [
@@ -22,6 +22,36 @@ export default new Router({
             // name: 'MainPage',
             component: () => import( './views/MainPage')
         },
+        //test start
+        {
+            path: '/ShoppingBag',
+            // name: 'ShoppingBag',
+            component: () => import( './views/User/Member/ShoppingBag.vue')
+        }, {
+            path: '/BookMark',
+            // name: 'BookMark',
+            component: () => import( './views/User/Member/BookMark.vue')
+        }, {
+            path: '/GoodOrder',
+            // name: 'GoodOrder',
+            component: () => import( './views/User/Member/GoodOrder.vue')
+        }, {
+            path: '/UserAddress',
+            // name: 'UserAddress',
+            component: () => import( './views/User/Member/UserAddress.vue')
+        },
+        {
+            path: '/OrderDetail',
+            // name: 'OrderDetail',
+            component: () => import( './views/User/Member/OrderDetail.vue')
+        },
+        {
+            path: '/PersonDetail',
+            // name: 'PersonDetail',
+            component: () => import('./views/User/BannerModule/PersonDetail')
+        },
+
+        //test end
         {
             path: '/UserCenter',
             // name: 'UserCenter',
@@ -34,7 +64,7 @@ export default new Router({
                     path: '/',
                     //redirect: "/"
                 },
-                {
+               /* {
                     path: '/ShoppingBag',
                     // name: 'ShoppingBag',
                     component: () => import( './views/User/Member/ShoppingBag.vue')
@@ -60,7 +90,7 @@ export default new Router({
                     path: '/PersonDetail',
                     // name: 'PersonDetail',
                     component: () => import('./views/User/BannerModule/PersonDetail')
-                },
+                },*/
                 {
                     path: '/MessageBorder',
                     // name: 'MessageBorder',

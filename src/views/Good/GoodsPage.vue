@@ -17,7 +17,7 @@
                              配饰 (口罩眼罩娃用包假发贴纸奶嘴辫子眼镜游泳圈气球滑板跑车)
                              家具
                              -->
-                    <el-collapse accordion>
+                    <el-collapse accordion v-model="activeNames">
                         <el-collapse-item title="全部" name="全部">
                             <div>世界是我的想象</div>
                         </el-collapse-item>
@@ -110,6 +110,7 @@
                 curGood: '',
                 curGoodName: '',
                 isGoodDialogVis: false,
+                activeNames: '全部',
 
                 total: 200,
                 C_Num: "C_Num",
