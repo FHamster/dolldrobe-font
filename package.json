@@ -13,6 +13,7 @@
     "jsonwebtoken": "^8.5.1",
     "node-sass": "^4.13.0",
     "vue": "^2.6.10",
+    "vue-anchor-router-link": "^0.8.4",
     "vue-router": "^3.0.7",
     "vuex": "^3.0.1"
   },

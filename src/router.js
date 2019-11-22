@@ -81,7 +81,7 @@ export default new Router({
         },
         {
             path: '/GoodsPage',
-            // name: 'GoodsPage',
+            name: 'GoodsPage',
             component: () => import( './views/Good/GoodsPage')
         },
         {

@@ -4,7 +4,7 @@
             <GoodDialog :c-num="curGood" :c-name="curGoodName"></GoodDialog>
         </el-dialog>
 
-        <div style="width: 100%; height: 8px;background-color: #C2ADED"></div>
+        <div id="top" style="width: 100%; height: 8px;background-color: #C2ADED"></div>
 
         <el-container style="padding:24px 80px">
             <el-aside>
@@ -86,7 +86,6 @@
                     </el-pagination>
                 </el-card>
             </el-main>
-
         </el-container>
 
     </div>
@@ -97,7 +96,6 @@
     import GoodDialog from "./GoodDialog";
     import GoodCard from "./GoodCard";
 
-
     export default {
         name: "GoodsPage",
         components: {GoodCard, GoodDialog},
@@ -106,6 +104,18 @@
         },
         data() {
             return {
+                scrollOptions: {
+                    container: "body",
+                    duration: 700,
+                    easing: "ease",
+                    offset: 0,
+                    cancelable: true,
+                    onStart: false,
+                    onDone: false,
+                    onCancel: false,
+                    x: false,
+                    y: true
+                },
                 // 商品对话框当前选中商品cNum
                 curGood: '',
                 curGoodName: '',
