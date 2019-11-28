@@ -92,7 +92,7 @@
                              :key="it">
 
                             <router-link :to="it">
-                                <el-button type="primary" icon=landmark"el-icon-edit" circle></el-button>
+                                <el-button type="primary" icon="el-icon-edit" circle></el-button>
                             </router-link>
                         </div>
                     </el-card>

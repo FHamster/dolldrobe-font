@@ -1,6 +1,6 @@
 <template>
     <div>
-        <el-dialog :visible.sync="dialogVis" width="500px">
+        <el-dialog :visible.sync="dialogVis" :before-close="beforeClose" width="500px">
             <LoginDialog></LoginDialog>
         </el-dialog>
         <div class="head-top"></div>
@@ -11,16 +11,18 @@
             <div style="width: 320px">
                 <el-input
                         placeholder="DollDrobe"
-                        v-model="input4">
+                        v-model="searchString">
                     <i slot="prefix" class="el-input__icon el-icon-search"></i>
                 </el-input>
             </div>
 
             <div class="flex-row" style="align-content: flex-start;">
-                <el-button @click="dialogVis = !dialogVis">login</el-button>
-                <router-link to="/UserCenter">
+                <el-button @click="this.$store.loginVisToggle()">login</el-button>
+                <!--                <router-link to="/UserCenter">-->
+                <el-link @click="handleUserCenter" :underline="false">
                     <el-avatar shape="square">U</el-avatar>
-                </router-link>
+                </el-link>
+                <!--                </router-link>-->
                 <el-badge :value="12" class="item">
                     <el-button style="margin-left: 40px" plain icon="el-icon-goods">¥{{100}}</el-button>
                 </el-badge>
@@ -49,6 +51,7 @@
 <script>
     // import '../assets/DollDrobe.png';
     import LoginDialog from "@/views/LoginDialog/LoginDialog";
+    import router from "../router";
 
     export default {
         name: 'Head',
@@ -57,10 +60,28 @@
         },
         data() {
             return {
-                dialogVis: false
+                searchString: '',
             };
         },
-    };
+        computed: {
+            dialogVis: function () {
+                return this.$store.state.isLoginPopVis;
+            }
+        },
+        methods: {
+            beforeClose() {
+                this.$store.state.isLoginPopVis = false
+            },
+
+            handleUserCenter() {
+                if (this.$store.state.userToken) {
+                    router.push("/UserCenter");
+                } else {
+                    this.$store.state.isLoginPopVis = true;
+                }
+            }
+        }
+    }
 </script>
 <style scoped>
 

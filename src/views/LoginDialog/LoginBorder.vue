@@ -1,6 +1,6 @@
 <template>
     <el-container class="login-border" @keyup.enter.prevent="login">
-        <el-form :model="form" label-width="80px" ref="form">
+        <el-form :model="form" label-width="80px" ref="loginForm">
             <el-form-item label="帐号">
                 <el-input v-model="form.uAccountnumber"
                           autocomplete="off"
@@ -11,7 +11,7 @@
 
                 </el-input>
             </el-form-item>
-            <el-form-item label="密码">
+            <el-form-item label="密码" ref="psw">
                 <el-input v-model="form.uPsw"
                           autocomplete="off"
                           class="login_input_broder"
@@ -24,7 +24,6 @@
 
         <el-button type="primary"
                    @click="login"
-                   @keyup.enter.native="login"
                    :round="true" class="login_btn">登录</el-button>
     </el-container>
 </template>
@@ -73,31 +72,27 @@
                         this.$store.commit("setAccount", acc);
 
                         //清空输入框
-                        this.uAccountnumber = '';
-                        this.uPsw = '';
                         this.resetForm();
                         this.$message.success('登录成功了啦');
 
+                        this.$store.commit("loginVisToggle");
                         //强制刷新
-                        this.$router.ruplace({
+                       /* this.$router.ruplace({
                             path: '../MainPage',
                             name: 'MainPage'
-                        })
-
+                        })*/
                     })
                     .catch((err) => {
                         // eslint-disable-next-line no-console
                         console.log(err);
                         this.$message.error('登录失败了嘤嘤嘤');
                         this.resetForm();
-
                     });
             },
             resetForm(){
                 this.form.uAccountnumber ='';
                 this.form.uPsw = '';
             }
-
         },
         mounted() {
             this.resetForm();

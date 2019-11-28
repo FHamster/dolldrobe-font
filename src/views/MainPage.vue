@@ -12,7 +12,7 @@
             </el-carousel>
         </div>
         <div>
-            <div class="infopane-background" style="background-color: white">
+            <div class="infopane-background">
                 <div class="infopane">
                     <div class="info-title">新品首发</div>
                     <el-divider content-position="right">
@@ -39,7 +39,7 @@
                 </div>
             </div>
 
-            <div class="infopane-background" style="background-color: white">
+            <div class="infopane-background" >
                 <div class="infopane">
                     <div class="info-title">人气画稿</div>
                     <el-divider content-position="right">
@@ -56,7 +56,7 @@
                 </div>
             </div>
 
-            <div class="infopane-background" style="background-color: white">
+            <div class="infopane-background" >
                 <div class="infopane">
                     <div class="info-title">限时抢购</div>
 
@@ -150,7 +150,7 @@
             visGoodDialog(viscNum, visName) {
                 this.curGood = viscNum;
                 this.curGoodName = visName;
-                console.log(viscNum);
+                // console.log(viscNum);
                 this.isGoodDialogVis = true;
             },
         }
@@ -188,11 +188,22 @@
         margin: 0;
     }
 
+    .infopane-background:nth-child(odd) {
+        background-color: white;
+
+    }
+
+    .infopane-background:nth-child(even) {
+        background-color: whitesmoke;
+    }
+
     .infopane-background > .infopane > .Pane {
         display: flex;
         justify-content: center;
-        flex-wrap: wrap
+        flex-wrap: wrap;
     }
+
+
 
     .infopane-background > .infopane > .title {
         display: flex;
