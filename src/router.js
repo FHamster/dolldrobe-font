@@ -150,6 +150,7 @@ export default new Router({
             ],
             component: () => import( './views/User/BorderModule/PersonalData')
         },
+
         {
             path: '/PayFor',
             name: 'PayFor',

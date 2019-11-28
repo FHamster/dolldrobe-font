@@ -88,11 +88,11 @@
             <el-container>
                 <el-main>
                     <el-card :body-style="{width:'100%',height: '300px'}">
-                        <div v-for="it in ['/PersonDetail','/OrderDetail','/ShoppingBag','/UserAddress','/GoodOrder','/BookMark',]"
+                        <div v-for="it in ['/PersonDetail','PersonalData','/OrderDetail','/ShoppingBag','/UserAddress','/GoodOrder','/BookMark',]"
                              :key="it">
 
                             <router-link :to="it">
-                                <el-button type="primary" icon="el-icon-edit" circle></el-button>
+                                <el-button type="primary" icon=landmark"el-icon-edit" circle></el-button>
                             </router-link>
                         </div>
                     </el-card>
