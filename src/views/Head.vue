@@ -17,14 +17,15 @@
             </div>
 
             <div class="flex-row" style="align-content: flex-start;">
-                <el-button @click="this.$store.loginVisToggle()">login</el-button>
-                <!--                <router-link to="/UserCenter">-->
                 <el-link @click="handleUserCenter" :underline="false">
                     <el-avatar shape="square">U</el-avatar>
                 </el-link>
-                <!--                </router-link>-->
                 <el-badge :value="12" class="item">
-                    <el-button style="margin-left: 40px" plain icon="el-icon-goods">¥{{100}}</el-button>
+                    <el-button style="margin-left: 40px"
+                               @click="handleShopBag"
+                               plain icon="el-icon-goods">
+                        ¥{{100}}
+                    </el-button>
                 </el-badge>
             </div>
         </div>
@@ -75,10 +76,13 @@
 
             handleUserCenter() {
                 if (this.$store.state.userToken) {
-                    router.push("/UserCenter");
+                    router.push("/UserCenter/index");
                 } else {
                     this.$store.state.isLoginPopVis = true;
                 }
+            },
+            handleShopBag() {
+                router.push('/UserCenter/ShoppingBag')
             }
         }
     }
@@ -91,6 +95,7 @@
            margin: 0;
            border-top: 20px;
            border-bottom: 20px;
+
            border-left-width: 0;
            border-right-width: 0;
            border-color: #CADEB3;

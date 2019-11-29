@@ -1,35 +1,43 @@
 <template>
-    <el-container class="login-border" @keyup.enter.prevent="login">
-        <el-form :model="form" label-width="80px" ref="loginForm">
-            <el-form-item label="帐号">
-                <el-input v-model="form.uAccountnumber"
-                          autocomplete="off"
-                          type="text"
-                          prefix-icon="el-icon-user"
-                          class="login_input_broder"
-                          placeholder="会员名/手机号">
 
-                </el-input>
-            </el-form-item>
-            <el-form-item label="密码" ref="psw">
-                <el-input v-model="form.uPsw"
-                          autocomplete="off"
-                          class="login_input_broder"
-                          type="text"
-                          prefix-icon="el-icon-unlock"
-                          placeholder="请输入密码" show-password>
-                </el-input>
-            </el-form-item>
-        </el-form>
+        <div class="login-border">
+            <el-form @submit.native.prevent :model="form" label-width="80px" ref="loginForm">
+                <el-form-item label="帐号">
+                    <el-input v-model="form.uAccountnumber"
+                              autocomplete="off"
+                              type="text"
+                              prefix-icon="el-icon-user"
+                              class="login_input_broder"
+                              placeholder="会员名/手机号">
 
-        <el-button type="primary"
-                   @click="login"
-                   :round="true" class="login_btn">登录</el-button>
-    </el-container>
+                    </el-input>
+                </el-form-item>
+                <el-form-item label="密码" ref="psw">
+                    <el-input v-model="form.uPsw"
+                              autocomplete="off"
+                              class="login_input_broder"
+                              type="text"
+                              prefix-icon="el-icon-unlock"
+                              placeholder="请输入密码" show-password>
+                    </el-input>
+                </el-form-item>
+                <div class="flex-row" style="justify-content: center">
+
+                    <el-button type="primary"
+                               @click="login"
+                               native-type="submit"
+                               :round="true" class="login_btn">登录
+                    </el-button>
+
+                </div>
+            </el-form>
+        </div>
+
 </template>
 
 <script>
     import axios from 'axios';
+
     export default {
         name: "LoginBorder",
         data() {
@@ -77,10 +85,10 @@
 
                         this.$store.commit("loginVisToggle");
                         //强制刷新
-                       /* this.$router.ruplace({
-                            path: '../MainPage',
-                            name: 'MainPage'
-                        })*/
+                        /* this.$router.ruplace({
+                             path: '../MainPage',
+                             name: 'MainPage'
+                         })*/
                     })
                     .catch((err) => {
                         // eslint-disable-next-line no-console
@@ -89,8 +97,8 @@
                         this.resetForm();
                     });
             },
-            resetForm(){
-                this.form.uAccountnumber ='';
+            resetForm() {
+                this.form.uAccountnumber = '';
                 this.form.uPsw = '';
             }
         },
@@ -116,6 +124,5 @@
         display: flex;
         flex-direction: column;
         align-items: center;
-
     }
 </style>

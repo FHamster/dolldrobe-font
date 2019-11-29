@@ -1,12 +1,12 @@
 <template>
     <div class="logindia">
-        <el-collapse-transition>
+        <el-collapse-transition v-if="!isRegisterShow">
             <!--登陆border-->
-            <LoginBorder v-show="!isRegisterShow"></LoginBorder>
+            <LoginBorder ></LoginBorder>
         </el-collapse-transition>
-        <el-collapse-transition>
+        <el-collapse-transition v-else>
             <!--注册border-->
-            <RegisterBorder v-show="isRegisterShow"></RegisterBorder>
+            <RegisterBorder></RegisterBorder>
         </el-collapse-transition>
 
         <div class="footer">
@@ -40,10 +40,6 @@
         margin-right: 5px
     }
 
-    .logindia {
-        display: flex;
-        flex-direction: column;
-    }
 
     .footer {
         padding-top: 20px;

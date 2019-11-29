@@ -1,59 +1,61 @@
 <template>
-    <div class="shadow-around">
-        <div height="40px">
+    <!--    <div class="shadow-around">-->
+    <div class="flex-row" style="justify-content: center;padding:32px">
+        <!-- <div height="40px">
 
-            <el-button @click="getCart">全部商品</el-button>
+             <el-button @click="getCart">全部商品</el-button>
 
-        </div>
+         </div>-->
+        <el-card shadow="never">
+            <div slot="header"><span>购物车</span></div>
+            <div class="center-pane">
 
-        <div class="center-pane">
+                <el-table
+                        style="display: flex; flex-direction: column;justify-content: center"
+                        :data="tableData"
+                        @selection-change="changeOpt">
 
-            <el-table
-                    style="display: flex; flex-direction: column;justify-content: center"
-                    :data="tableData"
-                    @selection-change="changeOpt">
-
-                <el-table-column
-                        type="selection"
-                        width="45" label="全选">
-                </el-table-column>
-                <el-table-column
-                        prop="skuId"
-                        label="商品"
-                        width="300">
-                    <template slot-scope="scope">
+                    <el-table-column
+                            type="selection"
+                            width="45" label="全选">
+                    </el-table-column>
+                    <el-table-column
+                            prop="skuId"
+                            label="商品"
+                            width="300">
+                        <template slot-scope="scope">
                         <span style="display: flex; flex-direction: row;justify-content: space-between ">
                             <el-image :src="scope.row.src" style="width: 80px;height: 80px "></el-image>
                             <div>{{scope.row.label}}</div>
                         </span>
-                    </template>
-                </el-table-column>
+                        </template>
+                    </el-table-column>
 
-                <el-table-column
-                        width="170px">
-                    <template slot-scope="scope">
+                    <el-table-column
+                            width="170px">
+                        <template slot-scope="scope">
                         <span>
                             {{scope.row.kind}}
                         </span>
-                    </template>
-                </el-table-column>
-                <el-table-column
-                        prop="cPrice"
-                        label="单价"
-                        width="160"
-                        style="float: right">
-                    <template slot-scope="scope">
+                        </template>
+                    </el-table-column>
+                    <el-table-column
+                            prop="cPrice"
+                            label="单价"
+                            width="160"
+                            style="float: right">
+                        <template slot-scope="scope">
                         <span>
                             ￥{{scope.row.price}}
                         </span>
-                    </template>
-                </el-table-column>
-                <el-table-column
-                        prop="scNum"
-                        label="数量"
-                        style="text-align: center"
-                        width="130px">
-                    <template slot-scope="scope">
+                        </template>
+                    </el-table-column>
+                    <el-table-column
+                            prop="scNum"
+                            label="数量"
+                            style="text-align: center"
+                            width="130px">
+                        <template slot-scope="scope">
                         <span>
 <!--                               @focus.prevent="saveCurnum(scope.row.num)"-->
 
@@ -64,24 +66,24 @@
 
                             </el-input-number>
                         </span>
-                    </template>
-                </el-table-column>
-                <el-table-column
-                        prop="sum"
-                        label="小计"
-                        style="float: right"
-                        width="140">
-                    <template slot-scope="scope">
+                        </template>
+                    </el-table-column>
+                    <el-table-column
+                            prop="sum"
+                            label="小计"
+                            style="float: right"
+                            width="140">
+                        <template slot-scope="scope">
                         <span>
                             ￥{{scope.row.price * scope.row.num}}
                         </span>
-                    </template>
-                </el-table-column>
-                <el-table-column
-                        width="75"
-                        label="操作"
-                >
-                    <template slot-scope="scope">
+                        </template>
+                    </el-table-column>
+                    <el-table-column
+                            width="75"
+                            label="操作"
+                    >
+                        <template slot-scope="scope">
                         <span>
                             <el-button
                                     type="text"
@@ -95,41 +97,42 @@
                             >添加关注
                             </el-button>
                         </span>
-                    </template>
-                </el-table-column>
-            </el-table>
-        </div>
+                        </template>
+                    </el-table-column>
+                </el-table>
+            </div class="center-pane">
 
 
-        <div height="50px" style="padding-left: 15px">
-            <el-button type="text">移到关注</el-button>
-            <el-button type="text">清理购物车</el-button>
-            <div style="float: right">
-                <div style="width: 270px">
-                    <div style="
+            <div height="50px" style="padding-left: 15px">
+                <el-button type="text">移到关注</el-button>
+                <el-button type="text">清理购物车</el-button>
+                <div style="float: right">
+                    <div style="width: 270px">
+                        <div style="
                     width: 100px;
                     margin-top: 2px;
                     float: left;font-size: 12px">已选择
-                        <div style="display: inline">{{setSunNum()}}</div>
-                        件商品
+                            <div style="display: inline">{{setSunNum()}}</div>
+                            件商品
+                        </div>
+                        <div style="display: inline;width: 50px">
+                            <el-col style="display: inline;width: 70px">
+                                <div style="display: inline;font-size: 12px">总价：
+                                    <div style="display: inline">{{setSumPrice()}}</div>
+                                </div>
+                                <div style="font-size: 12px">促销：-￥{{ducePrice}}</div>
+                            </el-col>
+                        </div>
                     </div>
-                    <div style="display: inline;width: 50px">
-                        <el-col style="display: inline;width: 70px">
-                            <div style="display: inline;font-size: 12px">总价：
-                                <div style="display: inline">{{setSumPrice()}}</div>
-                            </div>
-                            <div style="font-size: 12px">促销：-￥{{ducePrice}}</div>
-                        </el-col>
-                    </div>
-                </div>
 
-                <el-button size="media"
-                           @click="open()"
-                           plain style="float: right">去结算
-                </el-button>
-                <!--<el-button @click="out">out</el-button>-->
+                    <el-button size="media"
+                               @click="open()"
+                               plain style="float: right">去结算
+                    </el-button>
+                    <!--<el-button @click="out">out</el-button>-->
+                </div>
             </div>
-        </div>
+        </el-card>
     </div>
 </template>
 
@@ -246,7 +249,7 @@
             },
 
             saveCurnum(cur) {
-                console.log(cur);
+                // console.log(cur);
                 this.CurNum = cur;
             },
             changeNum(newNum, chgSkuId) {
@@ -256,13 +259,15 @@
                     skuId: chgSkuId,
                     scNum: newNum
                 };
-                console.log(newSku);
+                // console.log(newSku);
                 axios.patch('/api/Cart/Cart', newSku, {
                     headers: {
                         'token': this.$store.getters.getToken
                     }
+                    // eslint-disable-next-line no-unused-vars
                 }).then(res => {
                     this.$message.success("修改成功商品数量目前为" + newNum);
+                    // eslint-disable-next-line no-unused-vars
                 }).catch(err => {
                     this.$message.error("没有修改成功");
                 });
@@ -292,6 +297,7 @@
                     }
                     // console.log(cart)
                     this.tableData = cart;
+                    // eslint-disable-next-line no-unused-vars
                 }).catch(err => {
                         this.$message.error('OOP！')
                     }
@@ -301,11 +307,13 @@
                 let del = {
                     skuId: delSkuId,
                 };
-                console.log(del);
+                // console.log(del);
                 axios.delete('api/Cart/' + del.skuId, {
                     headers: {'token': this.$store.getters.getToken}
+                    // eslint-disable-next-line no-unused-vars
                 }).then(res => {
                     this.$message.success('商品删除成功');
+                    // eslint-disable-next-line no-unused-vars
                 }).catch(err => {
                     this.$message.error('删除商品的时候出了些问题 难受')
                 });

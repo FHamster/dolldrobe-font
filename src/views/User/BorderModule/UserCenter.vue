@@ -3,8 +3,6 @@
         <el-dialog title="商品详情" :visible.sync="isGoodDialogVis" width="1000px">
             <GoodDialog :c-num="curGood" :c-name="curGoodName"></GoodDialog>
         </el-dialog>
-        <div style="width: 100%; height: 8px;background-color: #C2ADED"></div>
-
 
         <div class="info-pane_background">
             <div>
@@ -88,11 +86,11 @@
             <el-container>
                 <el-main>
                     <el-card :body-style="{width:'100%',height: '300px'}">
-                        <div v-for="it in ['/PersonDetail','PersonalData','/OrderDetail','/ShoppingBag','/UserAddress','/GoodOrder','/BookMark',]"
+                        <div v-for="it in ['/PersonDetail','/PersonalData','/OrderDetail','/ShoppingBag','/UserAddress','/GoodOrder','/BookMark',]"
                              :key="it">
 
-                            <router-link :to="it">
-                                <el-button type="primary" icon="el-icon-edit" circle></el-button>
+                            <router-link :to="'/UserCenter'+it">
+                                <el-button type="primary" icon="el-icon-edit" circle>{{'/UserCenter'+it}}</el-button>
                             </router-link>
                         </div>
                     </el-card>
@@ -355,12 +353,12 @@
             },
             changeTooltip() {
                 this.card_show = !this.card_show;
-                if (this.card_show == true) {
+                if (this.card_show === true) {
                     this.intNum = this.intNumTrue;
                     this.icon_select = view;
                     this.card_tool_content = "隐藏金额";
                 } else {
-                    this.intNum = "****"
+                    this.intNum = "****";
                     this.icon_select = view_off;
                     this.card_tool_content = "显示金额";
                 }
