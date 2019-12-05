@@ -85,15 +85,54 @@
             </div>
             <el-container>
                 <el-main>
-                    <el-card :body-style="{width:'100%',height: '300px'}">
-                        <div v-for="it in ['/PersonDetail','/PersonalData','/OrderDetail','/ShoppingBag','/UserAddress','/GoodOrder','/BookMark',]"
-                             :key="it">
+                    <div class="user-menu-card">
+                        <!--<div v-for="it in ['/PersonDetail','/PersonalData','/ShoppingBag','/UserAddress','/GoodOrder','/BookMark',]"-->
+                             <!--:key="it">-->
 
-                            <router-link :to="'/UserCenter'+it">
-                                <el-button type="primary" icon="el-icon-edit" circle>{{'/UserCenter'+it}}</el-button>
-                            </router-link>
-                        </div>
-                    </el-card>
+                            <!--<router-link :to="'/UserCenter'+it">-->
+                                <!--<el-button type="primary" icon="el-icon-edit" circle>{{'/UserCenter'+it}}</el-button>-->
+                            <!--</router-link>-->
+                        <!--</div>-->
+                            <!--按钮面板-->
+                            <div class="flex-row user-menu-con-pane">
+                                <router-link :to="'/UserCenter/ShoppingBag'" class="router-link-active" tag="li">
+                                    <div class="flex-col"
+                                         @mouseout="mouseMv(icon_menuc)"
+                                         @mouseover="mouseHov(icon_menuc)">
+                                        <!--<el-badge :value=fknum v-if="fknum > 0" max="20"/>-->
+                                        <el-image :src="icon_menuc" class="user-menu-card-img"/>
+                                        <span class="user-menu-card-text">我的车车</span>
+                                    </div>
+                                </router-link>
+                                <router-link :to="'/UserCenter/PersonalData'" class="router-link-active" tag="li">
+                                    <div class="flex-col"
+                                         @mouseout="mouseMv(icon_menuf)"
+                                         @mouseover="mouseHov(icon_menuf)">
+                                        <!--<el-badge :value=shnum v-if="shnum > 0" class="badge-item" max="20"/>-->
+                                        <el-image :src="icon_menuf" class="user-menu-card-img"/>
+                                        <span class="user-menu-card-text">个人信息</span>
+                                    </div>
+                                </router-link>
+                                <router-link :to="'/UserCenter/UserAddress'" class="router-link-active" tag="li">
+                                    <div class="flex-col"
+                                         @mouseout="mouseMv(icon_menud)"
+                                         @mouseover="mouseHov(icon_menud)">
+                                        <!--<el-badge :value=pjnum v-if="pjnum > 0" class="badge-item" max="20"/>-->
+                                        <el-image :src="icon_menud" class="user-menu-card-img"/>
+                                        <span class="user-menu-card-text">我的地址</span>
+                                    </div>
+                                </router-link>
+                                <router-link :to="'/UserCenter/inxex'" class="router-link-active" tag="li">
+                                    <div class="flex-col"
+                                         @mouseout="mouseMv(icon_menuy)"
+                                         @mouseover="mouseHov(icon_menuy)">
+                                        <!--<el-badge :value=sonum v-if="sonum > 0" class="badge-item" max="20"/>-->
+                                        <el-image :src="icon_menuy" class="user-menu-card-img"/>
+                                        <span class="user-menu-card-text">我的衣橱</span>
+                                    </div>
+                                </router-link>
+                            </div>
+                    </div>
                     <el-card style="margin-top: 16px" :body-style="{padding:'0px'}">
                         <div slot="header">
                             我的订单
@@ -132,7 +171,7 @@
                                 <div class="flex-col"
                                      @mouseout="mouseMv(icon_gengduo)"
                                      @mouseover="mouseHov(icon_gengduo)">
-                                    <el-image :src="icon_vgengduo" class="user-order-card-img"/>
+                                    <el-image :src="icon_gengduo" class="user-order-card-img"/>
                                     <span class="user-order-card-text">全部订单</span>
                                 </div>
                             </div>
@@ -273,6 +312,14 @@
     import shouhour from '../../../assets/iconred/shouhou.png';
     import shouhuor from '../../../assets/iconred/shouhuo.png';
     import yichu from '../../../assets/yichu.png';
+    import che from '../../../assets/icon-user-menu/che.png'
+    import dizhi from '../../../assets/icon-user-menu/dizhi.png'
+    import geren from '../../../assets/icon-user-menu/fenzucopy.png'
+    import myichu from '../../../assets/icon-user-menu/yichu.png'
+    import chez from '../../../assets/icon-user-menu-zi/che.png'
+    import dizhiz from '../../../assets/icon-user-menu-zi/dizhi.png'
+    import gerenz from '../../../assets/icon-user-menu-zi/fenzucopy.png'
+    import myichuz from '../../../assets/icon-user-menu-zi/yichu.png'
 
 
     export default {
@@ -300,6 +347,11 @@
                 icon_pingjia: pingjia,
                 icon_shouhou: shouhou,
                 icon_shouhuo: shouhuo,
+
+                icon_menuc: che,
+                icon_menud: dizhi,
+                icon_menuf: geren,
+                icon_menuy: myichu,
 
                 fknum: 0, //付款
                 pjnum: 0, //评价
@@ -412,6 +464,18 @@
                     case gengduo :
                         this.icon_gengduo = gengduor;
                         break;
+                    case che:
+                        this.icon_menuc = chez;
+                        break;
+                    case dizhi:
+                        this.icon_menud = dizhiz;
+                        break;
+                    case geren:
+                        this.icon_menuf = gerenz;
+                        break;
+                    case myichu :
+                        this.icon_menuy = myichuz;
+                        break;
                 }
             },
 
@@ -432,6 +496,18 @@
                         break;
                     case gengduor :
                         this.icon_gengduo = gengduo;
+                        break;
+                    case chez:
+                        this.icon_menuc = che;
+                        break;
+                    case dizhiz:
+                        this.icon_menud = dizhi;
+                        break;
+                    case gerenz:
+                        this.icon_menuf = geren;
+                        break;
+                    case myichuz :
+                        this.icon_menuy = myichu;
                         break;
                 }
             }
@@ -799,5 +875,41 @@
 
     .con-pane > .flex-col {
         align-items: center;
+    }
+
+    .user-menu-card{
+        width: auto;
+        height: 100px;
+        padding: 30px 30px;
+        background-color: white;
+    }
+
+    .user-menu-card-img{
+        width: 60px;
+        height: 60px;
+    }
+
+    .user-menu-con-pane{
+        padding: 9px ;
+        justify-content: space-around;
+        align-items: center;
+    }
+
+    .user-menu-con-pane > .flex-col {
+        align-items: center;
+    }
+
+    .user-menu-card-text{
+        font-size: 16px;
+        font-family: 黑体;
+    }
+
+    a {
+        text-decoration: none;
+    }
+
+    .router-link-active {
+        text-decoration: none;
+        list-style-type: none;
     }
 </style>
