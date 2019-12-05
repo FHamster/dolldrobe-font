@@ -2,12 +2,11 @@
     <div>
         <el-drawer
                 :modal="false"
-                size="240"
+                size="0px"
                 :visible.sync="drawer"
                 :show-close="false"
                 direction="ltr">
-
-            <UserAsideMenu style="margin-top: -18px;"></UserAsideMenu>
+            <UserAsideMenu style="margin-top: 28px;position: fixed"></UserAsideMenu>
         </el-drawer>
 
         <el-button @click="drawer=true"
@@ -51,5 +50,17 @@
         margin-top: 10vh;
         position: fixed;
         z-index: 2;
+    }
+    el-drawer >>> header {
+        -webkit-box-align: center;
+        -ms-flex-align: center;
+        align-items: center;
+        color: #72767b;
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        margin-bottom: 32px;
+        /* padding: 20px; */
+        padding-bottom: 0;
     }
 </style>
