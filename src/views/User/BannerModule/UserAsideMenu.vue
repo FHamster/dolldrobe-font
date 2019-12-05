@@ -63,7 +63,8 @@
 
     .menu {
         width: 170px;
-        height: 700px;
+        height: auto;
+        max-height: 700px;
         max-width: 170px;
         background-color: white;
         color: black;
