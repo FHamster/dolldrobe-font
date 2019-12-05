@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
 
-Vue.use(Vuex)
+Vue.use(Vuex);
 
 //全局作用欲数据
 const state = {
@@ -10,7 +10,9 @@ const state = {
     //用户名词
     userName: null,
     //用户帐号
-    userAccount: null
+    userAccount: null,
+    //登录框是否显示
+    isLoginPopVis: false
 };
 
 //同步方法
@@ -24,6 +26,10 @@ const mutations = {
     setAccount(state, Acc) {
         state.userAccount = Acc;
     },
+
+    loginVisToggle() {
+        state.isLoginPopVis = !state.isLoginPopVis;
+    }
 };
 
 //异步方法

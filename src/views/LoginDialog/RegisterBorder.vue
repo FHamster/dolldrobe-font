@@ -2,7 +2,7 @@
     <div class="register-border">
         <el-form :model="reg" status-icon :rules="rules" label-width="80px" ref="regForm">
             <el-form-item label="注册帐号" prop="uAccountnumber">
-                <el-input v-model="reg.uAccountnumber" autocomplete="off" type="text"
+                <el-input v-model="reg.uAccountnumber_reg" autocomplete="off" type="text"
                           prefix-icon="el-icon-user"
                           class="register_input_broder"
                           placeholder="注册帐号"
@@ -12,7 +12,7 @@
                 </el-input>
             </el-form-item>
             <el-form-item label="登录密码" prop="uPsw">
-                <el-input v-model="reg.uPsw" autocomplete="off" type="text"
+                <el-input v-model="reg.uPsw_reg" autocomplete="off" type="text"
                           prefix-icon="el-icon-unlock"
                           class="register_input_broder"
                           placeholder="请输入密码"
@@ -45,15 +45,27 @@
 
                 </el-input>
             </el-form-item>
+
+            <div class="flex-row">
+
+
+                <el-button class="register_btn"
+                           :round="true"
+                           @click="resetForm('reg')"
+                           style="margin-left: 20px;">
+                    重置
+                </el-button>
+                <el-button native-type="submit"
+                           :round="true"
+                           type="primary"
+                           class="register_btn"
+                           @click="registerUser">
+                    注册
+                </el-button>
+
+            </div>
         </el-form>
-        <el-row type="flex" justify="center">
-            <el-col>
-            <el-button type="primary" class="register_btn" @click="registerUser">注册</el-button>
-            </el-col>
-            <el-col>
-                <el-button class="register_btn" @click="resetForm('reg')" style="margin-left: 20px;">重置</el-button>
-            </el-col>
-        </el-row>
+
     </div>
 </template>
 
@@ -67,7 +79,7 @@
             const validateRePsw = (rule, value, callback) => {
                 if (value === '') {
                     callback(new Error('请再次输入密码'));
-                } else if (value !== this.reg.uPsw) {
+                } else if (value !== this.reg.uPsw_reg) {
                     callback(new Error('两次输入密码不一致!'));
                 } else {
                     callback();
@@ -77,7 +89,7 @@
             const validateAcc = (rule, value, callback) => {
                 axios.get('api/User/UserAccisUnique', {
                     params: {
-                        acc: this.reg.uAccountnumber
+                        acc: this.reg.uAccountnumber_reg
                     }
                 })
                     .then(res => {
@@ -92,8 +104,8 @@
             return {
                 //注册表单
                 reg: {
-                    uAccountnumber: '',
-                    uPsw: '',
+                    uAccountnumber_reg: '',
+                    uPsw_reg: '',
                     uRePsw: '',
                     phone: '',
                     mail: ''
@@ -132,8 +144,8 @@
             registerUser() {
                 if (this.submitForm("regForm")) {
                     axios.post('api/User/User', {
-                        uAccountnumber: this.reg.uAccountnumber,
-                        uPsw: this.reg.uPsw,
+                        uAccountnumber: this.reg.uAccountnumber_reg,
+                        uPsw: this.reg.uPsw_reg,
                         uTel: this.reg.phone,
                         uEmail: this.reg.mail
                     }).then(res => {
@@ -174,7 +186,8 @@
     }
 
     .register_btn {
-        width: 80px;
+        width: 50%;
         font-size: 20px;
+        align-self: center;
     }
 </style>
