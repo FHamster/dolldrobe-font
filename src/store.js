@@ -7,7 +7,7 @@ Vue.use(Vuex);
 const state = {
     //用户token
     userToken: null,
-    //用户名词
+    //用户名
     userName: null,
     //用户帐号
     userAccount: null,

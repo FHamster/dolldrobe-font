@@ -1,37 +1,37 @@
 <template>
 
-        <div class="login-border">
-            <el-form @submit.native.prevent :model="form" label-width="80px" ref="loginForm">
-                <el-form-item label="帐号">
-                    <el-input v-model="form.uAccountnumber"
-                              autocomplete="off"
-                              type="text"
-                              prefix-icon="el-icon-user"
-                              class="login_input_broder"
-                              placeholder="会员名/手机号">
+    <div class="login-border">
+        <el-form @submit.native.prevent :model="form" label-width="80px" ref="loginForm">
+            <el-form-item label="帐号">
+                <el-input v-model="form.uAccountnumber"
+                          autocomplete="off"
+                          type="text"
+                          prefix-icon="el-icon-user"
+                          class="login_input_broder"
+                          placeholder="会员名/手机号">
 
-                    </el-input>
-                </el-form-item>
-                <el-form-item label="密码" ref="psw">
-                    <el-input v-model="form.uPsw"
-                              autocomplete="off"
-                              class="login_input_broder"
-                              type="text"
-                              prefix-icon="el-icon-unlock"
-                              placeholder="请输入密码" show-password>
-                    </el-input>
-                </el-form-item>
-                <div class="flex-row" style="justify-content: center">
+                </el-input>
+            </el-form-item>
+            <el-form-item label="密码" ref="psw">
+                <el-input v-model="form.uPsw"
+                          autocomplete="off"
+                          class="login_input_broder"
+                          type="text"
+                          prefix-icon="el-icon-unlock"
+                          placeholder="请输入密码" show-password>
+                </el-input>
+            </el-form-item>
+            <div class="flex-row" style="justify-content: center">
 
-                    <el-button type="primary"
-                               @click="login"
-                               native-type="submit"
-                               :round="true" class="login_btn">登录
-                    </el-button>
+                <el-button type="primary"
+                           @click="login"
+                           native-type="submit"
+                           :round="true" class="login_btn">登录
+                </el-button>
 
-                </div>
-            </el-form>
-        </div>
+            </div>
+        </el-form>
+    </div>
 
 </template>
 
@@ -74,10 +74,11 @@
                 axios.post('/api/token/token', this.form)
                     .then((res) => {
                         //存储token
+                        // console.log(res.data);
                         let token = res.data.tokenid;
                         this.$store.commit("setToken", token);
                         let acc = res.data.uAccountnumber;
-                        this.$store.commit("setAccount", acc);
+                        this.$store.state.userName = acc;
 
                         //清空输入框
                         this.resetForm();

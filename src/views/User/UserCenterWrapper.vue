@@ -18,7 +18,10 @@
                    circle
                    plain
                    class="sideBut"></el-button>
-        <div style="width: 100%; height: 8px;background-color: #C2ADED"></div>
+        <!--        <div style="width: 100%; height: 8px;background-color: #C2ADED"></div>-->
+        <div class="page-head-wrapper">
+            <el-page-header @back="goBack" :content="currentPageName"></el-page-header>
+        </div>
         <router-view></router-view>
     </div>
 </template>
@@ -31,7 +34,8 @@
         components: {UserAsideMenu},
         data() {
             return {
-                drawer: false
+                drawer: false,
+                currentPageName: ''
             }
         },
         beforeRouteEnter: (to, from, next) => {
@@ -41,16 +45,25 @@
                     return true;
                 } else {
                     vm.$message.error("用户还未登录，无法访问");
-                    vm.$router.push(from.fullPath)
+                    vm.$router.push(from.fullPath);
+                    // vm.$router.back();
                 }
             });
         },
-        methods: {}
+        methods: {
+            goBack() {
+                this.$router.back();
+            },
+            setHead(to) {
+                this.currentPageName = to.name;
+            }
+        }
     }
 </script>
 
 <style scoped>
     .sideBut {
+        margin-left: 32px;
         margin-top: 10vh;
         position: fixed;
         z-index: 2;
@@ -70,6 +83,11 @@
         }*/
 
 
+    .page-head-wrapper {
+        padding: 8px 64px;
+        border-top: #C2ADED solid 4px;
+        /*border-bottom: #C2ADED solid 1px;*/
+    }
 </style>
 
 <style lang="scss" scoped>

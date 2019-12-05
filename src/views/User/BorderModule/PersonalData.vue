@@ -1,6 +1,6 @@
 <template>
-<el-container>
-    <el-header>
+<div>
+   <!-- <el-header>
         <el-menu
                 mode="horizontal"
                 style="background-image: linear-gradient(to right, #f5f7fa 0%, #eef1f5 100%);"
@@ -29,9 +29,9 @@
 
             <el-menu-item index="3" class="userCenter_title">消息中心</el-menu-item>
         </el-menu>
-    </el-header>
-    <el-main>
-        <el-aside width="20%" style="border: 2px ;position: absolute">
+    </el-header>-->
+    <div>
+        <div width="20%" style="border: 2px ;position: absolute">
             <div style="float: right">
                 <el-image style="width: 100px;height: 100px" src="https://ss0.bdstatic.com/70cFvHSh_Q1YnxGkpoWK1HF6hhy/it/u=3127190984,2058914612&fm=26&gp=0.jpg"></el-image>
                 <div style="width: 20px">
@@ -44,12 +44,12 @@
                     <el-button type="text" size="small">消息提醒</el-button>
                 </div>
             </div>
-        </el-aside>
-        <el-main style="width: 850px; position: absolute;margin-left: 22%">
+        </div>
+        <div style="width: 850px; position: absolute;margin-left: 22%">
             <router-view></router-view>
-        </el-main>
-    </el-main>
-</el-container>
+        </div>
+    </div>
+</div>
 </template>
 
 <script>

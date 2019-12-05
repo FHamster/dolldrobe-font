@@ -67,7 +67,8 @@
         background-color: white;
         color: black;
         border-radius: 5px;
-        border: 1px solid #a0a8b0;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, .12), 0 0 6px rgba(0, 0, 0, .04)
+        /*border: 1px solid #a0a8b0;*/
     }
 
     .menu-item-text {

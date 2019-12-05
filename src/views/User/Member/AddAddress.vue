@@ -78,7 +78,7 @@
                 }, {
                     tag: '学校'
                 },],
-                ruleForm: [{
+                ruleForm: {
                     peopleName: '',
                     //收件区域
                     localArea: '',
@@ -90,7 +90,7 @@
                     telephone: '',
                     e_mail: '',
                     tagName: '',
-                }],
+                },
                 rules: {
                     peopleName: [{required: true, message: '请输入收件人姓名', trigger: 'blur'}],
                     localArea: [{required: true, message: '请输入收件人区域', trigger: 'blur'}],

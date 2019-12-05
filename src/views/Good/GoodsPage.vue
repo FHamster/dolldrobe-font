@@ -131,6 +131,7 @@
                    icon="el-icon-arrow-right"
                    circle
                    plain
+                   type="primary"
                    @click="isSidePaneShow=true"
                    v-show="!isSidePaneShow">
         </el-button>
@@ -250,6 +251,7 @@
 
     .sideFixed {
         margin-top: 10vh;
+        margin-left: 32px;
         position: fixed;
         z-index: 2;
     }

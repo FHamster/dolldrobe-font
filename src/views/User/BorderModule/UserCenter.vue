@@ -1,11 +1,11 @@
 <template>
-    <el-container class="user-center-con flex-col">
+    <el-container class="user-center-con flex-col" style="padding: 8px">
         <el-dialog title="商品详情" :visible.sync="isGoodDialogVis" width="1000px">
             <GoodDialog :c-num="curGood" :c-name="curGoodName"></GoodDialog>
         </el-dialog>
 
         <div class="info-pane_background">
-            <div>
+            <div  style="margin-bottom: 8px">
                 <div class="user-card">
                     <div class="user-card-box1 flex-col">
                         <div style="height: 60px;font-size:50px;
@@ -21,13 +21,13 @@
                                 {{username}}
                             </div>
                         </div>
-                        <div style="align-self: center">
-                            <el-button round plain>
+                     <!--   <div style="align-self: center">
+                            <el-button round plain @click="test">
                                 OPEN
                             </el-button>
-                        </div>
+                        </div>-->
                     </div>
-                    <div class="user-card-box2">
+                    <div class="user-card-box2 shadow-around">
                         <div class="user-card-box2-purse">
                             <div style="float: left ">
                                 我的钱包
@@ -85,47 +85,50 @@
             </div>
             <el-container>
                 <el-main>
-                    <div class="user-menu-card">
-                        <!--按钮面板-->
-                        <div class="flex-row user-menu-con-pane">
-                            <router-link :to="'/UserCenter/ShoppingBag'" class="router-link-active" tag="li">
-                                <div class="flex-col"
-                                     @mouseout="mouseMv(icon_menuc)"
-                                     @mouseover="mouseHov(icon_menuc)">
-                                    <!--<el-badge :value=fknum v-if="fknum > 0" max="20"/>-->
-                                    <el-image :src="icon_menuc" class="user-menu-card-img"/>
-                                    <span class="user-menu-card-text">我的车车</span>
-                                </div>
-                            </router-link>
-                            <router-link :to="'/UserCenter/PersonalData'" class="router-link-active" tag="li">
-                                <div class="flex-col"
-                                     @mouseout="mouseMv(icon_menuf)"
-                                     @mouseover="mouseHov(icon_menuf)">
-                                    <!--<el-badge :value=shnum v-if="shnum > 0" class="badge-item" max="20"/>-->
-                                    <el-image :src="icon_menuf" class="user-menu-card-img"/>
-                                    <span class="user-menu-card-text">个人信息</span>
-                                </div>
-                            </router-link>
-                            <router-link :to="'/UserCenter/UserAddress'" class="router-link-active" tag="li">
-                                <div class="flex-col"
-                                     @mouseout="mouseMv(icon_menud)"
-                                     @mouseover="mouseHov(icon_menud)">
-                                    <!--<el-badge :value=pjnum v-if="pjnum > 0" class="badge-item" max="20"/>-->
-                                    <el-image :src="icon_menud" class="user-menu-card-img"/>
-                                    <span class="user-menu-card-text">我的地址</span>
-                                </div>
-                            </router-link>
-                            <router-link :to="'/UserCenter/inxex'" class="router-link-active" tag="li">
-                                <div class="flex-col"
-                                     @mouseout="mouseMv(icon_menuy)"
-                                     @mouseover="mouseHov(icon_menuy)">
-                                    <!--<el-badge :value=sonum v-if="sonum > 0" class="badge-item" max="20"/>-->
-                                    <el-image :src="icon_menuy" class="user-menu-card-img"/>
-                                    <span class="user-menu-card-text">我的衣橱</span>
-                                </div>
-                            </router-link>
+                    <el-card>
+                        <div class="user-menu-card ">
+                            <!--按钮面板-->
+                            <div class="flex-row user-menu-con-pane">
+                                <router-link :to="'/UserCenter/ShoppingBag'" class="router-link-active" tag="li">
+                                    <div class="flex-col"
+                                         @mouseout="mouseMv(icon_menuc)"
+                                         @mouseover="mouseHov(icon_menuc)">
+                                        <!--<el-badge :value=fknum v-if="fknum > 0" max="20"/>-->
+                                        <el-image :src="icon_menuc" class="user-menu-card-img"/>
+                                        <span class="user-menu-card-text">我的车车</span>
+                                    </div>
+                                </router-link>
+                                <router-link :to="'/UserCenter/PersonalData'" class="router-link-active" tag="li">
+                                    <div class="flex-col"
+                                         @mouseout="mouseMv(icon_menuf)"
+                                         @mouseover="mouseHov(icon_menuf)">
+                                        <!--<el-badge :value=shnum v-if="shnum > 0" class="badge-item" max="20"/>-->
+                                        <el-image :src="icon_menuf" class="user-menu-card-img"/>
+                                        <span class="user-menu-card-text">个人信息</span>
+                                    </div>
+                                </router-link>
+                                <router-link :to="'/UserCenter/UserAddress'" class="router-link-active" tag="li">
+                                    <div class="flex-col"
+                                         @mouseout="mouseMv(icon_menud)"
+                                         @mouseover="mouseHov(icon_menud)">
+                                        <!--<el-badge :value=pjnum v-if="pjnum > 0" class="badge-item" max="20"/>-->
+                                        <el-image :src="icon_menud" class="user-menu-card-img"/>
+                                        <span class="user-menu-card-text">我的地址</span>
+                                    </div>
+                                </router-link>
+                                <router-link :to="'/UserCenter/inxex'" class="router-link-active" tag="li">
+                                    <div class="flex-col"
+                                         @mouseout="mouseMv(icon_menuy)"
+                                         @mouseover="mouseHov(icon_menuy)">
+                                        <!--<el-badge :value=sonum v-if="sonum > 0" class="badge-item" max="20"/>-->
+                                        <el-image :src="icon_menuy" class="user-menu-card-img"/>
+                                        <span class="user-menu-card-text">我的衣橱</span>
+                                    </div>
+                                </router-link>
+                            </div>
                         </div>
-                    </div>
+                    </el-card>
+
                     <el-card style="margin-top: 16px" :body-style="{padding:'0px'}">
                         <div slot="header">
                             我的订单
@@ -284,7 +287,6 @@
 
         <router-view></router-view>
     </el-container>
-
 </template>
 
 <script>
@@ -321,7 +323,6 @@
         data: function () {
             return {
                 isPainter: false,
-                username: "NONE",
                 icon_select: view,
                 card_show: true,
                 card_tool_content: "隐藏金额",
@@ -387,6 +388,11 @@
                 curGoodName: '',
                 isGoodDialogVis: false,
                 newList: [],
+            }
+        },
+        computed: {
+            username() {
+                return this.$store.state.userName;
             }
         },
         methods: {
@@ -503,8 +509,10 @@
                         this.icon_menuy = myichu;
                         break;
                 }
+            },
+            test() {
+                console.log(this.username)
             }
-
         },
         mounted() {
             this.getNewList();
@@ -615,7 +623,7 @@
         align-items: center;
         /*margin-right: 5%;*/
         /*margin-left: 5%;*/
-        background-color: whitesmoke;
+        /*background-color: whitesmoke;*/
     }
 
     .user-center-aside {
@@ -873,8 +881,8 @@
     .user-menu-card {
         width: auto;
         height: 100px;
-        padding: 30px 30px;
-        background-color: white;
+        /*padding: 30px 30px;*/
+        /*background-color: white;*/
     }
 
     .user-menu-card-img {

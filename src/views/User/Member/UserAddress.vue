@@ -1,93 +1,103 @@
 <template>
-    <el-container style="background-color: #f5f7fa;width: 65%;max-width: 1005px">
+    <div>
+
         <el-dialog :visible.sync="isAddAdrDialogVis" width="760px">
             <AddAddress slot="title"></AddAddress>
         </el-dialog>
-        <el-header height="55px" style="margin-top: 15px">
-            <div style="margin: 10px">
-                <el-button size="small" plain type="success" style="display: inline"
-                           @click="isAddAdrDialogVis=!isAddAdrDialogVis">新增收货地址
-                </el-button>
-                <!--                <el-button @click="runFun">123</el-button>-->
-                <div style="display: inline">
-                    您已创建
-                    <div class="header_num">{{nowNum}}</div>
-                    个收货地址，&nbsp;最多可创建
-                    <div class="header_num">{{maxNum}}</div>
-                    个
+        <div class="flex-row " style="justify-content: center;">
+            <!--            <div class="flex-col shadow-around" style="background-color: white;max-width: 1005px;padding: 16px 16px;margin: 16px 0">-->
+            <el-card style="margin: 16px 0" :body-style="{ padding: '0px' }">
+                <div slot="header">
+
+                    <!--                <el-button @click="runFun">123</el-button>-->
+                    <div style="display: inline;margin-left: 8px">
+                        您已创建
+                        <div class="header_num">{{nowNum}}</div>
+                        个收货地址，最多可创建
+                        <div class="header_num">{{maxNum}}</div>
+                        个
+                    </div>
+                    <el-divider direction="vertical"></el-divider>
+                    <el-button size="small" plain type="success" circle icon="el-icon-plus"
+                               @click="isAddAdrDialogVis=!isAddAdrDialogVis">
+                    </el-button>
                 </div>
-
-
-            </div>
-        </el-header>
-        <el-main>
-            <el-collapse v-model="activeName" accordion>
-                <el-collapse-item v-for="it in items" :key="it.adrKey" :v-if="items.length != 0">
-                    <template slot="title">
-                        <div style="font-family: 黑体 ;font-size: 15px ;padding: 5px 20px">
-                            {{it.peopleName}}
-                        </div>
-                        <el-button size="mini"
-                                   plain type="warning"
-                                   style="font-size: 9px"
-                                   v-if="it.isDefault == true"
-                                   autofocus
-                        >默认地址
-                        </el-button>
-                    </template>
-                    <div class="card">
-                        <div style="width: 450px">
-                            <div class="card_span ">收货人：&nbsp;</div>
-                            <div class="card_main">{{it.peopleName}}</div>
-                            <div class="clr"></div>
-                        </div>
-                        <div style="width: 550px">
-                            <div class="card_span ">所在地区：&nbsp;</div>
-                            <div class="card_main">{{it.localArea}}</div>
-                            <div class="clr"></div>
-                        </div>
-                        <div style="width: 450px">
-                            <div class="card_span ">地址：&nbsp;</div>
-                            <div class="card_main">{{it.address}}</div>
-                            <div class="clr"></div>
-                        </div>
-                        <div style="width: 450px">
-                            <div class="card_span ">手机：&nbsp;</div>
-                            <div class="card_main">{{it.phone}}</div>
-                            <div class="clr"></div>
-                        </div>
-                        <div style="width: 450px">
-                            <div class="card_span ">固定电话：&nbsp;</div>
-                            <div class="card_main">{{it.telephone}}</div>
-                            <div class="clr"></div>
-                        </div>
-                        <div style="width: 450px">
-                            <div class="card_span ">电子邮箱：&nbsp;</div>
-                            <div class="card_main">{{it.email}}</div>
+                <el-collapse v-model="activeName" accordion>
+                    <el-collapse-item v-for="it in items" :key="it.adrKey" :v-if="items.length != 0">
+                        <div slot="title" class="flex-row" style="align-items: center">
+                            <div style="font-size: 15px ;margin-left: 32px">
+                                {{it.peopleName}}
+                            </div>
+                            <!--   <el-button size="mini"
+                                          plain type="warning"
+                                          style="font-size: 9px"
+                                          v-if="it.isDefault === true"
+                                          autofocus
+                               >默认地址
+                               </el-button>-->
+                            <el-tag v-if="it.isDefault === true"
+                                    style="margin-left: 16px"
+                                    size="mini"
+                                    type="warning">
+                                默认地址
+                            </el-tag>
 
                         </div>
+                        <div class="card">
+                            <div>
+                                <div class="card_span ">收货人：&nbsp;</div>
+                                <div class="card_main">{{it.peopleName}}</div>
+                                <div class="clr"></div>
+                            </div>
+                            <div>
+                                <div class="card_span ">所在地区：&nbsp;</div>
+                                <div class="card_main">{{it.localArea}}</div>
+                                <div class="clr"></div>
+                            </div>
+                            <div>
+                                <div class="card_span ">地址：&nbsp;</div>
+                                <div class="card_main">{{it.address}}</div>
+                                <div class="clr"></div>
+                            </div>
+                            <div>
+                                <div class="card_span ">手机：&nbsp;</div>
+                                <div class="card_main">{{it.phone}}</div>
+                                <div class="clr"></div>
+                            </div>
+                            <div>
+                                <div class="card_span ">固定电话：&nbsp;</div>
+                                <div class="card_main">{{it.telephone}}</div>
+                                <div class="clr"></div>
+                            </div>
+                            <div>
+                                <div class="card_span ">电子邮箱：&nbsp;</div>
+                                <div class="card_main">{{it.email}}</div>
+                            </div>
 
-                        <div style="float: right">
+                            <!--                            <div class="clr"></div>-->
+                        </div>
+                        <div style="float: right;margin-right: 16px">
                             <el-button type="text"
                                        @click="setDefault(it)"
                                        v-if="it.isDefault != true"
                                        size="mini">设为默认
                             </el-button>
                             <el-button type="text" size="mini"
-                                       @click="isAddAdrDialogVis=!isAddAdrDialogVis"
-                            >编辑
+                                       @click="isAddAdrDialogVis=!isAddAdrDialogVis">编辑
                             </el-button>
                             <el-button type="text"
                                        @click="moveItem(it)"
                                        size="mini">删除
                             </el-button>
                         </div>
-                        <div class="clr"></div>
-                    </div>
-                </el-collapse-item>
-            </el-collapse>
-        </el-main>
-    </el-container>
+                    </el-collapse-item>
+                </el-collapse>
+
+            </el-card>
+
+            <!--            </div>-->
+        </div>
+    </div>
 </template>
 
 <script>
@@ -166,10 +176,6 @@
             runFun: async function () {
                 let a;
                 await fun("2343").then(value => a = value);
-
-                console.log(a);
-
-
             },
 
             getAddress() {
@@ -231,9 +237,9 @@
     }
 
     .card {
-        margin: 5px 10px;
-        padding: 5px 10px;
-        border: 2px solid #e2ebf0;
+        /*margin: 5px 10px;*/
+        padding: 0px 10px;
+        /*border: 2px solid #e2ebf0;*/
         display: flex;
         flex-direction: column;
 

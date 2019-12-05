@@ -1,4 +1,5 @@
 <template>
+    <div class="flex-row" style="justify-content: center">
         <el-tabs type="border-card" style="width: 850px">
             <el-tab-pane label="基本资料">
                 <div>
@@ -27,16 +28,16 @@
                     </el-form-item>
                     <el-form-item label="生日：" style="height: 25px;width: 280px">
                         <template>
-                        <div class="block">
-                            <el-date-picker
-                                    size="mini"
-                                    v-model="pdform.birthday"
-                                    type="date"
-                                    style="width: 200px;float: right"
-                                    placeholder="选择日期">
-                            </el-date-picker>
-                        </div>
-                    </template>
+                            <div class="block">
+                                <el-date-picker
+                                        size="mini"
+                                        v-model="pdform.birthday"
+                                        type="date"
+                                        style="width: 200px;float: right"
+                                        placeholder="选择日期">
+                                </el-date-picker>
+                            </div>
+                        </template>
                     </el-form-item>
                     <el-form-item label="星座："
                                   style="height: 25px; float: right; margin-top: -45px ;margin-right: 100px; width: 250px">
@@ -103,6 +104,7 @@
 
             </el-tab-pane>
         </el-tabs>
+    </div>
 </template>
 
 <script>

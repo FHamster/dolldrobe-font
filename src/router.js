@@ -52,7 +52,7 @@ let dollRouter = new Router({
         //test end
         {
             path: '/UserCenter',
-            name: '/UserCenter',
+            name: 'UserCenter',
             component: () => import( './views/User/UserCenterWrapper'),
 
             children: [
@@ -65,7 +65,7 @@ let dollRouter = new Router({
 
                 }, {
                     path: '/UserCenter/index',
-                    name: '/index',
+                    name: 'index',
                     component: () => import( './views/User/BorderModule/UserCenter'),
                 }, {
                     path: '/UserCenter/ShoppingBag',
@@ -81,7 +81,7 @@ let dollRouter = new Router({
                     component: () => import( './views/User/Member/GoodOrder.vue')
                 }, {
                     path: '/UserCenter/UserAddress',
-                    // name: 'UserAddress',
+                    name: 'UserAddress',
                     component: () => import( './views/User/Member/UserAddress.vue')
                 },
                 {
