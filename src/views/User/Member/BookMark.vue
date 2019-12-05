@@ -27,7 +27,7 @@
             <el-divider></el-divider>
 
             <div>
-                <div class="goodPanel" style="margin-left: 20px">
+                <div class="flex-row goodPanel">
                     <div v-for="o in favo"
                          :key="o.cNum"
                          style="margin-left: 10px;margin-top: 5px"
@@ -139,42 +139,22 @@
 
     .head_search {
         width: 150px;
-        padding: 10px 0px;
+        padding: 10px 0;
     }
 
     .head_btn {
         font-size: 13px;
-        border-radius: 0px;
+        border-radius: 0;
         margin: 5px;
         display: inline;
     }
 
-    .image {
-        width: 100%;
-        display: block;
-    }
-
-    .GoodName {
-        white-space: nowrap;
-    }
-
-    .price_cart {
-        display: flex;
-        flex-direction: row;
-        justify-content: space-between;
-        align-items: center;
-    }
-
     .goodPanel {
-        /*width: 100%;*/
-        /*height: auto;*/
-        display: flex;
-        flex-direction: row;
-
-        justify-items: center;
+        padding: 32px 32px;
+        justify-content: flex-start;
+        align-items: center;
         flex-wrap: wrap;
     }
-
 
 
 </style>

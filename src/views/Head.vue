@@ -20,6 +20,7 @@
                 <el-link @click="handleUserCenter" :underline="false">
                     <el-avatar shape="square">U</el-avatar>
                 </el-link>
+
                 <el-badge :value="12" class="item">
                     <el-button style="margin-left: 40px"
                                @click="handleShopBag"
@@ -103,7 +104,7 @@
        }*/
 
     .nav-menu {
-        margin: 0;
+        margin-left: 80px;
     }
 
     .nav-menu > li {
@@ -125,7 +126,7 @@
     }
 
     .head_background {
-        padding: 0 64px;
+        padding: 0 128px;
         align-items: center;
         justify-content: space-between;
     }

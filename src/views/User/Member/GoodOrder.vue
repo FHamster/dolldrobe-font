@@ -14,8 +14,8 @@
                         待付款
                     </el-button>
                 </el-badge>
-
-                <el-badge :value="badgeGet" class="item" :max="10" :hidden="getIsHidden">
+                <div>{{$store.state.userToken}}</div>
+                <el-badge v-if="$store.state.userToken" :value="badgeGet" class="item" :max="10" :hidden="getIsHidden">
                     <el-button @click="isGet" type="text" size="mini">
                         待收货
                     </el-button>
@@ -136,6 +136,9 @@
 <script>
     export default {
         name: "GoodOrder",
+       /* computed() {
+            isTokened
+        },*/
         data() {
             return {
                 badgePay: 0,
