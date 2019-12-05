@@ -8,11 +8,6 @@
                 active-text-color="#B3748D"
                 router
                 class="user-center-bar">
-            <div class="my_logo">
-                我的
-                <del>冰箱</del>
-                ->衣橱
-            </div>
             <el-menu-item index="UserCenter">首页</el-menu-item>
 
             <el-submenu index="2">
@@ -33,23 +28,6 @@
             </el-submenu>
 
             <el-menu-item index="3" class="userCenter_title">消息中心</el-menu-item>
-
-            <div class="search" style="width: 300px;float:right!important;height: 29.6px">
-                <div class="panel">
-                    <el-input class="userCenter_search"
-                              prefix-icon="el-icon-search"
-                              type="text"
-                              v-model="from.search"
-                              :clearable="true"
-                              size=mini>
-                    </el-input>
-                    <el-button class="userCenter_btnSearch"
-                               size="small"
-                               plain
-                               @click="user_search">搜索
-                    </el-button>
-                </div>
-            </div>
         </el-menu>
     </el-header>
     <el-main>
