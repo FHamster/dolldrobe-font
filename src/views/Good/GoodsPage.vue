@@ -6,7 +6,7 @@
 
         <div id="top" style="width: 100%; height: 8px;background-color: #C2ADED"></div>
 
-        <el-container style="padding:24px 80px">
+        <div style="padding:24px 80px">
 
 
             <!--
@@ -21,36 +21,56 @@
                                 </div>
                             </el-card>-->
 
-            <el-main style="padding: 0;margin-left: 32px">
-                <el-card style="padding:16px 0 ">
-
-                    <div style="justify-content: center" class="flex-row">
-                        <!--商品展示面板-->
-                        <div class="goodPanel">
-                            <div v-for="good in goodList" :key="good.cNum"
-                                 style="margin: 8px 16px"
-                                 @click="visGoodDialog(good.cNum,good.cName)">
-                                <GoodCard :good="good"/>
-                            </div>
+            <!--     <el-main style="padding: 0;margin-left: 32px">
+                     -->
+            <el-card style="padding:16px 0 ">
+                <div slot="header" class="flex-row">
+                    <el-button plain disabled>销量排序</el-button>
+                    <el-button plain @click=getPageByC_Num>综合排序</el-button>
+                    <el-button plain @click="getPageByC_MaxMoney">价格排序</el-button>
+                    <el-button plain disabled>评论数量</el-button>
+                    <el-button plain @click="getPageByC_EndTime">上架时间</el-button>
+                </div>
+                <div style="justify-content: center" class="flex-row">
+                    <!--商品展示面板-->
+                    <div class="goodPanel">
+                        <div v-for="good in goodList" :key="good.cNum"
+                             style="margin: 8px 16px"
+                             @click="visGoodDialog(good.cNum,good.cName)">
+                            <GoodCard :good="good"/>
                         </div>
                     </div>
-                    <!--   <el-pagination
-                               small
-                               background
-                               @size-change="handleSizeChange"
-                               @current-change="handleCurrentChange"
-                               :current-page.sync="curPage"
-                               :page-size="5"
-                               layout="prev, pager, next, jumper"
-                               :total="total"
-                               style="float: right;margin-top: 50px;margin-right: 100px">
-                       </el-pagination>-->
-                </el-card>
-            </el-main>
-        </el-container>
+                </div>
+                <!--   <el-pagination
+                           small
+                           background
+                           @size-change="handleSizeChange"
+                           @current-change="handleCurrentChange"
+                           :current-page.sync="curPage"
+                           :page-size="5"
+                           layout="prev, pager, next, jumper"
+                           :total="total"
+                           style="float: right;margin-top: 50px;margin-right: 100px">
+                   </el-pagination>-->
+                <div class="flex-row" style="justify-content: center">
+                    <el-pagination
+                            background
+                            @size-change="handleSizeChange"
+                            @current-change="handleCurrentChange"
+                            :current-page.sync="curPage"
+                            :page-size="5"
+                            layout="prev, pager, next, jumper"
+                            :total="total"
+                            style="margin-top: 32px">
+                    </el-pagination>
+                </div>
+            </el-card>
+            <!-- </el-main>-->
+        </div>
         <el-drawer
                 :modal="false"
                 :show-close="false"
+                size="20%"
                 :visible.sync="isSidePaneShow"
                 custom-class="drawerCustom"
                 direction="ltr">
@@ -101,35 +121,18 @@
                         搜索
                     </el-button>
                 </div>
-                <el-divider content-position="left">Page</el-divider>
-                <div class="flex-row">
-                    <el-button plain disabled>销量排序</el-button>
-                    <el-button plain @click=getPageByC_Num>综合排序</el-button>
-                    <el-button plain @click="getPageByC_MaxMoney">价格排序</el-button>
-                    <el-button plain disabled>评论数量</el-button>
-                    <el-button plain @click="getPageByC_EndTime">上架时间</el-button>
-                </div>
-                <div class="flex-row" style="justify-content: center">
-                    <el-pagination
-                            small
-                            background
-                            @size-change="handleSizeChange"
-                            @current-change="handleCurrentChange"
-                            :current-page.sync="curPage"
-                            :page-size="5"
-                            :pager-count="5"
-                            layout="prev, pager, next, jumper"
-                            :total="total"
-                            style="margin-top: 32px">
-                    </el-pagination>
-                </div>
+
+
                 <!--                </el-card>-->
             </div>
         </el-drawer>
 
         <el-button class="sideFixed"
+                   icon="el-icon-arrow-right"
+                   circle
+                   plain
                    @click="isSidePaneShow=true"
-                   v-show="!isSidePaneShow">123
+                   v-show="!isSidePaneShow">
         </el-button>
     </div>
 </template>
@@ -174,7 +177,7 @@
                 keyWord: '',
                 goodList: [],
                 curPage: 1,
-                pageSize: 12,
+                pageSize: 24,
                 order: '',
                 isAsc: true,
             };
@@ -246,6 +249,7 @@
     }
 
     .sideFixed {
+        margin-top: 10vh;
         position: fixed;
         z-index: 2;
     }
