@@ -6,7 +6,8 @@
                 :visible.sync="drawer"
                 :show-close="false"
                 direction="ltr">
-            <UserAsideMenu style="margin-top: -18px;position: fixed"></UserAsideMenu>
+
+            <UserAsideMenu style="margin-top: -18px;"></UserAsideMenu>
         </el-drawer>
 
         <el-button @click="drawer=true"
