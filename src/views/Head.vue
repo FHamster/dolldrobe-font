@@ -1,6 +1,9 @@
 <template>
     <div>
-        <el-dialog :visible.sync="dialogVis" :before-close="beforeClose" width="500px">
+        <el-dialog :visible.sync="dialogVis"
+                   :destroy-on-close="true"
+                   :before-close="beforeClose"
+                   width="500px">
             <LoginDialog></LoginDialog>
         </el-dialog>
         <div class="head-top"></div>
