@@ -6,74 +6,53 @@
 
         <div id="top" style="width: 100%; height: 8px;background-color: #C2ADED"></div>
 
-        <el-container style="padding:24px 80px">
-            <el-aside>
-                <el-card>
-                    <!--         套装
-                             帽子
-                             上衣
-                             下装
-                             鞋靴
-                             配饰 (口罩眼罩娃用包假发贴纸奶嘴辫子眼镜游泳圈气球滑板跑车)
-                             家具
-                             -->
-                    <el-collapse accordion v-model="activeNames">
-                        <el-collapse-item title="全部" name="全部">
-                            <div>世界是我的想象</div>
-                        </el-collapse-item>
-                        <el-collapse-item title="套装" name="套装">
-                            <div>波西米亚是一种精神</div>
-                        </el-collapse-item>
-                        <el-collapse-item title="帽子" name="帽子">
-                            <div>奥黛丽赫本式的优雅味道</div>
-                        </el-collapse-item>
-                        <el-collapse-item title="上衣" name="上衣">
-                            <div>翻出新鲜的花样</div>
-                        </el-collapse-item>
-                        <el-collapse-item title="下装" name="下装">
-                            <div>百慕大短裤就像夏天的冰可乐</div>
-                        </el-collapse-item>
-                        <el-collapse-item title="鞋靴" name="鞋靴">
-                            <div>有磨损才会有故事</div>
-                        </el-collapse-item>
-                        <el-collapse-item title="配饰" name="配饰">
-                            <div>小礼帽、红襟花、羊皮长手套</div>
-                        </el-collapse-item>
-                    </el-collapse>
-                    <el-divider content-position="left">KeyWord</el-divider>
-                    <div class="rowdir">
-                        <el-input prefix-icon="el-icon-search" type="text"
-                                  size=large class="mysearch"
-                                  v-model="keyWord">
-                        </el-input>
-                        <el-button @click="getCart">
-                            搜索
-                        </el-button>
-                    </div>
-                </el-card>
+        <div style="padding:24px 80px">
 
-                <el-card style="margin-top: 32px">
-                    <div slot="header"><span>排序方式</span></div>
+
+            <!--
+                            <el-card style="margin-top: 32px">
+                                <div slot="header"><span>排序方式</span></div>
+                                <div class="flex-col">
+                                    <el-button plain disabled>销量排序</el-button>
+                                    <el-button plain @click=getPageByC_Num>综合排序</el-button>
+                                    <el-button plain @click="getPageByC_MaxMoney">价格排序</el-button>
+                                    <el-button plain disabled>评论数量</el-button>
+                                    <el-button plain @click="getPageByC_EndTime">上架时间</el-button>
+                                </div>
+                            </el-card>-->
+
+            <!--     <el-main style="padding: 0;margin-left: 32px">
+                     -->
+            <el-card style="padding:16px 0 ">
+                <div slot="header" class="flex-row">
+                    <el-button plain disabled>销量排序</el-button>
                     <el-button plain @click=getPageByC_Num>综合排序</el-button>
-                    <el-button plain>销量</el-button>
-                    <el-button plain @click="getPageByC_MaxMoney">价格</el-button>
-                    <el-button plain>评论数</el-button>
+                    <el-button plain @click="getPageByC_MaxMoney">价格排序</el-button>
+                    <el-button plain disabled>评论数量</el-button>
                     <el-button plain @click="getPageByC_EndTime">上架时间</el-button>
-                </el-card>
-
-            </el-aside>
-            <el-main style="padding: 0;margin-left: 32px">
-                <el-card style="padding:16px 0 ">
-                    <div style="justify-content: center" class="flex-row">
-                        <!--商品展示面板-->
-                        <div class="goodPanel">
-                            <div v-for="good in goodList" :key="good.cNum"
-                                 style="margin: 8px 16px"
-                                 @click="visGoodDialog(good.cNum,good.cName)">
-                                <GoodCard :good="good"/>
-                            </div>
+                </div>
+                <div style="justify-content: center" class="flex-row">
+                    <!--商品展示面板-->
+                    <div class="goodPanel">
+                        <div v-for="good in goodList" :key="good.cNum"
+                             style="margin: 8px 16px"
+                             @click="visGoodDialog(good.cNum,good.cName)">
+                            <GoodCard :good="good"/>
                         </div>
                     </div>
+                </div>
+                <!--   <el-pagination
+                           small
+                           background
+                           @size-change="handleSizeChange"
+                           @current-change="handleCurrentChange"
+                           :current-page.sync="curPage"
+                           :page-size="5"
+                           layout="prev, pager, next, jumper"
+                           :total="total"
+                           style="float: right;margin-top: 50px;margin-right: 100px">
+                   </el-pagination>-->
+                <div class="flex-row" style="justify-content: center">
                     <el-pagination
                             background
                             @size-change="handleSizeChange"
@@ -82,11 +61,79 @@
                             :page-size="5"
                             layout="prev, pager, next, jumper"
                             :total="total"
-                            style="float: right;margin-top: 50px;margin-right: 100px">
+                            style="margin-top: 32px">
                     </el-pagination>
-                </el-card>
-            </el-main>
-        </el-container>
+                </div>
+            </el-card>
+            <!-- </el-main>-->
+        </div>
+        <el-drawer
+                :modal="false"
+                :show-close="false"
+                size="20%"
+                :visible.sync="isSidePaneShow"
+                custom-class="drawerCustom"
+                direction="ltr">
+
+            <!--                <el-card>-->
+
+            <!--         套装
+                     帽子
+                     上衣
+                     下装
+                     鞋靴
+                     配饰 (口罩眼罩娃用包假发贴纸奶嘴辫子眼镜游泳圈气球滑板跑车)
+                     家具
+                     -->
+            <div style="padding: 0 32px">
+                <el-divider content-position="left">Classify</el-divider>
+                <el-collapse accordion v-model="activeNames">
+                    <el-collapse-item title="全部" name="全部">
+                        <div>世界是我的想象</div>
+                    </el-collapse-item>
+                    <el-collapse-item title="套装" name="套装">
+                        <div>波西米亚是一种精神</div>
+                    </el-collapse-item>
+                    <el-collapse-item title="帽子" name="帽子">
+                        <div>奥黛丽赫本式的优雅味道</div>
+                    </el-collapse-item>
+                    <el-collapse-item title="上衣" name="上衣">
+                        <div>翻出新鲜的花样</div>
+                    </el-collapse-item>
+                    <el-collapse-item title="下装" name="下装">
+                        <div>百慕大短裤就像夏天的冰可乐</div>
+                    </el-collapse-item>
+                    <el-collapse-item title="鞋靴" name="鞋靴">
+                        <div>有磨损才会有故事</div>
+                    </el-collapse-item>
+                    <el-collapse-item title="配饰" name="配饰">
+                        <div>小礼帽、红襟花、羊皮长手套</div>
+                    </el-collapse-item>
+                </el-collapse>
+
+                <el-divider content-position="left">Keyword</el-divider>
+                <div class="rowdir">
+                    <el-input prefix-icon="el-icon-search" type="text"
+                              size=large class="mysearch"
+                              v-model="keyWord">
+                    </el-input>
+                    <el-button @click="getCart">
+                        搜索
+                    </el-button>
+                </div>
+
+
+                <!--                </el-card>-->
+            </div>
+        </el-drawer>
+
+        <el-button class="sideFixed"
+                   icon="el-icon-arrow-right"
+                   circle
+                   plain
+                   @click="isSidePaneShow=true"
+                   v-show="!isSidePaneShow">
+        </el-button>
     </div>
 </template>
 
@@ -103,6 +150,8 @@
         },
         data() {
             return {
+                isSidePaneShow: false,
+
                 scrollOptions: {
                     container: "body",
                     duration: 700,
@@ -128,7 +177,7 @@
                 keyWord: '',
                 goodList: [],
                 curPage: 1,
-                pageSize: 12,
+                pageSize: 24,
                 order: '',
                 isAsc: true,
             };
@@ -199,5 +248,20 @@
         flex-wrap: wrap;
     }
 
+    .sideFixed {
+        margin-top: 10vh;
+        position: fixed;
+        z-index: 2;
+    }
 
+    .sideFunPane {
+
+        /* margin-left: 8px;
+         margin-top: 64px;*/
+        width: 400px;
+    }
+
+    .drawerCustom {
+        padding-left: 10px;
+    }
 </style>

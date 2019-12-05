@@ -1,9 +1,18 @@
 <template>
     <div>
-        <el-image :src="icon"
-                   style="position: fixed;width: 40px;height: 40px"
-                   @click="show = !show"/>
-        <UserAsideMenu v-show="show" style="margin-top: -168px;position: fixed"></UserAsideMenu>
+        <el-drawer
+                :modal="false"
+                size="240"
+                :visible.sync="drawer"
+                :show-close="false"
+                direction="ltr">
+            <UserAsideMenu style="margin-top: -18px;position: fixed"></UserAsideMenu>
+        </el-drawer>
+        <el-button @click="drawer=true"
+                   icon="el-icon-arrow-right"
+                   circle
+                   plain
+                   class="sideBut"></el-button>
         <div style="width: 100%; height: 8px;background-color: #C2ADED"></div>
         <router-view></router-view>
     </div>
@@ -11,11 +20,15 @@
 
 <script>
     import UserAsideMenu from "./BannerModule/UserAsideMenu";
-    import left from '../../assets/left.png';
-    import rig from '../../assets/rig.png';
+
     export default {
         name: "UserCenterWrapper",
         components: {UserAsideMenu},
+        data() {
+            return {
+                drawer: false
+            }
+        },
         beforeRouteEnter: (to, from, next) => {
             next(vm => {
                 // 通过 `vm` 访问组件实例
@@ -27,17 +40,14 @@
                 }
             });
         },
-        data: function (){
-          return {
-              show:false,
-              icon:rig,
-          }
-
-        },
         methods: {}
     }
 </script>
 
 <style scoped>
-
+    .sideBut {
+        margin-top: 10vh;
+        position: fixed;
+        z-index: 2;
+    }
 </style>
