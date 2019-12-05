@@ -160,6 +160,12 @@ let dollRouter = new Router({
             name: 'PayFor',
             component: () => import( './views/User/Scattered/PayFor')
         },
+
+        {
+            path: '/UserAsideMenu',
+            name: 'UserAsideMenu',
+            component: () => import( './views/User/BannerModule/UserAsideMenu')
+        },
     ]
 });
 

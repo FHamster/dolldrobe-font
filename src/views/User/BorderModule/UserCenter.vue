@@ -86,52 +86,45 @@
             <el-container>
                 <el-main>
                     <div class="user-menu-card">
-                        <!--<div v-for="it in ['/PersonDetail','/PersonalData','/ShoppingBag','/UserAddress','/GoodOrder','/BookMark',]"-->
-                             <!--:key="it">-->
-
-                            <!--<router-link :to="'/UserCenter'+it">-->
-                                <!--<el-button type="primary" icon="el-icon-edit" circle>{{'/UserCenter'+it}}</el-button>-->
-                            <!--</router-link>-->
-                        <!--</div>-->
-                            <!--按钮面板-->
-                            <div class="flex-row user-menu-con-pane">
-                                <router-link :to="'/UserCenter/ShoppingBag'" class="router-link-active" tag="li">
-                                    <div class="flex-col"
-                                         @mouseout="mouseMv(icon_menuc)"
-                                         @mouseover="mouseHov(icon_menuc)">
-                                        <!--<el-badge :value=fknum v-if="fknum > 0" max="20"/>-->
-                                        <el-image :src="icon_menuc" class="user-menu-card-img"/>
-                                        <span class="user-menu-card-text">我的车车</span>
-                                    </div>
-                                </router-link>
-                                <router-link :to="'/UserCenter/PersonalData'" class="router-link-active" tag="li">
-                                    <div class="flex-col"
-                                         @mouseout="mouseMv(icon_menuf)"
-                                         @mouseover="mouseHov(icon_menuf)">
-                                        <!--<el-badge :value=shnum v-if="shnum > 0" class="badge-item" max="20"/>-->
-                                        <el-image :src="icon_menuf" class="user-menu-card-img"/>
-                                        <span class="user-menu-card-text">个人信息</span>
-                                    </div>
-                                </router-link>
-                                <router-link :to="'/UserCenter/UserAddress'" class="router-link-active" tag="li">
-                                    <div class="flex-col"
-                                         @mouseout="mouseMv(icon_menud)"
-                                         @mouseover="mouseHov(icon_menud)">
-                                        <!--<el-badge :value=pjnum v-if="pjnum > 0" class="badge-item" max="20"/>-->
-                                        <el-image :src="icon_menud" class="user-menu-card-img"/>
-                                        <span class="user-menu-card-text">我的地址</span>
-                                    </div>
-                                </router-link>
-                                <router-link :to="'/UserCenter/inxex'" class="router-link-active" tag="li">
-                                    <div class="flex-col"
-                                         @mouseout="mouseMv(icon_menuy)"
-                                         @mouseover="mouseHov(icon_menuy)">
-                                        <!--<el-badge :value=sonum v-if="sonum > 0" class="badge-item" max="20"/>-->
-                                        <el-image :src="icon_menuy" class="user-menu-card-img"/>
-                                        <span class="user-menu-card-text">我的衣橱</span>
-                                    </div>
-                                </router-link>
-                            </div>
+                        <!--按钮面板-->
+                        <div class="flex-row user-menu-con-pane">
+                            <router-link :to="'/UserCenter/ShoppingBag'" class="router-link-active" tag="li">
+                                <div class="flex-col"
+                                     @mouseout="mouseMv(icon_menuc)"
+                                     @mouseover="mouseHov(icon_menuc)">
+                                    <!--<el-badge :value=fknum v-if="fknum > 0" max="20"/>-->
+                                    <el-image :src="icon_menuc" class="user-menu-card-img"/>
+                                    <span class="user-menu-card-text">我的车车</span>
+                                </div>
+                            </router-link>
+                            <router-link :to="'/UserCenter/PersonalData'" class="router-link-active" tag="li">
+                                <div class="flex-col"
+                                     @mouseout="mouseMv(icon_menuf)"
+                                     @mouseover="mouseHov(icon_menuf)">
+                                    <!--<el-badge :value=shnum v-if="shnum > 0" class="badge-item" max="20"/>-->
+                                    <el-image :src="icon_menuf" class="user-menu-card-img"/>
+                                    <span class="user-menu-card-text">个人信息</span>
+                                </div>
+                            </router-link>
+                            <router-link :to="'/UserCenter/UserAddress'" class="router-link-active" tag="li">
+                                <div class="flex-col"
+                                     @mouseout="mouseMv(icon_menud)"
+                                     @mouseover="mouseHov(icon_menud)">
+                                    <!--<el-badge :value=pjnum v-if="pjnum > 0" class="badge-item" max="20"/>-->
+                                    <el-image :src="icon_menud" class="user-menu-card-img"/>
+                                    <span class="user-menu-card-text">我的地址</span>
+                                </div>
+                            </router-link>
+                            <router-link :to="'/UserCenter/inxex'" class="router-link-active" tag="li">
+                                <div class="flex-col"
+                                     @mouseout="mouseMv(icon_menuy)"
+                                     @mouseover="mouseHov(icon_menuy)">
+                                    <!--<el-badge :value=sonum v-if="sonum > 0" class="badge-item" max="20"/>-->
+                                    <el-image :src="icon_menuy" class="user-menu-card-img"/>
+                                    <span class="user-menu-card-text">我的衣橱</span>
+                                </div>
+                            </router-link>
+                        </div>
                     </div>
                     <el-card style="margin-top: 16px" :body-style="{padding:'0px'}">
                         <div slot="header">
@@ -877,20 +870,20 @@
         align-items: center;
     }
 
-    .user-menu-card{
+    .user-menu-card {
         width: auto;
         height: 100px;
         padding: 30px 30px;
         background-color: white;
     }
 
-    .user-menu-card-img{
+    .user-menu-card-img {
         width: 60px;
         height: 60px;
     }
 
-    .user-menu-con-pane{
-        padding: 9px ;
+    .user-menu-con-pane {
+        padding: 9px;
         justify-content: space-around;
         align-items: center;
     }
@@ -899,7 +892,7 @@
         align-items: center;
     }
 
-    .user-menu-card-text{
+    .user-menu-card-text {
         font-size: 16px;
         font-family: 黑体;
     }
