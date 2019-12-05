@@ -17,17 +17,31 @@
             </div>
 
             <div class="flex-row" style="align-content: flex-start;">
-                <el-link @click="handleUserCenter" :underline="false">
-                    <el-avatar shape="square">U</el-avatar>
-                </el-link>
+                <el-dropdown @command="handleCommand">
 
-                <el-badge :value="12" class="item">
-                    <el-button style="margin-left: 40px"
-                               @click="handleShopBag"
-                               plain icon="el-icon-goods">
-                        ¥{{100}}
-                    </el-button>
-                </el-badge>
+                    <el-link @click="handleUserCenter" :underline="false">
+                        <el-avatar shape="square">U</el-avatar>
+                    </el-link>
+                    <el-dropdown-menu v-if="Token!==null">
+                        <el-dropdown-item command="logout">
+                            Logout
+                        </el-dropdown-item>
+                    </el-dropdown-menu>
+                </el-dropdown>
+
+
+                <transition name="el-zoom-in-bottom">
+                    <div v-show="Token!==null">
+
+                        <el-badge :value="12" class="item">
+                            <el-button style="margin-left: 40px"
+                                       @click="handleShopBag"
+                                       plain icon="el-icon-goods">
+                                ¥{{100}}
+                            </el-button>
+                        </el-badge>
+                    </div>
+                </transition>
             </div>
         </div>
 
@@ -68,6 +82,9 @@
         computed: {
             dialogVis: function () {
                 return this.$store.state.isLoginPopVis;
+            },
+            Token: function () {
+                return this.$store.state.userToken;
             }
         },
         methods: {
@@ -84,6 +101,18 @@
             },
             handleShopBag() {
                 router.push('/UserCenter/ShoppingBag')
+            },
+            handleCommand(command) {
+                switch (command) {
+                    case 'logout':
+                        this.$store.state.userToken = null;
+                        break;
+                    case 'login':
+                        this.handleUserCenter;
+                        break;
+
+
+                }
             }
         }
     }
