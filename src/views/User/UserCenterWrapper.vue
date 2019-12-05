@@ -72,8 +72,8 @@
 
 </style>
 
-<style>
-    .el-drawer {
+<style lang="scss" scoped>
+    /deep/ .el-drawer {
         /*background-color: white;*/
         background-color: rgba(0, 0, 0, -1);
         box-shadow: 0 0 0 0;
