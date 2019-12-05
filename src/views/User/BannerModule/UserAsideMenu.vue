@@ -31,15 +31,15 @@
                     <a >关注画手</a>
                 </dd>
             </dl>
-            <dl >
+            <dl style="padding-bottom: 0;">
                 <dt >客户服务</dt>
-                <dd id="_MYJD_repair">
+                <dd class="menu-item-text">
                     <a >返修退换货</a>
                 </dd>
-                <dd id="_MYJD_wdfp">
+                <dd class="menu-item-text">
                     <a >我的发票</a>
                 </dd>
-                <dd id="_MYJD_consultation">
+                <dd class="menu-item-text">
                     <a> 购买咨询</a>
                 </dd>
                 <dd class="menu-item-text">
@@ -63,9 +63,12 @@
 
     .menu {
         width: 170px;
+        height: 700px;
         max-width: 170px;
         background-color: white;
         color: black;
+        border-radius: 5px;
+        border: 1px solid #a0a8b0;
     }
 
     .menu-item-text{
@@ -76,7 +79,7 @@
 
 
     dl{
-        padding: 15px 20px;
+        padding: 10px 20px;
         border-bottom: 1px solid #f3f3f3;
         display: block;
         margin-block-start: 1em;
