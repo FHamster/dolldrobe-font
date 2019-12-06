@@ -1,7 +1,6 @@
 <template>
     <div>
         <el-drawer
-                style="background-color:rgba(0, 0, 0, -1) "
                 size="200px"
                 :modal="false"
                 :visible.sync="drawer"
@@ -17,7 +16,8 @@
                    icon="el-icon-arrow-right"
                    circle
                    plain
-                   class="sideBut"></el-button>
+                   class="sideBut">
+        </el-button>
         <!--        <div style="width: 100%; height: 8px;background-color: #C2ADED"></div>-->
         <div class="page-head-wrapper">
             <el-page-header @back="goBack" :content="currentPageName"></el-page-header>
@@ -63,8 +63,8 @@
 
 <style scoped>
     .sideBut {
+        margin-top: 15vh;
         margin-left: 32px;
-        margin-top: 10vh;
         position: fixed;
         z-index: 2;
     }
@@ -84,8 +84,9 @@
 
 
     .page-head-wrapper {
-        padding: 8px 64px;
+        padding: 8px 14%;
         border-top: #C2ADED solid 4px;
+        align-items: center;
         /*border-bottom: #C2ADED solid 1px;*/
     }
 </style>
