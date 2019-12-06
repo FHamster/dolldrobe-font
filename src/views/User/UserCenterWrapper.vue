@@ -7,7 +7,7 @@
                 :visible.sync="drawer"
                 :show-close="false"
                 direction="ltr">
-            <div class="flex-row" style="justify-content: center">
+            <div class="flex-row" style="justify-content: center;margin-top:20% ">
                 <UserAsideMenu></UserAsideMenu>
             </div>
         </el-drawer>
