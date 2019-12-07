@@ -4,7 +4,6 @@ import Router from 'vue-router'
 Vue.use(Router);
 
 
-
 let dollRouter = new Router({
     routes: [
         {
@@ -25,29 +24,29 @@ let dollRouter = new Router({
             component: () => import( './views/MainPage')
         },
         //test start
-       /* {
-            path: '/BookMark',
-            // name: 'BookMark',
-            component: () => import( './views/User/Member/BookMark.vue')
-        }, {
-            path: '/GoodOrder',
-            // name: 'GoodOrder',
-            component: () => import( './views/User/Member/GoodOrder.vue')
-        }, {
-            path: '/UserAddress',
-            // name: 'UserAddress',
-            component: () => import( './views/User/Member/UserAddress.vue')
-        },
-        {
-            path: '/OrderDetail',
-            // name: 'OrderDetail',
-            component: () => import( './views/User/Member/OrderDetail.vue')
-        },
-        {
-            path: '/PersonDetail',
-            // name: 'PersonDetail',
-            component: () => import('./views/User/BannerModule/PersonDetail')
-        },*/
+        /* {
+             path: '/BookMark',
+             // name: 'BookMark',
+             component: () => import( './views/User/Member/BookMark.vue')
+         }, {
+             path: '/GoodOrder',
+             // name: 'GoodOrder',
+             component: () => import( './views/User/Member/GoodOrder.vue')
+         }, {
+             path: '/UserAddress',
+             // name: 'UserAddress',
+             component: () => import( './views/User/Member/UserAddress.vue')
+         },
+         {
+             path: '/OrderDetail',
+             // name: 'OrderDetail',
+             component: () => import( './views/User/Member/OrderDetail.vue')
+         },
+         {
+             path: '/PersonDetail',
+             // name: 'PersonDetail',
+             component: () => import('./views/User/BannerModule/PersonDetail')
+         },*/
 
         //test end
         {
@@ -96,22 +95,23 @@ let dollRouter = new Router({
                 },
                 {
                     path: '/UserCenter/PersonalData',
-                    // name: 'PersonalData',
-                    // route level code-splitting
-                    // this generates a separate chunk (about.[hash].js) for this route
-                    // which is lazy-loaded when the route is visited.
-                    children: [
-                        {
-                            path: '/PersonDetail',
-                            name: 'PersonDetail',
-                            component: () => import('./views/User/BannerModule/PersonDetail')
-                        }, {
-                            path: '/UserAddress',
-                            name: 'UserAddress',
-                            component: () => import( './views/User/Member/UserAddress.vue')
-                        },
-                    ],
                     component: () => import( './views/User/BorderModule/PersonalData')
+                },
+                {
+                    path: '/UserCenter/OrderDetail',
+                    name: 'OrderDetail',
+                    component: () => import( './views/User/Member/OrderDetail')
+                },
+                {
+                    path: '/UserCenter/Express',
+                    name: 'Express',
+                    component: () => import( './views/User/Scattered/Express')
+                },
+
+                {
+                    path: '/UserCenter/PayFor',
+                    name: 'PayFor',
+                    component: () => import( './views/User/Scattered/PayFor')
                 },
                 {
                     path: '/UserCenter/MessageBorder',
@@ -136,36 +136,30 @@ let dollRouter = new Router({
             name: 'GoodsPage',
             component: () => import( './views/Good/GoodsPage')
         },
+/*
         {
             path: '/OrderDetail',
             name: 'OrderDetail',
-            children: [
-                {
-                    path: '/Express',
-                    name: 'Express',
-                    component: () => import( './views/User/Scattered/Express')
-                }
-            ],
             component: () => import( './views/User/Member/OrderDetail')
         },
-        /*{
+        {
             path: '/Express',
             name: 'Express',
             component: () => import( './views/User/Scattered/Express')
-        },*/
-
+        },
 
         {
             path: '/PayFor',
             name: 'PayFor',
             component: () => import( './views/User/Scattered/PayFor')
         },
+*/
 
-        {
+        /*{
             path: '/UserAsideMenu',
             name: 'UserAsideMenu',
             component: () => import( './views/User/BannerModule/UserAsideMenu')
-        },
+        },*/
     ]
 });
 
