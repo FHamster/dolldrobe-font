@@ -8,8 +8,7 @@
          </div>-->
         <el-card shadow="never">
             <div slot="header"><span>购物车</span></div>
-            <div class="center-pane">
-
+            <div>
                 <el-table
                         style="display: flex; flex-direction: column;justify-content: center"
                         :data="tableData"
@@ -100,7 +99,7 @@
                         </template>
                     </el-table-column>
                 </el-table>
-            </div class="center-pane">
+            </div>
 
 
             <div height="50px" style="padding-left: 15px">

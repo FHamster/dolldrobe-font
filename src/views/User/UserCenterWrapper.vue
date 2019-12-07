@@ -1,7 +1,7 @@
 <template>
     <div>
         <el-drawer
-                size="200px"
+                size="240px"
                 :modal="false"
                 :visible.sync="drawer"
                 :show-close="false"
@@ -15,6 +15,7 @@
                    v-show="!drawer"
                    icon="el-icon-arrow-right"
                    circle
+                   type="primary"
                    plain
                    class="sideBut">
         </el-button>
