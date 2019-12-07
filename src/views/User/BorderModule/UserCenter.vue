@@ -107,7 +107,7 @@
                                         <span class="user-menu-card-text">个人信息</span>
                                     </div>
                                 </router-link>
-                                <router-link :to="'/UserCenter/UserAddress'" class="router-link-active" tag="li">
+                                <router-link :to="{path:'/UserCenter/PersonalData',query:{nameid:'2'}}" class="router-link-active" tag="li" >
                                     <div class="flex-col"
                                          @mouseout="mouseMv(icon_menud)"
                                          @mouseover="mouseHov(icon_menud)">

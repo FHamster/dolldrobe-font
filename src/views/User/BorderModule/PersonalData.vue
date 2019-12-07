@@ -1,9 +1,9 @@
 <template>
 <div class="flex-row" style="padding:32px;margin:0 15%">
-    <el-tabs tab-position="left" style="height: auto;" value="1">
+    <el-tabs tab-position="left" style="height: auto;" :value=choNum>
         <el-tab-pane disabled="true">
             <span slot="label" disabled="true">
-                <el-image style="width: 80px;height: 80px;border-radius: 50%" :src="icon_head"/>
+                <el-image style="width: 64px;height: 64px;border-radius: 50%" :src="icon_head"/>
             </span>
         </el-tab-pane>
         <el-tab-pane disabled="true"/>
@@ -19,13 +19,13 @@
         <el-tab-pane label="交易信息" disabled="true">
 
         </el-tab-pane>
-        <el-tab-pane label="收货地址" >
+        <el-tab-pane label="收货地址" name="2" >
             <UserAddress ></UserAddress>
         </el-tab-pane>
         <el-tab-pane label="分享绑定" disabled="true">
 
         </el-tab-pane>
-        <el-tab-pane label="消息提醒" disabled="true">
+        <el-tab-pane label="消息提醒" disabled="true" >
 
         </el-tab-pane>
     </el-tabs>
@@ -44,6 +44,7 @@
         data:function () {
             return {
                 icon_head:this.$store.state.icon_head,
+                choNum:"1",
                 from: {
                     search: '',
                 },
@@ -60,7 +61,16 @@
 
             jumpAddress(){
                 this.$router.push({path: './UserAddress'});
-            }
+            },
+
+            getChoNum(){
+              if(this.$route.query.nameid != null){
+                  this.choNum = this.$route.query.nameid;
+              }
+            },
+        },
+        mounted() {
+            this.getChoNum();
         },
     }
 </script>
@@ -68,64 +78,4 @@
 <style scoped>
 
 
-    .my_logo {
-        /*float: left;*/
-        /*width: 16%;*/
-        font-size: 40px;
-        color: #9DBC7A;
-        margin-top: 10px;
-        margin-left: 10px;
-        font-family: 华文琥珀;
-        white-space: nowrap;
-    }
-
-    .userCenter_titleMenu_font {
-        font-size: 13px;
-    }
-
-    .userCenter_search {
-        width: 200px;
-        height: 25px;
-        margin-top: 15px;
-        border-radius: 0;
-        border-right: 0;
-    }
-
-    .userCenter_btnSearch {
-        width: 72px;
-        height: 28px;
-        padding: 7px;
-        margin-top: 15px;
-        margin-right: 25px;
-        background-color: #8BAAFF;
-        border-radius: 0;
-        float: right;
-        border-left: 0;
-    }
-
-    .panel {
-        display: flex;
-        float: right;
-        flex-direction: row;
-    }
-
-    .user-center-bar {
-        display: flex;
-        flex-direction: row;
-        /*justify-content: center;*/
-        /*align-self: center;*/
-    }
-
-    .asideMenu {
-        background-image: linear-gradient(to left, #f5f7fa 0%, #c3cfe2 100%);
-    }
-
-    .back2 {
-        background-image: linear-gradient(to right, #f5f7fa 0%, #c3cfe2 100%);
-    }
-
-    .search {
-        position: absolute;
-        right: 0;
-    }
 </style>

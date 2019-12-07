@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div style="width: 800px">
         <el-dialog :visible.sync="isAddAdrDialogVis" width="760px">
             <AddAddress slot="title"></AddAddress>
         </el-dialog>
