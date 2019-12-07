@@ -333,7 +333,7 @@
                 paintMark: 0,
                 numMark: 0,
 
-                headicon: "http://storage.360buyimg.com/i.imageUpload/465f4c5f5a31343233383930323933373032_mid.jpg",
+                headicon: this.$store.state.icon_head,
 
                 icon_yichu: yichu,
                 icon_fukuan: fukuan,
@@ -434,7 +434,6 @@
                         tmplist1 = res.data.slice(i, i + 1);
                         this.newList.push(tmplist1);
                     }
-                    //console.log(this.newList);
                 });
 
 
@@ -510,9 +509,6 @@
                         break;
                 }
             },
-            test() {
-                console.log(this.username)
-            }
         },
         mounted() {
             this.getNewList();

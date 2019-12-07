@@ -12,7 +12,9 @@ const state = {
     //用户帐号
     userAccount: null,
     //登录框是否显示
-    isLoginPopVis: false
+    isLoginPopVis: false,
+    //头像路径
+    icon_head:"https://ss0.bdstatic.com/70cFvHSh_Q1YnxGkpoWK1HF6hhy/it/u=3127190984,2058914612&fm=26&gp=0.jpg",
 };
 
 //同步方法

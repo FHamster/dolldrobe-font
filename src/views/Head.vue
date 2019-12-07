@@ -23,7 +23,8 @@
                 <el-dropdown @command="handleCommand">
 
                     <el-link @click="handleUserCenter" :underline="false">
-                        <el-avatar shape="square">U</el-avatar>
+                        <el-avatar v-if="Token==null" shape="square">U</el-avatar>
+                        <el-avatar v-else shape="square" :src="icon_head"></el-avatar>
                     </el-link>
                     <el-dropdown-menu v-if="Token!==null">
                         <el-dropdown-item command="logout">
@@ -80,6 +81,7 @@
         data() {
             return {
                 searchString: '',
+                icon_head:this.$store.state.icon_head,
             };
         },
         computed: {

@@ -115,7 +115,7 @@
                 imageUrl: '',
                 pdform: {
                     userName: '',//*
-                    nowImg: '',//*
+                    nowImg: this.$store.icon_head,//*
                     realName: '',
                     nickName: '',//*
                     constellation: '',

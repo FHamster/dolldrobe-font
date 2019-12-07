@@ -3,7 +3,7 @@
     <el-tabs tab-position="left" style="height: auto;" value="1">
         <el-tab-pane disabled="true">
             <span slot="label" disabled="true">
-                <el-image style="width: 80px;height: 80px" :src="icon_head"/>
+                <el-image style="width: 80px;height: 80px;border-radius: 50%" :src="icon_head"/>
             </span>
         </el-tab-pane>
         <el-tab-pane disabled="true"/>
@@ -43,7 +43,7 @@
         components: {UserAddress, PersonDetail},
         data:function () {
             return {
-                icon_head:"https://ss0.bdstatic.com/70cFvHSh_Q1YnxGkpoWK1HF6hhy/it/u=3127190984,2058914612&fm=26&gp=0.jpg",
+                icon_head:this.$store.state.icon_head,
                 from: {
                     search: '',
                 },
