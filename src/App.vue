@@ -4,52 +4,6 @@
             <LoginDialog></LoginDialog>
         </el-dialog>
         <Head/>
-        <!-- <div class="menu-border">
-             <el-menu
-                     background-color="#ffffff"
-                     :default-active="activeIndex2"
-                     mode="horizontal"
-                     text-color="#547A28"
-                     active-text-color="#B3748D"
-                     @select="handleSelect"
-                     router>
-                 <el-menu-item @click="dialogVis = !dialogVis">
-                     <template slot="title">
-                         <el-avatar>U</el-avatar>
-                     </template>
-                 </el-menu-item>
-                 <el-menu-item
-                         index="/MainPage">首页
-                 </el-menu-item>
-                 <el-menu-item
-                         index="/UserCenter">用户中心
-                 </el-menu-item>
-                 &lt;!&ndash;   <el-submenu index="2">
-                        <template slot="title">我的工作台</template>
-                        <el-menu-item index="2-1">选项1</el-menu-item>
-                        <el-menu-item index="2-2">选项2</el-menu-item>
-                        <el-menu-item index="2-3">选项3</el-menu-item>
-                        <el-submenu index="2-4">
-                            <template slot="title">选项4</template>
-                            <el-menu-item index="2-4-1">选项1</el-menu-item>
-                            <el-menu-item index="2-4-2">选项2</el-menu-item>
-                            <el-menu-item index="2-4-3">选项3</el-menu-item>
-                        </el-submenu>
-                    </el-submenu>&ndash;&gt;
-
-                 <el-menu-item
-                         index="/GoodsPage">商品浏览
-                 </el-menu-item>
-                 &lt;!&ndash; <el-menu-item
-                          index="MessageBorder">浏览
-                  </el-menu-item>&ndash;&gt;
-                 &lt;!&ndash;    <el-menu-item
-                             index="Express">Express
-                     </el-menu-item>&ndash;&gt;
-             </el-menu>
-         </div>-->
-
-        <!--        </el-header>-->
         <div style="padding: 0;min-height: 700px">
             <router-view></router-view>
         </div>

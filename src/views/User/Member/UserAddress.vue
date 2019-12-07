@@ -1,11 +1,11 @@
 <template>
-    <div>
+    <div style="width: 800px">
         <el-dialog :visible.sync="isAddAdrDialogVis" width="760px">
             <AddAddress slot="title"></AddAddress>
         </el-dialog>
         <div class="flex-row " style="justify-content: center;">
             <!--            <div class="flex-col shadow-around" style="background-color: white;max-width: 1005px;padding: 16px 16px;margin: 16px 0">-->
-            <el-card style="margin: 16px 0" :body-style="{ padding: '0px' }">
+            <el-card  :body-style="{ padding: '0px' }">
                 <div slot="header">
 
                     <!--                <el-button @click="runFun">123</el-button>-->
