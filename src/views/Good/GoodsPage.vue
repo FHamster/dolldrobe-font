@@ -24,6 +24,21 @@
             <!--     <el-main style="padding: 0;margin-left: 32px">
                      -->
             <el-card style="padding:16px 0 ">
+                <el-popover
+                        placement="top-start"
+                        title="提示"
+                        width="200"
+                        trigger="hover"
+                        content="这里可以对商品进行过滤哦">
+                    <el-button slot="reference" class="sideFixed"
+                               icon="el-icon-arrow-right"
+                               circle
+                               type="info"
+                               @click="isSidePaneShow=true"
+                               v-show="!isSidePaneShow">
+                    </el-button>
+                </el-popover>
+
                 <div slot="header" class="flex-row">
                     <el-button plain disabled>销量排序</el-button>
                     <el-button plain @click=getPageByC_Num>综合排序</el-button>
@@ -127,14 +142,14 @@
             </div>
         </el-drawer>
 
-        <el-button class="sideFixed"
-                   icon="el-icon-arrow-right"
-                   circle
-                   plain
-                   type="primary"
-                   @click="isSidePaneShow=true"
-                   v-show="!isSidePaneShow">
-        </el-button>
+        <!--        <el-button class="sideFixed"
+                           icon="el-icon-arrow-right"
+                           circle
+                           plain
+                           type="primary"
+                           @click="isSidePaneShow=true"
+                           v-show="!isSidePaneShow">
+                </el-button>-->
     </div>
 </template>
 
@@ -251,7 +266,7 @@
 
     .sideFixed {
         margin-top: 10vh;
-        margin-left: 32px;
+        margin-left: -20px;
         position: fixed;
         z-index: 2;
     }

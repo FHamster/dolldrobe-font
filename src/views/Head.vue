@@ -11,13 +11,13 @@
         <div class="head_background flex-row">
             <img width="256" height="80" src="../assets/DollDrobe.png" alt="">
             <!--            <div style="width: 184px;height: 80px;background-color: #C2ADED"></div>-->
-         <!--   <div style="width: 320px">
+            <div style="width: 320px">
                 <el-input
                         placeholder="DollDrobe"
                         v-model="searchString">
                     <i slot="prefix" class="el-input__icon el-icon-search"></i>
                 </el-input>
-            </div>-->
+            </div>
 
             <div class="flex-row" style="align-content: flex-start;">
                 <el-dropdown @command="handleCommand">
