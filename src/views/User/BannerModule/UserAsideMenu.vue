@@ -39,7 +39,10 @@
                 <a>我的发票</a>
             </dd>
             <dd class="menu-item-text">
-                <a> 购买咨询</a>
+                <a>购买咨询</a>
+            </dd>
+            <dd class="menu-item-text">
+                <a>消息中心</a>
             </dd>
             <dd class="menu-item-text">
                 <a>举报中心</a>
