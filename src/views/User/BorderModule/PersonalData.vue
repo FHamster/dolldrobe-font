@@ -1,62 +1,49 @@
 <template>
-<div>
-   <!-- <el-header>
-        <el-menu
-                mode="horizontal"
-                style="background-image: linear-gradient(to right, #f5f7fa 0%, #eef1f5 100%);"
-                text-color="#547A28"
-                active-text-color="#B3748D"
-                router
-                class="user-center-bar">
-            <el-menu-item index="UserCenter">首页</el-menu-item>
+<div class="flex-row" style="padding:32px;margin:0 15%">
+    <el-tabs tab-position="left" style="height: auto;" value="1">
+        <el-tab-pane disabled="true">
+            <span slot="label" disabled="true">
+                <el-image style="width: 80px;height: 80px" :src="icon_head"/>
+            </span>
+        </el-tab-pane>
+        <el-tab-pane disabled="true"/>
+        <el-tab-pane label="个人资料" name="1">
+            <PersonDetail ></PersonDetail>
+        </el-tab-pane>
+        <el-tab-pane label="安全设置" disabled="true">
 
-            <el-submenu index="2">
-                <template slot="title">账户设置</template>
-                <el-submenu index="2-1">
-                    <template slot="title">安全设置</template>
-                    <el-menu-item index="2-1-1">修改登录密码</el-menu-item>
-                    <el-menu-item index="2-1-2">手机绑定</el-menu-item>
-                    <el-menu-item index="2-1-3">密保问题设置</el-menu-item>
-                    <el-menu-item index="2-1-4">其他</el-menu-item>
-                </el-submenu>
-                <el-submenu index="2-2">
-                    <template slot="title">个人设置</template>
-                    <el-menu-item index="UserAddress">收货地址</el-menu-item>
-                    <el-menu-item index="PersonDetail">修改头像、昵称</el-menu-item>
-                    <el-menu-item index="2-1-3">消息提醒设置</el-menu-item>
-                </el-submenu>
-            </el-submenu>
+        </el-tab-pane>
+        <el-tab-pane label="成长信息" disabled="true">
 
-            <el-menu-item index="3" class="userCenter_title">消息中心</el-menu-item>
-        </el-menu>
-    </el-header>-->
-    <div>
-        <div width="20%" style="border: 2px ;position: absolute">
-            <div style="float: right">
-                <el-image style="width: 100px;height: 100px" src="https://ss0.bdstatic.com/70cFvHSh_Q1YnxGkpoWK1HF6hhy/it/u=3127190984,2058914612&fm=26&gp=0.jpg"></el-image>
-                <div style="width: 20px">
-                    <el-button type="text" size="small" style="margin-left: 10px">安全设置</el-button>
-                    <el-button type="text" size="small" @click="jumpDetail">个人资料</el-button>
-                    <el-button type="text" size="small">个人成长信息</el-button>
-                    <el-button type="text" size="small">个人交易信息</el-button>
-                    <el-button type="text" size="small" @click="jumpAddress">收货地址</el-button>
-                    <el-button type="text" size="small">分享绑定</el-button>
-                    <el-button type="text" size="small">消息提醒</el-button>
-                </div>
-            </div>
-        </div>
-        <div style="width: 850px; position: absolute;margin-left: 22%">
-            <router-view></router-view>
-        </div>
+        </el-tab-pane>
+        <el-tab-pane label="交易信息" disabled="true">
+
+        </el-tab-pane>
+        <el-tab-pane label="收货地址" >
+            <UserAddress ></UserAddress>
+        </el-tab-pane>
+        <el-tab-pane label="分享绑定" disabled="true">
+
+        </el-tab-pane>
+        <el-tab-pane label="消息提醒" disabled="true">
+
+        </el-tab-pane>
+    </el-tabs>
+    <div style="width: 850px; position: absolute;margin-left: 22%">
+        <router-view></router-view>
     </div>
 </div>
 </template>
 
 <script>
+    import PersonDetail from "../BannerModule/PersonDetail";
+    import UserAddress from "../Member/UserAddress";
     export default {
         name: "PersonalData",
+        components: {UserAddress, PersonDetail},
         data:function () {
             return {
+                icon_head:"https://ss0.bdstatic.com/70cFvHSh_Q1YnxGkpoWK1HF6hhy/it/u=3127190984,2058914612&fm=26&gp=0.jpg",
                 from: {
                     search: '',
                 },

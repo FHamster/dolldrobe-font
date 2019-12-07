@@ -1,5 +1,5 @@
 <template>
-    <el-tabs type="border-card" style="width: 850px">
+    <el-tabs type="border-card" style="width: 800px">
         <el-tab-pane label="基本资料">
             <div>
                 亲爱的{{pdform.userName}}，填写真实的资料，有助于好友找到你哦。
@@ -7,7 +7,7 @@
             <el-form :model=pdform ref="pdform">
                 <el-form-item label="当前头像：" style="margin-top: 10px;margin-bottom: 0px">
                     <el-image v-if="pdform.nowImg" :src=pdform.nowImg></el-image>
-                    <el-image v-else style="width: 80px;height: 80px;background-color: #9DBC7A"></el-image>
+                    <el-image v-else style="width: 80px;height: 80px;background-color: #9DBC7A" ></el-image>
                 </el-form-item>
                 <el-form-item label="昵称:" style="height: 25px; width: 280px">
                     <el-input v-model="pdform.nickName" style="width: 200px;float: right" size="mini">
