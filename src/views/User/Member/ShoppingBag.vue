@@ -102,28 +102,26 @@
             </div>
 
 
-            <div height="50px" style="padding-left: 15px">
-                <el-button type="text">移到关注</el-button>
-                <el-button type="text">清理购物车</el-button>
-                <div style="float: right">
-                    <div style="width: 270px">
-                        <div style="
-                    width: 100px;
-                    margin-top: 2px;
-                    float: left;font-size: 12px">已选择
-                            <div style="display: inline">{{setSunNum()}}</div>
-                            件商品
-                        </div>
-                        <div style="display: inline;width: 50px">
-                            <el-col style="display: inline;width: 70px">
-                                <div style="display: inline;font-size: 12px">总价：
-                                    <div style="display: inline">{{setSumPrice()}}</div>
-                                </div>
-                                <div style="font-size: 12px">促销：-￥{{ducePrice}}</div>
-                            </el-col>
-                        </div>
-                    </div>
+            <div class="flex-row" style="padding-left: 16px;justify-content: space-between">
+                <div>
+                    <el-button type="text">移到关注</el-button>
+                    <el-button type="text">清理购物车</el-button>
+                </div>
 
+
+                <div class="flex-row" style="width: 32%;justify-content: space-between;padding: 8px 0">
+                    <div class="flex-col" style="font-size: 12px">
+                        <div>
+                            <span>已选择</span>
+                            <span style="color: #C2ADED"> {{setSunNum()}} </span>
+                            <span>件商品</span>
+                        </div>
+                        <div>
+                            <span>总价: </span>
+                            <span style="color: #C2ADED">{{setSumPrice()}}</span>
+                        </div>
+                        <!--                        <div style="font-size: 12px">促销：-￥{{ducePrice}}</div>-->
+                    </div>
                     <el-button size="media"
                                @click="open()"
                                plain style="float: right">去结算

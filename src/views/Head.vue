@@ -49,7 +49,7 @@
             </div>
         </div>
 
-        <ul class="flex-row nav-menu">
+        <ul class="flex-row nav-menu" >
             <router-link tag="li" to="/MainPage">
                 <el-link :underline="false">首页</el-link>
             </router-link>
@@ -80,8 +80,14 @@
         },
         data() {
             return {
+                headNaviList: [
+                    {naviTitle: "首页", to: "/MainPage"},
+                    {naviTitle: "娃衣展示", to: "/GoodsPage"},
+                    {naviTitle: "晒娃墙", to: "/"},
+                    {naviTitle: "衣橱快报", to: "/"}
+                ],
                 searchString: '',
-                icon_head:this.$store.state.icon_head,
+                icon_head: this.$store.state.icon_head,
             };
         },
         computed: {

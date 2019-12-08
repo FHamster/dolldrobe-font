@@ -3,7 +3,7 @@
         <!--走马灯-->
         <el-aside>
             <el-carousel :interval="5000" arrow="always" height="440px" indicator-position="outside">
-                <el-carousel-item v-for=" item in skuImage" :key="item">
+                <el-carousel-item v-for="item in skuImage" :key="item">
                     <el-image :src=item></el-image>
                 </el-carousel-item>
             </el-carousel>
@@ -106,7 +106,7 @@
                 comentNum: '20+',
 
                 //当前商品的名称
-                goodLabel: '这只是个测试',
+                goodLabel: '蓝莓小可爱',
                 //sku的名称
                 skuLabel: '',
                 //sku的价格

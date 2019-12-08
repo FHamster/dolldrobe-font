@@ -5,8 +5,7 @@
         display: 'flex',
         'flex-direction': 'column',
         'align-content': 'center'}"
-             shadow="hover"
-               >
+             shadow="hover">
 
         <el-image :src=good.cImg
                   class="image"
@@ -14,10 +13,10 @@
                   fit="fill">
         </el-image>
         <div style="padding: 10px 10px 0 10px;">
-            <div class="GoodName textAlign">{{good.cName}}</div>
+            <div class="font-color textAlign">{{good.cName}}</div>
 
-            <div class="price_cart" >
-                <div class="price" style="margin: 0 auto">￥{{good.cMinmoney}}</div>
+            <div class="price_cart">
+                <div class="price-color" style="margin: 0 auto">￥{{good.cMinmoney}}</div>
                 <!--              <el-button type="warning"
                                          icon="el-icon-star-off"
                                          circle
@@ -33,7 +32,7 @@
             </div>
         </div>
         <hr>
-        <div class="textAlign" style="color: #999;margin-top: 5px">
+        <div class="textAlign font-color"  style="margin-top: 5px">
             假装这是一段商品介绍
         </div>
     </el-card>
@@ -56,36 +55,36 @@
         margin-top: 5px;
     }
 
-    .price {
-
-        color: #9DBC7A;
+    .font-color {
+        color: #606266;
     }
+
     .GoodName {
         word-wrap: break-word;
         cursor: pointer;
     }
 
-    .GoodName:hover{
-        color: #9DBC7A;
+
+    .textAlign {
+        text-align: center;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
     }
 
-    .textAlign{
-        text-align:center;
-        white-space:nowrap;
-        overflow:hidden;
-        text-overflow:ellipsis;
-    }
-
-    hr{
+    hr {
         width: 50%;
         border: 0;
         border-top: 1px solid #e8e8e8;
     }
 
-    .cardHover:hover{
+    .cardHover:hover {
         margin-top: -3px;
         /*box-shadow: black;*/
-        background-color: #ecffeb;
+        background-color: #DDD1F6;
     }
 
+    .price-color {
+        color: #C2ADED;
+    }
 </style>

@@ -137,12 +137,12 @@
                         搜索
                     </el-button>
                 </div>
-                <el-slider
+               <!-- <el-slider
                         v-model="value"
                         range
                         show-stops
                         :max="10">
-                </el-slider>
+                </el-slider>-->
 
                 <!--                </el-card>-->
             </div>

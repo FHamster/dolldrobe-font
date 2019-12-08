@@ -16,3 +16,13 @@
     display: flex;
     flex-direction: row;
 }
+
+.font-color_main {
+   color: #303133
+}.font-color_common {
+   color: #606266
+}.font-color_minor {
+   color: #909399
+}.font-color_hold {
+   color: #C0C4CC
+}

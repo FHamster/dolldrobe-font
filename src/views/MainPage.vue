@@ -29,7 +29,8 @@
                                      style="width: 100%;">
                             <el-carousel-item v-for="(goods,index) in newList" :key="index"
                                               class="card">
-                                <div v-for="good in goods" :key="good.cNum"
+                                <div v-for="good in goods"
+                                     :key="good.cNum"
                                      @click="visGoodDialog(good.cNum,good.cName)">
                                     <GoodCard :good="good" style=" margin-left: 15px;"/>
                                 </div>
@@ -49,9 +50,12 @@
                     </el-divider>
 
                     <div class="Pane">
-                        <GoodCard v-for="good in sentimentList" :key="good.cNum"
-                                  style="margin-left: 20px;margin-top: 15px"
-                                  :good="good"/>
+                        <div @click="visGoodDialog(good.cNum,good.cName)"
+                             v-for="good in sentimentList"
+                             :key="good.cNum">
+                            <GoodCard style="margin-left: 20px;margin-top: 15px"
+                                    :good="good"/>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -67,8 +71,7 @@
                     <div class="Pane">
                         <div v-for="good in sentimentList" :key="good.cNum"
                              @click="visGoodDialog(good.cNum,good.cName)">
-                            <GoodCard
-                                    style="margin-left: 20px;margin-top: 15px" :good="good"/>
+                            <GoodCard style="margin-left: 20px;margin-top: 15px" :good="good"/>
 
                         </div>
                     </div>
