@@ -87,7 +87,7 @@
                     }, {
                         menuTitle: "客户服务",
                         subMenu: [
-                            {menuTitle: "返修退换货", to: "/UserCenter/index", isShow: true},
+                            {menuTitle: "打样意见", to: "/UserCenter/index", isShow: true},
                             {menuTitle: "我的发票", to: "/UserCenter/index", isShow: true},
                             {menuTitle: "举报中心", to: "/UserCenter/index", isShow: true},
                             {menuTitle: "意见建议", to: "/UserCenter/index", isShow: false},
