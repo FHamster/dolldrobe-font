@@ -151,6 +151,10 @@
 
         },
         methods: {
+            setAddressData(data) {
+                this.ruleForm = data;
+                console.log(data);
+            },
             addAddress() {
                 let tmpArr = Array.from(this.ruleForm.localArea);
 
@@ -163,7 +167,7 @@
                     saTelphone: this.ruleForm.telephone,
                     saPhone: this.ruleForm.phone
                 };
-                console.log(this.submitForm("ruleForm"));
+                // console.log(this.submitForm("ruleForm"));
                 if (this.submitForm("ruleForm")) {
 
                     axios.post('api/Address/Address', add, {

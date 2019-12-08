@@ -1,10 +1,10 @@
 <template>
-    <div class="flex-col" style="justify-content: center">
+    <div class="flex-col" style="justify-self: center;">
         <div class="flex-row" style="justify-content: center">
-            Someon Call it 404
+            这个页面在人生的旅途中
         </div>
         <div class="flex-row" style="justify-content: center">
-            We Call it Art
+            迷路了！！！
         </div>
     </div>
 </template>
@@ -18,6 +18,6 @@
 <style scoped>
     div {
         font-size: 100px;
-        color: #9DBC7A;
+        color: #C2ADED;
     }
 </style>

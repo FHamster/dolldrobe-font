@@ -1,12 +1,12 @@
 <template>
     <div style="width: 800px">
         <el-dialog :visible.sync="isAddAdrDialogVis" width="760px">
-            <AddAddress slot="title"></AddAddress>
+            <AddAddress ref="addAddressDialog" slot="title"></AddAddress>
         </el-dialog>
         <div class="flex-row " style="justify-content: center;">
             <!--            <div class="flex-col shadow-around" style="background-color: white;max-width: 1005px;padding: 16px 16px;margin: 16px 0">-->
-            <el-card  :body-style="{ padding: '0px' }">
-                <div slot="header">
+            <el-card :body-style="{ padding: '0px' }">
+                <div slot="header" class="flex-row" style="justify-content: space-between">
 
                     <!--                <el-button @click="runFun">123</el-button>-->
                     <div style="display: inline;margin-left: 8px">
@@ -16,12 +16,12 @@
                         <div class="header_num">{{maxNum}}</div>
                         个
                     </div>
-                    <el-divider direction="vertical"></el-divider>
+                    <!--                    <el-divider direction="vertical"></el-divider>-->
                     <el-button size="small" plain type="success" circle icon="el-icon-plus"
                                @click="isAddAdrDialogVis=!isAddAdrDialogVis">
                     </el-button>
                 </div>
-                <el-collapse v-model="activeName" accordion>
+                <el-collapse v-model="activeName" accordion style="width: 800px">
                     <el-collapse-item v-for="it in items" :key="it.adrKey" :v-if="items.length != 0">
                         <div slot="title" class="flex-row" style="align-items: center">
                             <div style="font-size: 15px ;margin-left: 32px">
@@ -69,7 +69,7 @@
                                 <div class="clr"></div>
                             </div>
                             <div>
-                                <div class="card_span ">电子邮箱：&nbsp;</div>
+                                <div class="card_span ">邮政编码：&nbsp;</div>
                                 <div class="card_main">{{it.email}}</div>
                             </div>
 
@@ -78,15 +78,16 @@
                         <div style="float: right;margin-right: 16px">
                             <el-button type="text"
                                        @click="setDefault(it)"
-                                       v-if="it.isDefault != true"
-                                       size="mini">设为默认
-                            </el-button>
-                            <el-button type="text" size="mini"
-                                       @click="isAddAdrDialogVis=!isAddAdrDialogVis">编辑
+                                       v-if="it.isDefault != true">
+                                设为默认
                             </el-button>
                             <el-button type="text"
-                                       @click="moveItem(it)"
-                                       size="mini">删除
+                                       @click="modifyAddress(it)">
+                                编辑
+                            </el-button>
+                            <el-button type="text"
+                                       @click="moveItem(it)">
+                                删除
                             </el-button>
                         </div>
                     </el-collapse-item>
@@ -177,6 +178,10 @@
                 await fun("2343").then(value => a = value);
             },
 
+            modifyAddress(it) {
+                this.$refs.addAddressDialog.setAddressData(it);
+                this.isAddAdrDialogVis = !this.isAddAdrDialogVis
+            },
             getAddress() {
                 axios.get('/api/Address/Address', {
                     headers: {
@@ -247,15 +252,20 @@
 
     .card_span {
         float: left;
+        font-size: 13px;
+        font-weight: bold;
         width: 100px;
-        color: #999;
+        color: #303133;
         display: inline;
         text-align: right;
     }
 
     .card_main {
+
+        font-size: 13px;
         width: 360px;
         margin: 0;
+        color: #606266;
         display: inline;
     }
 

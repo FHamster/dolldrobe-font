@@ -2,7 +2,7 @@
 <div class="flex-row" style="padding:32px;margin:0 15%">
     <el-tabs tab-position="left" style="height: auto;" :value=choNum>
         <el-tab-pane disabled="true">
-            <span slot="label" disabled="true">
+            <span slot="label" disabled="true" style="margin-left: 16px">
                 <el-image style="width: 64px;height: 64px;border-radius: 50%" :src="icon_head"/>
             </span>
         </el-tab-pane>
