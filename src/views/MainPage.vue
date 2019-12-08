@@ -158,9 +158,6 @@
 </script>
 
 <style scoped>
-    .el-carousel-item {
-        width: 200px;
-    }
 
     .el-carousel__item h3 {
         color: #475669;

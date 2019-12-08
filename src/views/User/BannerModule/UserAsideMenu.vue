@@ -66,6 +66,12 @@
             return {
                 menuList: [
                     {
+                        menuTitle: "个人中心",
+                        subMenu: [
+                            {menuTitle: "我的车车", to: "/UserCenter/ShoppingBag", isShow: true},
+                            {menuTitle: "个人信息", to: "/UserCenter/PersonalData", isShow: true},
+                        ]
+                    }, {
                         menuTitle: "订单中心",
                         subMenu: [
                             {menuTitle: "我的订单", to: "/UserCenter/index", isShow: true},
