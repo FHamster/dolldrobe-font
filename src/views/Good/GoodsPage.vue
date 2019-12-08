@@ -6,7 +6,7 @@
 
         <div id="top" style="width: 100%; height: 8px;background-color: #C2ADED"></div>
 
-        <div style="padding:24px 80px">
+        <div style="padding:32px 64px">
 
 
             <!--
@@ -23,63 +23,64 @@
 
             <!--     <el-main style="padding: 0;margin-left: 32px">
                      -->
-            <el-card style="padding:16px 0 ">
-                <el-popover
-                        placement="top-start"
-                        title="提示"
-                        width="200"
-                        trigger="hover"
-                        content="这里可以对商品进行过滤哦">
-                    <el-button slot="reference" class="sideFixed"
-                               icon="el-icon-arrow-right"
-                               circle
-                               type="info"
-                               @click="isSidePaneShow=true"
-                               v-show="!isSidePaneShow">
-                    </el-button>
-                </el-popover>
+            <!--            <el-card style="padding:16px 0 ">-->
 
-                <div slot="header" class="flex-row">
-                    <el-button plain disabled>销量排序</el-button>
-                    <el-button plain @click=getPageByC_Num>综合排序</el-button>
-                    <el-button plain @click="getPageByC_MaxMoney">价格排序</el-button>
-                    <el-button plain disabled>评论数量</el-button>
-                    <el-button plain @click="getPageByC_EndTime">上架时间</el-button>
+
+            <div class="flex-row">
+                <el-button plain disabled>销量排序</el-button>
+                <el-button plain @click=getPageByC_Num>综合排序</el-button>
+                <el-button plain @click="getPageByC_MaxMoney">价格排序</el-button>
+                <el-button plain disabled>评论数量</el-button>
+                <el-button plain @click="getPageByC_EndTime">上架时间</el-button>
+            </div>
+            <el-divider></el-divider>
+            <el-popover
+                    placement="top-start"
+                    title="提示"
+                    width="200"
+                    trigger="hover"
+                    content="这里可以对商品进行过滤哦">
+                <el-button slot="reference" class="sideFixed"
+                           icon="el-icon-arrow-right"
+                           circle
+                           type="info"
+                           @click="isSidePaneShow=true"
+                           v-show="!isSidePaneShow">
+                </el-button>
+            </el-popover>
+            <!--商品展示面板-->
+            <div class="goodPanel">
+
+                <div v-for="good in goodList" :key="good.cNum"
+                     style="margin: 8px 16px"
+                     @click="visGoodDialog(good.cNum,good.cName)">
+                    <GoodCard :good="good"/>
                 </div>
-                <div style="justify-content: center" class="flex-row">
-                    <!--商品展示面板-->
-                    <div class="goodPanel">
-                        <div v-for="good in goodList" :key="good.cNum"
-                             style="margin: 8px 16px"
-                             @click="visGoodDialog(good.cNum,good.cName)">
-                            <GoodCard :good="good"/>
-                        </div>
-                    </div>
-                </div>
-                <!--   <el-pagination
-                           small
-                           background
-                           @size-change="handleSizeChange"
-                           @current-change="handleCurrentChange"
-                           :current-page.sync="curPage"
-                           :page-size="5"
-                           layout="prev, pager, next, jumper"
-                           :total="total"
-                           style="float: right;margin-top: 50px;margin-right: 100px">
-                   </el-pagination>-->
-                <div class="flex-row" style="justify-content: center">
-                    <el-pagination
-                            background
-                            @size-change="handleSizeChange"
-                            @current-change="handleCurrentChange"
-                            :current-page.sync="curPage"
-                            :page-size="5"
-                            layout="prev, pager, next, jumper"
-                            :total="total"
-                            style="margin-top: 32px">
-                    </el-pagination>
-                </div>
-            </el-card>
+            </div>
+            <!--   <el-pagination
+                       small
+                       background
+                       @size-change="handleSizeChange"
+                       @current-change="handleCurrentChange"
+                       :current-page.sync="curPage"
+                       :page-size="5"
+                       layout="prev, pager, next, jumper"
+                       :total="total"
+                       style="float: right;margin-top: 50px;margin-right: 100px">
+               </el-pagination>-->
+            <div class="flex-row" style="justify-content: center">
+                <el-pagination
+                        background
+                        @size-change="handleSizeChange"
+                        @current-change="handleCurrentChange"
+                        :current-page.sync="curPage"
+                        :page-size="5"
+                        layout="prev, pager, next, jumper"
+                        :total="total"
+                        style="margin-top: 32px">
+                </el-pagination>
+            </div>
+            <!--            </el-card>-->
             <!-- </el-main>-->
         </div>
         <el-drawer
@@ -136,7 +137,12 @@
                         搜索
                     </el-button>
                 </div>
-
+                <el-slider
+                        v-model="value"
+                        range
+                        show-stops
+                        :max="10">
+                </el-slider>
 
                 <!--                </el-card>-->
             </div>
@@ -257,7 +263,7 @@
 
 
     .goodPanel {
-        width: 1350px;
+        /*width: 1350px;*/
         display: flex;
         flex-direction: row;
         justify-content: center;
@@ -266,7 +272,7 @@
 
     .sideFixed {
         margin-top: 10vh;
-        margin-left: -20px;
+        margin-left: 24px;
         position: fixed;
         z-index: 2;
     }

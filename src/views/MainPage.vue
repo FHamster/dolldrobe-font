@@ -16,7 +16,7 @@
                 <div class="infopane">
                     <div class="info-title">新品首发</div>
                     <el-divider content-position="right">
-                        <router-link  to="/GoodsPage" tag="span">
+                        <router-link to="/GoodsPage" tag="span">
                             <el-link :underline="false">More</el-link>
                         </router-link>
                     </el-divider>
@@ -39,7 +39,7 @@
                 </div>
             </div>
 
-            <div class="infopane-background" >
+            <div class="infopane-background">
                 <div class="infopane">
                     <div class="info-title">人气画稿</div>
                     <el-divider content-position="right">
@@ -56,7 +56,7 @@
                 </div>
             </div>
 
-            <div class="infopane-background" >
+            <div class="infopane-background">
                 <div class="infopane">
                     <div class="info-title">限时抢购</div>
                     <el-divider content-position="right">
@@ -203,7 +203,6 @@
     }
 
 
-
     .infopane-background > .infopane > .title {
         display: flex;
         justify-content: space-between;
@@ -226,5 +225,9 @@
         margin-right: 20px;
         padding-left: 40px;
         color: #303133;
+    }
+
+    /deep/ .el-divider__text {
+        background-color: rgba(0, 0, 0, -1);
     }
 </style>
