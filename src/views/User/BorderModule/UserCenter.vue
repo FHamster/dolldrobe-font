@@ -5,7 +5,7 @@
         </el-dialog>
 
         <div class="info-pane_background">
-            <div  style="margin-bottom: 8px">
+            <div style="margin-bottom: 8px">
                 <div class="user-card">
                     <div class="user-card-box1 flex-col">
                         <div style="height: 60px;font-size:50px;
@@ -21,11 +21,11 @@
                                 {{username}}
                             </div>
                         </div>
-                     <!--   <div style="align-self: center">
-                            <el-button round plain @click="test">
-                                OPEN
-                            </el-button>
-                        </div>-->
+                        <!--   <div style="align-self: center">
+                               <el-button round plain @click="test">
+                                   OPEN
+                               </el-button>
+                           </div>-->
                     </div>
                     <div class="user-card-box2 shadow-around">
                         <div class="user-card-box2-purse">
@@ -94,7 +94,9 @@
                                          @mouseout="mouseMv(icon_menuc)"
                                          @mouseover="mouseHov(icon_menuc)">
                                         <!--<el-badge :value=fknum v-if="fknum > 0" max="20"/>-->
-                                        <el-image :src="icon_menuc" class="user-menu-card-img"/>
+                                        <el-badge :value="12" class="item">
+                                            <el-image :src="icon_menuc" class="user-menu-card-img"/>
+                                        </el-badge>
                                         <span class="user-menu-card-text">我的车车</span>
                                     </div>
                                 </router-link>
@@ -107,7 +109,8 @@
                                         <span class="user-menu-card-text">个人信息</span>
                                     </div>
                                 </router-link>
-                                <router-link :to="{path:'/UserCenter/PersonalData',query:{nameid:'2'}}" class="router-link-active" tag="li" >
+                                <router-link :to="{path:'/UserCenter/PersonalData',query:{nameid:'2'}}"
+                                             class="router-link-active" tag="li">
                                     <div class="flex-col"
                                          @mouseout="mouseMv(icon_menud)"
                                          @mouseover="mouseHov(icon_menud)">

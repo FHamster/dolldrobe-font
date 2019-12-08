@@ -1,7 +1,7 @@
 <template>
     <div class="register-border">
         <el-form :model="reg" status-icon :rules="rules" label-width="80px" ref="regForm">
-            <el-form-item label="注册帐号" prop="uAccountnumber">
+            <el-form-item label="注册帐号" prop="uAccountnumber_reg">
                 <el-input v-model="reg.uAccountnumber_reg" autocomplete="off" type="text"
                           prefix-icon="el-icon-user"
                           class="register_input_broder"
@@ -87,7 +87,9 @@
             };
             //校验用户名重复
             const validateAcc = (rule, value, callback) => {
+                // console.log(this.reg.uAccountnumber_reg);
                 axios.get('api/User/UserAccisUnique', {
+
                     params: {
                         acc: this.reg.uAccountnumber_reg
                     }
@@ -111,7 +113,7 @@
                     mail: ''
                 },
                 rules: {
-                    uAccountnumber: [
+                    uAccountnumber_reg: [
                         {required: true, message: '请输入注册账号', trigger: 'blur'},
                         {min: 6, max: 20, message: '帐号长度应在6到20位', trigger: 'blur'},
                         {pattern: '^[a-zA-Z]\\w{5,19}$', message: '以字母开头 只包含字母 数字和下划线'},

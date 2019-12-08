@@ -16,7 +16,7 @@
                 <div class="infopane">
                     <div class="info-title">新品首发</div>
                     <el-divider content-position="right">
-                        <router-link  to="/GoodsPage">
+                        <router-link  to="/GoodsPage" tag="span">
                             <el-link :underline="false">More</el-link>
                         </router-link>
                     </el-divider>
@@ -43,7 +43,7 @@
                 <div class="infopane">
                     <div class="info-title">人气画稿</div>
                     <el-divider content-position="right">
-                        <router-link to="/GoodsPage">
+                        <router-link to="/GoodsPage" tag="span">
                             <el-link :underline="false">More</el-link>
                         </router-link>
                     </el-divider>
@@ -60,7 +60,7 @@
                 <div class="infopane">
                     <div class="info-title">限时抢购</div>
                     <el-divider content-position="right">
-                        <router-link to="/GoodsPage">
+                        <router-link to="/GoodsPage" tag="span">
                             <el-link :underline="false">More</el-link>
                         </router-link>
                     </el-divider>
