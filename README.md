@@ -13,13 +13,13 @@
   
 ### 项目效果图
   1. 登录
-  ![Image text](./resultSrc/5.jpg)
+  ![Image text](/resultSrc/5.jpg)
   2. 注册
-  ![Image text](./resultSrc/4.jpg)
+  ![Image text](/resultSrc/4.jpg)
   3. 个人中心png
-  ![Image text](./resultSrc/6.)
+  ![Image text](/resultSrc/6.png)
   4. 消息通知
-  ![Image text](./resultSrc/2.jpg)
+  ![Image text](/resultSrc/2.jpg)
   5. 地址中心
-  ![Image text](./resultSrc/1.jpg)
+  ![Image text](/resultSrc/1.jpg)
   
