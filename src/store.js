@@ -6,11 +6,11 @@ Vue.use(Vuex);
 //全局作用欲数据
 const state = {
     //用户token
-    userToken: null,
+    userToken: '1',
     //用户名
-    userName: null,
+    userName: '1',
     //用户帐号
-    userAccount: null,
+    userAccount: '1',
     //登录框是否显示
     isLoginPopVis: false,
     //头像路径
